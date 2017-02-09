@@ -5,9 +5,14 @@ import javafx.scene.control.*;
 public class Controller {
 
     public Button startButton;
+    public Button stopButton;
 
     public void clickedStartButton(){
-        System.out.println("Du trykket på start");
+        System.out.println("You pressed START");
         startButton.setText("PAUSE");
+
+    }
+    public void clickedStopButton(){
+        System.out.println("You pressed STOP");
     }
 }
