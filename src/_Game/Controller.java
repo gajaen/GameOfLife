@@ -8,11 +8,11 @@ public class Controller {
     public Button stopButton;
 
     public void clickedStartButton(){
-        System.out.println("You pressed START");
-        startButton.setText("PAUSE");
 
+        System.out.println("You pressed START");
     }
     public void clickedStopButton(){
+
         System.out.println("You pressed STOP");
     }
 }
