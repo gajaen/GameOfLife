@@ -7,11 +7,12 @@ public class Controller {
     public Button startButton;
     public Button stopButton;
 
-    public void clickedStartButton(){
+    public void clickedStartButton() {
 
         System.out.println("You pressed START");
     }
-    public void clickedStopButton(){
+
+    public void clickedStopButton() {
 
         System.out.println("You pressed STOP");
     }
