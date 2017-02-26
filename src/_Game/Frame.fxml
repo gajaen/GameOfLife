@@ -51,6 +51,6 @@
       </GridPane>
    </bottom>
    <center>
-      <Canvas height="330.0" width="500.0" BorderPane.alignment="CENTER" fx:id="Canvas"/>
+      <Canvas height="330.0" width="500.0" BorderPane.alignment="CENTER" fx:id="CanvasId"/>
    </center>
 </BorderPane>

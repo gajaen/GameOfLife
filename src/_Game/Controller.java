@@ -1,11 +1,14 @@
 package _Game;
 
 import javafx.scene.control.*;
+import javafx.scene.canvas.*;
+
 
 public class Controller {
 
     public Button startButton;
     public Button stopButton;
+    public Canvas CanvasId;
 
     public void clickedStartButton() {
 
@@ -16,4 +19,7 @@ public class Controller {
 
         System.out.println("You pressed STOP");
     }
-}
+
+
+        }
+

@@ -16,12 +16,22 @@ public class Main extends Application {
 
     @Override
     public void start (Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Frame.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Frame.fxml"));
+        Parent root = fxmlLoader.load();
         primaryStage.setTitle("GameOfLife");
-        primaryStage.setScene(new Scene(root, 500, 600));
-        Canvas canvas = new Canvas(300, 250);
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
+
         }
+
+    public byte[][] board = {
+            { 1, 0, 0, 1},
+            { 1, 0, 0, 1},
+            { 1, 0, 0, 1},
+            { 1, 0, 0, 1}
+    };
+
+
 
 
     }
