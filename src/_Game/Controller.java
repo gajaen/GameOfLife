@@ -36,6 +36,8 @@ public class Controller {
 
     public void initialize(){
         gc = CanvasId.getGraphicsContext2D();
+        gc.setFill(Color.GREY);
+        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         cellSlider.setMin(5);
         cellSlider.setMax(50);
         cellSlider.setValue(10);
@@ -46,7 +48,7 @@ public class Controller {
     public void clickedStartButton() {
         System.out.println("You pressed START");
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.GREY);
+        gc.setFill(Color.BLACK);
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
@@ -58,7 +60,8 @@ public class Controller {
     public void clickedStopButton() {
 
         System.out.println("You pressed STOP");
-        gc.clearRect(0,0, 1000,1000);
+        gc.setFill(Color.GREY);
+        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
     }
 
 
