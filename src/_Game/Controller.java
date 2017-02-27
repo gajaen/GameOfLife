@@ -12,6 +12,8 @@ public class Controller {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Slider cellSlider;
+
+    //Variabler til Spillebrettet
     public int cellSize = 45;
     public int distanceCells = -2;
     public int canvasBorder = 7;
@@ -21,16 +23,16 @@ public class Controller {
 
 
     public byte[][] boardCell = {
-            {0, 0, 0, 0, 0, 0, 0, 0, 1, 0},
-            {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
-            {1, 0, 1, 0, 1, 0, 0, 0, 1, 0},
-            {0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 1, 0, 1, 0, 0, 1, 0, 0},
-            {0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-            {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-            {1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-            {0, 1, 0, 1, 0, 0, 0, 0, 1, 1}
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 
     };
 
@@ -48,8 +50,6 @@ public class Controller {
     };
 
 
-
-
     public void initialize() {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
@@ -65,10 +65,6 @@ public class Controller {
         }
     }
 
-
-
-
-
     public void clickedStartButton() {
         System.out.println("You pressed START");
         gc = CanvasId.getGraphicsContext2D();
@@ -80,8 +76,6 @@ public class Controller {
 
         }
     }
-
-
 
     public void clickedStopButton() {
 
