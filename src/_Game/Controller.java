@@ -58,7 +58,7 @@ public class Controller {
         gc.setFill(Color.GREY);
         for (int i = 0; i < boardClean.length; i++) {
             for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j, cellSize * i, cellSize - 5, cellSize - 5);
+                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j, cellSize * i, cellSize - 3, cellSize - 3);
             }
         }
     }
@@ -73,7 +73,7 @@ public class Controller {
         gc.setFill(Color.LIMEGREEN);
         for (int i = 0; i < boardCell.length; i++) {
             for (int j = 0; j < boardCell[0].length; j++) {
-                if( boardCell[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize-5, cellSize-5);
+                if( boardCell[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize-3, cellSize-3);
             }
 
         }
@@ -87,7 +87,7 @@ public class Controller {
         gc.setFill(Color.GREY);
         for (int i = 0; i < boardClean.length; i++) {
             for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j, cellSize * i, cellSize - 5, cellSize - 5);
+                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j, cellSize * i, cellSize - 3, cellSize - 3);
             }
         }
     }
