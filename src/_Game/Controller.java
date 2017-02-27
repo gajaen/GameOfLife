@@ -12,7 +12,9 @@ public class Controller {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Slider cellSlider;
-    public int cellSize = 50;
+    public int cellSize = 45;
+    public int distanceCells = -2;
+    public int canvasBorder = 7;
 
 
 
@@ -27,7 +29,7 @@ public class Controller {
             {0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
             {1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 1, 1},
-            {1, 0, 1, 0, 0, 0, 0, 0, 1, 0},
+            {1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
             {0, 1, 0, 1, 0, 0, 0, 0, 1, 1}
 
     };
@@ -58,7 +60,7 @@ public class Controller {
         gc.setFill(Color.GREY);
         for (int i = 0; i < boardClean.length; i++) {
             for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j, cellSize * i, cellSize - 3, cellSize - 3);
+                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
     }
@@ -73,7 +75,7 @@ public class Controller {
         gc.setFill(Color.LIMEGREEN);
         for (int i = 0; i < boardCell.length; i++) {
             for (int j = 0; j < boardCell[0].length; j++) {
-                if( boardCell[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize-3, cellSize-3);
+                if( boardCell[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
 
         }
@@ -87,7 +89,7 @@ public class Controller {
         gc.setFill(Color.GREY);
         for (int i = 0; i < boardClean.length; i++) {
             for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j, cellSize * i, cellSize - 3, cellSize - 3);
+                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
     }
