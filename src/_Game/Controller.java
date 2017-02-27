@@ -11,7 +11,7 @@ public class Controller {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Slider cellSlider;
-    public int cellSize = 10;
+    public int cellSize = 50;
 
 
 
@@ -30,8 +30,6 @@ public class Controller {
             {0, 1, 0, 1, 0, 1, 0, 1, 0, 1}
 
     };
-
-
 
 
 
