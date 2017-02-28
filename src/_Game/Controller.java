@@ -14,8 +14,8 @@ public class Controller {
     public Slider cellSlider;
 
     //Variabler til Spillebrettet
-    public int cellSize = 45;
-    public int distanceCells = -2;
+    public int cellSize = 30;
+    public double distanceCells = -1;
     public int canvasBorder = 7;
 
 
