@@ -14,7 +14,7 @@ public class Controller {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Slider cellSlider;
-    public double cellSize = 40;
+    public double cellSize = 47;
 
     //Nyttbrett
     public int w = 10;
@@ -101,8 +101,8 @@ public class Controller {
         }
 
         //Lager en ny random array for hver gang start er trykket.
-        for (int i =1;i < columns-1;i++) {
-            for (int j =1;j < rows-1;j++) {
+        for (int i =1;i < columns;i++) {
+            for (int j =1;j < rows;j++) {
                 board[i][j] = (int)(Math.random()*2);
             }
         }
