@@ -9,16 +9,17 @@ import javafx.beans.binding.*;
 
 public class Controller {
 
+    public GraphicsContext gc;
     public Button startButton;
     public Button stopButton;
     public Button circleButton;
     public Canvas CanvasId;
-    public GraphicsContext gc;
     public Slider cellSlider;
-    public double cellSize = 20;
+    public double cellSize;
+    public int CanvasId.height;
 
 
-    public int w = 50; //antall celler
+    public int w; //antall celler
     int columns, rows;
 
     int[][] board;
@@ -43,6 +44,11 @@ public class Controller {
 
     };
 
+    public Controller() {
+        cellSize = 10;
+        w = CanvasId.height;
+
+    }
 
 
     public void initialize() {

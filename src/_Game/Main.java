@@ -19,7 +19,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Frame.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("GameOfLife");
-        primaryStage.setScene(new Scene(root, 700, 600));
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
 
     }
