@@ -10,25 +10,12 @@ import javafx.beans.binding.*;
 public class Controller {
 
     public GraphicsContext gc;
-    public Button startButton;
-    public Button stopButton;
-    public Button circleButton;
+    public Button startButton, stopButton, circleButton;
     public Canvas CanvasId;
     public Slider cellSlider;
     public double cellSize;
-
-
-    public int a;
-    public int b;//antall celler
-
-    int columns, rows;
-
-    int[][] board;
-    int[][] cleanBoard;
-
-    //Variabler til Spillebrettet
-    public double distanceCells = -1;
-    public int canvasBorder = 1;
+    public int columns, rows, canvasBorder, distanceCells;
+    public int[][] board, cleanBoard;
 
 
     public byte[][] boardCircle = {
@@ -45,21 +32,22 @@ public class Controller {
 
     };
 
+    public Controller(){
 
+        //Variabler for spillbrettet
+        cellSize = 50;
+        columns = 10;
+        rows = 10;
+        canvasBorder = 5;
+        distanceCells = -2;
+
+    }
 
 
     public void initialize() {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-
-        CanvasId.getWidth(a);
-        CanvasId.getHeight(b);
-        cellSize = 10;
-
-        columns = a;
-        rows = b;
-
 
         board = new int[columns][rows];
         cleanBoard = new int[columns][rows];
