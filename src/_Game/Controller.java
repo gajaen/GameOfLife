@@ -16,7 +16,6 @@ public class Controller {
     public Canvas CanvasId;
     public Slider cellSlider;
     public double cellSize;
-    public int CanvasId.height;
 
 
     public int w; //antall celler
@@ -46,7 +45,7 @@ public class Controller {
 
     public Controller() {
         cellSize = 10;
-        w = CanvasId.height;
+        w = 100;
 
     }
 
