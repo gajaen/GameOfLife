@@ -3,6 +3,8 @@ package _Game;
 import javafx.scene.control.*;
 import javafx.scene.canvas.*;
 import javafx.scene.paint.*;
+import javafx.beans.binding.*;
+
 
 
 public class Controller {
@@ -12,11 +14,13 @@ public class Controller {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Slider cellSlider;
+    public double cellSize = 40;
 
     //Variabler til Spillebrettet
-    public int cellSize = 30;
     public double distanceCells = -1;
     public int canvasBorder = 7;
+
+
 
 
 
@@ -54,9 +58,14 @@ public class Controller {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        cellSlider.setMin(5);
+
+
+        cellSlider.setMin(1);
         cellSlider.setMax(50);
-        cellSlider.setValue(10);
+        cellSlider.setValue(20);
+
+
+
         gc.setFill(Color.GREY);
         for (int i = 0; i < boardClean.length; i++) {
             for (int j = 0; j < boardClean[0].length; j++) {
