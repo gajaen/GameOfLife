@@ -15,17 +15,18 @@ public class Controller {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Slider cellSlider;
-    public double cellSize = 47;
+    public double cellSize = 20;
 
-    //Nyttbrett
-    public int w = 10;
+
+    public int w = 50; //antall celler
     int columns, rows;
 
     int[][] board;
+    int[][] cleanBoard;
 
     //Variabler til Spillebrettet
     public double distanceCells = -1;
-    public int canvasBorder = 7;
+    public int canvasBorder = 1;
 
 
     public byte[][] boardCircle = {
@@ -42,18 +43,6 @@ public class Controller {
 
     };
 
-    public byte[][] boardClean = {
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-    };
 
 
     public void initialize() {
@@ -61,22 +50,27 @@ public class Controller {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
-        int width = 100;
-        int height = 100;
-
-        columns = width/w;
-        rows = height/w;
+        columns = w;
+        rows = w;
         board = new int[columns][rows];
+        cleanBoard = new int[columns][rows];
 
 
         cellSlider.setMin(1);
         cellSlider.setMax(50);
         cellSlider.setValue(20);
 
+
+        for (int i =0;i < columns;i++) {
+            for (int j =0;j < rows;j++) {
+                cleanBoard[i][j] = (1);
+            }
+        }
+
         gc.setFill(Color.GREY);
-        for (int i = 0; i < boardClean.length; i++) {
-            for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1)
+        for (int i = 0; i < cleanBoard.length; i++) {
+            for (int j = 0; j < cleanBoard[0].length; j++) {
+                if (cleanBoard[i][j] == 1)
                     gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
@@ -95,9 +89,9 @@ public class Controller {
     public void clickedStartButton() {
         //Fjerner alle celler før ny randomisering
         gc.setFill(Color.GREY);
-        for (int i = 0; i < boardClean.length; i++) {
-            for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+        for (int i = 0; i < cleanBoard.length; i++) {
+            for (int j = 0; j < cleanBoard[0].length; j++) {
+                if (cleanBoard[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
 
@@ -108,7 +102,7 @@ public class Controller {
             }
         }
 
-        //Tenger det nye brettet
+        //Tegner det nye brettet
         System.out.println("You pressed START");
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.LIMEGREEN);
@@ -118,15 +112,16 @@ public class Controller {
             }
 
         }
+
     }
 
     public void clickedStopButton() {
 
         System.out.println("You pressed STOP");
         gc.setFill(Color.GREY);
-        for (int i = 0; i < boardClean.length; i++) {
-            for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+        for (int i = 0; i < cleanBoard.length; i++) {
+            for (int j = 0; j < cleanBoard[0].length; j++) {
+                if (cleanBoard[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
     }
@@ -134,9 +129,9 @@ public class Controller {
     public void clickedCircleButton(){
         //Fjerner alle celler før ny randomisering
         gc.setFill(Color.GREY);
-        for (int i = 0; i < boardClean.length; i++) {
-            for (int j = 0; j < boardClean[0].length; j++) {
-                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+        for (int i = 0; i < cleanBoard.length; i++) {
+            for (int j = 0; j < cleanBoard[0].length; j++) {
+                if (cleanBoard[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
         gc.setFill(Color.LIMEGREEN);

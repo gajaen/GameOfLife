@@ -26,20 +26,12 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#clickedStartButton" prefHeight="26.0" prefWidth="86.0" text="START">
+                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#clickedStartButton" prefHeight="26.0" prefWidth="86.0" text="RANDOM">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                      <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="stopButton" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="7.0" prefWidth="87.0" text="STOP">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="circleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickedCircleButton" prefHeight="7.0" prefWidth="87.0" text="CIRCLE">
@@ -47,7 +39,15 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                      <HBox.margin>
-                        <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="20.0" left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="stopButton" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="7.0" prefWidth="87.0" text="CLEAR">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="5.0" right="5.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -55,10 +55,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin></HBox>
             <Slider fx:id="cellSlider" prefHeight="14.0" prefWidth="108.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="START" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </bottom>
    <center>
-      <Canvas fx:id="CanvasId" height="500.0" width="681.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="500.0" width="681.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
