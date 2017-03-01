@@ -18,7 +18,9 @@ public class Controller {
     public double cellSize;
 
 
-    public int w; //antall celler
+    public int a;
+    public int b;//antall celler
+
     int columns, rows;
 
     int[][] board;
@@ -43,11 +45,7 @@ public class Controller {
 
     };
 
-    public Controller() {
-        cellSize = 10;
-        w = 100;
 
-    }
 
 
     public void initialize() {
@@ -55,8 +53,14 @@ public class Controller {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
-        columns = w;
-        rows = w;
+        CanvasId.getWidth(a);
+        CanvasId.getHeight(b);
+        cellSize = 10;
+
+        columns = a;
+        rows = b;
+
+
         board = new int[columns][rows];
         cleanBoard = new int[columns][rows];
 
