@@ -16,14 +16,15 @@ public class Controller {
     public Slider cellSlider;
     public double cellSize = 40;
 
+    //Nyttbrett
+    public int w = 10;
+    int columns, rows;
+
+    int[][] board;
+
     //Variabler til Spillebrettet
     public double distanceCells = -1;
     public int canvasBorder = 7;
-
-
-
-
-
 
 
     public byte[][] boardCell = {
@@ -59,28 +60,60 @@ public class Controller {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
+        int width = 100;
+        int height = 100;
+
+        columns = width/w;
+        rows = height/w;
+        board = new int[columns][rows];
+
 
         cellSlider.setMin(1);
         cellSlider.setMax(50);
         cellSlider.setValue(20);
 
+        gc.setFill(Color.GREY);
+        for (int i = 0; i < boardClean.length; i++) {
+            for (int j = 0; j < boardClean[0].length; j++) {
+                if (boardClean[i][j] == 1)
+                    gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+            }
+        }
+    }
 
 
+    public void nextGeneration() {
+
+    }
+
+    public void draw(){
+
+    }
+
+
+    public void clickedStartButton() {
+        //Fjerner alle celler før ny randomisering
         gc.setFill(Color.GREY);
         for (int i = 0; i < boardClean.length; i++) {
             for (int j = 0; j < boardClean[0].length; j++) {
                 if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
-    }
 
-    public void clickedStartButton() {
+        //Lager en ny random array for hver gang start er trykket.
+        for (int i =1;i < columns-1;i++) {
+            for (int j =1;j < rows-1;j++) {
+                board[i][j] = (int)(Math.random()*2);
+            }
+        }
+
+        //Tenger det nye brettet
         System.out.println("You pressed START");
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.LIMEGREEN);
-        for (int i = 0; i < boardCell.length; i++) {
-            for (int j = 0; j < boardCell[0].length; j++) {
-                if( boardCell[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if( board[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
 
         }
