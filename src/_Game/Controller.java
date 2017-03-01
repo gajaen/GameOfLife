@@ -32,19 +32,19 @@ public class Controller {
 
     };
 
-    public Controller(){
-
+    public Controller()
+    {
         //Variabler for spillbrettet
         cellSize = 50;
         columns = 10;
         rows = 10;
         canvasBorder = 5;
         distanceCells = -2;
-
     }
 
 
-    public void initialize() {
+    public void initialize()
+    {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
