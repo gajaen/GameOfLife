@@ -62,7 +62,7 @@ public class Controller {
         cellSlider.setMax(50);
         cellSlider.setValue(20);
 
-        //Starter spillet med å definere hvor stort cleanBoard skal være
+        //Starter spillet med å med å  lage en t
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < rows; j++) {
                 cleanBoard[i][j] = (1);
@@ -72,8 +72,6 @@ public class Controller {
         cleanBoard();
 
 }
-
-
     public void nextGeneration() {
 
     }
@@ -88,7 +86,6 @@ public class Controller {
         }
 
     }
-
 
     public void clickedStartButton() {
         System.out.println("You Clicked RANDOM");
@@ -123,9 +120,6 @@ public class Controller {
 
         }
     }
-
-
-
 }
 
 
