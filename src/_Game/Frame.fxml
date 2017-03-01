@@ -61,6 +61,6 @@
       </GridPane>
    </bottom>
    <center>
-      <Canvas fx:id="CanvasId" focusTraversable="true" height="500.0" width="500.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="500.0" onMousePressed="#clickedStartButton" width="500.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
