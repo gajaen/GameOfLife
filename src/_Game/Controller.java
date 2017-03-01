@@ -11,6 +11,7 @@ public class Controller {
 
     public Button startButton;
     public Button stopButton;
+    public Button circleButton;
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Slider cellSlider;
@@ -27,7 +28,7 @@ public class Controller {
     public int canvasBorder = 7;
 
 
-    public byte[][] boardCell = {
+    public byte[][] boardCircle = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
             {0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
@@ -101,8 +102,8 @@ public class Controller {
         }
 
         //Lager en ny random array for hver gang start er trykket.
-        for (int i =1;i < columns;i++) {
-            for (int j =1;j < rows;j++) {
+        for (int i =0;i < columns;i++) {
+            for (int j =0;j < rows;j++) {
                 board[i][j] = (int)(Math.random()*2);
             }
         }
@@ -127,6 +128,23 @@ public class Controller {
             for (int j = 0; j < boardClean[0].length; j++) {
                 if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
+        }
+    }
+
+    public void clickedCircleButton(){
+        //Fjerner alle celler før ny randomisering
+        gc.setFill(Color.GREY);
+        for (int i = 0; i < boardClean.length; i++) {
+            for (int j = 0; j < boardClean[0].length; j++) {
+                if (boardClean[i][j] == 1) gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+            }
+        }
+        gc.setFill(Color.LIMEGREEN);
+        for (int i = 0; i < boardCircle.length; i++) {
+            for (int j = 0; j < boardCircle[0].length; j++) {
+                if( boardCircle[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+            }
+
         }
     }
 
