@@ -9,8 +9,9 @@ public class Controller {
     public Slider cellSlider;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton;
-    public int columns, rows, w, canvasBorder, distanceCells, cellSize;
+    public int columns, rows, canvasBorder, distanceCells, cellSize;
     public byte[][] board, cleanBoard;
+
 
     public byte[][] boardCircle = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -29,10 +30,10 @@ public class Controller {
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 50;
-        columns = 10;
-        rows = 10;
-        canvasBorder = 1;
+        cellSize = 10;
+        columns = 50;
+        rows = 50;
+        canvasBorder = 0;
         distanceCells = -1;
     }
 
@@ -62,21 +63,34 @@ public class Controller {
         cellSlider.setMax(50);
         cellSlider.setValue(20);
 
-        //Starter spillet med å med å  lage en t
+        //Starter spillet med å med å lage et brett
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < rows; j++) {
                 cleanBoard[i][j] = (1);
             }
         }
-
         cleanBoard();
-
-}
-    public void nextGeneration() {
-
     }
 
-    public void draw(){
+
+    public  void nextGeneration() {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++)
+
+                if (board[i][j] == 0) {
+                    board[i][j] = 1;
+                } else {
+                    board[i][j] = 0;
+                }
+            cleanBoard();
+            draw();
+
+        }
+    }
+
+
+    public void draw()
+    {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.LIMEGREEN);
         for (int i = 0; i < board.length; i++) {
@@ -84,10 +98,10 @@ public class Controller {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
-
     }
 
-    public void clickedStartButton() {
+    public void clickedStartButton()
+    {
         System.out.println("You Clicked RANDOM");
         cleanBoard();
 
@@ -97,17 +111,17 @@ public class Controller {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
-
         draw();
-
     }
 
-    public void clickedStopButton() {
+    public void clickedStopButton()
+    {
         System.out.println("You Clicked CLEAR");
-        cleanBoard();
+        nextGeneration();
     }
 
-    public void clickedCircleButton(){
+    public void clickedCircleButton()
+    {
         System.out.println("You Clicked CIRCLE");
 
         cleanBoard();
