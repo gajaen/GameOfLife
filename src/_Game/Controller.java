@@ -1,8 +1,11 @@
 package _Game;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.control.*;
 import javafx.scene.canvas.*;
 import javafx.scene.paint.*;
+import javafx.util.Duration;
 
 public class Controller {
     public Canvas CanvasId;
@@ -121,6 +124,7 @@ public class Controller {
     public void clickedStartButton()
     {
         System.out.println("You Clicked START");
+        timeline.play();
         // Start Animasjon
     }
 
@@ -135,6 +139,14 @@ public class Controller {
         System.out.println("You Clicked STOP");
         // stop Animasjon
     }
+
+    private Timeline timeline = new Timeline( new KeyFrame(Duration.millis(1000), e -> {
+        nextGeneration();
+        draw();
+        cleanBoard();
+
+    }));
+
 }
 
 
