@@ -34,10 +34,10 @@ public class Controller {
 
     public void cleanBoard()
     {
-        //Fjerner alle celler
+        //Farger alle celler grå
         gc.setFill(Color.GREY);
         for (int i = 0; i < cleanBoard.length; i++) {
-                for (int j = 0; j < cleanBoard[0].length; j++) {
+                for (int j = 0; j < cleanBoard.length; j++) {
                     if (cleanBoard[i][j] == 1)
                         gc.fillRect(cellSize * j + canvasBorder, cellSize * i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
                 }
@@ -64,6 +64,7 @@ public class Controller {
 
     public  void nextGeneration()
     {
+        //Enkel løkke som gjøre 0 til 1, og 1 til 0.
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++)
 
