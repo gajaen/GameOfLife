@@ -8,12 +8,10 @@ public class Controller {
     public Canvas CanvasId;
     public Slider cellSlider;
     public GraphicsContext gc;
-    public Button startButton, stopButton, circleButton;
+    public Button startButton, stopButton, circleButton, randomButton, clearButton;
     public int columns, rows, canvasBorder, distanceCells, cellSize;
     public byte[][] board, cleanBoard;
-
-
-    public byte[][] boardCircle = {
+    public byte[][] circleBoard = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
             {0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
@@ -23,9 +21,7 @@ public class Controller {
             {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
             {0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
             {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-
-    };
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
     public Controller()
     {
@@ -33,10 +29,9 @@ public class Controller {
         cellSize = 10;
         columns = 50;
         rows = 50;
-        canvasBorder = 0;
+        canvasBorder = 1;
         distanceCells = -1;
     }
-
 
     public void cleanBoard()
     {
@@ -64,8 +59,8 @@ public class Controller {
         cellSlider.setValue(20);
 
         //Starter spillet med å med å lage et brett
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < rows; j++) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
                 cleanBoard[i][j] = (1);
             }
         }
@@ -94,45 +89,59 @@ public class Controller {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.LIMEGREEN);
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
+            for (int j = 0; j < board.length; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
     }
 
-    public void clickedStartButton()
+    public void clickedRandomButton()
     {
         System.out.println("You Clicked RANDOM");
-        cleanBoard();
+
+        initialize();
 
         //Lager en ny random array for hver gang start er trykket.
-        for (int i =0;i < columns;i++) {
-            for (int j =0;j < rows;j++) {
+        for (int i =0;i < board.length;i++) {
+            for (int j =0;j < board.length;j++) {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
         draw();
     }
 
-    public void clickedStopButton()
+    public void clickedClearButton()
     {
         System.out.println("You Clicked CLEAR");
-        nextGeneration();
+        initialize();
     }
 
     public void clickedCircleButton()
     {
+        initialize();
+
         System.out.println("You Clicked CIRCLE");
 
-        cleanBoard();
+        board = circleBoard;
 
-        gc.setFill(Color.LIMEGREEN);
-        for (int i = 0; i < boardCircle.length; i++) {
-            for (int j = 0; j < boardCircle[0].length; j++) {
-                if( boardCircle[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
-            }
+        draw();
 
-        }
+
+    }
+
+    public void clickedStartButton()
+    {
+        // Start Animasjon
+    }
+
+    public void clickedInvertButton()
+    {
+         nextGeneration();
+    }
+
+    public void clickedStopButton()
+    {
+        // stop Animasjon
     }
 }
 
