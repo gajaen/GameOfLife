@@ -6,7 +6,6 @@ import javafx.scene.paint.*;
 
 public class Controller {
     public Canvas CanvasId;
-    public Slider cellSlider;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
     public int columns, rows, canvasBorder, distanceCells, cellSize;
@@ -45,18 +44,14 @@ public class Controller {
             }
     }
 
-    public void initialize() {
+    public void initialize()
+    {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new byte[columns][rows];
         cleanBoard = new byte[columns][rows];
-
-
-        cellSlider.setMin(1);
-        cellSlider.setMax(50);
-        cellSlider.setValue(20);
 
         //Starter spillet med å med å lage et brett
         for (int i = 0; i < board.length; i++) {
@@ -67,8 +62,8 @@ public class Controller {
         cleanBoard();
     }
 
-
-    public  void nextGeneration() {
+    public  void nextGeneration()
+    {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++)
 
@@ -79,10 +74,8 @@ public class Controller {
                 }
             cleanBoard();
             draw();
-
         }
     }
-
 
     public void draw()
     {
@@ -119,28 +112,26 @@ public class Controller {
     public void clickedCircleButton()
     {
         initialize();
-
         System.out.println("You Clicked CIRCLE");
-
         board = circleBoard;
-
         draw();
-
-
     }
 
     public void clickedStartButton()
     {
+        System.out.println("You Clicked START");
         // Start Animasjon
     }
 
     public void clickedInvertButton()
     {
+        System.out.println("You Clicked INVERT");
          nextGeneration();
     }
 
     public void clickedStopButton()
     {
+        System.out.println("You Clicked STOP");
         // stop Animasjon
     }
 }
