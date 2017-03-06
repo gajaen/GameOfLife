@@ -140,12 +140,16 @@ public class Controller {
         // stop Animasjon
     }
 
-    private Timeline timeline = new Timeline( new KeyFrame(Duration.millis(1000), e -> {
-        nextGeneration();
-        draw();
-        cleanBoard();
+    private Timeline timeline;
 
-    }));
+    {
+        timeline = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
+            nextGeneration();
+            draw();
+            timeline.playFromStart();
+
+        }));
+    }
 
 }
 
