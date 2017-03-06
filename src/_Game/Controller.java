@@ -11,26 +11,37 @@ public class Controller {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
-    public int columns, rows, canvasBorder, distanceCells, cellSize;
+    public int columns, rows, canvasBorder, distanceCells, cellSize, w;
     public byte[][] board, cleanBoard;
     public byte[][] circleBoard = {
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
-            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
-            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
-            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
-            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
-            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
-            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
-            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0},
+            {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
+            {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 10;
-        columns = 200;
-        rows = 200;
+        cellSize = 5;
+        columns = w;
+        rows = w;
+        w = 300;
         canvasBorder = 1;
         distanceCells = -1;
     }
@@ -38,7 +49,7 @@ public class Controller {
     public void cleanBoard()
     {
         //Farger alle celler grå    ||      |
-        gc.setFill(Color.GREY);
+        gc.setFill(Color.WHITE);
         for (int i = 0; i < cleanBoard.length; i++) {
                 for (int j = 0; j < cleanBoard.length; j++) {
                     if (cleanBoard[i][j] == 1)
@@ -50,11 +61,11 @@ public class Controller {
     public void initialize()
     {
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.BLACK);
+        gc.setFill(Color.GREY);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
-        board = new byte[columns][rows];
-        cleanBoard = new byte[columns][rows];
+        board = new byte[w][w];
+        cleanBoard = new byte[w][w];
 
         //Starter spillet med å med å lage et brett
         for (int i = 0; i < board.length; i++) {
@@ -69,7 +80,7 @@ public class Controller {
     {
         //Enkel løkke som gjøre 0 til 1, og 1 til 0.
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++)
+            for (int j = 0; j < board.length; j++)
 
                 if (board[i][j] == 0) {
                     board[i][j] = 1;
@@ -84,7 +95,7 @@ public class Controller {
     public void draw()
     {
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.LIMEGREEN);
+        gc.setFill(Color.BLACK);
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board.length; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
@@ -144,7 +155,7 @@ public class Controller {
     private Timeline timeline;
 
     {
-        timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+        timeline = new Timeline(new KeyFrame(Duration.millis(10), e -> {
             clickedRandomButton();
             timeline.playFromStart();
 
