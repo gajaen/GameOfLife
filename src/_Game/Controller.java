@@ -29,15 +29,15 @@ public class Controller {
     {
         //Variabler for spillbrettet
         cellSize = 10;
-        columns = 50;
-        rows = 50;
+        columns = 200;
+        rows = 200;
         canvasBorder = 1;
         distanceCells = -1;
     }
 
     public void cleanBoard()
     {
-        //Farger alle celler grå
+        //Farger alle celler grå    ||      |
         gc.setFill(Color.GREY);
         for (int i = 0; i < cleanBoard.length; i++) {
                 for (int j = 0; j < cleanBoard.length; j++) {
@@ -117,7 +117,7 @@ public class Controller {
     {
         initialize();
         System.out.println("You Clicked CIRCLE");
-        board = circleBoard;
+        board= circleBoard;
         draw();
     }
 
@@ -137,19 +137,20 @@ public class Controller {
     public void clickedStopButton()
     {
         System.out.println("You Clicked STOP");
+        timeline.stop();
         // stop Animasjon
     }
 
     private Timeline timeline;
 
     {
-        timeline = new Timeline(new KeyFrame(Duration.millis(1000), e -> {
-            nextGeneration();
-            draw();
+        timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+            clickedRandomButton();
             timeline.playFromStart();
 
         }));
     }
+
 
 }
 
