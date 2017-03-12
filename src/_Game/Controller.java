@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 
-public class Controller implements Initializable {
+public class Controller/* implements Initializable*/ {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
@@ -53,26 +53,24 @@ public class Controller implements Initializable {
         canvasBorder = 1;
         distanceCells = -1;
 
-        addMouseListener(new MouseAdapter() {
+       /* addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 // save coord x,y when mouse is pressed
                 oldX = e.getX();
                 oldY = e.getY();
             }
-        });
+        });*/
 
 
     }
-/*
+
     public void cleanBoard()
     {
 
 
         //Farger alle celler grå
-       gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
        gc.setFill(Color.GREY);
-        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.stroke();
+
         for (int i = 0; i < cleanBoard.length; i++) {
                 for (int j = 0; j < cleanBoard.length; j++) {
                     if (cleanBoard[i][j] == 1)
@@ -80,30 +78,11 @@ public class Controller implements Initializable {
                 }
             }
     }
-*/
-    public void cleanBoard(){
-        gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
-        drawer();
-        drawer();
-        drawer();
-
-
-
-
-        for (int j = 0; j > CanvasId.getWidth(); j++) {
-              drawer();
-
-              gc.stroke();
-            }
-
-
-    }
-
-    public void drawer(){
+   /* public void drawer(){
         gc.strokeRect(10, 10, 10, 10);
 
-    }
+    }*/
 
 
     public void initialize()
@@ -128,7 +107,7 @@ public class Controller implements Initializable {
 
         GraphicsContext gc =
                 CanvasId.getGraphicsContext2D();
-        draw( gc );
+      //  draw( gc );
     }
 
 
@@ -172,7 +151,8 @@ public class Controller implements Initializable {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
-        draw();
+        cleanBoard();
+      //  draw();
     }
 
     public void clickedClearButton() throws InterruptedException {
@@ -221,7 +201,7 @@ public class Controller implements Initializable {
 
         }));
     }
-
+/*
     @FXML
     private void drawCanvas(ActionEvent event) {
         gc.setFill(Color.AQUA);
@@ -240,16 +220,14 @@ public class Controller implements Initializable {
 
 
 
-    /**
-     * Drawing the shapes
-     */
+
     private void draw(GraphicsContext gc) {
         gc.setFill(Color.GREEN);
         gc.fillOval(50, 100, 200, 200);
         gc.setFill(Color.RED);
         gc.fillRect(300, 100, 200, 200);
     }
-
+*/
 
 }
 
