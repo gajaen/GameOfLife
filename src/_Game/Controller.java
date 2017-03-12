@@ -4,6 +4,8 @@ import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.canvas.*;
@@ -14,13 +16,21 @@ import javafx.util.Duration;
 
 import javax.swing.text.View;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Controller implements Stroke{
+import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
+
+public class Controller implements Initializable {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
     public int columns, rows, canvasBorder, distanceCells, cellSize;
     public byte[][] board, cleanBoard;
+    private int currentX, currentY, oldX, oldY;
     public byte[][] circleBoard = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
@@ -42,6 +52,15 @@ public class Controller implements Stroke{
         rows = 150;
         canvasBorder = 1;
         distanceCells = -1;
+
+        addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                // save coord x,y when mouse is pressed
+                oldX = e.getX();
+                oldY = e.getY();
+            }
+        });
+
 
     }
 /*
@@ -65,13 +84,24 @@ public class Controller implements Stroke{
     public void cleanBoard(){
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
+        drawer();
+        drawer();
+        drawer();
 
 
-         /*   for (int j = 0; j > CanvasId.(); j++) {
-                gc.strokeRect(10, 10, 10, 10);
-                gc.stroke();
-            }*/
 
+
+        for (int j = 0; j > CanvasId.getWidth(); j++) {
+              drawer();
+
+              gc.stroke();
+            }
+
+
+    }
+
+    public void drawer(){
+        gc.strokeRect(10, 10, 10, 10);
 
     }
 
@@ -96,7 +126,9 @@ public class Controller implements Stroke{
         cleanBoard();
 
 
-
+        GraphicsContext gc =
+                CanvasId.getGraphicsContext2D();
+        draw( gc );
     }
 
 
@@ -190,11 +222,35 @@ public class Controller implements Stroke{
         }));
     }
 
-    @Override
-    public Shape createStrokedShape(Shape pixel) {
-        createStrokedShape(pixel);
-        return pixel;
+    @FXML
+    private void drawCanvas(ActionEvent event) {
+        gc.setFill(Color.AQUA);
+        gc.fillRect(10,10,100,100);
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        gc = CanvasId.getGraphicsContext2D();
+        gc.setFill(Color.YELLOW);
+        System.out.println("color set to black");
+        gc.fillRect(50, 50, 100, 100);
+        System.out.println("draw rectangle");
+    }
+
+
+
+
+    /**
+     * Drawing the shapes
+     */
+    private void draw(GraphicsContext gc) {
+        gc.setFill(Color.GREEN);
+        gc.fillOval(50, 100, 200, 200);
+        gc.setFill(Color.RED);
+        gc.fillRect(300, 100, 200, 200);
+    }
+
+
 }
 
 
