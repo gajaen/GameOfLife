@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
          <columnConstraints>
@@ -41,7 +41,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="invertButton" mnemonicParsing="false" onAction="#clickedInvertButton" prefHeight="7.0" prefWidth="87.0" text="INVERT">
+                  <Button fx:id="invertButton" mnemonicParsing="false" onAction="#clickedInvertButton" prefHeight="7.0" prefWidth="87.0" text="NEXT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

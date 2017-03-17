@@ -41,8 +41,8 @@ public class Controller {
         //Variabler for spillbrettet
 
         cellSize = 10;
-        columns = 200;
-        rows = 200;
+        columns = 400;
+        rows = 400;
 
         canvasBorder = 0;
         distanceCells = 0;
@@ -52,10 +52,10 @@ public class Controller {
 
         gc.clearRect(0,0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setStroke(Color.BLACK);
-        gc.setLineWidth(1);
+        gc.setLineWidth(2);
         int a = cellSize;
 
-        for (int i = 0; i < columns; i++) {
+       for (int i = 0; i < columns; i++) {
             gc.strokeLine(a, 0, a, CanvasId.getHeight());
             gc.strokeLine(0, a, CanvasId.getWidth(), a);
             a+=cellSize;
@@ -74,12 +74,6 @@ public class Controller {
         board = new int[columns][rows];
         cleanBoard = new int[columns][rows];
 
-        //Starter spillet med å med å lage et brett
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-                cleanBoard[i][j] = (1);
-            }
-        }
         cleanBoard();
         System.out.println((int)CanvasId.getHeight());
     }
@@ -161,7 +155,6 @@ public class Controller {
     public void clickedStartButton()
     {
         System.out.println("You Clicked START");
-        clickedRandomButton();
         timeline.play();
         // Start Animasjon
     }
@@ -182,7 +175,7 @@ public class Controller {
     private Timeline timeline;
 
     {
-        timeline = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+        timeline = new Timeline(new KeyFrame(Duration.millis(30), e -> {
             nextGeneration();
             timeline.playFromStart();
 
