@@ -2,18 +2,36 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Controller {
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
+public class Controller   {
+    private Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
     public int columns, rows, canvasBorder, distanceCells, cellSize, w;
     public int[][] board, cleanBoard;
+    private final int WIDTH = 4, HEIGHT = 4;
+
     public int[][] circleBoard = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
@@ -65,6 +83,10 @@ public class Controller {
 
 
 
+
+
+
+
     public void initialize()
     {
         gc = CanvasId.getGraphicsContext2D();
@@ -80,6 +102,8 @@ public class Controller {
                 cleanBoard[i][j] = (1);
             }
         }
+
+
         cleanBoard();
         System.out.println((int)CanvasId.getHeight());
     }
@@ -143,6 +167,54 @@ public class Controller {
         draw();
     }
 
+    public void init(Stage primaryStage) {
+
+        this.stage = stage;
+
+    }
+
+    public void openFile(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open GOL Shape");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Run Length Encoded File", "*.RLE"),
+                new FileChooser.ExtensionFilter("Text File", "*.txt"),
+                new FileChooser.ExtensionFilter("All files", "*")
+
+        );
+
+        File file = fileChooser.showOpenDialog(stage);
+
+        if(file != null){
+            System.out.println("Choosen file " + file);
+        }
+
+        try (final Scanner scanner = new Scanner(file); ) {
+            while ( scanner.hasNextLine() ) {
+                String line = scanner.nextLine();
+                System.out.println( line );
+            }
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void readGameBoardFromDisk(File file) throws IOException {
+
+        readGameBoard(new FileReader(file));
+    }
+
+    private void readGameBoard(FileReader fileReader) {
+    }
+
+    public void closeWindow(){
+
+        Platform.exit();
+    }
+
     public void clickedClearButton()
     {
         System.out.println("You Clicked CLEAR");
@@ -188,6 +260,7 @@ public class Controller {
 
         }));
     }
+
 
 
 }
