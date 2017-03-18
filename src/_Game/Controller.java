@@ -3,8 +3,6 @@ package _Game;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -12,15 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Controller   {
@@ -83,10 +75,6 @@ public class Controller   {
 
 
 
-
-
-
-
     public void initialize()
     {
         gc = CanvasId.getGraphicsContext2D();
@@ -139,8 +127,6 @@ public class Controller   {
     }
 
 
-
-
     public void draw()
     {
         gc = CanvasId.getGraphicsContext2D();
@@ -172,6 +158,7 @@ public class Controller   {
         this.stage = stage;
 
     }
+
 
     public void openFile(){
         FileChooser fileChooser = new FileChooser();
