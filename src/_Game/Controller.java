@@ -20,9 +20,11 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
-    public int columns, rows, canvasBorder, distanceCells, cellSize, FPS;
+    public int  canvasBorder, distanceCells, cellSize, FPS;
     public int[][] board, cleanBoard;
-    private final int WIDTH = 4, HEIGHT = 4;
+    private final int HEIGHT = 1000;
+    private final int WIDTH = 1000;
+
 
     public int[][] circleBoard = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -46,14 +48,12 @@ public class Controller   {
             {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
+
     public Controller()
     {
         //Variabler for spillbrettet
 
         cellSize = 5;
-        columns = 1000;
-        rows = 1000;
-
         canvasBorder = 0;
         distanceCells = 0;
     }
@@ -67,7 +67,7 @@ public class Controller   {
         gc.setLineWidth(0.1);
         int a = cellSize;
 
-        for (int i = 0; i < columns; i++) {
+        for (int i = 0; i < WIDTH; i++) {
             gc.strokeLine(a, 0, a, CanvasId.getHeight());
             gc.strokeLine(0, a, CanvasId.getWidth(), a);
             a+=cellSize;
@@ -83,8 +83,8 @@ public class Controller   {
         gc.setFill(Color.WHITE);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
-        board = new int[columns][rows];
-        cleanBoard = new int[columns][rows];
+        board = new int[WIDTH][HEIGHT];
+        cleanBoard = new int[WIDTH][HEIGHT];
 
         //Starter spillet med å med å lage et brett
         for (int i = 0; i < board.length; i++) {
@@ -100,10 +100,10 @@ public class Controller   {
 
     public  void nextGeneration() {
         cleanBoard();
-        int[][] next = new int[columns][rows];
+        int[][] next = new int[WIDTH][HEIGHT];
 
-        for (int x = 1; x < columns - 1; x++) {
-            for (int y = 1; y < rows - 1; y++)
+        for (int x = 1; x < WIDTH - 1; x++) {
+            for (int y = 1; y < HEIGHT - 1; y++)
 
             {
                 int neighbors = 0;
