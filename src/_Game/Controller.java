@@ -25,13 +25,13 @@ public class Controller   {
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
-    public int FPS = 120;
+    public int FPS = 30;
 
     public Controller()
     {
         //Variabler til spillbrettet
-        cellSize = 1;
-        cellGap = 0;
+        cellSize = 10;
+        cellGap = 1;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
 
@@ -41,7 +41,7 @@ public class Controller   {
     public void cleanBoard()
     {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setFill(Color.BLACK);
+        gc.setFill(Color.GREY);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
     }
@@ -51,7 +51,7 @@ public class Controller   {
         gc.setStroke(Color.BLACK);
         //gc.setLineWidth(2*cellSize);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setLineWidth(0.001);
+        gc.setLineWidth(0.7);
         int a = cellSize;
         int b = cellSize;
 
@@ -68,7 +68,7 @@ public class Controller   {
     public void initialize()
     {
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.rgb((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255)));
+        gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[HEIGHT][WIDTH];
@@ -125,7 +125,7 @@ public class Controller   {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         a = 255;
-        gc.setFill(Color.rgb((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255)));
+        gc.setFill(Color.LIGHTCYAN);
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize - cellGap, cellSize- cellGap);
