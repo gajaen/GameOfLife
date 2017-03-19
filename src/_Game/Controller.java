@@ -20,12 +20,12 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
-    public int  canvasBorder, distanceCells, cellSize, FPS, WIDTH, HEIGHT;
+    public int  canvasBorder, distanceCells, cellSize, FPS;
     public int[][] board, cleanBoard;
 
+    private final int HEIGHT = 656 ; //Manuelt plottet inn CanvasHeight
+    private final int WIDTH = 1250; //Manuelt plittet inn CanvasWidth
 
-    //private final int HEIGHT = 1000;
-   //Private final int WIDTH = 1000;
 
 
 
@@ -58,13 +58,11 @@ public class Controller   {
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 1;
+        cellSize = 10;
         canvasBorder = 0;
         distanceCells = 0;
 
 
-        HEIGHT = 656 / cellSize; //Manuelt plottet inn CanvasHeight
-        WIDTH = 1250 / cellSize; //Manuelt plittet inn CanvasWidth
 
     }
 
