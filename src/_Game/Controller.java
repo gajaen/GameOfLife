@@ -22,9 +22,7 @@ public class Controller   {
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
     public int  canvasBorder, distanceCells, cellSize, FPS;
     public int[][] board, cleanBoard;
-
-    private final int HEIGHT = 656 ; //Manuelt plottet inn CanvasHeight
-    private final int WIDTH = 1250; //Manuelt plittet inn CanvasWidth
+    private final int HEIGHT = 656, WIDTH = 1250 ; //Manuelt plottet inn CanvasHeight
 
 
 
