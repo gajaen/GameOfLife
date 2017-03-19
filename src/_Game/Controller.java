@@ -10,9 +10,13 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller   {
@@ -160,7 +164,7 @@ public class Controller   {
     }
 
 
-    public void openFile(){
+    public void openFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open GOL Shape");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -186,8 +190,9 @@ public class Controller   {
             e.printStackTrace();
         }
 
-
     }
+
+
 
     public void readGameBoardFromDisk(File file) throws IOException {
 
