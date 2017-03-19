@@ -35,18 +35,20 @@ public class Controller   {
 
     }
 
-    public void cleanBoard() {
-
+    public void cleanBoard()
+    {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
     }
-    public void drawLines() {
+
+    public void drawLines()
+    {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
         gc.strokeRect(1, 1, CanvasId.getWidth() - 2, CanvasId.getHeight() - 2);
-        gc.setLineWidth(0.5);
+        gc.setLineWidth(0.6);
         int a = cellSize;
         int b = cellSize;
 
@@ -145,7 +147,8 @@ public class Controller   {
 
     }
 
-    public void init(Stage primaryStage) {
+    public void init(Stage primaryStage)
+    {
 
         this.stage = stage;
 
@@ -182,16 +185,18 @@ public class Controller   {
 
 
 
-    public void readGameBoardFromDisk(File file) throws IOException {
+    public void readGameBoardFromDisk(File file) throws IOException
+    {
 
         readGameBoard(new FileReader(file));
     }
 
-    private void readGameBoard(FileReader fileReader) {
+    private void readGameBoard(FileReader fileReader)
+    {
     }
 
-    public void closeWindow(){
-
+    public void closeWindow()
+    {
         Platform.exit();
     }
 
