@@ -21,17 +21,26 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, randomButton, clearButton;
-    public int cellSize, TIME, cellGap, a;
+    public int cellSize, TIME, cellGap;
+    public double lineWidth;
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
+    public Color cell, line, background;
 
-    public int FPS = 30;
+    public int FPS = 15;
 
     public Controller()
     {
+        //FARGER
+        cell = Color.GREENYELLOW;
+        line = Color.BLACK;
+        background = Color.GREY;
+
+
         //Variabler til spillbrettet
         cellSize = 10;
         cellGap = 1;
+        lineWidth = 0.7;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
 
@@ -48,10 +57,10 @@ public class Controller   {
 
     public void drawLines()
     {
-        gc.setStroke(Color.BLACK);
+        gc.setStroke(line);
         //gc.setLineWidth(2*cellSize);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setLineWidth(0.7);
+        gc.setLineWidth(lineWidth);
         int a = cellSize;
         int b = cellSize;
 
@@ -68,7 +77,7 @@ public class Controller   {
     public void initialize()
     {
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.BLACK);
+        gc.setFill(background);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[HEIGHT][WIDTH];
@@ -124,8 +133,7 @@ public class Controller   {
     {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
-        a = 255;
-        gc.setFill(Color.LIGHTCYAN);
+        gc.setFill(cell);
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize - cellGap, cellSize- cellGap);
