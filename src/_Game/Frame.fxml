@@ -37,22 +37,6 @@
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="circleButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clickedCircleButton" prefHeight="7.0" prefWidth="87.0" text="CIRCLE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="invertButton" mnemonicParsing="false" onAction="#clickedInvertButton" prefHeight="7.0" prefWidth="87.0" text="INVERT">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </Button>
                </children>
                <GridPane.margin>
                   <Insets />
