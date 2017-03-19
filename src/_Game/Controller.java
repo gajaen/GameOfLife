@@ -24,7 +24,7 @@ public class Controller   {
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
-    public int FPS = 30; //MAX 1000!
+    public int FPS = 30;
 
     public Controller()
     {
