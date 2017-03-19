@@ -20,7 +20,7 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
-    public int  canvasBorder, distanceCells, cellSize, FPS;
+    public int  canvasBorder, distanceCells, cellSize, FPS, border;
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
@@ -31,6 +31,8 @@ public class Controller   {
         cellSize = 5;
         HEIGHT = 660 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1250 / cellSize; //Manuelt plottet inn CanvasWidth
+
+        border = 10;
 
     }
 
@@ -106,8 +108,8 @@ public class Controller   {
             }
         }
         board = nextBoard;
-        for (int i = 5; i < HEIGHT; i++) {
-            for (int j = 5; j < WIDTH; j++) {
+        for (int i = border; i < HEIGHT; i++) {
+            for (int j = border; j < WIDTH; j++) {
                 if( nextBoard[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
             }
         }
@@ -119,8 +121,8 @@ public class Controller   {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
-        for (int i = 5; i < HEIGHT; i++) {
-            for (int j = 5; j < WIDTH; j++) {
+        for (int i = border + 1; i < HEIGHT; i++) {
+            for (int j = border + 1; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
             }
         }
