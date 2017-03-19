@@ -83,10 +83,11 @@ public class Controller   {
 
 
 
-        cleanBoard();
         drawLines();
+        draw();
 
     }
+
 
     public  void nextGeneration() {
         cleanBoard();
@@ -111,8 +112,9 @@ public class Controller   {
             }
         }
         board = nextBoard;
-        draw();
         drawLines();
+        draw();
+
     }
 
 
