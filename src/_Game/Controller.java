@@ -32,8 +32,8 @@ public class Controller   {
         //Variabler til spillbrettet
         cellSize = 10;
         cellGap = 0;
-        HEIGHT = 600 / cellSize; //Manuelt plottet inn CanvasHeight
-        WIDTH = 1200 / cellSize; //Manuelt plottet inn CanvasWidth
+        HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
+        WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
 
     }
 
