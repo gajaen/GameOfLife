@@ -121,7 +121,7 @@ public class Controller   {
         cleanBoard();
         drawLines();
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.WHITE);
+        gc.setFill(Color.LIGHTCYAN);
         for (int i = border + 1; i < HEIGHT; i++) {
             for (int j = border + 1; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize - cellGap, cellSize- cellGap);
