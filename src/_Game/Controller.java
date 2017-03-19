@@ -58,13 +58,13 @@ public class Controller   {
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 5;
+        cellSize = 1;
         canvasBorder = 0;
         distanceCells = 0;
 
 
-        HEIGHT = 100;
-        WIDTH = 200;
+        HEIGHT = 656 / cellSize; //Manuelt plottet inn CanvasHeight
+        WIDTH = 1250 / cellSize; //Manuelt plittet inn CanvasWidth
 
     }
 
