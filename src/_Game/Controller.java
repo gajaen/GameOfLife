@@ -25,13 +25,13 @@ public class Controller   {
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
-    public int FPS = 60;
+    public int FPS = 120;
 
     public Controller()
     {
         //Variabler til spillbrettet
-        cellSize = 4;
-        cellGap = 1;
+        cellSize = 1;
+        cellGap = 0;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
 
@@ -51,7 +51,7 @@ public class Controller   {
         gc.setStroke(Color.BLACK);
         //gc.setLineWidth(2*cellSize);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setLineWidth(0.7);
+        gc.setLineWidth(0.001);
         int a = cellSize;
         int b = cellSize;
 
