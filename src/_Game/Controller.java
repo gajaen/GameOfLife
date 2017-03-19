@@ -31,7 +31,7 @@ public class Controller   {
     {
         //Variabler til spillbrettet
         cellSize = 10;
-        cellGap = 0;
+        cellGap = 1;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
 
@@ -50,7 +50,7 @@ public class Controller   {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2*cellSize);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setLineWidth(0.5);
+        gc.setLineWidth(0.3);
         int a = cellSize;
         int b = cellSize;
 
@@ -124,8 +124,8 @@ public class Controller   {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.LIGHTCYAN);
-        for (int i = border + 1; i < HEIGHT; i++) {
-            for (int j = border + 1; j < WIDTH; j++) {
+        for (int i = border ; i < HEIGHT; i++) {
+            for (int j = border ; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize - cellGap, cellSize- cellGap);
             }
         }
