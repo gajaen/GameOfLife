@@ -21,11 +21,11 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, randomButton, clearButton;
-    public int cellSize, TIME, border, cellGap;
+    public int cellSize, TIME, cellGap, a;
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
-    public int FPS = 60;
+    public int FPS = 10;
 
     public Controller()
     {
@@ -34,6 +34,7 @@ public class Controller   {
         cellGap = 1;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
+
 
     }
 
@@ -48,9 +49,9 @@ public class Controller   {
     public void drawLines()
     {
         gc.setStroke(Color.BLACK);
-        gc.setLineWidth(2*cellSize);
+        //gc.setLineWidth(2*cellSize);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setLineWidth(0.3);
+        gc.setLineWidth(0.7);
         int a = cellSize;
         int b = cellSize;
 
@@ -123,9 +124,10 @@ public class Controller   {
     {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.LIGHTCYAN);
-        for (int i = border ; i < HEIGHT; i++) {
-            for (int j = border ; j < WIDTH; j++) {
+        a = 255;
+        gc.setFill(Color.rgb((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255)));
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize - cellGap, cellSize- cellGap);
             }
         }
@@ -136,8 +138,8 @@ public class Controller   {
         System.out.println("You Clicked RANDOM");
 
         //Lager en ny random array for hver gang start er trykket.
-        for (int i =0;i < HEIGHT;i++) {
-            for (int j =0;j < WIDTH;j++) {
+        for (int i = 0;i < HEIGHT;i++) {
+            for (int j = 0;j < WIDTH;j++) {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
