@@ -22,7 +22,10 @@ public class Controller   {
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
     public int  canvasBorder, distanceCells, cellSize, FPS;
     public int[][] board, cleanBoard;
-    private final int HEIGHT = (int)CanvasId.getHeight();
+
+
+    private final int HEIGHT = 1000;
+
     private final int WIDTH = 1000;
 
 
@@ -47,6 +50,7 @@ public class Controller   {
             {0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0},
             {0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+
 
 
     public Controller()
