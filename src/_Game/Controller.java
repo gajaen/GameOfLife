@@ -29,7 +29,7 @@ public class Controller   {
 
     public Controller()
     {
-        //Variabler for spillbrettet
+        //Variabler til spillbrettet
         cellSize = 10;
         cellGap = 1;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
