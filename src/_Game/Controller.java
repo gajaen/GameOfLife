@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
@@ -31,8 +32,8 @@ public class Controller   {
         //Variabler for spillbrettet
         cellSize = 10;
         cellGap = 1;
-        HEIGHT = 660 / cellSize; //Manuelt plottet inn CanvasHeight
-        WIDTH = 1250 / cellSize; //Manuelt plottet inn CanvasWidth
+        HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
+        WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
 
     }
 
@@ -184,6 +185,15 @@ public class Controller   {
         } catch ( IOException e ) {
             e.printStackTrace();
         }
+
+        Scanner in = null;
+        try {
+            in = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("null");
+        }
+
 
     }
 

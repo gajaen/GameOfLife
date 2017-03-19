@@ -21,7 +21,7 @@ public class Main extends Application {
         controller.init(primaryStage);
 
         primaryStage.setTitle("GameOfLife");
-        primaryStage.setScene(new Scene(root, 1280, 800));
+        primaryStage.setScene(new Scene(root, 1350, 850));
         primaryStage.show();
 
     }
