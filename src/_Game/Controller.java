@@ -141,8 +141,8 @@ public class Controller   {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
-        draw();
         drawLines();
+        draw();
 
     }
 
