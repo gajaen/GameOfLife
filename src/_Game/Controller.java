@@ -106,8 +106,8 @@ public class Controller   {
             }
         }
         board = nextBoard;
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
+        for (int i = 5; i < HEIGHT; i++) {
+            for (int j = 5; j < WIDTH; j++) {
                 if( nextBoard[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
             }
         }
@@ -119,8 +119,8 @@ public class Controller   {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
+        for (int i = 5; i < HEIGHT; i++) {
+            for (int j = 5; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
             }
         }
