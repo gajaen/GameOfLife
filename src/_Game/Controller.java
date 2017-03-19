@@ -30,37 +30,36 @@ public class Controller   {
     public Controller()
     {
         //Variabler til spillbrettet
-        cellSize = 50;
+        cellSize = 20;
         cellGap = 0;
-        HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
-        WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
+        HEIGHT = 600 / cellSize; //Manuelt plottet inn CanvasHeight
+        WIDTH = 1200 / cellSize; //Manuelt plottet inn CanvasWidth
 
     }
 
     public void cleanBoard()
     {
-        gc.clearRect(cellSize, cellSize, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setFill(Color.GREY);
-        gc.fillRect(cellSize, cellSize, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
     }
 
     public void drawLines()
     {
-        gc.setStroke(Color.TRANSPARENT);
+        gc.setStroke(Color.BLACK);
         gc.setLineWidth(2*cellSize);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setStroke(Color.BLACK);
         gc.setLineWidth(0.5);
         int a = cellSize;
         int b = cellSize;
 
         for (int i = 0; i < HEIGHT; i++) {
-            gc.strokeLine(cellSize, a, CanvasId.getWidth(), a);
+            gc.strokeLine(0, a, CanvasId.getWidth(), a);
             a += cellSize;
         }
         for (int i = 0; i < WIDTH; i++) {
-            gc.strokeLine(b, cellSize, b, CanvasId.getHeight());
+            gc.strokeLine(b, 0, b, CanvasId.getHeight());
             b += cellSize;
         }
     }
@@ -69,7 +68,7 @@ public class Controller   {
     {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
-        gc.fillRect(cellSize, cellSize, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[HEIGHT][WIDTH];
         cleanBoard = new int[HEIGHT][WIDTH];

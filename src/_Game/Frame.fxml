@@ -72,7 +72,7 @@
       </GridPane>
    </bottom>
    <center>
-      <Canvas fx:id="CanvasId" focusTraversable="true" height="660.0" width="1250.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="600.0" width="1200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
