@@ -95,10 +95,12 @@ public class Controller   {
                 cleanBoard[i][j] = (1);
             }
         }
+        System.out.println("CanvasHeight = " + (int)CanvasId.getHeight());
+        System.out.println("CanvasWidth = " + (int)CanvasId.getWidth());
 
 
         cleanBoard();
-        System.out.println((int)CanvasId.getHeight());
+
     }
 
     public  void nextGeneration() {
