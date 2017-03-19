@@ -71,8 +71,8 @@ public class Controller   {
         cleanBoard = new int[HEIGHT][WIDTH];
 
         //Starter spillet med å med å lage et brett
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
+        for (int i = border; i < HEIGHT; i++) {
+            for (int j = border; j < WIDTH; j++) {
                 cleanBoard[i][j] = (1);
             }
         }
