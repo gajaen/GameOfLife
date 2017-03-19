@@ -20,10 +20,11 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, randomButton, clearButton;
-    public int cellSize, FPS, border, cellGap;
+    public int cellSize, TIME, border, cellGap;
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
+    public int FPS = 30; //MAX 1000!
 
     public Controller()
     {
@@ -48,7 +49,7 @@ public class Controller   {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
         gc.strokeRect(1, 1, CanvasId.getWidth() - 2, CanvasId.getHeight() - 2);
-        gc.setLineWidth(0.6);
+        gc.setLineWidth(0.3);
         int a = cellSize;
         int b = cellSize;
 
@@ -61,9 +62,6 @@ public class Controller   {
             b += cellSize;
         }
     }
-
-
-
 
     public void initialize()
     {
@@ -82,6 +80,7 @@ public class Controller   {
         }
         System.out.println("CanvasHeight = " + (int)CanvasId.getHeight());
         System.out.println("CanvasWidth = " + (int)CanvasId.getWidth());
+        System.out.println("Current FPS = " + FPS);
 
         draw();
         drawLines();
@@ -144,6 +143,11 @@ public class Controller   {
 
         draw();
         drawLines();
+
+    }
+
+    public void mouseClicked(){
+
 
     }
 
@@ -238,8 +242,8 @@ public class Controller   {
 
     public Timeline timeline;
     {
-        FPS = 50;
-        timeline = new Timeline(new KeyFrame(Duration.millis(FPS), e -> {
+        TIME = 1000/FPS;
+        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             nextGeneration();
             timeline.playFromStart();
 
