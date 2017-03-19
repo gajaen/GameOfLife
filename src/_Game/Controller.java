@@ -25,12 +25,12 @@ public class Controller   {
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
-    public int FPS = 10;
+    public int FPS = 60;
 
     public Controller()
     {
         //Variabler til spillbrettet
-        cellSize = 10;
+        cellSize = 4;
         cellGap = 1;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
@@ -41,7 +41,7 @@ public class Controller   {
     public void cleanBoard()
     {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setFill(Color.GREY);
+        gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
     }
@@ -68,7 +68,7 @@ public class Controller   {
     public void initialize()
     {
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.BLACK);
+        gc.setFill(Color.rgb((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255)));
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[HEIGHT][WIDTH];
