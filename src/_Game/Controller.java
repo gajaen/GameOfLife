@@ -25,13 +25,13 @@ public class Controller   {
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
-    public int FPS = 30;
+    public int FPS = 60;
 
     public Controller()
     {
         //Variabler til spillbrettet
-        cellSize = 10;
-        cellGap = 1;
+        cellSize = 50;
+        cellGap = 0;
         HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
 
@@ -39,27 +39,28 @@ public class Controller   {
 
     public void cleanBoard()
     {
-        gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.clearRect(cellSize, cellSize, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setFill(Color.GREY);
-        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.fillRect(cellSize, cellSize, CanvasId.getWidth(), CanvasId.getHeight());
 
     }
 
     public void drawLines()
     {
+        gc.setStroke(Color.TRANSPARENT);
+        gc.setLineWidth(2*cellSize);
+        gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setStroke(Color.BLACK);
-        gc.setLineWidth(2);
-        gc.strokeRect(1, 1, CanvasId.getWidth() - 2, CanvasId.getHeight() - 2);
-        gc.setLineWidth(0.3);
+        gc.setLineWidth(0.5);
         int a = cellSize;
         int b = cellSize;
 
         for (int i = 0; i < HEIGHT; i++) {
-            gc.strokeLine(0, a, CanvasId.getWidth(), a);
+            gc.strokeLine(cellSize, a, CanvasId.getWidth(), a);
             a += cellSize;
         }
         for (int i = 0; i < WIDTH; i++) {
-            gc.strokeLine(b, 0, b, CanvasId.getHeight());
+            gc.strokeLine(b, cellSize, b, CanvasId.getHeight());
             b += cellSize;
         }
     }
@@ -68,7 +69,7 @@ public class Controller   {
     {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.fillRect(cellSize, cellSize, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[HEIGHT][WIDTH];
         cleanBoard = new int[HEIGHT][WIDTH];
@@ -217,9 +218,9 @@ public class Controller   {
     public void clickedClearButton()
     {
         System.out.println("You Clicked CLEAR");
+        timeline.stop();
         initialize();
 
-        timeline.stop();
     }
 
     public void clickedCircleButton()
