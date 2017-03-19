@@ -19,8 +19,8 @@ public class Controller   {
     private Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
-    public Button startButton, stopButton, circleButton, randomButton, clearButton;
-    public int  canvasBorder, distanceCells, cellSize, FPS, border;
+    public Button startButton, stopButton, randomButton, clearButton;
+    public int cellSize, FPS, border, cellGap;
     public int[][] board, cleanBoard;
     private final int HEIGHT, WIDTH;
 
@@ -28,23 +28,25 @@ public class Controller   {
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 5;
+        cellSize = 10;
+        cellGap = 1;
         HEIGHT = 660 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1250 / cellSize; //Manuelt plottet inn CanvasWidth
-
-        border = 10;
 
     }
 
     public void cleanBoard() {
 
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.setFill(Color.GREY);
+        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
+
+    }
+    public void drawLines() {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
         gc.strokeRect(1, 1, CanvasId.getWidth() - 2, CanvasId.getHeight() - 2);
-        gc.setLineWidth(0.1);
-
-
+        gc.setLineWidth(0.5);
         int a = cellSize;
         int b = cellSize;
 
@@ -60,19 +62,19 @@ public class Controller   {
 
 
 
+
     public void initialize()
     {
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.WHITE);
-
+        gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[HEIGHT][WIDTH];
         cleanBoard = new int[HEIGHT][WIDTH];
 
         //Starter spillet med å med å lage et brett
-        for (int i = border; i < HEIGHT; i++) {
-            for (int j = border; j < WIDTH; j++) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 cleanBoard[i][j] = (1);
             }
         }
@@ -82,6 +84,7 @@ public class Controller   {
 
 
         cleanBoard();
+        drawLines();
 
     }
 
@@ -108,22 +111,20 @@ public class Controller   {
             }
         }
         board = nextBoard;
-        for (int i = border; i < HEIGHT; i++) {
-            for (int j = border; j < WIDTH; j++) {
-                if( nextBoard[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
-            }
-        }
+        draw();
+        drawLines();
     }
 
 
     public void draw()
     {
         cleanBoard();
+        drawLines();
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(Color.BLACK);
+        gc.setFill(Color.WHITE);
         for (int i = border + 1; i < HEIGHT; i++) {
             for (int j = border + 1; j < WIDTH; j++) {
-                if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
+                if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize - cellGap, cellSize- cellGap);
             }
         }
     }
@@ -132,8 +133,6 @@ public class Controller   {
     {
         System.out.println("You Clicked RANDOM");
 
-        initialize();
-
         //Lager en ny random array for hver gang start er trykket.
         for (int i =0;i < HEIGHT;i++) {
             for (int j =0;j < WIDTH;j++) {
@@ -141,6 +140,8 @@ public class Controller   {
             }
         }
         draw();
+        drawLines();
+
     }
 
     public void init(Stage primaryStage) {
@@ -231,7 +232,7 @@ public class Controller   {
 
     public Timeline timeline;
     {
-        FPS = 10;
+        FPS = 50;
         timeline = new Timeline(new KeyFrame(Duration.millis(FPS), e -> {
             nextGeneration();
             timeline.playFromStart();
