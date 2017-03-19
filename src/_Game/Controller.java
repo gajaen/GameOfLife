@@ -58,13 +58,13 @@ public class Controller   {
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 4;
+        cellSize = 5;
         canvasBorder = 0;
         distanceCells = 0;
 
 
-        HEIGHT = 50;
-        WIDTH = 100;
+        HEIGHT = 100;
+        WIDTH = 200;
 
     }
 
@@ -79,11 +79,11 @@ public class Controller   {
         int b = cellSize;
 
         for (int i = 0; i < HEIGHT; i++) {
-            gc.strokeLine(a, 0, a, CanvasId.getHeight());
+            gc.strokeLine(0, a, CanvasId.getWidth(), a);
             a += cellSize;
         }
         for (int i = 0; i < WIDTH; i++) {
-            gc.strokeLine(0, b, CanvasId.getWidth(), b);
+            gc.strokeLine(b, 0, b, CanvasId.getHeight());
             b += cellSize;
         }
     }
@@ -97,12 +97,12 @@ public class Controller   {
 
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
-        board = new int[WIDTH][HEIGHT];
-        cleanBoard = new int[WIDTH][HEIGHT];
+        board = new int[HEIGHT][WIDTH];
+        cleanBoard = new int[HEIGHT][WIDTH];
 
         //Starter spillet med å med å lage et brett
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 cleanBoard[i][j] = (1);
             }
         }
@@ -117,30 +117,30 @@ public class Controller   {
 
     public  void nextGeneration() {
         cleanBoard();
-        int[][] next = new int[WIDTH][HEIGHT];
+        int[][] nextBoard = new int[HEIGHT][WIDTH];
 
-        for (int x = 1; x < WIDTH - 1; x++) {
-            for (int y = 1; y < HEIGHT - 1; y++)
+        for (int x = 1; x < HEIGHT - 1; x++) {
+            for (int y = 1; y < WIDTH - 1; y++)
 
             {
-                int neighbors = 0;
+                int cellNeighbors = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
-                        neighbors += board[x + i][y + j];
+                        cellNeighbors += board[x + i][y + j];
                     }
                 }
 
-                neighbors -= board[x][y];
-                if ((board[x][y] == 1) && (neighbors < 2)) next[x][y] = 0;           // Mindre enn 2 rundt
-                else if ((board[x][y] == 1) && (neighbors > 3)) next[x][y] = 0;           // Fler enn 3 rundt seg
-                else if ((board[x][y] == 0) && (neighbors == 3)) next[x][y] = 1;           // Akkurat 3 rundt seg
-                else next[x][y] = board[x][y];
+                cellNeighbors -= board[x][y];
+                if ((board[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
+                else if ((board[x][y] == 1) && (cellNeighbors > 3)) nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
+                else if ((board[x][y] == 0) && (cellNeighbors == 3)) nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
+                else nextBoard[x][y] = board[x][y];
             }
         }
-        board = next;
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                if( next[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+        board = nextBoard;
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                if( nextBoard[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
     }
@@ -151,9 +151,9 @@ public class Controller   {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
-        for (int i = 0; i < WIDTH; i++) {
-            for (int j = 0; j < HEIGHT; j++) {
-                if( board[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
     }
@@ -165,8 +165,8 @@ public class Controller   {
         initialize();
 
         //Lager en ny random array for hver gang start er trykket.
-        for (int i =0;i < WIDTH;i++) {
-            for (int j =0;j < HEIGHT;j++) {
+        for (int i =0;i < HEIGHT;i++) {
+            for (int j =0;j < WIDTH;j++) {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
