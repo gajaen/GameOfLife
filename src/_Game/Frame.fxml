@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
    <bottom>
       <GridPane BorderPane.alignment="CENTER">
          <columnConstraints>
@@ -88,7 +88,7 @@
       </GridPane>
    </bottom>
    <center>
-      <Canvas fx:id="CanvasId" focusTraversable="true" height="678.0" width="1240.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="656.0" width="1250.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
