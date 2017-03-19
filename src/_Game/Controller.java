@@ -20,13 +20,15 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
-    public int  canvasBorder, distanceCells, cellSize, FPS;
+    public int  canvasBorder, distanceCells, cellSize, FPS, WIDTH, HEIGHT;
     public int[][] board, cleanBoard;
 
 
-    private final int HEIGHT = 1000;
+    //private final int HEIGHT = 1000;
+   //Private final int WIDTH = 1000;
 
-    private final int WIDTH = 1000;
+
+
 
 
     public int[][] circleBoard = {
@@ -56,25 +58,33 @@ public class Controller   {
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 5;
+        cellSize = 4;
         canvasBorder = 0;
         distanceCells = 0;
+
+
+        HEIGHT = 50;
+        WIDTH = 100;
+
     }
 
     public void cleanBoard() {
 
-        gc.clearRect(0,0, CanvasId.getWidth(), CanvasId.getHeight());
+        gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
-        gc.strokeRect(1,1, CanvasId.getWidth()-2, CanvasId.getHeight()-2);
-        gc.setLineWidth(0.1);
+        gc.strokeRect(1, 1, CanvasId.getWidth() - 2, CanvasId.getHeight() - 2);
+        gc.setLineWidth(0.2);
         int a = cellSize;
+        int b = cellSize;
 
-        for (int i = 0; i < WIDTH; i++) {
+        for (int i = 0; i < HEIGHT; i++) {
             gc.strokeLine(a, 0, a, CanvasId.getHeight());
-            gc.strokeLine(0, a, CanvasId.getWidth(), a);
-            a+=cellSize;
-
+            a += cellSize;
+        }
+        for (int i = 0; i < WIDTH; i++) {
+            gc.strokeLine(0, b, CanvasId.getWidth(), b);
+            b += cellSize;
         }
     }
 
@@ -84,19 +94,21 @@ public class Controller   {
     {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.WHITE);
+
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[WIDTH][HEIGHT];
         cleanBoard = new int[WIDTH][HEIGHT];
 
         //Starter spillet med å med å lage et brett
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
                 cleanBoard[i][j] = (1);
             }
         }
         System.out.println("CanvasHeight = " + (int)CanvasId.getHeight());
         System.out.println("CanvasWidth = " + (int)CanvasId.getWidth());
+
 
 
         cleanBoard();
@@ -126,8 +138,8 @@ public class Controller   {
             }
         }
         board = next;
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
                 if( next[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
@@ -139,8 +151,8 @@ public class Controller   {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j + canvasBorder, cellSize*i + canvasBorder, cellSize + distanceCells, cellSize + distanceCells);
             }
         }
@@ -153,8 +165,8 @@ public class Controller   {
         initialize();
 
         //Lager en ny random array for hver gang start er trykket.
-        for (int i =0;i < board.length;i++) {
-            for (int j =0;j < board.length;j++) {
+        for (int i =0;i < WIDTH;i++) {
+            for (int j =0;j < HEIGHT;j++) {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
