@@ -20,7 +20,7 @@ public class Controller   {
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, circleButton, randomButton, clearButton;
-    public int columns, rows, canvasBorder, distanceCells, cellSize, w;
+    public int columns, rows, canvasBorder, distanceCells, cellSize, FPS;
     public int[][] board, cleanBoard;
     private final int WIDTH = 4, HEIGHT = 4;
 
@@ -50,9 +50,9 @@ public class Controller   {
     {
         //Variabler for spillbrettet
 
-        cellSize = 10;
-        columns = 200;
-        rows = 200;
+        cellSize = 5;
+        columns = 1000;
+        rows = 1000;
 
         canvasBorder = 0;
         distanceCells = 0;
@@ -62,7 +62,9 @@ public class Controller   {
 
         gc.clearRect(0,0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setStroke(Color.BLACK);
-        gc.setLineWidth(1);
+        gc.setLineWidth(2);
+        gc.strokeRect(1,1, CanvasId.getWidth()-2, CanvasId.getHeight()-2);
+        gc.setLineWidth(0.1);
         int a = cellSize;
 
         for (int i = 0; i < columns; i++) {
@@ -112,9 +114,9 @@ public class Controller   {
                 }
 
                 neighbors -= board[x][y];
-                if ((board[x][y] == 1) && (neighbors < 2)) next[x][y] = 0;           // Loneliness
-                else if ((board[x][y] == 1) && (neighbors > 3)) next[x][y] = 0;           // Overpopulation
-                else if ((board[x][y] == 0) && (neighbors == 3)) next[x][y] = 1;           // Reproduction
+                if ((board[x][y] == 1) && (neighbors < 2)) next[x][y] = 0;           // Mindre enn 2 rundt
+                else if ((board[x][y] == 1) && (neighbors > 3)) next[x][y] = 0;           // Fler enn 3 rundt seg
+                else if ((board[x][y] == 0) && (neighbors == 3)) next[x][y] = 1;           // Akkurat 3 rundt seg
                 else next[x][y] = board[x][y];
             }
         }
@@ -129,6 +131,7 @@ public class Controller   {
 
     public void draw()
     {
+        cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         for (int i = 0; i < board.length; i++) {
@@ -207,21 +210,21 @@ public class Controller   {
     {
         System.out.println("You Clicked CLEAR");
         initialize();
+
         timeline.stop();
     }
 
     public void clickedCircleButton()
     {
         initialize();
+
+
         System.out.println("You Clicked CIRCLE");
-        board = circleBoard;
-        draw();
     }
 
     public void clickedStartButton()
     {
         System.out.println("You Clicked START");
-        clickedRandomButton();
         timeline.play();
         // Start Animasjon
     }
@@ -239,10 +242,10 @@ public class Controller   {
         // stop Animasjon
     }
 
-    private Timeline timeline;
-
+    public Timeline timeline;
     {
-        timeline = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+        FPS = 10;
+        timeline = new Timeline(new KeyFrame(Duration.millis(FPS), e -> {
             nextGeneration();
             timeline.playFromStart();
 
