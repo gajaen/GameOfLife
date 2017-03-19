@@ -58,13 +58,13 @@ public class Controller   {
     public Controller()
     {
         //Variabler for spillbrettet
-        cellSize = 1;
+        cellSize = 2;
         canvasBorder = 0;
         distanceCells = 0;
 
 
-        HEIGHT = 656 / cellSize; //Manuelt plottet inn CanvasHeight
-        WIDTH = 1250 / cellSize; //Manuelt plittet inn CanvasWidth
+        HEIGHT = 660 / cellSize; //Manuelt plottet inn CanvasHeight
+        WIDTH = 1250 / cellSize; //Manuelt plottet inn CanvasWidth
 
     }
 
@@ -74,7 +74,9 @@ public class Controller   {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
         gc.strokeRect(1, 1, CanvasId.getWidth() - 2, CanvasId.getHeight() - 2);
-        gc.setLineWidth(0.2);
+        gc.setLineWidth(0.1);
+
+
         int a = cellSize;
         int b = cellSize;
 
