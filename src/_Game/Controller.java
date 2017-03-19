@@ -81,10 +81,8 @@ public class Controller   {
         System.out.println("CanvasHeight = " + (int)CanvasId.getHeight());
         System.out.println("CanvasWidth = " + (int)CanvasId.getWidth());
 
-
-
-        drawLines();
         draw();
+        drawLines();
 
     }
 
@@ -112,8 +110,9 @@ public class Controller   {
             }
         }
         board = nextBoard;
-        drawLines();
         draw();
+        drawLines();
+
 
     }
 
@@ -121,7 +120,6 @@ public class Controller   {
     public void draw()
     {
         cleanBoard();
-        drawLines();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.LIGHTCYAN);
         for (int i = border + 1; i < HEIGHT; i++) {
@@ -141,8 +139,9 @@ public class Controller   {
                 board[i][j] = (byte)(Math.random()*2);
             }
         }
-        drawLines();
+
         draw();
+        drawLines();
 
     }
 
