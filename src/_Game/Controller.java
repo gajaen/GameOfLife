@@ -29,10 +29,6 @@ public class Controller   {
     {
         //Variabler for spillbrettet
         cellSize = 5;
-        canvasBorder = 0;
-        distanceCells = 0;
-
-
         HEIGHT = 660 / cellSize; //Manuelt plottet inn CanvasHeight
         WIDTH = 1250 / cellSize; //Manuelt plottet inn CanvasWidth
 
@@ -112,7 +108,7 @@ public class Controller   {
         board = nextBoard;
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if( nextBoard[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize + distanceCells, cellSize + distanceCells);
+                if( nextBoard[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
             }
         }
     }
@@ -125,7 +121,7 @@ public class Controller   {
         gc.setFill(Color.BLACK);
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize + distanceCells, cellSize + distanceCells);
+                if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize, cellSize);
             }
         }
     }
