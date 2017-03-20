@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -24,25 +25,25 @@ public class Controller   {
     public int cellSize, TIME, cellGap;
     public double lineWidth;
     public int[][] board, cleanBoard;
-    private final int HEIGHT, WIDTH;
-    public Color cell, line, background;
+    private int HEIGHT, WIDTH;
+    public Color cellColor, lineColor, backgroundColor;
+    public Slider cellSlider;
 
-    public int FPS = 15;
+
+    public int FPS = 60;
 
     public Controller()
     {
         //FARGER
-        cell = Color.GREENYELLOW;
-        line = Color.BLACK;
-        background = Color.GREY;
+        cellColor = Color.ALICEBLUE;
+        lineColor = Color.BLACK;
+        backgroundColor = Color.GREY;
 
 
         //Variabler til spillbrettet
-        cellSize = 10;
+        cellSize = 5;
         cellGap = 1;
-        lineWidth = 0.7;
-        HEIGHT = 720 / cellSize; //Manuelt plottet inn CanvasHeight
-        WIDTH = 1280 / cellSize; //Manuelt plottet inn CanvasWidth
+        lineWidth = 0.5;
 
 
     }
@@ -50,14 +51,14 @@ public class Controller   {
     public void cleanBoard()
     {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-        gc.setFill(Color.GREY);
+        gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
     }
 
     public void drawLines()
     {
-        gc.setStroke(line);
+        gc.setStroke(lineColor);
         //gc.setLineWidth(2*cellSize);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setLineWidth(lineWidth);
@@ -76,8 +77,10 @@ public class Controller   {
 
     public void initialize()
     {
+        HEIGHT = (int)CanvasId.getHeight() / cellSize;
+        WIDTH = (int)CanvasId.getWidth() / cellSize;
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(background);
+        gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         board = new int[HEIGHT][WIDTH];
@@ -89,6 +92,9 @@ public class Controller   {
                 cleanBoard[i][j] = (1);
             }
         }
+
+
+
         System.out.println("CanvasHeight = " + (int)CanvasId.getHeight());
         System.out.println("CanvasWidth = " + (int)CanvasId.getWidth());
         System.out.println("Current FPS = " + FPS);
@@ -133,7 +139,7 @@ public class Controller   {
     {
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(cell);
+        gc.setFill(cellColor);
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 if( board[i][j] == 1) gc.fillRect(cellSize*j, cellSize*i, cellSize - cellGap, cellSize- cellGap);
