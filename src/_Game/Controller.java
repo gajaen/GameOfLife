@@ -30,7 +30,7 @@ public class Controller   {
     public Slider cellSlider;
 
 
-    public int FPS = 60;
+    public int FPS = 10;
 
     public Controller()
     {
@@ -41,9 +41,9 @@ public class Controller   {
 
 
         //Variabler til spillbrettet
-        cellSize = 15;
+        cellSize = 10;
         cellGap = 1;
-        lineWidth = 0.5;
+        lineWidth = 0.3;
 
 
     }
@@ -59,7 +59,7 @@ public class Controller   {
     public void drawLines()
     {
         gc.setStroke(lineColor);
-        gc.setLineWidth(5);
+        gc.setLineWidth(4);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setLineWidth(lineWidth);
         int a = cellSize;
@@ -77,8 +77,8 @@ public class Controller   {
 
     public void initialize()
     {
-        HEIGHT = (int)CanvasId.getHeight() / cellSize;
-        WIDTH = (int)CanvasId.getWidth() / cellSize;
+        HEIGHT = (int)CanvasId.getHeight() + cellSize/ cellSize;
+        WIDTH = (int)CanvasId.getWidth() + cellSize/ cellSize;
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -143,7 +143,7 @@ public class Controller   {
         gc.setFill(cellColor);
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if( board[i][j] == 1) gc.fillRect(cellSize*j-cellSize, cellSize*i-cellSize, cellSize - cellGap, cellSize- cellGap);
+                if( board[i][j] == 1) gc.fillRect(cellSize*j-cellSize, cellSize*i-cellSize , cellSize - cellGap, cellSize- cellGap);
             }
         }
     }
