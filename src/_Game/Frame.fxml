@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0" style="-fx-background-color: ALICEBLUE;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
     <bottom>
         <GridPane prefHeight="48.0" prefWidth="1283.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -23,12 +23,16 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="26.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="26.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <HBox prefHeight="33.0" prefWidth="615.0">
+                <HBox prefHeight="33.0" prefWidth="615.0" GridPane.rowIndex="2">
                     <children>
                         <Button fx:id="startButton" mnemonicParsing="false" onAction="#clickedStartButton" prefHeight="25.0" prefWidth="85.0" text="START">
                             <HBox.margin>
@@ -62,18 +66,18 @@
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </HBox.margin>
                         </Button>
-                  <Slider fx:id="cellSlider" majorTickUnit="50.0" minorTickCount="5">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="30.0" top="10.0" />
-                     </HBox.margin>
-                  </Slider>
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="10.0" />
                     </padding></HBox>
+            <Slider fx:id="cellSlider" blockIncrement="100.0" majorTickUnit="50.0" max="25.0" min="2.0" minorTickCount="5" onMouseClicked="#sliderClicked" onMouseDragged="#sliderDragged" onScroll="#sliderDragged" value="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="450.0" right="50.0" />
+               </GridPane.margin>
+            </Slider>
             </children>
             <padding>
                 <Insets left="20.0" top="10.0" />
@@ -81,7 +85,7 @@
         </GridPane>
     </bottom>
     <center>
-        <Canvas fx:id="CanvasId" focusTraversable="true" height="720.0" width="1280.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="CanvasId" focusTraversable="true" height="717.0" onScroll="#sliderDragged" width="1260.0" BorderPane.alignment="CENTER" />
     </center>
     <top>
         <MenuBar BorderPane.alignment="CENTER">
