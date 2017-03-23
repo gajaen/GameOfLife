@@ -286,9 +286,10 @@ public class Controller   {
 
                                 for(int x = 0; x< numbertimes; x++) {
 
-                                    //        if( board[rownumber][columnnumber] == 1) gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+                                    if( board[columnnumber][rownumber] == 0) gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
 
-                                    gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+                                    //gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+
 
                                 }
 
