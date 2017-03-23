@@ -216,7 +216,7 @@ public class Controller   {
 
 
 
-        String xPattern = ("x = (\\d+)");
+        String  xPattern = ("x = (\\d+)");
         String yPattern = ("y = (\\d+)");
 
         try (Scanner scanner = new Scanner(file)) {
