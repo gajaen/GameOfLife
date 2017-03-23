@@ -233,7 +233,7 @@ public class Controller   {
 
                 for(String item: items) {
 
-                    int columnnumber = 0;
+                    int  columnnumber = 0;
 
                     if(Pattern.matches(".*b.*", item   )) {
                         System.out.println("pattern matches b");
