@@ -253,6 +253,7 @@ public class Controller   {
 
                             for (int x = 0; x <= numbertimes; x++) {
 
+                                if( board[columnnumber][rownumber] == 1) gc.clearRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
 
                             }
 
