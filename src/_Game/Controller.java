@@ -1,6 +1,5 @@
 package _Game;
 
-import com.sun.tools.doclets.formats.html.markup.StringContent;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -31,23 +30,13 @@ public class Controller   {
     public double lineWidth;
     public int[][] board, cleanBoard;
     public Color cellColor, lineColor, backgroundColor;
-    public Slider cellSlider;
+    public Slider cellSlider, sliderFPS;
+    public Timeline timeline;
+    public ColorPicker colorPicker;
 
     public int gen = 0;
     public int FPS = 120;
 
-    public Controller()
-    {
-        //FARGER
-        cellColor = Color.ALICEBLUE;
-        lineColor = Color.BLACK;
-        backgroundColor = Color.GREY;
-
-        //Variabler til spillbrettet
-        cellSize = 20;
-        cellGap = 1;
-        lineWidth = 0.3;
-    }
 
     public void cleanBoard()
     {
@@ -60,8 +49,8 @@ public class Controller   {
 
     public void initialize()
     {
-        HEIGHT = ((int)CanvasId.getHeight() + cellSize* 2)/ cellSize;
-        WIDTH = ((int)CanvasId.getWidth() + cellSize *2)/ cellSize;
+        HEIGHT = (int)CanvasId.getHeight();
+        WIDTH = (int)CanvasId.getWidth();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -73,8 +62,20 @@ public class Controller   {
         System.out.println("CanvasWidth = " + (int)CanvasId.getWidth());
         System.out.println("Current FPS = " + FPS);
 
+        //FARGER
+        cellColor = Color.ALICEBLUE;
+        lineColor = Color.BLACK;
+        backgroundColor = Color.GREY;
+
+        //Variabler til spillbrettet
+        cellSize = 20;
+        cellGap = 1;
+        lineWidth = 0.3;
+
+        colorPickerClicked();
         drawCells();
         drawLines();
+        Timeline();
 
     }
 
@@ -106,6 +107,7 @@ public class Controller   {
 
         drawCells();
         drawLines();
+        Timeline();
     }
 
     public void drawCells()
@@ -143,6 +145,17 @@ public class Controller   {
         }
     }
 
+    public void Timeline(){
+        FPSClicked();
+        TIME = 1000/FPS;
+        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
+            nextGeneration();
+            timeline.playFromStart();
+
+        }));
+
+    }
+
     //KNAPPER
     //**********************************************************************************
     public void clickedRandomButton()
@@ -167,8 +180,9 @@ public class Controller   {
 
     public void clickedStartButton()
     {
-        timeline.play();
         clickedRandomButton();
+        timeline.play();
+
     }
 
 
@@ -177,15 +191,13 @@ public class Controller   {
         timeline.stop();
     }
 
-    public void sliderClicked()
+    public void FPSClicked()
     {
-        cellSize = (int)cellSlider.getValue();
-        clickedClearButton();
+        FPS = (int)sliderFPS.getValue();
     }
-    public void sliderDragged()
+    public void CellSizeClicked()
     {
         cellSize = (int)cellSlider.getValue();
-        clickedClearButton();
     }
     //***************************************
 
@@ -233,7 +245,7 @@ public class Controller   {
 
                 for(String item: items) {
 
-                    int  columnnumber = 0;
+                    int columnnumber = 0;
 
                     if(Pattern.matches(".*b.*", item   )) {
                         System.out.println("pattern matches b");
@@ -252,9 +264,6 @@ public class Controller   {
                             columnnumber = numbertimes;
 
                             for (int x = 0; x <= numbertimes; x++) {
-
-                                if( board[columnnumber][rownumber] == 1) gc.clearRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
-
                             }
 
                         } else {
@@ -287,16 +296,18 @@ public class Controller   {
 
                                 for(int x = 0; x< numbertimes; x++) {
 
-                                    if( board[columnnumber][rownumber] == 0) gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+                                    //        if( board[rownumber][columnnumber] == 1) gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+                                    gc.setFill(Color.YELLOW);
 
-                                    //gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
-
+                                    gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+                                    gc.fillRect(cellSize*columnnumber , cellSize*rownumber , cellSize - cellGap, cellSize- cellGap);
 
                                 }
 
                             }
                             else{
                                 System.out.println("draw for o");
+                                gc.setFill(Color.GREEN);
                                 gc.fillRect(cellSize*columnnumber , cellSize*rownumber , cellSize - cellGap, cellSize- cellGap);
                             }
 
@@ -321,16 +332,12 @@ public class Controller   {
         Platform.exit();
     }
 
-    public void colorPicker()
+    public void colorPickerClicked()
     {
-        ColorPicker colorPicker = new ColorPicker();
-
         Color color = colorPicker.getValue();
-
-        if(color!=null) {
-
+        if(color!=null)
+        {
             cellColor = colorPicker.getValue();
-
         }
 
 
@@ -338,16 +345,6 @@ public class Controller   {
         }
 
 
-
-    public Timeline timeline;
-    {
-        TIME = 1000/FPS;
-        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            nextGeneration();
-            timeline.playFromStart();
-
-        }));
-    }
 
 
 
