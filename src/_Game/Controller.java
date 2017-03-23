@@ -1,11 +1,13 @@
 package _Game;
 
+import com.sun.tools.doclets.formats.html.markup.StringContent;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -15,7 +17,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Controller   {
     private Stage stage;
@@ -39,7 +44,7 @@ public class Controller   {
         backgroundColor = Color.GREY;
 
         //Variabler til spillbrettet
-        cellSize = 5;
+        cellSize = 20;
         cellGap = 1;
         lineWidth = 0.3;
     }
@@ -203,48 +208,133 @@ public class Controller   {
 
         );
 
-        File file = fileChooser.showOpenDialog(stage);
 
-        if(file != null){
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null) {
             System.out.println("Choosen file " + file);
         }
 
-        try (final Scanner scanner = new Scanner(file); ) {
-            while ( scanner.hasNextLine() ) {
+
+
+        String xPattern = ("x = (\\d+)");
+        String yPattern = ("y = (\\d+)");
+
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+
+
                 String line = scanner.nextLine();
-                System.out.println( line );
-            }
-        } catch ( IOException e ) {
+                System.out.println(line);
+                Pattern p = Pattern.compile("\\$");
+
+                String [] items = p.split(line);
+                int rownumber = 0;
+                drawLines();
+
+                for(String item: items) {
+
+                    int columnnumber = 0;
+
+                    if(Pattern.matches(".*b.*", item   )) {
+                        System.out.println("pattern matches b");
+                        if (Pattern.matches(".*\\db.*", item)) {
+                            System.out.println("Pattern matches b and number");
+                            Pattern bp = Pattern.compile("b");
+                            System.out.println("Pattern bp combile");
+                            String[] numbers = bp.split(item);
+                            System.out.println("Pattern split to numbers");
+                            String occureance = numbers[0];
+                            System.out.println(occureance);
+                            System.out.println("Pattern occurances");
+                            int numbertimes = Integer.parseInt(occureance);
+                            System.out.println(numbertimes);
+
+                            columnnumber = numbertimes;
+
+                            for (int x = 0; x <= numbertimes; x++) {
+
+
+                            }
+
+                        } else {
+                            System.out.println("draw for b");
+                            columnnumber = 1;
+                        }
+                    }
+
+                        if(Pattern.matches(".*o.*", item ))
+                        {
+                            System.out.println("pattern matches o");
+                            if(Pattern.matches(".*\\do.*", item))
+                            {
+                                System.out.println("Pattern matches o and number");
+                                Pattern bp = Pattern.compile(".*(?<onumber>\\d)o");
+                                Matcher matcher = bp.matcher(item);
+                                String occurance = "0";
+
+                                if(matcher.find())
+                                {
+                                    occurance = matcher.group("onumber");
+                                }
+
+                                System.out.println("Pattern bp o combile");
+                                System.out.println("Pattern split to numbers");
+
+
+                                int numbertimes = Integer.parseInt(occurance);
+                                System.out.println(numbertimes);
+
+                                for(int x = 0; x< numbertimes; x++) {
+
+                                    //        if( board[rownumber][columnnumber] == 1) gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+
+                                    gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
+
+                                }
+
+                            }
+                            else{
+                                System.out.println("draw for o");
+                                gc.fillRect(cellSize*columnnumber , cellSize*rownumber , cellSize - cellGap, cellSize- cellGap);
+                            }
+
+                        }
+
+
+
+                    rownumber = rownumber + 1;
+                    System.out.println(item);
+
+
+                }}
+                } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Scanner in = null;
-        try {
-            in = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("null");
-        }
 
-
-    }
-
-
-
-    public void readGameBoardFromDisk(File file) throws IOException
-    {
-
-        readGameBoard(new FileReader(file));
-    }
-
-    private void readGameBoard(FileReader fileReader)
-    {
     }
 
     public void closeWindow()
     {
         Platform.exit();
     }
+
+    public void colorPicker()
+    {
+        ColorPicker colorPicker = new ColorPicker();
+
+        Color color = colorPicker.getValue();
+
+        if(color!=null) {
+
+            cellColor = colorPicker.getValue();
+
+        }
+
+
+
+        }
+
 
 
     public Timeline timeline;
