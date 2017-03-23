@@ -71,7 +71,7 @@
                     <padding>
                         <Insets bottom="10.0" left="10.0" />
                     </padding></HBox>
-            <Slider fx:id="cellSlider" blockIncrement="100.0" majorTickUnit="50.0" max="25.0" min="2.0" minorTickCount="5" onMouseClicked="#sliderClicked" onMouseDragged="#sliderDragged" onScroll="#sliderDragged" value="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Slider fx:id="cellSlider" majorTickUnit="50.0" max="40.0" min="2.0" minorTickCount="5" onMouseClicked="#sliderClicked" onMouseDragged="#sliderDragged" onScroll="#sliderDragged" showTickLabels="true" showTickMarks="true" value="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

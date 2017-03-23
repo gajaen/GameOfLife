@@ -34,7 +34,7 @@ public class Controller   {
     public Slider cellSlider;
 
     public int gen = 0;
-    public int FPS = 60;
+    public int FPS = 120;
 
     public Controller()
     {
@@ -60,8 +60,8 @@ public class Controller   {
 
     public void initialize()
     {
-        HEIGHT = ((int)CanvasId.getHeight() + cellSize)/ cellSize;
-        WIDTH = ((int)CanvasId.getWidth() + cellSize)/ cellSize;
+        HEIGHT = ((int)CanvasId.getHeight() + cellSize* 2)/ cellSize;
+        WIDTH = ((int)CanvasId.getWidth() + cellSize *2)/ cellSize;
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
