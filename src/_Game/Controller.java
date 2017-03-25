@@ -8,16 +8,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -248,7 +244,6 @@ public class Controller   {
 
                 // checkin g line is empty or commented or with rule line
                 if (line.isEmpty() || Pattern.matches(".*#.*", line) || Pattern.matches(".*rule.*", line)) {
-                    System.out.println("Line is empty");
                     continue;
                 }
 
@@ -261,11 +256,7 @@ public class Controller   {
 
                 for(String item: items) {
 
-                    System.out.println(item + " == " + columnnumber);
 
-
-
-                    System.out.println(item);
                     // itemTmp = 2b3o1b2o$
                     String itemTmp = item;
 
@@ -273,7 +264,6 @@ public class Controller   {
                     while((! itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp) )
                     {
 
-                        System.out.println(" TMP : " + itemTmp);
 
                         // b pattern - eg. 34b --> cnumber will be 34
                         Pattern bnumber = Pattern.compile("^(?<cnumber>\\d*?)b");
@@ -284,7 +274,6 @@ public class Controller   {
                         Matcher omatcher = onumber.matcher(itemTmp);
 
                         if(bmatcher.find()) {
-                            System.out.println("B matcher found");
                             String bNumString = bmatcher.group("cnumber");
                             int bNumInt = 1;
                             if(! bNumString.isEmpty()) {
@@ -292,12 +281,10 @@ public class Controller   {
                                 bNumInt = Integer.parseInt(bNumString);
                             }
                             columnnumber = columnnumber + bNumInt;
-                            System.out.println(columnnumber);
                             itemTmp = itemTmp.replaceFirst("^\\d*?b", "");
                         }
 
                         else if (omatcher.find()) {
-                            System.out.println("O matcher found");
                             String oNumString = omatcher.group("onumber");
 
                             int oNumInt = 1;
@@ -309,7 +296,6 @@ public class Controller   {
                             for(int cnum = 1; cnum <= oNumInt; cnum++) {
                                 board[rownumber][columnnumber+ cnum] = 1;
                                 //columnnumber = columnnumber +1;
-                                System.out.println(rownumber + " : " + columnnumber+cnum);
                             }
                             columnnumber = columnnumber + oNumInt;
                             itemTmp = itemTmp.replaceFirst("^\\d*?o", "");
