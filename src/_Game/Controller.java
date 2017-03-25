@@ -8,6 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -121,7 +122,10 @@ public class Controller   {
 
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if( board[i][j] == 1) gc.fillRect(cellSize*j-cellSize, cellSize*i-cellSize , cellSize - cellGap, cellSize- cellGap);
+                if( board[i][j] == 1) {
+                    //System.out.println(board[i][j]);
+                    gc.fillRect(cellSize * j , cellSize * i , cellSize - cellGap, cellSize - cellGap);
+                }
             }
         }
     }
@@ -231,96 +235,102 @@ public class Controller   {
         String  xPattern = ("x = (\\d+)");
         String yPattern = ("y = (\\d+)");
 
+        initialize();
+        cleanBoard();
+        drawLines();
+
+        int rownumber = 0;
+        int columnnumber = 0;
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
 
-
                 String line = scanner.nextLine();
+
+                // checkin g line is empty or commented or with rule line
+                if (line.isEmpty() || Pattern.matches(".*#.*", line) || Pattern.matches(".*rule.*", line)) {
+                    System.out.println("Line is empty");
+                    continue;
+                }
+
                 System.out.println(line);
-                Pattern p = Pattern.compile("\\$");
+
+                // split the line with $
+                Pattern p = Pattern.compile("(?<=\\$)");
 
                 String [] items = p.split(line);
-                int rownumber = 0;
-                drawLines();
 
                 for(String item: items) {
 
-                    int columnnumber = 0;
+                    System.out.println(item + " == " + columnnumber);
 
-                    if(Pattern.matches(".*b.*", item   )) {
-                        System.out.println("pattern matches b");
-                        if (Pattern.matches(".*\\db.*", item)) {
-                            System.out.println("Pattern matches b and number");
-                            Pattern bp = Pattern.compile("b");
-                            System.out.println("Pattern bp combile");
-                            String[] numbers = bp.split(item);
-                            System.out.println("Pattern split to numbers");
-                            String occureance = numbers[0];
-                            System.out.println(occureance);
-                            System.out.println("Pattern occurances");
-                            int numbertimes = Integer.parseInt(occureance);
-                            System.out.println(numbertimes);
 
-                            columnnumber = numbertimes;
 
-                            for (int x = 0; x <= numbertimes; x++) {
+                    System.out.println(item);
+                    // itemTmp = 2b3o1b2o$
+                    String itemTmp = item;
+
+                    // while itemTmp is a valid form
+                    while((! itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp) )
+                    {
+
+                        System.out.println(" TMP : " + itemTmp);
+
+                        // b pattern - eg. 34b --> cnumber will be 34
+                        Pattern bnumber = Pattern.compile("^(?<cnumber>\\d*?)b");
+                        Matcher bmatcher = bnumber.matcher(itemTmp);
+
+                        // o pattern eg. 3o -> onumber will be 3
+                        Pattern onumber = Pattern.compile("^(?<onumber>\\d*?)o");
+                        Matcher omatcher = onumber.matcher(itemTmp);
+
+                        if(bmatcher.find()) {
+                            System.out.println("B matcher found");
+                            String bNumString = bmatcher.group("cnumber");
+                            int bNumInt = 1;
+                            if(! bNumString.isEmpty()) {
+
+                                bNumInt = Integer.parseInt(bNumString);
+                            }
+                            columnnumber = columnnumber + bNumInt;
+                            System.out.println(columnnumber);
+                            itemTmp = itemTmp.replaceFirst("^\\d*?b", "");
+                        }
+
+                        else if (omatcher.find()) {
+                            System.out.println("O matcher found");
+                            String oNumString = omatcher.group("onumber");
+
+                            int oNumInt = 1;
+                            if(! oNumString.isEmpty()) {
+
+                                oNumInt = Integer.parseInt(oNumString);
                             }
 
-                        } else {
-                            System.out.println("draw for b");
-                            columnnumber = 1;
+                            for(int cnum = 1; cnum <= oNumInt; cnum++) {
+                                board[rownumber][columnnumber+ cnum] = 1;
+                                //columnnumber = columnnumber +1;
+                                System.out.println(rownumber + " : " + columnnumber+cnum);
+                            }
+                            columnnumber = columnnumber + oNumInt;
+                            itemTmp = itemTmp.replaceFirst("^\\d*?o", "");
                         }
+
                     }
 
-                        if(Pattern.matches(".*o.*", item ))
-                        {
-                            System.out.println("pattern matches o");
-                            if(Pattern.matches(".*\\do.*", item))
-                            {
-                                System.out.println("Pattern matches o and number");
-                                Pattern bp = Pattern.compile(".*(?<onumber>\\d)o");
-                                Matcher matcher = bp.matcher(item);
-                                String occurance = "0";
+                    //if $ ONLY move to next row (row = row + 1 and column =0)
+                    if(Pattern.matches(".*\\$", item)) {
+                        columnnumber = 0;
+                        rownumber = rownumber +1;
+                    }
 
-                                if(matcher.find())
-                                {
-                                    occurance = matcher.group("onumber");
-                                }
-
-                                System.out.println("Pattern bp o combile");
-                                System.out.println("Pattern split to numbers");
+                }
+                drawCells();
 
 
-                                int numbertimes = Integer.parseInt(occurance);
-                                System.out.println(numbertimes);
+            }
+            drawLines();
 
-                                for(int x = 0; x< numbertimes; x++) {
-
-                                    //        if( board[rownumber][columnnumber] == 1) gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
-                                    gc.setFill(Color.YELLOW);
-
-                                    gc.fillRect(cellSize* columnnumber + cellSize * x , cellSize * rownumber , cellSize - cellGap, cellSize- cellGap);
-                                    gc.fillRect(cellSize*columnnumber , cellSize*rownumber , cellSize - cellGap, cellSize- cellGap);
-
-                                }
-
-                            }
-                            else{
-                                System.out.println("draw for o");
-                                gc.setFill(Color.GREEN);
-                                gc.fillRect(cellSize*columnnumber , cellSize*rownumber , cellSize - cellGap, cellSize- cellGap);
-                            }
-
-                        }
-
-
-
-                    rownumber = rownumber + 1;
-                    System.out.println(item);
-
-
-                }}
-                } catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
