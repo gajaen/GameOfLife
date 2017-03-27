@@ -45,11 +45,18 @@ public class Controller {
 
 
     public void initialize() {
-        HEIGHT = (int) CanvasId.getHeight();
-        WIDTH = (int) CanvasId.getWidth();
+
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
+
+        //Variabler til spillbrettet
+        cellSize = 10;
+        cellGap = 1;
+        lineWidth = 0.4;
+
+        HEIGHT = ((int) CanvasId.getHeight());
+        WIDTH = ((int) CanvasId.getWidth());
 
         board = new int[HEIGHT][WIDTH];
         cleanBoard = new int[HEIGHT][WIDTH];
@@ -63,18 +70,9 @@ public class Controller {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-        //Variabler til spillbrettet
-        cellSize = 20;
-        cellGap = 1;
-        lineWidth = 0.3;
-
-        colorPickerClicked();
         drawCells();
         drawLines();
         Timeline();
-
-
-
     }
 
 
@@ -87,14 +85,13 @@ public class Controller {
 
             if (board[i][j] == 0) {
                 board[i][j] = 1;
-                System.out.println("Grid: " + j + ", " + i);
             }
         }
-        drawCells();
-        drawLines();
-
         oldJ = j;
         oldI = i;
+
+        drawCells();
+        drawLines();
 
 
     }
@@ -102,6 +99,8 @@ public class Controller {
 
     public void nextGeneration() {
         cleanBoard();
+        //System.out.println("Generation = " + gen);
+        gen++;
         int[][] nextBoard = new int[HEIGHT][WIDTH];
 
         for (int x = 1; x < HEIGHT - 1; x++) {
@@ -133,8 +132,6 @@ public class Controller {
 
 
     public void drawCells() {
-        //System.out.println("Generation = " + gen);
-        gen++;
 
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
@@ -144,15 +141,14 @@ public class Controller {
             for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] == 1) {
                     //System.out.println(board[i][j]);
-                    gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);
-                }
+                    gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);}
             }
         }
     }
 
     public void drawLines() {
         gc.setStroke(lineColor);
-        gc.setLineWidth(4);
+        gc.setLineWidth(5);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setLineWidth(lineWidth);
 
