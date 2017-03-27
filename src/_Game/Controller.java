@@ -19,12 +19,12 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Controller   {
+public class Controller {
     private Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, randomButton, clearButton;
-    public int cellSize, TIME, cellGap, HEIGHT, WIDTH;
+    public int cellSize, TIME, cellGap, HEIGHT, WIDTH, oldJ, oldI;
     public double lineWidth;
     public int[][] board, cleanBoard;
     public Color cellColor, lineColor, backgroundColor;
@@ -36,8 +36,7 @@ public class Controller   {
     public int FPS = 120;
 
 
-    public void cleanBoard()
-    {
+    public void cleanBoard() {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -45,10 +44,9 @@ public class Controller   {
     }
 
 
-    public void initialize()
-    {
-        HEIGHT = (int)CanvasId.getHeight();
-        WIDTH = (int)CanvasId.getWidth();
+    public void initialize() {
+        HEIGHT = (int) CanvasId.getHeight();
+        WIDTH = (int) CanvasId.getWidth();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -56,8 +54,8 @@ public class Controller   {
         board = new int[HEIGHT][WIDTH];
         cleanBoard = new int[HEIGHT][WIDTH];
 
-        System.out.println("CanvasHeight = " + (int)CanvasId.getHeight());
-        System.out.println("CanvasWidth = " + (int)CanvasId.getWidth());
+        System.out.println("CanvasHeight = " + (int) CanvasId.getHeight());
+        System.out.println("CanvasWidth = " + (int) CanvasId.getWidth());
         System.out.println("Current FPS = " + FPS);
 
         //FARGER
@@ -75,32 +73,34 @@ public class Controller   {
         drawLines();
         Timeline();
 
-    }
 
-
-   public  void CanvasPressed(MouseEvent a){
-
-       int j = ((int)a.getX()/cellSize) + 1;
-       int i = ((int)a.getY()/cellSize) + 1;
-
-       if (board[i][j] == 0){
-           board[i][j] = 1;
-           System.out.println("Levende");
-       }
-       else{
-           board[i][j] = 1;
-           System.out.println("Død");
-
-       }
-       drawCells();
-       drawLines();
 
     }
 
 
+    public void CanvasPressed(MouseEvent a) {
 
-    public void nextGeneration()
-    {
+        int j = ((int) a.getX() / cellSize) + 1;
+        int i = ((int) a.getY() / cellSize) + 1;
+
+        if( j != oldJ || i != oldI ) {
+
+            if (board[i][j] == 0) {
+                board[i][j] = 1;
+                System.out.println("Grid: " + j + ", " + i);
+            }
+        }
+        drawCells();
+        drawLines();
+
+        oldJ = j;
+        oldI = i;
+
+
+    }
+
+
+    public void nextGeneration() {
         cleanBoard();
         int[][] nextBoard = new int[HEIGHT][WIDTH];
 
@@ -117,8 +117,10 @@ public class Controller   {
 
                 cellNeighbors -= board[x][y];
                 if ((board[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
-                else if ((board[x][y] == 1) && (cellNeighbors > 3)) nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
-                else if ((board[x][y] == 0) && (cellNeighbors == 3)) nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
+                else if ((board[x][y] == 1) && (cellNeighbors > 3))
+                    nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
+                else if ((board[x][y] == 0) && (cellNeighbors == 3))
+                    nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
                 else nextBoard[x][y] = board[x][y];
             }
         }
@@ -130,9 +132,8 @@ public class Controller   {
     }
 
 
-    public void drawCells()
-    {
-        System.out.println("Generation = " + gen);
+    public void drawCells() {
+        //System.out.println("Generation = " + gen);
         gen++;
 
         cleanBoard();
@@ -141,16 +142,15 @@ public class Controller   {
 
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                if( board[i][j] == 1) {
+                if (board[i][j] == 1) {
                     //System.out.println(board[i][j]);
-                    gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize , cellSize - cellGap, cellSize - cellGap);
+                    gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);
                 }
             }
         }
     }
 
-    public void drawLines()
-    {
+    public void drawLines() {
         gc.setStroke(lineColor);
         gc.setLineWidth(4);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -169,9 +169,9 @@ public class Controller   {
         }
     }
 
-    public void Timeline(){
+    public void Timeline() {
         FPSClicked();
-        TIME = 1000/FPS;
+        TIME = 1000 / FPS;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             nextGeneration();
             timeline.playFromStart();
@@ -182,12 +182,11 @@ public class Controller   {
 
     //KNAPPER
     //**********************************************************************************
-    public void clickedRandomButton()
-    {
-       //Lager en ny random array for hver gang start er trykket.
-        for (int i = 0;i < HEIGHT;i++) {
-            for (int j = 0;j < WIDTH;j++) {
-                board[i][j] = (int)(Math.random()*2);
+    public void clickedRandomButton() {
+        //Lager en ny random array for hver gang start er trykket.
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                board[i][j] = (int) (Math.random() * 2);
             }
         }
         drawCells();
@@ -195,38 +194,39 @@ public class Controller   {
     }
 
 
-    public void clickedClearButton()
-    {
+    public void clickedClearButton() {
         gen = 0;
         timeline.stop();
         initialize();
 
     }
 
-    public void clickedStartButton()
-    {
+    public void clickedStartButton() {
         timeline.play();
 
     }
 
+    public void colorPickerClicked() {
+        Color color = colorPicker.getValue();
+        if (color != null) {
+            cellColor = colorPicker.getValue();
+        }
+    }
 
-    public void clickedStopButton()
-    {
+    public void clickedStopButton() {
         timeline.stop();
     }
 
-    public void FPSClicked()
-    {
-        FPS = (int)sliderFPS.getValue();
+    public void FPSClicked() {
+        FPS = (int) sliderFPS.getValue();
     }
-    public void CellSizeClicked()
-    {
-        cellSize = (int)cellSlider.getValue();
+
+    public void CellSizeClicked() {
+        cellSize = (int) cellSlider.getValue();
     }
     //***************************************
 
-    public void init(Stage primaryStage)
-    {
+    public void init(Stage primaryStage) {
 
         this.stage = stage;
 
@@ -251,8 +251,7 @@ public class Controller   {
         }
 
 
-
-        String  xPattern = ("x = (\\d+)");
+        String xPattern = ("x = (\\d+)");
         String yPattern = ("y = (\\d+)");
 
         initialize();
@@ -276,17 +275,16 @@ public class Controller   {
                 // split the line with $
                 Pattern p = Pattern.compile("(?<=\\$)");
 
-                String [] items = p.split(line);
+                String[] items = p.split(line);
 
-                for(String item: items) {
+                for (String item : items) {
 
 
                     // itemTmp = 2b3o1b2o$
                     String itemTmp = item;
 
                     // while itemTmp is a valid form
-                    while((! itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp) )
-                    {
+                    while ((!itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp)) {
 
 
                         // b pattern - eg. 34b --> cnumber will be 34
@@ -297,28 +295,26 @@ public class Controller   {
                         Pattern onumber = Pattern.compile("^(?<onumber>\\d*?)o");
                         Matcher omatcher = onumber.matcher(itemTmp);
 
-                        if(bmatcher.find()) {
+                        if (bmatcher.find()) {
                             String bNumString = bmatcher.group("cnumber");
                             int bNumInt = 1;
-                            if(! bNumString.isEmpty()) {
+                            if (!bNumString.isEmpty()) {
 
                                 bNumInt = Integer.parseInt(bNumString);
                             }
                             columnnumber = columnnumber + bNumInt;
                             itemTmp = itemTmp.replaceFirst("^\\d*?b", "");
-                        }
-
-                        else if (omatcher.find()) {
+                        } else if (omatcher.find()) {
                             String oNumString = omatcher.group("onumber");
 
                             int oNumInt = 1;
-                            if(! oNumString.isEmpty()) {
+                            if (!oNumString.isEmpty()) {
 
                                 oNumInt = Integer.parseInt(oNumString);
                             }
 
-                            for(int cnum = 1; cnum <= oNumInt; cnum++) {
-                                board[rownumber][columnnumber+ cnum] = 1;
+                            for (int cnum = 1; cnum <= oNumInt; cnum++) {
+                                board[rownumber][columnnumber + cnum] = 1;
                                 //columnnumber = columnnumber +1;
                             }
                             columnnumber = columnnumber + oNumInt;
@@ -328,9 +324,9 @@ public class Controller   {
                     }
 
                     //if $ ONLY move to next row (row = row + 1 and column =0)
-                    if(Pattern.matches(".*\\$", item)) {
+                    if (Pattern.matches(".*\\$", item)) {
                         columnnumber = 0;
-                        rownumber = rownumber +1;
+                        rownumber = rownumber + 1;
                     }
 
                 }
@@ -347,25 +343,10 @@ public class Controller   {
 
     }
 
-    public void closeWindow()
-    {
+    public void closeWindow() {
         Platform.exit();
     }
-
-    public void colorPickerClicked()
-    {
-        Color color = colorPicker.getValue();
-        if(color!=null)
-        {
-            cellColor = colorPicker.getValue();
-        }
-
-
-
-        }
-
-
-
-
-
 }
+
+
+
