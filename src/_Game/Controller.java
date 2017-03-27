@@ -26,7 +26,7 @@ public class Controller   {
     public Button startButton, stopButton, randomButton, clearButton;
     public int cellSize, TIME, cellGap, HEIGHT, WIDTH;
     public double lineWidth;
-    public int[][] board, cleanBoard, currentMove;
+    public int[][] board, cleanBoard;
     public Color cellColor, lineColor, backgroundColor;
     public Slider cellSlider, sliderFPS;
     public Timeline timeline;
@@ -78,17 +78,24 @@ public class Controller   {
     }
 
 
-   public  void CanvasPressed(MouseEvent e){
+   public  void CanvasPressed(MouseEvent a){
 
-       int j = ((int)e.getX()/cellSize)*cellSize;
-       int i = ((int)e.getY()/cellSize)*cellSize;
+       int j = ((int)a.getX()/cellSize) + 1;
+       int i = ((int)a.getY()/cellSize) + 1;
 
-       gc.setFill(cellColor);
-       gc.fillRect(j,i,cellSize - cellGap,cellSize - cellGap);
+       if (board[i][j] == 0){
+           board[i][j] = 1;
+           System.out.println("Levende");
+       }
+       else{
+           board[i][j] = 1;
+           System.out.println("Død");
+
+       }
+       drawCells();
+       drawLines();
 
     }
-
-
 
 
 
@@ -121,6 +128,7 @@ public class Controller   {
         drawLines();
         Timeline();
     }
+
 
     public void drawCells()
     {
@@ -176,7 +184,7 @@ public class Controller   {
     //**********************************************************************************
     public void clickedRandomButton()
     {
-        //Lager en ny random array for hver gang start er trykket.
+       //Lager en ny random array for hver gang start er trykket.
         for (int i = 0;i < HEIGHT;i++) {
             for (int j = 0;j < WIDTH;j++) {
                 board[i][j] = (int)(Math.random()*2);
@@ -185,6 +193,7 @@ public class Controller   {
         drawCells();
         drawLines();
     }
+
 
     public void clickedClearButton()
     {
