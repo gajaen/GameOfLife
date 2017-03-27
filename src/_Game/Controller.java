@@ -12,7 +12,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
-import javafx.event.EventHandler;
 import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class Controller   {
     public Button startButton, stopButton, randomButton, clearButton;
     public int cellSize, TIME, cellGap, HEIGHT, WIDTH;
     public double lineWidth;
-    public int[][] board, cleanBoard;
+    public int[][] board, cleanBoard, currentMove;
     public Color cellColor, lineColor, backgroundColor;
     public Slider cellSlider, sliderFPS;
     public Timeline timeline;
@@ -79,10 +78,19 @@ public class Controller   {
     }
 
 
-    public  void CanvasPressed(MouseEvent e){
-        gc.setFill(cellColor);
-        gc.fillRect(e.getX(), e.getY(), cellSize, cellSize);
+   public  void CanvasPressed(MouseEvent e){
+
+       int j = ((int)e.getX()/cellSize)*cellSize;
+       int i = ((int)e.getY()/cellSize)*cellSize;
+
+       gc.setFill(cellColor);
+       gc.fillRect(j,i,cellSize - cellGap,cellSize - cellGap);
+
     }
+
+
+
+
 
     public void nextGeneration()
     {
