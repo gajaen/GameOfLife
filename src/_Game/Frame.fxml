@@ -99,7 +99,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Slider>
-                  <Slider fx:id="sliderFPS" blockIncrement="30.0" majorTickUnit="30.0" max="120.0" min="2.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Slider fx:id="sliderFPS" blockIncrement="30.0" majorTickUnit="30.0" max="240.0" min="10.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -114,6 +114,6 @@
       </HBox>
    </bottom>
    <center>
-        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" width="1224.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" width="1224.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

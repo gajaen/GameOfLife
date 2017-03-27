@@ -11,6 +11,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.input.MouseEvent;
+import javafx.event.EventHandler;
 import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
@@ -77,7 +79,12 @@ public class Controller   {
     }
 
 
-    public  void nextGeneration()
+    public  void CanvasPressed(MouseEvent e){
+        gc.setFill(cellColor);
+        gc.fillRect(e.getX(), e.getY(), cellSize, cellSize);
+    }
+
+    public void nextGeneration()
     {
         cleanBoard();
         int[][] nextBoard = new int[HEIGHT][WIDTH];
@@ -120,7 +127,7 @@ public class Controller   {
             for (int j = 0; j < WIDTH; j++) {
                 if( board[i][j] == 1) {
                     //System.out.println(board[i][j]);
-                    gc.fillRect(cellSize * j , cellSize * i , cellSize - cellGap, cellSize - cellGap);
+                    gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize , cellSize - cellGap, cellSize - cellGap);
                 }
             }
         }
@@ -132,6 +139,7 @@ public class Controller   {
         gc.setLineWidth(4);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setLineWidth(lineWidth);
+
         int a = cellSize;
         int b = cellSize;
 
@@ -180,7 +188,6 @@ public class Controller   {
 
     public void clickedStartButton()
     {
-        clickedRandomButton();
         timeline.play();
 
     }
