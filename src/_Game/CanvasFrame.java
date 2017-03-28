@@ -1,37 +1,22 @@
 package _Game;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class CanvasFrame extends GameOfLife {
 
     private Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
-    public Button startButton, stopButton, randomButton, clearButton;
-    public int cellSize, TIME, cellGap, HEIGHT, WIDTH, oldJ, oldI;
+    public int cellSize, cellGap, HEIGHT, WIDTH, oldJ, oldI;
     public double lineWidth;
-    public int[][] board, cleanBoard;
+    public int[][] board;
     public Color cellColor, lineColor, backgroundColor;
-    public Slider cellSlider, sliderFPS;
-    public Timeline timeline;
-    public ColorPicker colorPicker;
+
 
     public int gen = 0;
     public int FPS = 120;

@@ -2,26 +2,19 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 
 public class GameOfLife {
-    private Stage stage;
+    public Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
     public Button startButton, stopButton, randomButton, clearButton;
@@ -62,17 +55,20 @@ public class GameOfLife {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-        drawCells();
-        drawLines();
+        CanvasFrame drawCell = new CanvasFrame();
+
+        drawCell.drawCells();
+        drawCell.drawLines();
         Timeline();
     }
 
 
     public void Timeline() {
-        FPSClicked();
         TIME = 1000 / FPS;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            nextGeneration();
+            CanvasFrame drawCell = new CanvasFrame();
+
+            drawCell.nextGeneration();
             timeline.playFromStart();
 
         }));

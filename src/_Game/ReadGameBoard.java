@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ReadGameBoard extends GUI{
+public class ReadGameBoard extends GameOfLife{
 
     public void init(Stage primaryStage) {
 
@@ -41,8 +41,9 @@ public class ReadGameBoard extends GUI{
 
         GameOfLife init = new GameOfLife();
         init.initialize();
-        init.cleanBoard();
-        init.drawLines();
+        CanvasFrame drawCell = new CanvasFrame();
+        drawCell.drawLines();
+        drawCell.cleanBoard();
 
         int rownumber = 5;
         int columnnumber = 0;
@@ -123,13 +124,13 @@ public class ReadGameBoard extends GUI{
 
 
                 }
-                drawCells();
+                drawCell.drawCells();
 
 
             }
 
 
-            drawLines();
+            drawCell.drawLines();
 
         } catch (IOException e) {
             e.printStackTrace();
