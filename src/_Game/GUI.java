@@ -1,6 +1,5 @@
 package _Game;
 
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -13,14 +12,8 @@ import javafx.scene.paint.Color;
 public class GUI extends GameOfLife{
     public Canvas CanvasId;
     public Button startButton, stopButton, randomButton, clearButton;
-    public int[][] board;
-    public Color cellColor;
     public Slider cellSlider, sliderFPS;
-    public Timeline timeline;
     public ColorPicker colorPicker;
-
-    public int gen = 0;
-    public int FPS = 120;
 
 
     public void clickedRandomButton() {

@@ -2,36 +2,24 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 
 public class GameOfLife {
-    private Stage stage;
+    public Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
-    public Button startButton, stopButton, randomButton, clearButton;
     public int cellSize, TIME, cellGap, HEIGHT, WIDTH, oldJ, oldI;
     public double lineWidth;
     public int[][] board, cleanBoard;
     public Color cellColor, lineColor, backgroundColor;
-    public Slider cellSlider, sliderFPS;
     public Timeline timeline;
-    public ColorPicker colorPicker;
 
     public int gen = 0;
     public int FPS = 120;
@@ -174,60 +162,6 @@ public class GameOfLife {
         }));
 
     }
-
-    //KNAPPER
-    //**********************************************************************************
-    public void clickedRandomButton() {
-        //Lager en ny random array for hver gang start er trykket.
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                board[i][j] = (int) (Math.random() * 2);
-            }
-        }
-        drawCells();
-        drawLines();
-    }
-
-
-    public void clickedClearButton() {
-        gen = 0;
-        timeline.stop();
-        initialize();
-
-    }
-
-    public void clickedStartButton() {
-        timeline.play();
-
-    }
-
-    public void colorPickerClicked() {
-        Color color = colorPicker.getValue();
-        if (color != null) {
-            cellColor = colorPicker.getValue();
-        }
-    }
-
-    public void clickedStopButton() {
-        timeline.stop();
-    }
-
-    public void FPSClicked() {
-        FPS = (int) sliderFPS.getValue();
-    }
-
-    public void CellSizeClicked() {
-        cellSize = (int) cellSlider.getValue();
-    }
-
-
-
-
-
-    public void closeWindow() {
-        Platform.exit();
-    }
-}
 
 
 

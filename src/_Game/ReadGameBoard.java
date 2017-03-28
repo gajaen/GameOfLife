@@ -8,7 +8,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ReadGameBoard extends GameOfLife{
+
+public class ReadGameBoard extends GUI{
 
     public void init(Stage primaryStage) {
 
@@ -35,8 +36,8 @@ public class ReadGameBoard extends GameOfLife{
         }
 
 
-        String xPattern = ("x = (\\d+)");
-        String yPattern = ("y = (\\d+)");
+       // String xPattern = ("x = (\\d+)");
+        // String yPattern = ("y = (\\d+)");
 
         GameOfLife init = new GameOfLife();
         init.initialize();
