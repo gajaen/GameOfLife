@@ -19,8 +19,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class CanvasFrame extends GameOfLife {
+
     private Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
@@ -43,8 +43,6 @@ public class CanvasFrame extends GameOfLife {
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
     }
-
-
 
     public void CanvasPressed(MouseEvent a) {
 
@@ -132,9 +130,7 @@ public class CanvasFrame extends GameOfLife {
             gc.strokeLine(b, 0, b, CanvasId.getHeight());
             b += cellSize;
         }
-    }
-
-
+}
 }
 
 
