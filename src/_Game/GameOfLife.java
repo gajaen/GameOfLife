@@ -49,12 +49,14 @@ public class GameOfLife {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-        CanvasFrame drawCell = new CanvasFrame();
+      //  CanvasFrame drawCell = new CanvasFrame();
 
-        drawCell.drawCells();
-        drawCell.drawLines();
+    /*   drawCell.drawCells();
+//        drawCell.drawLines();*/
         Timeline();
     }
+
+
 
 
     public void Timeline() {

@@ -1,5 +1,6 @@
 package _Game;
 
+import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
@@ -17,7 +18,7 @@ public class ReadGameBoard extends GUI{
 
     }
 
-
+@FXML
     public void openFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open GOL Shape");
@@ -43,7 +44,7 @@ public class ReadGameBoard extends GUI{
         init.initialize();
         CanvasFrame drawCell = new CanvasFrame();
         drawCell.drawLines();
-        drawCell.cleanBoard();
+     //   drawCell.cleanBoard();
 
         int rownumber = 5;
         int columnnumber = 0;
@@ -124,7 +125,7 @@ public class ReadGameBoard extends GUI{
 
 
                 }
-                drawCell.drawCells();
+      //          drawCell.drawCells();
 
 
             }
