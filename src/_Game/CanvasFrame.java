@@ -4,12 +4,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 
-public class CanvasFrame extends GameOfLife {
+public class CanvasFrame extends ReadGameBoard {
 
-    private Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
     public int cellSize, cellGap, HEIGHT, WIDTH, oldJ, oldI;
@@ -19,7 +17,6 @@ public class CanvasFrame extends GameOfLife {
 
 
     public int gen = 0;
-    public int FPS = 120;
 
 
     public void cleanBoard() {
