@@ -140,7 +140,6 @@ public class Controller {
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] == 1) {
-                    //System.out.println(board[i][j]);
                     gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);}
             }
         }
@@ -254,7 +253,7 @@ public class Controller {
         cleanBoard();
         drawLines();
 
-        int rownumber = 0;
+        int rownumber = 5;
         int columnnumber = 0;
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
@@ -310,7 +309,8 @@ public class Controller {
                             }
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
-                                board[rownumber][columnnumber + cnum] = 1;
+                                board[rownumber + cellSize][columnnumber + cnum + cellSize] = 1;
+
                                 //columnnumber = columnnumber +1;
                             }
                             columnnumber = columnnumber + oNumInt;
@@ -324,6 +324,7 @@ public class Controller {
                         columnnumber = 0;
                         rownumber = rownumber + 1;
                     }
+
 
                 }
                 drawCells();
