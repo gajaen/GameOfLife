@@ -45,44 +45,13 @@ public class CanvasFrame extends GameOfLife {
     }
 
 
-    public void initialize() {
-
-        gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(backgroundColor);
-        gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-
-        //Variabler til spillbrettet
-        cellSize = 10;
-        cellGap = 1;
-        lineWidth = 0.4;
-
-        HEIGHT = ((int) CanvasId.getHeight());
-        WIDTH = ((int) CanvasId.getWidth());
-
-        board = new int[HEIGHT][WIDTH];
-        cleanBoard = new int[HEIGHT][WIDTH];
-
-        System.out.println("CanvasHeight = " + (int) CanvasId.getHeight());
-        System.out.println("CanvasWidth = " + (int) CanvasId.getWidth());
-        System.out.println("Current FPS = " + FPS);
-
-        //FARGER
-        cellColor = Color.ALICEBLUE;
-        lineColor = Color.BLACK;
-        backgroundColor = Color.GREY;
-
-        drawCells();
-        drawLines();
-        Timeline();
-    }
-
 
     public void CanvasPressed(MouseEvent a) {
 
         int j = ((int) a.getX() / cellSize) + 1;
         int i = ((int) a.getY() / cellSize) + 1;
 
-        if( j != oldJ || i != oldI ) {
+        if (j != oldJ || i != oldI) {
 
             if (board[i][j] == 0) {
                 board[i][j] = 1;
@@ -140,7 +109,8 @@ public class CanvasFrame extends GameOfLife {
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] == 1) {
-                    gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);}
+                    gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);
+                }
             }
         }
     }
@@ -164,70 +134,7 @@ public class CanvasFrame extends GameOfLife {
         }
     }
 
-    public void Timeline() {
-        FPSClicked();
-        TIME = 1000 / FPS;
-        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            nextGeneration();
-            timeline.playFromStart();
 
-        }));
-
-    }
-
-    //KNAPPER
-    //**********************************************************************************
-    public void clickedRandomButton() {
-        //Lager en ny random array for hver gang start er trykket.
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                board[i][j] = (int) (Math.random() * 2);
-            }
-        }
-        drawCells();
-        drawLines();
-    }
-
-
-    public void clickedClearButton() {
-        gen = 0;
-        timeline.stop();
-        initialize();
-
-    }
-
-    public void clickedStartButton() {
-        timeline.play();
-
-    }
-
-    public void colorPickerClicked() {
-        Color color = colorPicker.getValue();
-        if (color != null) {
-            cellColor = colorPicker.getValue();
-        }
-    }
-
-    public void clickedStopButton() {
-        timeline.stop();
-    }
-
-    public void FPSClicked() {
-        FPS = (int) sliderFPS.getValue();
-    }
-
-    public void CellSizeClicked() {
-        cellSize = (int) cellSlider.getValue();
-    }
-
-
-
-
-
-    public void closeWindow() {
-        Platform.exit();
-    }
 }
-
 
 
