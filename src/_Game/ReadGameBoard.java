@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ReadGameBoard extends GameOfLife{
+public class ReadGameBoard extends GUI{
 
     public void init(Stage primaryStage) {
 
