@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 
@@ -13,6 +14,7 @@ public class GUI extends GameOfLife{
     public Canvas CanvasId;
     public Button startButton, stopButton, randomButton, clearButton;
     public Slider cellSlider, sliderFPS;
+    public int cellSize, HEIGHT, WIDTH, oldJ, oldI;
     public ColorPicker colorPicker;
 
 
@@ -64,6 +66,26 @@ public class GUI extends GameOfLife{
 
     public void closeWindow() {
         Platform.exit();
+    }
+    public void CanvasPressed(MouseEvent a) {
+
+        int j = ((int) a.getX() / cellSize) + 1;
+        int i = ((int) a.getY() / cellSize) + 1;
+
+        if (j != oldJ || i != oldI) {
+
+            if (board[i][j] == 0) {
+                board[i][j] = 1;
+            }
+        }
+        oldJ = j;
+        oldI = i;
+
+        CanvasFrame drawCell = new CanvasFrame();
+
+        drawCell.drawCells();
+        drawCell.drawCells();
+
     }
 }
 

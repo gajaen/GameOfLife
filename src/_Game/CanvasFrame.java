@@ -6,7 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 
-public class CanvasFrame extends ReadGameBoard {
+public class CanvasFrame extends GameOfLife {
 
     public Canvas CanvasId;
     public GraphicsContext gc;
@@ -26,24 +26,7 @@ public class CanvasFrame extends ReadGameBoard {
 
     }
 
-    public void CanvasPressed(MouseEvent a) {
 
-        int j = ((int) a.getX() / cellSize) + 1;
-        int i = ((int) a.getY() / cellSize) + 1;
-
-        if (j != oldJ || i != oldI) {
-
-            if (board[i][j] == 0) {
-                board[i][j] = 1;
-            }
-        }
-        oldJ = j;
-        oldI = i;
-
-        drawCells();
-        drawLines();
-
-    }
 
 
     public void nextGeneration() {
