@@ -19,18 +19,18 @@ public class CanvasFrame extends GameOfLife {
     public int gen = 0;
 
 
-  /*  public void cleanBoard() {
+    public void cleanBoard() {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setFill(backgroundColor);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
-    }*/
+    }
 
 
 
 
     public void nextGeneration() {
-       // cleanBoard();
+        cleanBoard();
         //System.out.println("Generation = " + gen);
         gen++;
         int[][] nextBoard = new int[HEIGHT][WIDTH];
@@ -57,13 +57,13 @@ public class CanvasFrame extends GameOfLife {
         }
         board = nextBoard;
 
-   /*     drawCells();
-        drawLines();*/
+        drawCells();
+        drawLines();
         Timeline();
     }
 
 
- /*   public void drawCells() {
+    public void drawCells() {
 
         cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
@@ -76,7 +76,7 @@ public class CanvasFrame extends GameOfLife {
                 }
             }
         }
-    }*/
+    }
 
     public void drawLines() {
         gc.setStroke(lineColor);

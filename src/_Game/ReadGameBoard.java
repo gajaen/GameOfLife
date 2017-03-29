@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class ReadGameBoard extends GUI{
 
-    public void init(Stage primaryStage) {
+    public void init(Stage primaryStage) throws Exception {
 
         this.stage = stage;
 
@@ -40,11 +40,10 @@ public class ReadGameBoard extends GUI{
        // String xPattern = ("x = (\\d+)");
         // String yPattern = ("y = (\\d+)");
 
-        GameOfLife init = new GameOfLife();
-        init.initialize();
+        initialize();
         CanvasFrame drawCell = new CanvasFrame();
         drawCell.drawLines();
-     //   drawCell.cleanBoard();
+        drawCell.cleanBoard();
 
         int rownumber = 5;
         int columnnumber = 0;
@@ -125,7 +124,8 @@ public class ReadGameBoard extends GUI{
 
 
                 }
-      //          drawCell.drawCells();
+
+                drawCell.drawCells();
 
 
             }

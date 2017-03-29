@@ -25,11 +25,11 @@ public class GUI extends GameOfLife{
                 board[i][j] = (int) (Math.random() * 2);
             }
         }
- //       CanvasFrame drawCell = new CanvasFrame();
-/*
+        CanvasFrame drawCell = new CanvasFrame();
+
         drawCell.drawCells();
         drawCell.drawCells();
-    */
+
     }
 
 
@@ -41,6 +41,7 @@ public class GUI extends GameOfLife{
     }
 
     public void clickedStartButton() {
+
         timeline.play();
 
     }
@@ -83,12 +84,12 @@ public class GUI extends GameOfLife{
         oldI = i;
 
         CanvasFrame drawCell = new CanvasFrame();
-        /*
+
 
 
         drawCell.drawCells();
         drawCell.drawCells();
-*/
+
     }
 }
 

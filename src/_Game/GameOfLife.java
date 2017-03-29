@@ -2,15 +2,18 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class GameOfLife {
+public class GameOfLife implements Initializable{
     public Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
@@ -22,6 +25,7 @@ public class GameOfLife {
 
     public int gen = 0;
     public int FPS = 120;
+
 
     public void initialize() {
 
@@ -49,10 +53,10 @@ public class GameOfLife {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-      //  CanvasFrame drawCell = new CanvasFrame();
+        CanvasFrame drawCell = new CanvasFrame();
 
-    /*   drawCell.drawCells();
-//        drawCell.drawLines();*/
+        drawCell.drawCells();
+        drawCell.drawLines();
         Timeline();
     }
 
@@ -71,6 +75,10 @@ public class GameOfLife {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
 
 

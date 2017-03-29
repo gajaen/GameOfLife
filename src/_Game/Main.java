@@ -19,7 +19,7 @@ public class Main extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("GameOfLife");
-        primaryStage.setScene(new Scene(root, 1280, 800));
+        primaryStage.setScene(new Scene(root, 1280, 900));
         primaryStage.show();
 
     }
