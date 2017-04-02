@@ -55,6 +55,8 @@ public class CanvasFrame  {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
+        drawLines();
+
 
     }
 

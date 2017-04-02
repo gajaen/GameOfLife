@@ -113,7 +113,6 @@ public class ReadGameBoard extends GUI  {
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
                              //   canvasFrame.getBoard([rownumber + 5 ][columnnumber + cnum + 4]); = 1;
-
 //                                 canvasFrame.setOpenBoard(rownumber,columnnumber,cnum);
                                 //columnnumber = columnnumber +1;
                             }

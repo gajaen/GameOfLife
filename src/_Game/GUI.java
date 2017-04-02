@@ -65,6 +65,8 @@ public class GUI implements Initializable {
 
     public void clickedClearButton() {
         timeline.stop();
+        canvasFrame.cleanBoard();
+
     }
 
 
@@ -132,8 +134,7 @@ public class GUI implements Initializable {
         //canvasFrame.setBoard(board);
         canvasFrame.setCellColor(Color.WHITE);
         canvasFrame.drawCells();
-        canvasFrame.drawLines();
-
+        Timeline();
 
     }
 
