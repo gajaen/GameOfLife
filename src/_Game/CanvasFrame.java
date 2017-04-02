@@ -58,6 +58,7 @@ public class CanvasFrame  {
         }
        //Kode som får cleanArray til å bli board, samme prinsipp som nextBoard
         clearCanvas();
+        drawLines();
         drawCells();
     }
 

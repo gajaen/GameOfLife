@@ -34,9 +34,7 @@ public class GUI implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         canvasFrame = new CanvasFrame(this.CanvasId);
-
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
@@ -131,7 +129,9 @@ public class GUI implements Initializable {
 
         //canvasFrame.setBoard(board);
         canvasFrame.setCellColor(Color.WHITE);
+        canvasFrame.clearCanvas();
         canvasFrame.drawCells();
+        canvasFrame.drawLines();
         Timeline();
 
     }
