@@ -2,35 +2,32 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-
-public class GameOfLife implements Initializable{
+public class GameOfLife {
     public Stage stage;
     public Canvas CanvasId;
     public GraphicsContext gc;
     public int cellSize, TIME, cellGap, HEIGHT, WIDTH;
     public double lineWidth;
     public int[][] board, cleanBoard;
-    public Color cellColor, lineColor, backgroundColor;
+    public Color cellColor;
+    public Color lineColor;
+    private Color backgroundColor;
     public Timeline timeline;
 
     public int gen = 0;
     public int FPS = 120;
 
-
     public void initialize() {
 
         gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(backgroundColor);
+        gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
 
         //Variabler til spillbrettet
@@ -51,12 +48,12 @@ public class GameOfLife implements Initializable{
         //FARGER
         cellColor = Color.ALICEBLUE;
         lineColor = Color.BLACK;
-        backgroundColor = Color.GREY;
+        setBackgroundColor(Color.GREY);
 
-        CanvasFrame drawCell = new CanvasFrame();
+     //   CanvasFrame drawCell = new CanvasFrame();
 
-        drawCell.drawCells();
-        drawCell.drawLines();
+       // drawCell.drawCells();
+       // drawCell.drawLines();
         Timeline();
     }
 
@@ -66,18 +63,21 @@ public class GameOfLife implements Initializable{
     public void Timeline() {
         TIME = 1000 / FPS;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            CanvasFrame drawCell = new CanvasFrame();
+       //     CanvasFrame drawCell = new CanvasFrame();
 
-            drawCell.nextGeneration();
+     //       drawCell.nextGeneration();
             timeline.playFromStart();
 
         }));
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public Color getBackgroundColor() {
+        return backgroundColor;
+    }
 
+    public void setBackgroundColor(Color backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 }
 

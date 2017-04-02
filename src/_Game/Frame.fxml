@@ -23,7 +23,7 @@
             <menus>
                 <Menu text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open">
+                      <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open">
                             <accelerator>
                                 <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                             </accelerator>
