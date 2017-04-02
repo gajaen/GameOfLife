@@ -17,7 +17,7 @@ public class CanvasFrame  {
     private int HEIGHT;
     private int WIDTH;
     private double lineWidth;
-    private int[][] board;
+    private int[][] board, cleanArray;
     private Color cellColor;
     private Color lineColor;
     private Color backgroundColor;
@@ -50,13 +50,23 @@ public class CanvasFrame  {
 
     }
 
+    public void cleanArray() {
+        for (int i = 0; i < getHEIGHT(); i++) {
+            for (int j = 0; j < getWIDTH(); j++) {
+                cleanArray[i][j] = 1;
+            }
+        }
+       //Kode som får cleanArray til å bli board, samme prinsipp som nextBoard
+
+
+    }
+
 
     public void cleanBoard() {
         gc.clearRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         drawLines();
-
 
     }
 

@@ -66,8 +66,7 @@ public class GUI implements Initializable {
 
     public void clickedClearButton() {
         timeline.stop();
-        canvasFrame.cleanBoard();
-
+        canvasFrame.cleanArray();
     }
 
 
