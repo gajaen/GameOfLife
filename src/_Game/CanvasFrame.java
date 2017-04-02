@@ -34,7 +34,7 @@ public class CanvasFrame  {
 
         setCellSize(10);
         setCellGap(1);
-        lineWidth = 0.4;
+        lineWidth = 0.3;
         // (Color.GREY);
 
         setBackgroundColor(Color.GREY);

@@ -35,6 +35,7 @@ public class GUI implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         canvasFrame = new CanvasFrame(this.CanvasId);
+        colorPickerClicked();
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
@@ -52,7 +53,7 @@ public class GUI implements Initializable {
         }
         CanvasFrame drawCell = new CanvasFrame(CanvasId);
 
-        canvasFrame.setCellColor(Color.WHITE);
+
         canvasFrame.drawCells();
         canvasFrame.drawLines();
 
@@ -119,7 +120,6 @@ public class GUI implements Initializable {
 
             canvasFrame.setBoardXY(i,j);
 
-
         }
         oldJ = j;
         oldI = i;
@@ -128,7 +128,6 @@ public class GUI implements Initializable {
         System.out.println(j);
 
         //canvasFrame.setBoard(board);
-        canvasFrame.setCellColor(Color.WHITE);
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
