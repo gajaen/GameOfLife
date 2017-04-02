@@ -37,6 +37,7 @@ public class GUI implements Initializable {
 
         canvasFrame = new CanvasFrame(this.CanvasId);
 
+        canvasFrame.cleanBoard();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
         oldI = 0;
@@ -73,8 +74,6 @@ public class GUI implements Initializable {
     public void clickedStartButton() {
 
         timeline.playFromStart();
-
-
     }
 
     public void colorPickerClicked() {
