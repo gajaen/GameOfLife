@@ -37,7 +37,7 @@ public class GUI implements Initializable {
 
         canvasFrame = new CanvasFrame(this.CanvasId);
 
-        canvasFrame.cleanBoard();
+        canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
         oldI = 0;
