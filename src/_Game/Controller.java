@@ -54,7 +54,8 @@ public class Controller implements Initializable{
         }));
     }
 
-    public void FPSClicked() {
+    public void FPSClicked()
+    {
         FPS = (int) sliderFPS.getValue();
     }
 
