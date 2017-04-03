@@ -2,6 +2,14 @@ package _Game;
 
 
 public class Board {
+
+
+    public Board() {
+
+
+
+    }
+
     public int[][] board;
 
 
@@ -73,6 +81,15 @@ public class Board {
 
 
     }
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
 
 
 }

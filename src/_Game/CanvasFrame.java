@@ -52,23 +52,6 @@ public class CanvasFrame  {
 
 
 
-
-    public void drawCells() {
-
-        //cleanBoard();
-        gc = CanvasId.getGraphicsContext2D();
-        gc.setFill(getCellColor());
-
-
-        for (int i = 0; i < getHEIGHT(); i++) {
-            for (int j = 0; j < getWIDTH(); j++) {
-                if (getBoard()[i][j] == 1) {
-                    gc.fillRect(getCellSize() * j - getCellSize(), getCellSize() * i - getCellSize(), getCellSize() - getCellGap(), getCellSize() - getCellGap());
-                }
-            }
-        }
-    }
-
     public void drawLines() {
 
         gc.setStroke(lineColor);
@@ -90,13 +73,7 @@ public class CanvasFrame  {
 }
 
 
-    public int[][] getBoard() {
-        return board;
-    }
 
-    public void setBoard(int[][] board) {
-        this.board = board;
-    }
 
 
     public int getHEIGHT() {
