@@ -33,7 +33,7 @@ public class GUI{
     private Cell cell;
     private Board board;
 
-    public void clickedRandomButton() {
+    public void RandomButton() {
         //Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < canvasFrame.getHEIGHT(); i++) {
             for (int j = 0; j < canvasFrame.getWIDTH(); j++) {
@@ -48,32 +48,29 @@ public class GUI{
     }
 
 
-    public void clickedClearButton() {
+    public void ClearButton() {
         timeline.stop();
         board.cleanArray();
     }
 
 
-    public void clickedStartButton() {
+    public void StartButton() {
         timeline.playFromStart();
 
     }
 
-    public void colorPickerClicked() {
+    public void ColorPicker() {
         Color color = colorPicker.getValue();
         if (color != null) {
             cell.setCellColor(colorPicker.getValue());
         }
     }
 
-    public void clickedStopButton() {
-
+    public void StopButton() {
         timeline.stop();
-
-
     }
 
-    public void FPSClicked()
+    public void FPS()
     {
     //    FPS = (int) sliderFPS.getValue();
     }

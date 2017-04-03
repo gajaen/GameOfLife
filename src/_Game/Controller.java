@@ -51,14 +51,27 @@ public class Controller implements Initializable{
     }
 
     public void clickedStartButton(){
-        gui.clickedStartButton();
-
+        gui.StartButton();
     }
 
+    public void clickedClearButton(){
+        gui.ClearButton();
+    }
 
+    public void clickedRandomButton() {
+        gui.RandomButton();
+    }
 
+    public void colorPickerClicked(){
+        gui.ColorPicker();
+    }
 
+    public void clickedStopButton(){
+        gui.StopButton();
+    }
 
-
+    public void FPSClicked(){
+        gui.FPS();
+    }
 }
 
