@@ -142,9 +142,12 @@ public class ReadGameBoard extends GUI {
 
             }
 
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
 
     }
 

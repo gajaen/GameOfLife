@@ -2,8 +2,6 @@ package _Game;
 
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
@@ -13,18 +11,14 @@ import javafx.stage.Stage;
 
 
 public class GUI{
-    public Canvas CanvasId;
-    public Button startButton, stopButton, randomButton, clearButton;
-    public Slider cellSlider, sliderFPS;
-//    public int cellSize, HEIGHT, WIDTH, oldJ, oldI;
+    public Slider cellSlider;
     private int oldJ, oldI;
     public ColorPicker colorPicker;
-    private Timeline timeline;
-    private CanvasFrame canvasFrame;
-    int TIME;
-    private Stage stage;
-    private Cell cell;
-    private Board board;
+    public Timeline timeline;
+    public CanvasFrame canvasFrame;
+    public Stage stage;
+    public Cell cell;
+    public Board board;
 
     public void RandomButton() {
         //Lager en ny random array for hver gang start er trykket.
@@ -33,11 +27,9 @@ public class GUI{
                 board.setBoardRandom(i,j);
             }
         }
-        CanvasFrame drawCell = new CanvasFrame(CanvasId);
 
         canvasFrame.drawCells();
         canvasFrame.drawLines();
-
     }
 
 
@@ -65,7 +57,7 @@ public class GUI{
 
     public void FPS()
     {
-    //    FPS = (int) sliderFPS.getValue();
+        // FPS = (int) sliderFPS.getValue();
     }
 
 
@@ -102,8 +94,6 @@ public class GUI{
     public void closeWindow() {
         Platform.exit();
     }
-
-
 
 
     public Stage getStage() {

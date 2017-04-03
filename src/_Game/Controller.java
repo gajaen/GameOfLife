@@ -83,11 +83,18 @@ public class Controller implements Initializable{
         gui.CanvasPressed(a);
     }
 
-    public void openFile(){
-        readGameBoard.openfile();
+    public void openFile() throws IOException {
+        readGameBoard.openFile();
     }
 
     public void closeWindow(){
+    }
+
+    public void getStage(){
+        getStage();
+    }
+    public void setStage(){
+        setStage();
     }
 
 
