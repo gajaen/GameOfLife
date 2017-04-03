@@ -42,7 +42,6 @@ public class Controller implements Initializable{
         oldI = 0;
         oldJ = 0;
         Timeline();
-
     }
 
     public void Timeline() {
@@ -52,6 +51,11 @@ public class Controller implements Initializable{
             timeline.playFromStart();
 
         }));
+    }
+
+    public void clickedStartButton(){
+        GUI.clickedStartButton();
+
     }
 
 

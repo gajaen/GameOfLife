@@ -55,7 +55,6 @@ public class GUI{
 
 
     public void clickedStartButton() {
-
         timeline.playFromStart();
 
     }
