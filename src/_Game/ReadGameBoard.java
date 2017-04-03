@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import static java.awt.Color.WHITE;
 
 
-public class ReadGameBoard {
+public class ReadGameBoard extends GUI {
     private Stage stage;
 
 

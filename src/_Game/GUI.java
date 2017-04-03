@@ -44,7 +44,6 @@ public class GUI{
         canvasFrame.drawCells();
         canvasFrame.drawLines();
         Controller.Timeline();
-
     }
 
 
@@ -74,9 +73,6 @@ public class GUI{
 
     }
 
-    public void FPSClicked() {
-       FPS = (int) sliderFPS.getValue();
-    }
 
     public void CellSizeClicked() {
 

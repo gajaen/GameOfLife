@@ -3,11 +3,13 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -19,7 +21,7 @@ public class Controller implements Initializable{
     public Canvas CanvasId;
     public Button startButton, stopButton, randomButton, clearButton;
     public Slider cellSlider, sliderFPS;
-    private int oldJ, oldI;
+    public int oldJ, oldI, FPS;
     public ColorPicker colorPicker;
     private Timeline timeline;
     private CanvasFrame canvasFrame;
@@ -42,21 +44,21 @@ public class Controller implements Initializable{
 
     }
 
-    public static void Timeline() {
-        GUI.FPSClicked();
+    public void Timeline() {
+        FPSClicked();
         TIME = 1000 / 120;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             canvasFrame.nextGeneration();
             timeline.playFromStart();
 
         }));
+    }
 
+    public void FPSClicked() {
+        FPS = (int) sliderFPS.getValue();
     }
 
 
-    public void CellSizeClicked(){
-
-    }
 
 
 }
