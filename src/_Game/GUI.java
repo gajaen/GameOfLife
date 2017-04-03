@@ -31,7 +31,6 @@ public class GUI{
     private Stage stage;
 
 
-
     public void clickedRandomButton() {
         //Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < canvasFrame.getHEIGHT(); i++) {
@@ -43,7 +42,7 @@ public class GUI{
 
         canvasFrame.drawCells();
         canvasFrame.drawLines();
-        Controller.Timeline();
+
     }
 
 
@@ -107,7 +106,6 @@ public class GUI{
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
-        Timeline();
 
     }
 

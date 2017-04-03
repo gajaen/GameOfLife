@@ -1,13 +1,8 @@
 package _Game;
 
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
-import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-
-import java.sql.Time;
 
 
 public class CanvasFrame  {
@@ -19,13 +14,9 @@ public class CanvasFrame  {
     private int HEIGHT;
     private int WIDTH;
     private double lineWidth;
-    public int[][] board, cleanArray;
     private Color cellColor;
     private Color lineColor;
     private Color backgroundColor;
-
-
-
 
     public int gen = 0;
 
@@ -44,7 +35,6 @@ public class CanvasFrame  {
         setWIDTH(((int) CanvasId.getWidth()));
 
         setBoard(new int[getHEIGHT()][getWIDTH()]);
-
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -52,17 +42,6 @@ public class CanvasFrame  {
 
     }
 
-    public void cleanArray() {
-        for (int i = 0; i < getHEIGHT(); i++) {
-            for (int j = 0; j < getWIDTH(); j++) {
-                board[i][j] = 0;
-            }
-        }
-       //Kode som får cleanArray til å bli board, samme prinsipp som nextBoard
-        clearCanvas();
-        drawLines();
-        drawCells();
-    }
 
 
     public void clearCanvas() {
@@ -75,39 +54,6 @@ public class CanvasFrame  {
 
 
 
-
-    public void nextGeneration() {
-        clearCanvas();
-        gen++;
-        int[][] nextBoard = new int[getHEIGHT()][getWIDTH()];
-
-        for (int x = 1; x < getHEIGHT() - 1; x++) {
-            for (int y = 1; y < getWIDTH() - 1; y++)
-
-            {
-                int cellNeighbors = 0;
-                for (int i = -1; i <= 1; i++) {
-                    for (int j = -1; j <= 1; j++) {
-                        cellNeighbors += getBoard()[x + i][y + j];
-                    }
-                }
-
-                cellNeighbors -= getBoard()[x][y];
-                if ((getBoard()[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
-                else if ((getBoard()[x][y] == 1) && (cellNeighbors > 3))
-                    nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
-                else if ((getBoard()[x][y] == 0) && (cellNeighbors == 3))
-                    nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
-                else nextBoard[x][y] = getBoard()[x][y];
-            }
-        }
-
-        setBoard(nextBoard);
-
-        drawCells();
-        drawLines();
-      //  Timeline();
-    }
 
 
     public void drawCells() {
@@ -194,13 +140,7 @@ public class CanvasFrame  {
     public void setCellColor(Color cellColor) {
         this.cellColor = cellColor;
     }
-    public void setBoardXY(int i, int j)
-    {
-        if (board[i][j] == 0) {
 
-            board[i][j] = 1;
-        }
-    }
 
     public Color getBackgroundColor() {
         return backgroundColor;
@@ -210,16 +150,9 @@ public class CanvasFrame  {
         this.backgroundColor = backgroundColor;
     }
 
-    public int setBoardRandom(int i, int j) {
-
-      return  board[i][j] = (int) (Math.random() * 2);
 
 
-    }
-    public void setOpenBoard(int rownumber, int columnnumber, int cnum) {
 
-        board[rownumber + 5][columnnumber + cnum + 4] = 1;
-    }
 }
 
 

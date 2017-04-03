@@ -1,54 +1,19 @@
 package _Game;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-public class ReadGameBoard extends GUI {
-    private Stage stage;
-    File file;
-
-
-    public ReadGameBoard() throws IOException {
-
-    }
-    public void init(Stage primaryStage) {
-
-        this.stage = stage;
-
-    }
-
-    public void openFile() throws IOException {
-        FileChooser fileChooser = new FileChooser();
-
-        fileChooser.setTitle("Open GOL Shape");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Run Length Encoded File", "*.RLE"),
-                new FileChooser.ExtensionFilter("Text File", "*.txt"),
-                new FileChooser.ExtensionFilter("All files", "*")
-
-        );
-
-        File file = fileChooser.showOpenDialog(stage);
-
-
-        if (file != null) {
-            System.out.println("Choosen file " + file);
-        }
-    }
-
+/**
+ * Created by Gajaen on 03.04.2017.
+ */
+public class ReadGame {/*
     public void openfile() {
 
-        CanvasFrame canvasFrame = new CanvasFrame(CanvasId);
+        CanvasFrame canvasFrame = new CanvasFrame(Canvas);
         String xPattern = ("x = (\\d+)");
         String yPattern = ("y = (\\d+)");
 
@@ -61,7 +26,7 @@ public class ReadGameBoard extends GUI {
         int right = 0;
 
 
-        try (Scanner scanner = new Scanner(file)) {
+        try (Scanner scanner = new Scanner(ReadGameBoard.file)) {
             while (scanner.hasNextLine()) {
 
                 String line = scanner.nextLine();
@@ -138,7 +103,7 @@ public class ReadGameBoard extends GUI {
 
                 }
 
-                canvasFrame.setCellColor(colorPicker.getValue());
+                canvasFrame.setCellColor(Color.WHITE);
                 canvasFrame.clearCanvas();
                 canvasFrame.drawCells();
                 canvasFrame.drawLines();
@@ -149,11 +114,10 @@ public class ReadGameBoard extends GUI {
 
         } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
 
 
-    }
+    }*/
 
-    }
+
+}
