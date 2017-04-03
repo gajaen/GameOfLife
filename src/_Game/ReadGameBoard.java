@@ -1,31 +1,31 @@
 package _Game;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Time;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.awt.Color.WHITE;
 
-public class ReadGameBoard extends GUI  {
 
-    private GUI graphic;
-    private CanvasFrame canvasFrame;
-    public Canvas CanvasId;
+public class ReadGameBoard extends GUI {
+    private Stage stage;
 
 
     public ReadGameBoard(){
 
 
-      graphic = new GUI();
+    }
+    public void init(Stage primaryStage) {
 
-}
-    public void init(Stage primaryStage) throws Exception {
+        this.stage = stage;
 
-        graphic.setStage(primaryStage);
     }
 
     public void openFile() throws IOException {
@@ -40,22 +40,24 @@ public class ReadGameBoard extends GUI  {
         );
 
 
-        File file = fileChooser.showOpenDialog(graphic.getStage());
+        File file = fileChooser.showOpenDialog(stage);
         if (file != null) {
             System.out.println("Choosen file " + file);
         }
 
+        CanvasFrame canvasFrame = new CanvasFrame(CanvasId);
+        String xPattern = ("x = (\\d+)");
+        String yPattern = ("y = (\\d+)");
 
-       // String xPattern = ("x = (\\d+)");
-        // String yPattern = ("y = (\\d+)");
-
-       // initialize();
-//        canvasFrame.drawLines();
- //       canvasFrame.cleanBoard();
+        canvasFrame.clearCanvas();
+        canvasFrame.drawLines();
 
         int rownumber = 5;
         int columnnumber = 0;
-
+        //int up = 0;
+        // int down  = 0;
+        // int left = 0;
+        int right = 0;
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
 
@@ -112,8 +114,10 @@ public class ReadGameBoard extends GUI  {
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
-                             //   canvasFrame.getBoard([rownumber + 5 ][columnnumber + cnum + 4]); = 1;
-//                                 canvasFrame.setOpenBoard(rownumber,columnnumber,cnum);
+                            //    board[rownumber + 5][columnnumber + cnum + 4] = 1;
+
+                                canvasFrame.setOpenBoard(rownumber,columnnumber,cnum);
+                          //      canvasFrame.setBoardRandom(cnum,columnnumber);
                                 //columnnumber = columnnumber +1;
                             }
                             columnnumber = columnnumber + oNumInt;
@@ -130,19 +134,20 @@ public class ReadGameBoard extends GUI  {
 
 
                 }
-
-//                canvasFrame.drawCells();
+                canvasFrame.drawCells();
+                canvasFrame.setCellColor(Color.WHITE);
 
 
             }
 
 
-   //         canvasFrame.drawLines();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
+
     }
-}
+
+    }

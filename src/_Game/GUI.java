@@ -31,6 +31,9 @@ public class GUI implements Initializable {
     private Stage stage;
 
 
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -72,6 +75,7 @@ public class GUI implements Initializable {
     public void clickedStartButton() {
 
         timeline.playFromStart();
+
     }
 
     public void colorPickerClicked() {

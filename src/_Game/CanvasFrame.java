@@ -1,11 +1,13 @@
 package _Game;
 
-import javafx.animation.KeyFrame;
+import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
+
+import java.sql.Time;
 
 
 public class CanvasFrame  {
@@ -17,7 +19,7 @@ public class CanvasFrame  {
     private int HEIGHT;
     private int WIDTH;
     private double lineWidth;
-    private int[][] board, cleanArray;
+    public int[][] board, cleanArray;
     private Color cellColor;
     private Color lineColor;
     private Color backgroundColor;
@@ -207,13 +209,17 @@ public class CanvasFrame  {
         this.backgroundColor = backgroundColor;
     }
 
-    public void setBoardRandom(int i, int j) {
+    public int setBoardRandom(int i, int j) {
 
-        board[i][j] = (int) (Math.random() * 2);
+      return  board[i][j] = (int) (Math.random() * 2);
+
+
     }
-    public void setOpenBoard(int i,int j, int g) {
+    public void setOpenBoard(int rownumber, int columnnumber, int cnum) {
 
-        board[i + 5][j + g + 4] = 1;
+        board[rownumber + 5][columnnumber + cnum + 4] = 1;
+
+
     }
 }
 
