@@ -6,7 +6,6 @@ import javafx.animation.Timeline;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -15,29 +14,21 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
     public Canvas CanvasId;
-    public int oldJ, oldI;
-    private Timeline timeline;
-    private CanvasFrame canvasFrame;
+    public Timeline timeline;
+
     int TIME;
 
 
-    public Cell cell;
     public Board board;
-    public GUI gui;
     public ReadGameBoard readGameBoard;
-
+    public CanvasFrame canvasFrame;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
 
         canvasFrame = new CanvasFrame(this.CanvasId);
-        cell = new Cell(this.cell);
-        board = new Board(this.board);
-
-
         canvasFrame.drawCells();
-        canvasFrame.drawLines();
 
 /*
         cell.setCellColor(Color.LIGHTCYAN);
@@ -46,7 +37,8 @@ public class Controller implements Initializable{
         canvasFrame.drawLines();
         oldI = 0;
         oldJ = 0;
-        Timeline();*/
+        */
+        Timeline();
     }
 
 

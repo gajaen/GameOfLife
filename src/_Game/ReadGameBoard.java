@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ReadGameBoard extends GUI {
+public class ReadGameBoard{
     private Stage stage;
     File file;
     public Cell cell;
@@ -23,7 +23,6 @@ public class ReadGameBoard extends GUI {
     public ReadGameBoard() throws IOException {
 
     }
-
 
     public void openFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -49,7 +48,7 @@ public class ReadGameBoard extends GUI {
 
 
 
-    public void openfile2() {
+    public void openfile() {
 
         int rownumber = 5;
         int columnnumber = 0;
@@ -132,7 +131,6 @@ public class ReadGameBoard extends GUI {
 
                 }
 
-                cell.setCellColor(colorPicker.getValue());
                 canvasFrame.clearCanvas();
                 canvasFrame.drawCells();
                 canvasFrame.drawLines();

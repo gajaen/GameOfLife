@@ -14,11 +14,13 @@ public class GUI{
     public Slider cellSlider;
     private int oldJ, oldI;
     public ColorPicker colorPicker;
-    public Timeline timeline;
-    public CanvasFrame canvasFrame;
     public Stage stage;
     public Cell cell;
     public Board board;
+
+    public Controller controller;
+    public CanvasFrame canvasFrame;
+    public GUI gui;
 
     public void RandomButton() {
         //Lager en ny random array for hver gang start er trykket.
@@ -34,13 +36,13 @@ public class GUI{
 
 
     public void ClearButton() {
-        timeline.stop();
+        controller.timeline.stop();
         board.cleanArray();
     }
 
 
     public void StartButton() {
-        timeline.playFromStart();
+        controller.timeline.playFromStart();
 
     }
 
@@ -52,7 +54,7 @@ public class GUI{
     }
 
     public void StopButton() {
-        timeline.stop();
+        controller.timeline.stop();
     }
 
     public void FPS()
