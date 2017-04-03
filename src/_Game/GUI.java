@@ -128,9 +128,6 @@ public class GUI implements Initializable {
         oldJ = j;
         oldI = i;
 
-        System.out.println(i);
-        System.out.println(j);
-
         //canvasFrame.setBoard(board);
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();

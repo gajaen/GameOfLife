@@ -49,8 +49,7 @@ public class ReadGameBoard extends GUI {
         String xPattern = ("x = (\\d+)");
         String yPattern = ("y = (\\d+)");
 
-        canvasFrame.clearCanvas();
-        canvasFrame.drawLines();
+
 
         int rownumber = 5;
         int columnnumber = 0;
@@ -134,8 +133,11 @@ public class ReadGameBoard extends GUI {
 
 
                 }
-                canvasFrame.drawCells();
+
                 canvasFrame.setCellColor(Color.WHITE);
+                canvasFrame.clearCanvas();
+                canvasFrame.drawCells();
+                canvasFrame.drawLines();
 
 
             }
