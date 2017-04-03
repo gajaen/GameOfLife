@@ -1,10 +1,16 @@
 package _Game;
 
 
+import javafx.scene.canvas.Canvas;
+
 public class Board {
+    public Canvas CanvasId;
+    private CanvasFrame canvasFrame;
 
 
-    public Board() {
+    public Board(Board board) {
+
+        CanvasFrame canvasFrame = new CanvasFrame(CanvasId);
 
 
 
@@ -14,24 +20,24 @@ public class Board {
 
 
     public void cleanArray() {
-        for (int i = 0; i < getHEIGHT(); i++) {
-            for (int j = 0; j < getWIDTH(); j++) {
+        for (int i = 0; i < canvasFrame.getHEIGHT(); i++) {
+            for (int j = 0; j < canvasFrame.getWIDTH(); j++) {
                 board[i][j] = 0;
             }
         }
         //Kode som får cleanArray til å bli board, samme prinsipp som nextBoard
-        clearCanvas();
-        drawLines();
-        drawCells();
+        canvasFrame.clearCanvas();
+        canvasFrame.drawLines();
+        canvasFrame.drawCells();
     }
 
     public void nextGeneration() {
-        clearCanvas();
-        gen++;
-        int[][] nextBoard = new int[getHEIGHT()][getWIDTH()];
+        canvasFrame.clearCanvas();
 
-        for (int x = 1; x < getHEIGHT() - 1; x++) {
-            for (int y = 1; y < getWIDTH() - 1; y++)
+        int[][] nextBoard = new int[canvasFrame.getHEIGHT()][canvasFrame.getWIDTH()];
+
+        for (int x = 1; x < canvasFrame.getHEIGHT() - 1; x++) {
+            for (int y = 1; y < canvasFrame.getWIDTH() - 1; y++)
 
             {
                 int cellNeighbors = 0;
@@ -53,8 +59,8 @@ public class Board {
 
         setBoard(nextBoard);
 
-        drawCells();
-        drawLines();
+        canvasFrame.drawCells();
+        canvasFrame.drawLines();
         //  Timeline();
     }
 

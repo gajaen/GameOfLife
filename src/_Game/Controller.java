@@ -28,13 +28,14 @@ public class Controller implements Initializable{
     int TIME;
     private Stage stage;
 
-
+    private Cell cell;
+    private Board board;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         canvasFrame = new CanvasFrame(this.CanvasId);
-        canvasFrame.setCellColor(Color.LIGHTCYAN);
+        cell.setCellColor(Color.LIGHTCYAN);
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
@@ -45,10 +46,9 @@ public class Controller implements Initializable{
     }
 
     public void Timeline() {
-        FPSClicked();
         TIME = 1000 / 120;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            canvasFrame.nextGeneration();
+            board.nextGeneration();
             timeline.playFromStart();
 
         }));

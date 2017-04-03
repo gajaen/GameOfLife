@@ -14,6 +14,8 @@ public class CanvasFrame  {
     private double lineWidth;
     private Color lineColor;
     private Color backgroundColor;
+    private Cell cell;
+    private Board board;
 
     public int gen = 0;
 
@@ -22,8 +24,8 @@ public class CanvasFrame  {
         CanvasId = canvas;
         // create a board object and assign to private variable
 
-        setCellSize(10);
-        setCellGap(0);
+        cell.setCellSize(10);
+        cell.setCellGap(0);
         lineWidth = 0.001;
         // (Color.GREY);
 
@@ -31,7 +33,7 @@ public class CanvasFrame  {
         setHEIGHT(((int) CanvasId.getHeight()));
         setWIDTH(((int) CanvasId.getWidth()));
 
-        setBoard(new int[getHEIGHT()][getWIDTH()]);
+        board.setBoard(new int[getHEIGHT()][getWIDTH()]);
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -50,7 +52,21 @@ public class CanvasFrame  {
     }
 
 
+    public void drawCells() {
 
+        //cleanBoard();
+        gc = CanvasId.getGraphicsContext2D();
+        gc.setFill(cell.getCellColor());
+
+
+        for (int i = 0; i < getHEIGHT(); i++) {
+            for (int j = 0; j < getWIDTH(); j++) {
+                if (board.getBoard()[i][j] == 1) {
+                    gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+                }
+            }
+        }
+    }
 
     public void drawLines() {
 
@@ -59,16 +75,16 @@ public class CanvasFrame  {
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         gc.setLineWidth(lineWidth);
 
-        int a = getCellSize();
-        int b = getCellSize();
+        int a = cell.getCellSize();
+        int b = cell.getCellSize();
 
         for (int i = 0; i < getHEIGHT(); i++) {
             gc.strokeLine(0, a, CanvasId.getWidth(), a);
-            a += getCellSize();
+            a += cell.getCellSize();
         }
         for (int i = 0; i < getWIDTH(); i++) {
             gc.strokeLine(b, 0, b, CanvasId.getHeight());
-            b += getCellSize();
+            b += cell.getCellSize();
         }
 }
 
