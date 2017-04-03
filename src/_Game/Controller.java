@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,9 +25,11 @@ public class Controller implements Initializable{
     private CanvasFrame canvasFrame;
     int TIME;
 
+
     private Cell cell;
     private Board board;
     private GUI gui;
+    private ReadGameBoard readGameBoard;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,8 +81,38 @@ public class Controller implements Initializable{
         gui.CellSize();
         }
 
-    public void CanvasPressed(){
-        gui.CanvasPressed();
+
+    public void CanvasPressed(MouseEvent a) {
+
+        int j = ((int) a.getX() / cell.getCellSize())  + 1;
+        int i = ((int) a.getY() / cell.getCellSize()) + 1;
+
+        //int board [][] = canvasFrame.getBoard();
+
+        if (j != oldJ || i != oldI) {
+
+            board.setBoardXY(i,j);
+
+        }
+        oldJ = j;
+        oldI = i;
+
+        //canvasFrame.setBoard(board);
+        canvasFrame.clearCanvas();
+        canvasFrame.drawCells();
+        canvasFrame.drawLines();
+
+    }
+
+    public void openFile() throws IOException {
+
+        readGameBoard.openFile();
+
+    }
+
+    public void closeWindow(){
+
+
     }
 
     }

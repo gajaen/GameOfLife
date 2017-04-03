@@ -90,27 +90,7 @@ public class GUI{
         Platform.exit();
     }
 
-    public void CanvasPressed(MouseEvent a) {
 
-        int j = ((int) a.getX() / cell.getCellSize())  + 1;
-        int i = ((int) a.getY() / cell.getCellSize()) + 1;
-
-        //int board [][] = canvasFrame.getBoard();
-
-        if (j != oldJ || i != oldI) {
-
-            board.setBoardXY(i,j);
-
-        }
-        oldJ = j;
-        oldI = i;
-
-        //canvasFrame.setBoard(board);
-        canvasFrame.clearCanvas();
-        canvasFrame.drawCells();
-        canvasFrame.drawLines();
-
-    }
 
 
     public Stage getStage() {

@@ -17,6 +17,7 @@ public class ReadGameBoard extends GUI {
     File file;
     private Cell cell;
     private Board board;
+    private CanvasFrame canvasFrame;
 
 
 
@@ -49,19 +50,12 @@ public class ReadGameBoard extends GUI {
         }
     }
 
+
+
     public void openfile() {
-
-        CanvasFrame canvasFrame = new CanvasFrame(CanvasId);
-        String xPattern = ("x = (\\d+)");
-        String yPattern = ("y = (\\d+)");
-
 
         int rownumber = 5;
         int columnnumber = 0;
-        //int up = 0;
-        // int down  = 0;
-        // int left = 0;
-        int right = 0;
 
 
         try (Scanner scanner = new Scanner(file)) {
@@ -150,8 +144,7 @@ public class ReadGameBoard extends GUI {
             }
 
 
-        } catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
