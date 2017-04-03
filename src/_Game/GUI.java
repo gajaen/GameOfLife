@@ -76,7 +76,7 @@ public class GUI{
     }
 
 
-    public void CellSizeClicked() {
+    public void CellSize() {
 
         cell.setCellSize((int) cellSlider.getValue());
         canvasFrame.clearCanvas();

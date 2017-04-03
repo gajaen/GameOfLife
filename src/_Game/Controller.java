@@ -73,5 +73,14 @@ public class Controller implements Initializable{
     public void FPSClicked(){
         gui.FPS();
     }
-}
+
+    public void CellSizeClicked() {
+        gui.CellSize();
+        }
+
+    public void CanvasPressed(){
+        gui.CanvasPressed();
+    }
+
+    }
 
