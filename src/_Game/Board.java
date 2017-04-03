@@ -1,8 +1,6 @@
 package _Game;
 
-/**
- * Created by Gajaen on 03.04.2017.
- */
+
 public class Board {
     public int[][] board;
 

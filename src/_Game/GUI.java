@@ -72,6 +72,11 @@ public class GUI{
 
     }
 
+    public void FPSClicked()
+    {
+        FPS = (int) sliderFPS.getValue();
+    }
+
 
     public void CellSizeClicked() {
 

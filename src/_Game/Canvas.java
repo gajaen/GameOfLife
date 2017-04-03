@@ -9,12 +9,9 @@ public class CanvasFrame  {
 
     private Canvas CanvasId;
     private GraphicsContext gc;
-    private int cellSize;
-    private int cellGap;
     private int HEIGHT;
     private int WIDTH;
     private double lineWidth;
-    private Color cellColor;
     private Color lineColor;
     private Color backgroundColor;
 
@@ -101,21 +98,6 @@ public class CanvasFrame  {
         this.board = board;
     }
 
-    public int getCellSize() {
-        return cellSize;
-    }
-
-    public void setCellSize(int cellSize) {
-        this.cellSize = cellSize;
-    }
-
-    public int getCellGap() {
-        return cellGap;
-    }
-
-    public void setCellGap(int cellGap) {
-        this.cellGap = cellGap;
-    }
 
     public int getHEIGHT() {
         return HEIGHT;
@@ -131,14 +113,6 @@ public class CanvasFrame  {
 
     public void setWIDTH(int WIDTH) {
         this.WIDTH = WIDTH;
-    }
-
-    public Color getCellColor() {
-        return cellColor;
-    }
-
-    public void setCellColor(Color cellColor) {
-        this.cellColor = cellColor;
     }
 
 
