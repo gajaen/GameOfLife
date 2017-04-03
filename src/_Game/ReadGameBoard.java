@@ -24,6 +24,7 @@ public class ReadGameBoard extends GUI {
 
     }
 
+
     public void openFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
 

@@ -21,6 +21,7 @@ public class CanvasFrame  {
     public CanvasFrame(Canvas canvas){
 
         cell = new Cell(this.cell);
+        board = new Board(this.board);
 
 
         CanvasId = canvas;

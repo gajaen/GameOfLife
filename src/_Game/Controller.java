@@ -29,14 +29,19 @@ public class Controller implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+
+
         canvasFrame = new CanvasFrame(this.CanvasId);
+                canvasFrame.drawCells();
+
+/*
         cell.setCellColor(Color.LIGHTCYAN);
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
         oldI = 0;
         oldJ = 0;
-        Timeline();
+        Timeline();*/
     }
 
 
