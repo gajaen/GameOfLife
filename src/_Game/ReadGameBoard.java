@@ -15,6 +15,9 @@ import java.util.regex.Pattern;
 public class ReadGameBoard extends GUI {
     private Stage stage;
     File file;
+    private Cell cell;
+    private Board board;
+
 
 
     public ReadGameBoard() throws IOException {
@@ -118,7 +121,7 @@ public class ReadGameBoard extends GUI {
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
 
-                                canvasFrame.setOpenBoard(rownumber, columnnumber, cnum, canvasFrame.getBoard());
+                                board.setOpenBoard(rownumber, columnnumber, cnum, board.getBoard());
 
                                 //      canvasFrame.setBoardRandom(cnum,columnnumber);
                                 //columnnumber = columnnumber +1;
@@ -138,7 +141,7 @@ public class ReadGameBoard extends GUI {
 
                 }
 
-                canvasFrame.setCellColor(colorPicker.getValue());
+                cell.setCellColor(colorPicker.getValue());
                 canvasFrame.clearCanvas();
                 canvasFrame.drawCells();
                 canvasFrame.drawLines();

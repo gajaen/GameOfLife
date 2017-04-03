@@ -18,6 +18,7 @@ import java.sql.Time;
 import java.util.ResourceBundle;
 
 
+
 public class GUI{
     public Canvas CanvasId;
     public Button startButton, stopButton, randomButton, clearButton;
@@ -29,13 +30,14 @@ public class GUI{
     private CanvasFrame canvasFrame;
     int TIME;
     private Stage stage;
-
+    private Cell cell;
+    private Board board;
 
     public void clickedRandomButton() {
         //Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < canvasFrame.getHEIGHT(); i++) {
             for (int j = 0; j < canvasFrame.getWIDTH(); j++) {
-                canvasFrame.setBoardRandom(i,j);
+                board.setBoardRandom(i,j);
             }
         }
         CanvasFrame drawCell = new CanvasFrame(CanvasId);
@@ -48,7 +50,7 @@ public class GUI{
 
     public void clickedClearButton() {
         timeline.stop();
-        canvasFrame.cleanArray();
+        board.cleanArray();
     }
 
 
@@ -61,7 +63,7 @@ public class GUI{
     public void colorPickerClicked() {
         Color color = colorPicker.getValue();
         if (color != null) {
-            canvasFrame.setCellColor(colorPicker.getValue());
+            cell.setCellColor(colorPicker.getValue());
         }
     }
 
@@ -74,13 +76,13 @@ public class GUI{
 
     public void FPSClicked()
     {
-        FPS = (int) sliderFPS.getValue();
+    //    FPS = (int) sliderFPS.getValue();
     }
 
 
     public void CellSizeClicked() {
 
-        canvasFrame.setCellSize((int) cellSlider.getValue());
+        cell.setCellSize((int) cellSlider.getValue());
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();
@@ -94,14 +96,14 @@ public class GUI{
 
     public void CanvasPressed(MouseEvent a) {
 
-        int j = ((int) a.getX() / canvasFrame.getCellSize())  + 1;
-        int i = ((int) a.getY() / canvasFrame.getCellSize()) + 1;
+        int j = ((int) a.getX() / cell.getCellSize())  + 1;
+        int i = ((int) a.getY() / cell.getCellSize()) + 1;
 
         //int board [][] = canvasFrame.getBoard();
 
         if (j != oldJ || i != oldI) {
 
-            canvasFrame.setBoardXY(i,j);
+            board.setBoardXY(i,j);
 
         }
         oldJ = j;
