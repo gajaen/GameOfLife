@@ -23,7 +23,6 @@ public class CanvasFrame  {
         cell = new Cell(this.cell);
         board = new Board(this.board);
 
-
         CanvasId = canvas;
         // create a board object and assign to private variable
 
@@ -31,6 +30,7 @@ public class CanvasFrame  {
         cell.setCellGap(0);
         lineWidth = 0.001;
         // (Color.GREY);
+
 
         setBackgroundColor(Color.GREY);
         setHEIGHT(((int) CanvasId.getHeight()));
@@ -85,7 +85,9 @@ public class CanvasFrame  {
             gc.strokeLine(b, 0, b, CanvasId.getHeight());
             b += cell.getCellSize();
         }
-}
+        System.out.println(cell.getCellSize());
+
+    }
 
 
     public int getHEIGHT() {

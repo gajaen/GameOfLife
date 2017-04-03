@@ -32,7 +32,12 @@ public class Controller implements Initializable{
 
 
         canvasFrame = new CanvasFrame(this.CanvasId);
-                canvasFrame.drawCells();
+        cell = new Cell(this.cell);
+        board = new Board(this.board);
+
+
+        canvasFrame.drawCells();
+        canvasFrame.drawLines();
 
 /*
         cell.setCellColor(Color.LIGHTCYAN);

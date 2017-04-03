@@ -6,6 +6,9 @@ import javafx.scene.paint.Color;
 public class Cell {
 
     public Cell(Cell cell){
+        getCellSize();
+        getCellColor();
+        getCellGap();
 
     }
     private int cellSize;
