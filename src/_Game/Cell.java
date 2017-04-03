@@ -4,6 +4,10 @@ package _Game;
 import javafx.scene.paint.Color;
 
 public class Cell {
+
+    public Cell(Cell cell){
+
+    }
     private int cellSize;
     private int cellGap;
     private Color cellColor;

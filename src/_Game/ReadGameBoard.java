@@ -23,11 +23,6 @@ public class ReadGameBoard extends GUI {
     public ReadGameBoard() throws IOException {
 
     }
-    public void init(Stage primaryStage) {
-
-        this.stage = stage;
-
-    }
 
     public void openFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -47,11 +42,13 @@ public class ReadGameBoard extends GUI {
         if (file != null) {
             System.out.println("Choosen file " + file);
         }
+
+
     }
 
 
 
-    public void openfile() {
+    public void openfile2() {
 
         int rownumber = 5;
         int columnnumber = 0;

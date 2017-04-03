@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public class CanvasFrame  {
 
     private Canvas CanvasId;
-    private GraphicsContext gc;
+    public GraphicsContext gc;
     private int HEIGHT;
     private int WIDTH;
     private double lineWidth;
@@ -19,6 +19,9 @@ public class CanvasFrame  {
 
 
     public CanvasFrame(Canvas canvas){
+
+        cell = new Cell(this.cell);
+
 
         CanvasId = canvas;
         // create a board object and assign to private variable
