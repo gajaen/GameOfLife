@@ -35,8 +35,8 @@ public class CanvasFrame  {
         // create a board object and assign to private variable
 
         setCellSize(10);
-        setCellGap(1);
-        lineWidth = 0.3;
+        setCellGap(0);
+        lineWidth = 0.001;
         // (Color.GREY);
 
         setBackgroundColor(Color.GREY);
@@ -127,6 +127,7 @@ public class CanvasFrame  {
     }
 
     public void drawLines() {
+
         gc.setStroke(lineColor);
         gc.setLineWidth(5);
         gc.strokeRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());

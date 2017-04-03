@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 import static java.awt.Color.WHITE;
 
 
-public class ReadGameBoard extends GUI {
+public class ReadGameBoard {
     private Stage stage;
 
 
@@ -48,7 +48,6 @@ public class ReadGameBoard extends GUI {
         CanvasFrame canvasFrame = new CanvasFrame(CanvasId);
         String xPattern = ("x = (\\d+)");
         String yPattern = ("y = (\\d+)");
-
 
 
         int rownumber = 5;
@@ -134,7 +133,7 @@ public class ReadGameBoard extends GUI {
 
                 }
 
-                canvasFrame.setCellColor(Color.WHITE);
+                canvasFrame.setCellColor(colorPicker.getValue());
                 canvasFrame.clearCanvas();
                 canvasFrame.drawCells();
                 canvasFrame.drawLines();

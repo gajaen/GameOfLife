@@ -17,8 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0" style="-fx-background-color: ALICEBLUE;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.ReadGameBoard">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0" style="-fx-background-color: ALICEBLUE;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -95,7 +94,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Slider fx:id="cellSlider" majorTickUnit="50.0" max="40.0" min="2.0" minorTickCount="5" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" showTickLabels="true" showTickMarks="true" value="10.0" GridPane.columnIndex="1">
+                  <Slider fx:id="cellSlider" majorTickUnit="50.0" max="40.0" min="0.1" minorTickCount="5" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" showTickLabels="true" showTickMarks="true" value="10.0" GridPane.columnIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

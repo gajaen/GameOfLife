@@ -18,7 +18,7 @@ import java.sql.Time;
 import java.util.ResourceBundle;
 
 
-public class GUI implements Initializable {
+public class GUI{
     public Canvas CanvasId;
     public Button startButton, stopButton, randomButton, clearButton;
     public Slider cellSlider, sliderFPS;
@@ -32,21 +32,6 @@ public class GUI implements Initializable {
 
 
 
-
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        canvasFrame = new CanvasFrame(this.CanvasId);
-        colorPickerClicked();
-        canvasFrame.clearCanvas();
-        canvasFrame.drawCells();
-        canvasFrame.drawLines();
-        oldI = 0;
-        oldJ = 0;
-
-    }
-
     public void clickedRandomButton() {
         //Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < canvasFrame.getHEIGHT(); i++) {
@@ -56,12 +41,9 @@ public class GUI implements Initializable {
         }
         CanvasFrame drawCell = new CanvasFrame(CanvasId);
 
-
         canvasFrame.drawCells();
         canvasFrame.drawLines();
-
-        Timeline();
-
+        Controller.Timeline();
 
     }
 
@@ -93,26 +75,23 @@ public class GUI implements Initializable {
     }
 
     public void FPSClicked() {
-       //FPS = (int) sliderFPS.getValue();
+       FPS = (int) sliderFPS.getValue();
     }
 
     public void CellSizeClicked() {
+
         canvasFrame.setCellSize((int) cellSlider.getValue());
+        canvasFrame.clearCanvas();
+        canvasFrame.drawCells();
+        canvasFrame.drawLines();
     }
-    public void Timeline() {
-        FPSClicked();
-        TIME = 1000 / 120;
-        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            canvasFrame.nextGeneration();
-            timeline.playFromStart();
 
-        }));
 
-    }
 
     public void closeWindow() {
         Platform.exit();
     }
+
     public void CanvasPressed(MouseEvent a) {
 
         int j = ((int) a.getX() / canvasFrame.getCellSize())  + 1;
