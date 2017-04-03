@@ -12,12 +12,11 @@ public class CanvasFrame  {
     private int HEIGHT;
     private int WIDTH;
     private double lineWidth;
-    private Color lineColor;
+    public Color lineColor;
     private Color backgroundColor;
-    private Cell cell;
-    private Board board;
+    public Cell cell;
+    public Board board;
 
-    public int gen = 0;
 
     public CanvasFrame(Canvas canvas){
 
@@ -37,8 +36,6 @@ public class CanvasFrame  {
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
-
-
     }
 
 
@@ -48,7 +45,6 @@ public class CanvasFrame  {
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
         drawLines();
-
     }
 
 
@@ -57,7 +53,6 @@ public class CanvasFrame  {
         //cleanBoard();
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(cell.getCellColor());
-
 
         for (int i = 0; i < getHEIGHT(); i++) {
             for (int j = 0; j < getWIDTH(); j++) {
@@ -87,9 +82,6 @@ public class CanvasFrame  {
             b += cell.getCellSize();
         }
 }
-
-
-
 
 
     public int getHEIGHT() {

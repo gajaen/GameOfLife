@@ -1,7 +1,6 @@
 package _Game;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import javafx.scene.paint.Color;
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
@@ -15,9 +14,9 @@ import java.util.regex.Pattern;
 public class ReadGameBoard extends GUI {
     private Stage stage;
     File file;
-    private Cell cell;
-    private Board board;
-    private CanvasFrame canvasFrame;
+    public Cell cell;
+    public Board board;
+    public CanvasFrame canvasFrame;
 
 
 
@@ -143,12 +142,9 @@ public class ReadGameBoard extends GUI {
 
             }
 
-
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
 
     }
 

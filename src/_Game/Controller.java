@@ -3,15 +3,10 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -26,10 +21,10 @@ public class Controller implements Initializable{
     int TIME;
 
 
-    private Cell cell;
-    private Board board;
-    private GUI gui;
-    private ReadGameBoard readGameBoard;
+    public Cell cell;
+    public Board board;
+    public GUI gui;
+    public ReadGameBoard readGameBoard;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,7 +39,9 @@ public class Controller implements Initializable{
         Timeline();
     }
 
+
     public void Timeline() {
+
         TIME = 1000 / 120;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             board.nextGeneration();
@@ -79,41 +76,20 @@ public class Controller implements Initializable{
 
     public void CellSizeClicked() {
         gui.CellSize();
-        }
+    }
 
 
     public void CanvasPressed(MouseEvent a) {
-
-        int j = ((int) a.getX() / cell.getCellSize())  + 1;
-        int i = ((int) a.getY() / cell.getCellSize()) + 1;
-
-        //int board [][] = canvasFrame.getBoard();
-
-        if (j != oldJ || i != oldI) {
-
-            board.setBoardXY(i,j);
-
-        }
-        oldJ = j;
-        oldI = i;
-
-        //canvasFrame.setBoard(board);
-        canvasFrame.clearCanvas();
-        canvasFrame.drawCells();
-        canvasFrame.drawLines();
-
+        gui.CanvasPressed(a);
     }
 
-    public void openFile() throws IOException {
-
-        readGameBoard.openFile();
-
+    public void openFile(){
+        readGameBoard.openfile();
     }
 
     public void closeWindow(){
-
-
     }
 
-    }
+
+}
 

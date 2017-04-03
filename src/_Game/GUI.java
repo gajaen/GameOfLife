@@ -1,9 +1,7 @@
 package _Game;
 
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -11,11 +9,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
-import java.net.URL;
-import java.sql.Time;
-import java.util.ResourceBundle;
 
 
 
@@ -79,6 +72,26 @@ public class GUI{
     public void CellSize() {
 
         cell.setCellSize((int) cellSlider.getValue());
+        canvasFrame.clearCanvas();
+        canvasFrame.drawCells();
+        canvasFrame.drawLines();
+    }
+
+    public void CanvasPressed(MouseEvent a){
+        int j = ((int) a.getX() / cell.getCellSize())  + 1;
+        int i = ((int) a.getY() / cell.getCellSize()) + 1;
+
+        //int board [][] = canvasFrame.getBoard();
+
+        if (j != oldJ || i != oldI) {
+
+            board.setBoardXY(i,j);
+
+        }
+        oldJ = j;
+        oldI = i;
+
+        //canvasFrame.setBoard(board);
         canvasFrame.clearCanvas();
         canvasFrame.drawCells();
         canvasFrame.drawLines();

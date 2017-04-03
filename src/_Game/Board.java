@@ -9,11 +9,6 @@ public class Board {
 
 
     public Board(Board board) {
-
-        CanvasFrame canvasFrame = new CanvasFrame(CanvasId);
-
-
-
     }
 
     public int[][] board;
@@ -84,7 +79,6 @@ public class Board {
         this.board = board;
 
         board[rownumber + 5][columnnumber + cnum + 4] = 1;
-
 
     }
 
