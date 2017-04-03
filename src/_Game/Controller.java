@@ -19,17 +19,14 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable{
     public Canvas CanvasId;
-    public Button startButton, stopButton, randomButton, clearButton;
-    public Slider cellSlider, sliderFPS;
-    public int oldJ, oldI, FPS;
-    public ColorPicker colorPicker;
+    public int oldJ, oldI;
     private Timeline timeline;
     private CanvasFrame canvasFrame;
     int TIME;
-    private Stage stage;
 
     private Cell cell;
     private Board board;
+    private GUI gui;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,7 +51,7 @@ public class Controller implements Initializable{
     }
 
     public void clickedStartButton(){
-        GUI.clickedStartButton();
+        gui.clickedStartButton();
 
     }
 
