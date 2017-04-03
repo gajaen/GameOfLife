@@ -218,8 +218,6 @@ public class CanvasFrame  {
     public void setOpenBoard(int rownumber, int columnnumber, int cnum) {
 
         board[rownumber + 5][columnnumber + cnum + 4] = 1;
-
-
     }
 }
 
