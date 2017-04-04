@@ -10,7 +10,7 @@ public class Board {
 
 
 
-    public Board(Board canvasBoard) {
+    public Board(int [][] canvasBoard) {
 
         board = canvasBoard;
 
