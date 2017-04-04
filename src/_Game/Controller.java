@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -18,6 +19,7 @@ public class Controller implements Initializable{
     public int oldJ, oldI;
     private Timeline timeline;
     private CanvasFrame canvasFrame;
+    public GraphicsContext gc;
     int TIME;
 
 
@@ -26,10 +28,12 @@ public class Controller implements Initializable{
     public GUI gui;
     public ReadGameBoard readGameBoard;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
 
+//    canvasFrame.drawLines();
 
 /*        canvasFrame = new CanvasFrame(this.CanvasId);
         cell = new Cell(this.cell);
