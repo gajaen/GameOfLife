@@ -23,14 +23,15 @@ public class Controller implements Initializable{
     int TIME;
 
 
-    public Cell cell;
-    public Board board;
-    public GUI gui;
-    public ReadGameBoard readGameBoard;
+    private Cell cell;
+    private Board board;
+    private GUI gui;
+    private ReadGameBoard readGameBoard;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
 
 
 //    canvasFrame.drawLines();

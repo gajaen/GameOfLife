@@ -22,6 +22,12 @@ public class GUI{
     public CanvasFrame canvasFrame;
     public GUI gui;
 
+    public GUI(GUI gui){
+
+        gui = this.gui;
+
+    }
+
     public void RandomButton() {
         //Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < canvasFrame.getHEIGHT(); i++) {

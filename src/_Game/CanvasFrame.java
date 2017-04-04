@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 
-public class CanvasFrame extends Board  {
+public class CanvasFrame   {
 
     private Canvas CanvasId;
     public GraphicsContext gc;
@@ -19,7 +19,7 @@ public class CanvasFrame extends Board  {
 
 
     public CanvasFrame(Canvas canvas){
-        super(canvas);
+
 
         cell = new Cell(this.cell);
 
