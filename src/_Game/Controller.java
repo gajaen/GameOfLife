@@ -8,16 +8,19 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class Controller {
     private Stage stage;
@@ -31,6 +34,7 @@ public class Controller {
     public Slider cellSlider, sliderFPS;
     public Timeline timeline;
     public ColorPicker colorPicker;
+
 
     public int gen = 0;
     public int FPS = 120;
@@ -140,7 +144,6 @@ public class Controller {
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] == 1) {
-                    //System.out.println(board[i][j]);
                     gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);}
             }
         }
@@ -215,14 +218,10 @@ public class Controller {
 
     public void FPSClicked() {
         FPS = (int) sliderFPS.getValue();
-        drawCells();
-        drawLines();
     }
 
     public void CellSizeClicked() {
         cellSize = (int) cellSlider.getValue();
-        drawCells();
-        drawLines();
     }
     //***************************************
 
@@ -231,6 +230,7 @@ public class Controller {
         this.stage = stage;
 
     }
+
 
 
     public void openFile() throws IOException {
@@ -258,8 +258,9 @@ public class Controller {
         cleanBoard();
         drawLines();
 
-        int rownumber = 0;
+        int rownumber = 5;
         int columnnumber = 0;
+        int right = 0;
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
 
@@ -313,8 +314,10 @@ public class Controller {
                                 oNumInt = Integer.parseInt(oNumString);
                             }
 
+
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
-                                board[rownumber][columnnumber + cnum] = 1;
+                                board[rownumber + 5 + right][columnnumber + cnum + 4] = 1;
+
                                 //columnnumber = columnnumber +1;
                             }
                             columnnumber = columnnumber + oNumInt;
@@ -329,16 +332,21 @@ public class Controller {
                         rownumber = rownumber + 1;
                     }
 
+
                 }
                 drawCells();
 
 
             }
+
+
             drawLines();
 
         } catch (IOException e) {
             e.printStackTrace();
+
         }
+
 
 
     }
@@ -347,4 +355,6 @@ public class Controller {
         Platform.exit();
     }
 }
+
+
 
