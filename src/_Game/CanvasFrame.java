@@ -15,7 +15,7 @@ public class CanvasFrame   {
     public Color lineColor;
     private Color backgroundColor;
     public Cell cell;
-    public Board board;
+    private int [][] board;
 
 
     public CanvasFrame(Canvas canvas){
@@ -23,7 +23,7 @@ public class CanvasFrame   {
 
         cell = new Cell(this.cell);
 
-        CanvasId = canvas;
+
         // create a board object and assign to private variable
 
         cell.setCellSize(10);
@@ -36,7 +36,7 @@ public class CanvasFrame   {
         setHEIGHT(((int) CanvasId.getHeight()));
         setWIDTH(((int) CanvasId.getWidth()));
 
-        board.setBoard(new int[getHEIGHT()][getWIDTH()]);
+      //  board.setBoard(new int[getHEIGHT()][getWIDTH()]);
         gc = CanvasId.getGraphicsContext2D();
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, CanvasId.getWidth(), CanvasId.getHeight());
@@ -60,9 +60,9 @@ public class CanvasFrame   {
 
         for (int i = 0; i < getHEIGHT(); i++) {
             for (int j = 0; j < getWIDTH(); j++) {
-                if (board.getBoard()[i][j] == 1) {
-                    gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
-                }
+             //   if (board.getBoard()[i][j] == 1) {
+               //     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+             //   }
             }
         }
     }

@@ -6,16 +6,17 @@ import javafx.scene.canvas.Canvas;
 public class Board {
     public Canvas CanvasId;
     private CanvasFrame canvasFrame;
-    public int[][] board;
+    private int[][] board;
 
 
 
-    public Board(Canvas board2) {
+    public Board(int[][] board2) {
+        board2 = board;
 
+        canvasFrame = new CanvasFrame(this.CanvasId);
 
 
     }
-
 
 
     public void cleanArray() {
