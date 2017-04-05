@@ -351,6 +351,7 @@ public class Controller {
 
     }
 
+
     public void closeWindow() {
         Platform.exit();
     }
