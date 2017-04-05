@@ -215,10 +215,14 @@ public class Controller {
 
     public void FPSClicked() {
         FPS = (int) sliderFPS.getValue();
+        drawCells();
+        drawLines();
     }
 
     public void CellSizeClicked() {
         cellSize = (int) cellSlider.getValue();
+        drawCells();
+        drawLines();
     }
     //***************************************
 
