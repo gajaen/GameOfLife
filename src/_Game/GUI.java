@@ -48,7 +48,7 @@ public class GUI{
 
 
     public void StartButton() {
-       // controller.timeline.playFromStart();
+       controller.timeline.playFromStart();
 
     }
 
@@ -60,7 +60,7 @@ public class GUI{
     }
 
     public void StopButton() {
-       // controller.timeline.stop();
+        controller.timeline.stop();
     }
 
     public void FPS()

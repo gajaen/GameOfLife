@@ -17,12 +17,12 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable{
     public Canvas CanvasId;
     public int oldJ, oldI;
-    private Timeline timeline;
-    private CanvasFrame canvasFrame;
+    public Timeline timeline;
+
     public GraphicsContext gc;
     int TIME;
 
-
+    private CanvasFrame canvasFrame;
     private Cell cell;
     private Board board;
     private GUI gui;
@@ -31,7 +31,6 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
 
 
 //    canvasFrame.drawLines();
@@ -50,7 +49,8 @@ public class Controller implements Initializable{
         canvasFrame.drawLines();
         oldI = 0;
         oldJ = 0;
-        Timeline();*/
+       */
+        Timeline();
     }
 
 
