@@ -35,6 +35,8 @@ public class Controller {
     public Timeline timeline;
     public ColorPicker colorPicker;
 
+    private GUI gui;
+
 
     public int gen = 0;
     public int FPS = 120;
@@ -178,52 +180,49 @@ public class Controller {
         }));
 
     }
+    public void Timeline() {
 
-    //KNAPPER
-    //**********************************************************************************
+        TIME = 1000 / 120;
+        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
+            board.nextGeneration();
+            timeline.playFromStart();
+
+        }));
+    }
+
+    public void clickedStartButton(){
+        gui.StartButton();
+    }
+
+    public void clickedClearButton(){
+        gui.ClearButton();
+    }
+
     public void clickedRandomButton() {
-        //Lager en ny random array for hver gang start er trykket.
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                board[i][j] = (int) (Math.random() * 2);
-            }
-        }
-        drawCells();
-        drawLines();
+        gui.RandomButton();
+    }
+
+    public void clickedColorPicker(){
+        gui.ColorPicker();
+    }
+
+    public void clickedStopButton(){
+        gui.StopButton();
+    }
+
+    public void clickedFpsSlider(){
+        gui.fpsSlider();
+    }
+
+    public void clickedCellSlider() {
+        gui.cellSlider();
     }
 
 
-    public void clickedClearButton() {
-        gen = 0;
-        timeline.stop();
-        initialize();
-
+    public void CanvasPressed(MouseEvent a) {
+        gui.CanvasPressed(a);
     }
 
-    public void clickedStartButton() {
-        timeline.play();
-
-    }
-
-    public void colorPickerClicked() {
-        Color color = colorPicker.getValue();
-        if (color != null) {
-            cellColor = colorPicker.getValue();
-        }
-    }
-
-    public void clickedStopButton() {
-        timeline.stop();
-    }
-
-    public void FPSClicked() {
-        FPS = (int) sliderFPS.getValue();
-    }
-
-    public void CellSizeClicked() {
-        cellSize = (int) cellSlider.getValue();
-    }
-    //***************************************
 
     public void init(Stage primaryStage) {
 

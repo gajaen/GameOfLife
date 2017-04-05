@@ -20,7 +20,7 @@ public class GUI {
     private Stage stage;
 
 
-    public void clickedRandomButton() {
+    public void RandomButton() {
         //Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < controller.HEIGHT; i++) {
             for (int j = 0; j < controller.WIDTH; j++) {
@@ -39,34 +39,34 @@ public class GUI {
 
 
 
-    public void clickedClearButton() {
+    public void ClearButton() {
         controller.gen = 0;
         controller.timeline.stop();
         controller.initialize();
 
     }
 
-    public void clickedStartButton() {
+    public void StartButton() {
         controller.timeline.play();
 
     }
 
-    public void colorPickerClicked() {
+    public void ColorPicker() {
         Color color = controller.colorPicker.getValue();
         if (color != null) {
             controller.cellColor = controller.colorPicker.getValue();
         }
     }
 
-    public void clickedStopButton() {
+    public void StopButton() {
         controller.timeline.stop();
     }
 
-    public void FPSClicked() {
+    public void fpsSlider() {
         controller.FPS = (int) controller.sliderFPS.getValue();
     }
 
-    public void CellSizeClicked() {
+    public void cellSlider{
         controller.cellSize = (int) controller.cellSlider.getValue();
     }
 
