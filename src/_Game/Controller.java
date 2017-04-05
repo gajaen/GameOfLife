@@ -171,7 +171,7 @@ public class Controller {
     }
 
     public void Timeline() {
-        FPSClicked();
+        clickedFpsSlider();
         TIME = 1000 / FPS;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             nextGeneration();
@@ -179,15 +179,6 @@ public class Controller {
 
         }));
 
-    }
-    public void Timeline() {
-
-        TIME = 1000 / 120;
-        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            board.nextGeneration();
-            timeline.playFromStart();
-
-        }));
     }
 
     public void clickedStartButton(){
@@ -218,10 +209,6 @@ public class Controller {
         gui.cellSlider();
     }
 
-
-    public void CanvasPressed(MouseEvent a) {
-        gui.CanvasPressed(a);
-    }
 
 
     public void init(Stage primaryStage) {

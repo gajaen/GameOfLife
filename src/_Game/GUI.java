@@ -66,7 +66,7 @@ public class GUI {
         controller.FPS = (int) controller.sliderFPS.getValue();
     }
 
-    public void cellSlider{
+    public void cellSlider(){
         controller.cellSize = (int) controller.cellSlider.getValue();
     }
 
