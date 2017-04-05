@@ -21,16 +21,22 @@ public class GUI {
 
 
     public void RandomButton() {
-        /*//Lager en ny random array for hver gang start er trykket.
-        for (int i = 0; i < controller.HEIGHT; i++) {
-            for (int j = 0; j < controller.WIDTH; j++) {
-                controller.board[i][j] = (int) (Math.random() * 2);
+        //Lager en ny random array for hver gang start er trykket.
+        Controller Con = new Controller();
+
+
+        for (int i = 0; i < Con.HEIGHT; i++) {
+            for (int j = 0; j < Con.WIDTH; j++) {
+                Con.board[i][j] = (int) (Math.random() * 2);
             }
         }
-        controller.drawCells();
-        controller.drawLines();
-        */
-        System.out.print("Test");
+
+        System.out.print("2");
+
+        Con.drawCells();
+        Con.drawLines();
+
+        System.out.print("3");
     }
 
 

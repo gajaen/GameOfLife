@@ -193,7 +193,7 @@ public class Controller {
     }
 
     public void clickedRandomButton() {
-        System.out.println("Test");
+        System.out.println("1");
         GUI Test = new GUI();
         Test.RandomButton();
     }
