@@ -31,11 +31,6 @@ public class GUI {
         controller.drawLines();
     }
 
-    public void init(Stage primaryStage) {
-
-        this.stage = stage;
-
-    }
 
 
     public void ClearButton() {
