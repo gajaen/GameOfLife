@@ -218,7 +218,6 @@ public class Controller {
     }
 
 
-
     public void openFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open GOL Shape");
