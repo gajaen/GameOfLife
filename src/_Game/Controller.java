@@ -3,6 +3,7 @@ package _Game;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -17,6 +18,8 @@ import javafx.util.Duration;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,6 +43,7 @@ public class Controller {
 
     public int gen = 0;
     public int FPS = 120;
+
 
 
     public void cleanBoard() {
@@ -202,7 +206,7 @@ public class Controller {
     }
 
     public void clickedFpsSlider(){
-        gui.fpsSlider();
+        gui.fpsSlider(FPS);
     }
 
     public void clickedCellSlider() {
@@ -340,6 +344,8 @@ public class Controller {
     public void closeWindow() {
         Platform.exit();
     }
+
+
 }
 
 

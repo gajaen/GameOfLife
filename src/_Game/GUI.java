@@ -56,8 +56,9 @@ public class GUI {
         controller.timeline.stop();
     }
 
-    public void fpsSlider() {
-        controller.FPS = (int) controller.sliderFPS.getValue();
+    public int fpsSlider(int a) {
+
+       return controller.FPS = (int) controller.sliderFPS.getValue();
     }
 
     public void cellSlider() {
