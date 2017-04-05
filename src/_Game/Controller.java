@@ -3,7 +3,6 @@ package _Game;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -38,7 +37,7 @@ public class Controller {
     public Timeline timeline;
     public ColorPicker colorPicker;
 
-    private GUI gui;
+    public GUI gui;
 
 
     public int gen = 0;
@@ -82,7 +81,7 @@ public class Controller {
 
         drawCells();
         drawLines();
-        Timeline();
+        //Timeline();
     }
 
 
@@ -176,7 +175,7 @@ public class Controller {
 
     public void Timeline() {
         clickedFpsSlider();
-        TIME = 1000 / FPS;
+        TIME = 1000 / 60;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             nextGeneration();
             timeline.playFromStart();
@@ -194,11 +193,14 @@ public class Controller {
     }
 
     public void clickedRandomButton() {
-        gui.RandomButton();
+        System.out.println("Test");
+        GUI Test = new GUI();
+        Test.RandomButton();
     }
 
     public void clickedColorPicker(){
         gui.ColorPicker();
+
     }
 
     public void clickedStopButton(){
@@ -206,7 +208,7 @@ public class Controller {
     }
 
     public void clickedFpsSlider(){
-        gui.fpsSlider(FPS);
+        gui.fpsSlider();
     }
 
     public void clickedCellSlider() {
@@ -335,9 +337,6 @@ public class Controller {
             e.printStackTrace();
 
         }
-
-
-
     }
 
 

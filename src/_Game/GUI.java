@@ -16,12 +16,12 @@ import java.util.regex.Pattern;
 
 public class GUI {
 
-    private Controller controller;
-    private Stage stage;
+    public Controller controller;
+    public Stage stage;
 
 
     public void RandomButton() {
-        //Lager en ny random array for hver gang start er trykket.
+        /*//Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < controller.HEIGHT; i++) {
             for (int j = 0; j < controller.WIDTH; j++) {
                 controller.board[i][j] = (int) (Math.random() * 2);
@@ -29,20 +29,19 @@ public class GUI {
         }
         controller.drawCells();
         controller.drawLines();
+        */
+        System.out.print("Test");
     }
-
 
 
     public void ClearButton() {
         controller.gen = 0;
         controller.timeline.stop();
         controller.initialize();
-
     }
 
     public void StartButton() {
         controller.timeline.play();
-
     }
 
     public void ColorPicker() {
@@ -56,9 +55,8 @@ public class GUI {
         controller.timeline.stop();
     }
 
-    public int fpsSlider(int a) {
-
-       return controller.FPS = (int) controller.sliderFPS.getValue();
+    public void fpsSlider() {
+        controller.FPS = (int) controller.sliderFPS.getValue();
     }
 
     public void cellSlider() {
