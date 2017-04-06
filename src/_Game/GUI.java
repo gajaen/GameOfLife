@@ -35,20 +35,19 @@ import java.util.regex.Pattern;
 
 
 public class GUI{
+    Controller con = new Controller();
 
-    public Canvas CanvasId;
+    con.CanvasId = test;
+
+    int HEIGHT = 200;
+    int WIDTH = (int) test.getHeigth();
+
     public GraphicsContext gc;
-
-    private Controller con = new Controller();
-
+    public Canvas CanvasId;
 
 
     public void Canvas(){
-        System.out.println("Canvas1");
-        gc = CanvasId.getGraphicsContext2D();
-        System.out.println("Canvas2");
-        gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, 10, 10);
+
     }
 
 

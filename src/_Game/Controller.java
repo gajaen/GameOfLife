@@ -39,17 +39,30 @@ public class Controller {
 
 
 
+
+
+    public void initialize()
+    {
+        drawCells();
+
+    }
+
+    public void drawCells(){
+        GUI gui = new GUI();
+
+        gc = CanvasId.getGraphicsContext2D();
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, gui.HEIGHT, gui.WIDTH);
+
+    }
+
+
+
     public void cleanBoard() {
 
     }
 
 
-    public void initialize()
-    {
-        GUI gui = new GUI();
-        gui.Canvas();
-
-    }
 
     public void CanvasPressed(MouseEvent a) {
     }
@@ -59,12 +72,6 @@ public class Controller {
 
     }
 
-
-    public void drawCells() {
-    }
-
-    public void drawLines() {
-    }
 
     public void Timeline() {
 
