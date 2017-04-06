@@ -37,16 +37,21 @@ import java.util.regex.Pattern;
 public class GUI{
     Controller con = new Controller();
 
-    con.CanvasId = test;
+    public GUI(){
 
-    int HEIGHT = 200;
-    int WIDTH = (int) test.getHeigth();
+    }
+
+    int HEIGHT;
+    int WIDTH;
 
     public GraphicsContext gc;
     public Canvas CanvasId;
 
 
     public void Canvas(){
+        System.out.println(HEIGHT);
+        System.out.println(WIDTH);
+
 
     }
 

@@ -37,22 +37,33 @@ public class Controller {
     public Timeline timeline;
     public ColorPicker colorPicker;
 
-
-
+    private GUI gui;
 
 
     public void initialize()
     {
+        GUI gui = new GUI();
+        gc = CanvasId.getGraphicsContext2D();
+
+        gui.HEIGHT = (int)CanvasId.getHeight();
+        gui.WIDTH = (int)CanvasId.getWidth();
+
+
+        gui.Canvas();
         drawCells();
+
 
     }
 
     public void drawCells(){
         GUI gui = new GUI();
 
-        gc = CanvasId.getGraphicsContext2D();
+        System.out.println(gui.HEIGHT);
+        System.out.println(gui.WIDTH);
+
         gc.setFill(Color.BLACK);
-        gc.fillRect(0, 0, gui.HEIGHT, gui.WIDTH);
+        gc.fillRect(0, 0, gui.WIDTH, gui.HEIGHT);
+
 
     }
 
