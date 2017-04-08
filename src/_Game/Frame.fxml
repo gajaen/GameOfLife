@@ -94,17 +94,17 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Slider fx:id="cellSlider" majorTickUnit="50.0" max="40.0" min="2.0" minorTickCount="5" onMouseClicked="#clickedCellSlider" onMouseDragged="#clickedCellSlider" showTickLabels="true" showTickMarks="true" value="10.0" GridPane.columnIndex="1">
+                        <Slider fx:id="cellSlider" majorTickUnit="50.0" max="40.0" min="0.1" minorTickCount="5" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" showTickLabels="true" showTickMarks="true" value="10.0" GridPane.columnIndex="1">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
                         </Slider>
-                        <Slider fx:id="sliderFPS" blockIncrement="30.0" majorTickUnit="30.0" max="240.0" min="10.0" minorTickCount="5" onMouseClicked="#clickedFpsSlider" onMouseDragged="#clickedFpsSlider" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Slider fx:id="sliderFPS" blockIncrement="30.0" majorTickUnit="30.0" max="240.0" min="10.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
                         </Slider>
-                        <ColorPicker fx:id="colorPicker" onAction="#clickedColorPicker" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ColorPicker fx:id="colorPicker" onAction="#colorPickerClicked" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     </children>
                 </GridPane>
             </children>
