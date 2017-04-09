@@ -10,7 +10,7 @@ public class Cell {
 
     public Cell(){
 
-        cellSize = 10;
+        cellSize = 12;
         cellGap = 1;
         cellColor = Color.ALICEBLUE;
     }

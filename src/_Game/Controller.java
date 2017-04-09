@@ -50,7 +50,6 @@ public class Controller implements Initializable{
     }
 
     public void FPSClicked(){
-        gui.FPS();
     }
 
     public void CellSizeClicked() {
@@ -60,7 +59,8 @@ public class Controller implements Initializable{
 
     public void CanvasPressed(MouseEvent a) {
 
-        System.out.println(a);
+        canvasFrame.CanvasPressed(a);
+
 
 
     }

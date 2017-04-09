@@ -2,6 +2,7 @@ package _Game;
 
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 public class Board {
@@ -11,6 +12,8 @@ public class Board {
     public int[][] board;
     int canvasWidth;
     int canvasHeigth;
+    int oldJ;
+    int oldI;
 
 
     public Board(int[][] boardarray, int canWidth, int canHeight) {
@@ -18,9 +21,7 @@ public class Board {
         this.board = boardarray;
         this.canvasHeigth = canHeight;
         this.canvasWidth = canWidth;
-
         this.cell = new Cell();
-
 
     }
 
@@ -73,7 +74,7 @@ public class Board {
     public void drawLines(GraphicsContext gc, double lineWidth, Color lineColor) {
 
         gc.setStroke(lineColor);
-        gc.setLineWidth(5);
+        gc.setLineWidth(4);
         gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeigth);
         gc.setLineWidth(lineWidth);
 
@@ -90,7 +91,32 @@ public class Board {
         }
     }
 
+    public void cleanArray() {
+        for (int i = 0; i < canvasHeigth; i++) {
+            for (int j = 0; j < canvasWidth; j++) {
+                board[i][j] = 0;
+            }
+        }
+    }
 
+    public void CanvasPressed(MouseEvent a) {
+
+
+        int j = ((int) a.getX() / cell.getCellSize()) + 1;
+        int i = ((int) a.getY() / cell.getCellSize()) + 1;
+
+        if( j != oldJ || i != oldI ) {
+
+            if (board[i][j] == 0) {
+                board[i][j] = 1;
+            }
+        }
+        oldJ = j;
+        oldI = i;
+
+
+
+    }
 
     public void opened(){
 
@@ -99,23 +125,17 @@ public class Board {
 
     }
 
-
-    public void setBoardXY(int i, int j)
-    {
-        if (board[i][j] == 0) {
-
-            board[i][j] = 1;
-        }
-    }
-
     public int setBoardRandom(int i, int j) {
 
         return  board[i][j] = (int) (Math.random() * 2);
 
     }
     public void setCellColor(Color color){
+
         this.cell.setCellColor(color);
+
     }
+
 
     public void setOpenBoard(int rownumber, int columnnumber, int cnum, int[][] board) {
 
@@ -125,6 +145,8 @@ public class Board {
 
 
     }
+
+
 
     public void setBoard(int[][] board) {
         this.board = board;

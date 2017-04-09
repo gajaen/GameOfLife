@@ -3,6 +3,7 @@ package _Game;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -26,7 +27,7 @@ public class CanvasFrame  {
         this.HEIGHT = height;
         this.WIDTH = width;
         this.gc = gccontext;
-        lineWidth = 0.4;
+        lineWidth = 0.2;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
@@ -44,8 +45,8 @@ public class CanvasFrame  {
     }
 
 
-
     public void clearCanvas() {
+
         getGc().clearRect(0, 0, this.WIDTH, this.HEIGHT);
         getGc().setFill(getBackgroundColor());
         getGc().fillRect(0, 0, this.WIDTH, this.HEIGHT);
@@ -54,10 +55,12 @@ public class CanvasFrame  {
     }
 
 
-
+    public void clear(){board.cleanArray();}
 
 
     public Timeline SetTimeline() {
+
+
         TIME = 1000 / 120;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clearCanvas();
@@ -65,7 +68,6 @@ public class CanvasFrame  {
             board.nextGeneration();
 
             board.drawCells(this.gc);
-            board.drawLines(this.gc, this.lineWidth,this.lineColor);
 
             timeline.playFromStart();
 
@@ -73,8 +75,6 @@ public class CanvasFrame  {
 
         return timeline;
     }
-
-
 
     public void RandomButtonAction() {
         clearCanvas();
@@ -92,15 +92,23 @@ public class CanvasFrame  {
 
     }
 
+    public void CanvasPressed(MouseEvent a) {
+
+        board.CanvasPressed(a);
+        board.drawCells(gc);
+        timeline.stop();
+
+    }
+
     public void boardopen(){
+
         board.opened();
 
     }
+
     public void setCellColor(Color color){
         this.board.setCellColor(color);
     }
-
-
 
 
     public int getHEIGHT() {
@@ -110,6 +118,7 @@ public class CanvasFrame  {
     public void setHEIGHT(int HEIGHT) {
         this.HEIGHT = HEIGHT;
     }
+
 
     public int getWIDTH() {
         return WIDTH;

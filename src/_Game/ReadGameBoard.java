@@ -123,7 +123,6 @@ public class ReadGameBoard{
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
-                                this.boardWidth = 2;
 
                                 // board.setOpenBoard(rownumber, columnnumber, cnum, board.getBoard());
 
