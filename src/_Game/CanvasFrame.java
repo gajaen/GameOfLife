@@ -40,6 +40,7 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         board.drawLines(gc,lineWidth,Color.BLACK);
+        System.out.println("TEST");
 
 
     }
@@ -51,6 +52,8 @@ public class CanvasFrame  {
         getGc().setFill(getBackgroundColor());
         getGc().fillRect(0, 0, this.WIDTH, this.HEIGHT);
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
+
+
 
     }
 
@@ -68,6 +71,8 @@ public class CanvasFrame  {
             board.nextGeneration();
 
             board.drawCells(this.gc);
+            board.drawLines(this.gc, this.lineWidth,this.lineColor);
+
 
             timeline.playFromStart();
 
@@ -85,17 +90,19 @@ public class CanvasFrame  {
                 board.setBoardRandom(i,j);
             }
         }
-
-
         board.drawCells(this.gc);
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
+
+
 
     }
 
     public void CanvasPressed(MouseEvent a) {
 
+        clearCanvas();
         board.CanvasPressed(a);
         board.drawCells(gc);
+        board.drawLines(this.gc, this.lineWidth,this.lineColor);
         timeline.stop();
 
     }
