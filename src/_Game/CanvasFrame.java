@@ -40,7 +40,7 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         board.drawLines(gc,lineWidth,Color.BLACK);
-        System.out.println("TEST");
+        System.out.println("Test");
 
 
     }
