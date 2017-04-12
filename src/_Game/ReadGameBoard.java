@@ -24,11 +24,12 @@ public class ReadGameBoard{
         try {
             openFile();
             readFile(file);
+            System.out.println("hei1");
+
 
         } catch(Exception e){
 
             e.printStackTrace();
-
         }
     }
 
@@ -63,7 +64,7 @@ public class ReadGameBoard{
 
     public void readFile(File file) throws IOException {
 
-        setRownumber(5);
+        int rownumber = 5;
         int columnnumber = 0;
 
 
@@ -123,11 +124,12 @@ public class ReadGameBoard{
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
-
+                                System.out.println(cnum);
                                 // board.setOpenBoard(rownumber, columnnumber, cnum, board.getBoard());
 
                                 //      canvasFrame.setBoardRandom(cnum,columnnumber);
                                 //columnnumber = columnnumber +1;
+                                System.out.println(cnum);
                             }
                             columnnumber = columnnumber + oNumInt;
                             itemTmp = itemTmp.replaceFirst("^\\d*?o", "");

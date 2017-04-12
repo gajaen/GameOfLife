@@ -37,7 +37,7 @@ public class Board {
                 int cellNeighbors = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
-                        cellNeighbors += getBoard()[x + i][y + j];
+                        cellNeighbors += board[x + i][y + j];
                     }
                 }
 
@@ -47,11 +47,12 @@ public class Board {
                     nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
                 else if ((getBoard()[x][y] == 0) && (cellNeighbors == 3))
                     nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
-                else nextBoard[x][y] = getBoard()[x][y];
+                else nextBoard[x][y] = board[x][y];
             }
         }
 
-        setBoard(nextBoard);
+        //setBoard(nextBoard);
+        board = nextBoard;
 
 
     }
@@ -120,8 +121,8 @@ public class Board {
 
     public void opened(){
 
-        board[readGameBoard.getRownumber()+cell.getCellSize()][readGameBoard.getColumnnumber()+readGameBoard.getCnum()+cell.getCellSize()] = 1;
 
+        ReadGameBoard readGameBoard = new ReadGameBoard();
 
     }
 

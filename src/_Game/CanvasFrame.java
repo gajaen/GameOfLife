@@ -48,9 +48,9 @@ public class CanvasFrame  {
 
     public void clearCanvas() {
 
-        getGc().clearRect(0, 0, this.WIDTH, this.HEIGHT);
-        getGc().setFill(getBackgroundColor());
-        getGc().fillRect(0, 0, this.WIDTH, this.HEIGHT);
+        gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
+        gc.setFill(getBackgroundColor());
+        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
 
 
