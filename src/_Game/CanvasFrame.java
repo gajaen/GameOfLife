@@ -27,21 +27,21 @@ public class CanvasFrame  {
         this.HEIGHT = height;
         this.WIDTH = width;
         this.gc = gccontext;
-        lineWidth = 0.2;
+        lineWidth = 0.5;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
         board = new Board(new int [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
 
-
         board.setBoard(new int[getHEIGHT()][getWIDTH()]);
         setGc(this.gc);
+
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
-        board.drawLines(gc,lineWidth,Color.BLACK);
         System.out.println("Test");
 
+        clearArray();
 
     }
 
@@ -51,14 +51,15 @@ public class CanvasFrame  {
         gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
-        board.drawLines(this.gc, this.lineWidth,this.lineColor);
-
-
-
     }
 
 
-    public void clear(){board.cleanArray();}
+    public void clearArray(){
+        board.cleanArray();
+        board.drawCells(gc);
+        board.drawLines(this.gc, this.lineWidth,this.lineColor);
+
+    }
 
 
     public Timeline SetTimeline() {

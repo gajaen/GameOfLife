@@ -13,6 +13,7 @@ public class GUI{
     public ColorPicker colorPicker;
     private Timeline timeline;
     private CanvasFrame canvasFrame;
+    private Board board;
     int FPS;
 
 
@@ -32,7 +33,7 @@ public class GUI{
     public void ClearButton() {
         timeline.stop();
         canvasFrame.clearCanvas();
-        canvasFrame.clear();
+        canvasFrame.clearArray();
     }
 
 
