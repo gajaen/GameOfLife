@@ -4,17 +4,24 @@ package _Game;
 import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static _Game.CanvasFrame.*;
+
 public class Controller implements Initializable{
     public Canvas CanvasId;
     private CanvasFrame canvasFrame;
+    public ColorPicker colorPicker;
+    public Cell cell;
     private GUI gui;
+
 
 
     @Override
@@ -40,18 +47,23 @@ public class Controller implements Initializable{
         gui.RandomButton();
     }
 
-    public void colorPickerClicked(){
-        gui.ColorPicker();
-    }
+    public void colorPickerClicked() {
+        Color newColor = colorPicker.getValue();
+        System.out.println(newColor);
+        }
+
 
     public void clickedStopButton(){
         gui.StopButton();
     }
 
     public void FPSClicked(){
+       // gui.FPS();
+
     }
 
     public void CellSizeClicked() {
+
         gui.CellSize();
     }
 

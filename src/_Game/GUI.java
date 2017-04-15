@@ -10,18 +10,17 @@ import javafx.scene.paint.Color;
 public class GUI{
 
     public Slider cellSlider, sliderFPS;
-    public ColorPicker colorPicker;
     private Timeline timeline;
     private CanvasFrame canvasFrame;
     private Board board;
-    int FPS;
+    private Cell cell;
+    private Color cellColor;
 
 
     public GUI(CanvasFrame canvasFrame){
 
         this.canvasFrame = canvasFrame;
         this.timeline = canvasFrame.SetTimeline();
-
     }
 
 
@@ -42,12 +41,24 @@ public class GUI{
 
     }
 
-    public void ColorPicker() {
-        Color color = colorPicker.getValue();
-        if (color != null) {
-            canvasFrame.setCellColor(colorPicker.getValue());
+   public void ColorPicker() {
+        /*
+      Color a = controller.colorPicker.getValue();
+        //cellColor = colorPicker.getValue();
+        System.out.println(a);
+    if (color != null) {
+            cell.setCellColor(colorPicker.getValue());
         }
+        System.out.println(colorPicker);
+
+*/
     }
+
+
+
+
+
+
 
     public void StopButton() {
         timeline.stop();
@@ -61,7 +72,7 @@ public class GUI{
 
     public void CellSize() {
 
-        // board.setCellSize((int) cellSlider.getValue());
+        //board.setCellSize((int) cellSlider.getValue());
         // canvasFrame.clearCanvas();
         //canvasFrame.drawCells();
         //canvasFrame.drawLines();

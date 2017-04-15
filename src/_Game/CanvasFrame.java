@@ -3,6 +3,7 @@ package _Game;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -19,7 +20,11 @@ public class CanvasFrame  {
     private Color backgroundColor;
     private Board board;
     private Timeline timeline;
+    private GUI gui;
+    public ColorPicker colorPicker;
+    public Controller controller;
     int TIME;
+    private Cell cell;
 
 
     public CanvasFrame(int height, int width, GraphicsContext gccontext){
@@ -39,7 +44,6 @@ public class CanvasFrame  {
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
-        System.out.println("Test");
 
         clearArray();
 
@@ -64,8 +68,10 @@ public class CanvasFrame  {
 
     public Timeline SetTimeline() {
 
+        //int FPS = cell.getFPS();
+        int FPS = 60;
 
-        TIME = 1000 / 120;
+        TIME = 1000 / FPS;
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clearCanvas();
 
@@ -107,6 +113,7 @@ public class CanvasFrame  {
         timeline.stop();
 
     }
+
 
     public void boardopen(){
 

@@ -1,22 +1,34 @@
 package _Game;
 
 
+import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 
 public class Cell {
     private int cellSize;
     private int cellGap;
-    private Color cellColor;
+    private int FPS;
+    public Color cellColor;
+    public Controller controller;
 
     public Cell(){
 
         cellSize = 12;
         cellGap = 1;
-        cellColor = Color.ALICEBLUE;
+        FPS = 10;
+        cellColor = Color.YELLOW;
+    }
+    public int getFPS() {
+        return FPS;
     }
 
+    public void setFPS(int FPS) {
+        this.FPS = FPS;
+    }
 
+    public void ColorPicker(){
 
+    }
 
     public Color getCellColor() {
         return cellColor;
