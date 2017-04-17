@@ -25,6 +25,7 @@ public class CanvasFrame  {
     public Controller controller;
     int TIME;
     private Cell cell;
+    public Color newColor;
 
 
     public CanvasFrame(int height, int width, GraphicsContext gccontext){
@@ -46,6 +47,11 @@ public class CanvasFrame  {
 
 
         clearArray();
+
+    }
+
+    public void ColorPicker(){
+        System.out.println(newColor + " 2");
 
     }
 

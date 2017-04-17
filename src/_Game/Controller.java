@@ -50,6 +50,8 @@ public class Controller implements Initializable{
     public void colorPickerClicked() {
         Color newColor = colorPicker.getValue();
         System.out.println(newColor);
+        newColor = canvasFrame.newColor;
+        canvasFrame.ColorPicker();
         }
 
 

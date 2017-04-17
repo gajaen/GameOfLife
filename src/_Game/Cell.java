@@ -26,9 +26,7 @@ public class Cell {
         this.FPS = FPS;
     }
 
-    public void ColorPicker(){
 
-    }
 
     public Color getCellColor() {
         return cellColor;
