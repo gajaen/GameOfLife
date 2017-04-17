@@ -51,7 +51,6 @@ public class CanvasFrame  {
     }
 
     public void ColorPicker(){
-        //
         System.out.println(newColor + " 2");
 
     }
