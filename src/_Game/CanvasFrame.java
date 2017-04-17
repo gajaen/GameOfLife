@@ -25,7 +25,9 @@ public class CanvasFrame  {
     public Controller controller;
     int TIME;
     private Cell cell;
+    private int FPS;
     public Color newColor;
+
 
 
     public CanvasFrame(int height, int width, GraphicsContext gccontext){
@@ -36,6 +38,8 @@ public class CanvasFrame  {
         lineWidth = 0.5;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
+        FPS = 60;
+
 
         board = new Board(new int [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
 
@@ -76,9 +80,10 @@ public class CanvasFrame  {
     public Timeline SetTimeline() {
 
         //int FPS = cell.getFPS();
-        int FPS = 60;
 
         TIME = 1000 / FPS;
+        System.out.println(FPS);
+
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clearCanvas();
 
@@ -166,6 +171,14 @@ public class CanvasFrame  {
 
     public void setGc(GraphicsContext gc) {
         this.gc = gc;
+    }
+
+    public int getFPS() {
+        return FPS;
+    }
+
+    public void setFPS(int FPS) {
+        this.FPS = FPS;
     }
 }
 

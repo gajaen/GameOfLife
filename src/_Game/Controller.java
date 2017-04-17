@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -21,6 +22,8 @@ public class Controller implements Initializable{
     public ColorPicker colorPicker;
     public Cell cell;
     private GUI gui;
+    public Slider sliderFPS;
+
 
 
 
@@ -30,6 +33,7 @@ public class Controller implements Initializable{
         canvasFrame = new CanvasFrame( (int)CanvasId.getHeight(),(int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
 
         this.gui = new GUI(canvasFrame);
+        FPSClicked();
 
     }
 
@@ -51,6 +55,7 @@ public class Controller implements Initializable{
 
         canvasFrame.colorPicker(colorPicker);
 
+
         }
 
 
@@ -59,8 +64,9 @@ public class Controller implements Initializable{
     }
 
     public void FPSClicked(){
-       // gui.FPS();
 
+          canvasFrame.setFPS((int) sliderFPS.getValue());
+        System.out.println(sliderFPS.getValue());
     }
 
     public void CellSizeClicked() {

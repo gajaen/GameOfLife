@@ -123,7 +123,7 @@ public class Board {
 
     }
 
-    public void color(){
+/*    public void color(){
         ColorPicker colorPicker = new ColorPicker();
 
         Color a = colorPicker.getValue();
@@ -134,7 +134,7 @@ public class Board {
         }
 
     }
-
+*/
     public void opened(){
 
 

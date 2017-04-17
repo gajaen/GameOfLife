@@ -16,7 +16,7 @@ public class Cell {
         cellSize = 12;
         cellGap = 1;
         FPS = 10;
-        cellColor = Color.YELLOW;
+        cellColor = Color.WHITE;
     }
     public int getFPS() {
         return FPS;
