@@ -50,8 +50,9 @@ public class CanvasFrame  {
 
     }
 
-    public void ColorPicker(){
+    public void colorPicker(ColorPicker colorPicker){
         System.out.println(newColor + " 2");
+        board.setCellColor(colorPicker.getValue());
 
     }
 

@@ -2,6 +2,7 @@ package _Game;
 
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -119,6 +120,18 @@ public class Board {
 
 
 
+
+    }
+
+    public void color(){
+        ColorPicker colorPicker = new ColorPicker();
+
+        Color a = colorPicker.getValue();
+        setCellColor(colorPicker.getValue());
+        System.out.println(a);
+        if (a != null) {
+            cell.setCellColor(colorPicker.getValue());
+        }
 
     }
 
