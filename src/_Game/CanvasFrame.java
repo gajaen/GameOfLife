@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -21,13 +22,11 @@ public class CanvasFrame  {
     private Board board;
     private Timeline timeline;
     private GUI gui;
-    public ColorPicker colorPicker;
     public Controller controller;
     int TIME;
     private Cell cell;
-    private int FPS;
+    public int FPS;
     public Color newColor;
-
 
 
     public CanvasFrame(int height, int width, GraphicsContext gccontext){
@@ -38,7 +37,9 @@ public class CanvasFrame  {
         lineWidth = 0.5;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
-        FPS = 60;
+
+
+
 
 
         board = new Board(new int [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
@@ -52,13 +53,24 @@ public class CanvasFrame  {
 
         clearArray();
 
+        System.out.println(getFPS());
+
+
+        FPS = getFPS();
+
+
     }
+
 
     public void colorPicker(ColorPicker colorPicker){
         System.out.println(newColor + " 2");
         board.setCellColor(colorPicker.getValue());
-
+        clearCanvas();
+        board.drawCells(gc);
+        board.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
+
+
 
 
     public void clearCanvas() {
@@ -79,10 +91,7 @@ public class CanvasFrame  {
 
     public Timeline SetTimeline() {
 
-        //int FPS = cell.getFPS();
-
-        TIME = 1000 / FPS;
-        System.out.println(FPS);
+        TIME = 1000 / getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clearCanvas();
@@ -92,7 +101,7 @@ public class CanvasFrame  {
             board.drawCells(this.gc);
             board.drawLines(this.gc, this.lineWidth,this.lineColor);
 
-
+            SetTimeline();
             timeline.playFromStart();
 
         }));
@@ -123,8 +132,9 @@ public class CanvasFrame  {
         board.drawCells(gc);
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
         timeline.stop();
-
     }
+
+
 
 
     public void boardopen(){
@@ -174,6 +184,9 @@ public class CanvasFrame  {
     }
 
     public int getFPS() {
+        if (FPS == 0){
+            FPS = 30;
+        }
         return FPS;
     }
 

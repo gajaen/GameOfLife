@@ -9,23 +9,15 @@ public class Cell {
     private int cellGap;
     private int FPS;
     public Color cellColor;
+    public Color newColor;
     public Controller controller;
 
     public Cell(){
 
-        cellSize = 12;
+        cellSize = 20;
         cellGap = 1;
-        FPS = 10;
         cellColor = Color.WHITE;
     }
-    public int getFPS() {
-        return FPS;
-    }
-
-    public void setFPS(int FPS) {
-        this.FPS = FPS;
-    }
-
 
 
     public Color getCellColor() {

@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0" style="-fx-background-color: ALICEBLUE;" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0" style="-fx-background-color: ALICEBLUE;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -99,7 +99,7 @@
                                 <Insets />
                             </opaqueInsets>
                         </Slider>
-                        <Slider fx:id="sliderFPS" blockIncrement="30.0" majorTickUnit="30.0" max="240.0" min="10.0" minorTickCount="5" onMouseClicked="#FPSClicked"  onMouseDragged="#FPSClicked" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Slider fx:id="sliderFPS" blockIncrement="30.0" majorTickUnit="30.0" max="240.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
@@ -114,6 +114,6 @@
         </HBox>
     </bottom>
     <center>
-        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" width="1224.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" width="1224.0" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>

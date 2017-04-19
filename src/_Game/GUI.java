@@ -6,6 +6,9 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 
+/**
+
+ */
 
 public class GUI{
 
@@ -40,24 +43,6 @@ public class GUI{
         timeline.playFromStart();
 
     }
-
-   public void ColorPicker() {
-        /*
-      Color a = controller.colorPicker.getValue();
-        //cellColor = colorPicker.getValue();
-        System.out.println(a);
-    if (color != null) {
-            cell.setCellColor(colorPicker.getValue());
-        }
-        System.out.println(colorPicker);
-
-*/
-    }
-
-
-
-
-
 
 
     public void StopButton() {

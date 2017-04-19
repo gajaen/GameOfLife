@@ -10,11 +10,14 @@ public class Board {
 
     private Cell cell;
     private ReadGameBoard readGameBoard;
+    private Controller controller;
     public int[][] board;
     int canvasWidth;
     int canvasHeigth;
     int oldJ;
     int oldI;
+
+    public Color newColor;
 
 
     public Board(int[][] boardarray, int canWidth, int canHeight) {
@@ -54,9 +57,8 @@ public class Board {
 
         //setBoard(nextBoard);
         board = nextBoard;
-
-
     }
+
 
 
     public void drawCells(GraphicsContext gc) {
@@ -115,6 +117,11 @@ public class Board {
             }
         }
 
+        if( j == 2 || i == 2){
+            controller.CanvasReleased();
+        }
+
+
         oldJ = j;
         oldI = i;
 
@@ -125,7 +132,6 @@ public class Board {
 
 /*    public void color(){
         ColorPicker colorPicker = new ColorPicker();
-
         Color a = colorPicker.getValue();
         setCellColor(colorPicker.getValue());
         System.out.println(a);

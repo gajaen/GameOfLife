@@ -27,13 +27,19 @@ public class Controller implements Initializable{
 
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         canvasFrame = new CanvasFrame( (int)CanvasId.getHeight(),(int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
 
+
         this.gui = new GUI(canvasFrame);
-        FPSClicked();
+
+
+
+
+
 
     }
 
@@ -54,8 +60,6 @@ public class Controller implements Initializable{
     public void colorPickerClicked() {
 
         canvasFrame.colorPicker(colorPicker);
-
-
         }
 
 
@@ -63,10 +67,18 @@ public class Controller implements Initializable{
         gui.StopButton();
     }
 
-    public void FPSClicked(){
+    public void test(){
+        System.out.print("test");
+    }
 
-          canvasFrame.setFPS((int) sliderFPS.getValue());
-        System.out.println(sliderFPS.getValue());
+    public void CanvasReleased(){
+
+    }
+
+    public void FPSClicked(){
+        canvasFrame.setFPS((int) sliderFPS.getValue());
+        System.out.println(canvasFrame.FPS);
+
     }
 
     public void CellSizeClicked() {
@@ -78,8 +90,6 @@ public class Controller implements Initializable{
     public void CanvasPressed(MouseEvent a) {
 
         canvasFrame.CanvasPressed(a);
-
-
 
     }
 
