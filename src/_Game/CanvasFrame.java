@@ -159,7 +159,12 @@ public class CanvasFrame  {
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
         board.drawPattern(pattern,gc);
 
+    }
 
+    public void drawCanvas(){
+        clearCanvas();
+        board.drawLines(gc, lineWidth, lineColor);
+        board.drawCells(gc);
     }
 
 
@@ -167,6 +172,7 @@ public class CanvasFrame  {
     public void setCellColor(Color color){
         this.board.setCellColor(color);
     }
+
 
 
     public int getHEIGHT() {
@@ -214,6 +220,9 @@ public class CanvasFrame  {
     public void setFPS(int FPS) {
         this.FPS = FPS;
     }
+
+
+
 }
 
 
