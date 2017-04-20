@@ -24,7 +24,7 @@ public class Controller implements Initializable{
     public ColorPicker colorPicker;
     public Cell cell;
     private GUI gui;
-    public Slider sliderFPS;
+    public Slider sliderFPS, cellSlider;
 
 
 
@@ -80,7 +80,13 @@ public class Controller implements Initializable{
 
     public void CellSizeClicked() {
 
-        gui.CellSize();
+        canvasFrame.cellSize((int) cellSlider.getValue());
+
+
+        /*public void CellSizeClicked() {
+            cellSize = (int) cellSlider.getValue();
+        }*/
+
     }
 
 

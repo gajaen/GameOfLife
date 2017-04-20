@@ -70,6 +70,12 @@ public class CanvasFrame  {
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
+    public void cellSize(int size){
+
+        board.setCellSize(size);
+
+    }
+
 
 
     public void clearCanvas() {
@@ -89,6 +95,7 @@ public class CanvasFrame  {
 
 
     public Timeline SetTimeline() {
+
 
         TIME = 1000 / getFPS();
 

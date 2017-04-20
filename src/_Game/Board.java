@@ -159,6 +159,10 @@ public class Board {
 
     }
 
+    public void setCellSize(int size){
+        this.cell.setCellSize(size);
+    }
+
 
 
     public void setBoard(int[][] board) {
