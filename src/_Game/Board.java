@@ -68,7 +68,7 @@ public class Board {
 
         for (int i = 0; i < this.canvasHeigth; i++) {
             for (int j = 0; j < this.canvasWidth; j++) {
-                if (getBoard()[i][j] == 1) {
+                if (board[i][j] == 1) {
                     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
                 }
             }
@@ -102,6 +102,26 @@ public class Board {
                 board[i][j] = 0;
             }
         }
+    }
+
+    public  void drawPattern(int[][] pattern, GraphicsContext gc)
+    {
+
+        for (int row=0; row < pattern.length; row++)
+        {
+            for (int col=0; col < pattern[row].length; col++)
+            {
+                if(pattern[row][col] ==1)
+                {
+                    board[row][col] = 1;
+
+                    //gc.fillRect(cell.getCellSize() * col - cell.getCellSize(), cell.getCellSize() * row - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+                }
+            }
+        }
+
+        drawCells(gc);
+
     }
 
     public void CanvasPressed(MouseEvent a) {
@@ -144,7 +164,7 @@ public class Board {
     public void opened(){
 
 
-        ReadGameBoard readGameBoard = new ReadGameBoard();
+      //  ReadGameBoard readGameBoard = new ReadGameBoard();
 
     }
 

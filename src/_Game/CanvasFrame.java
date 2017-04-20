@@ -143,6 +143,15 @@ public class CanvasFrame  {
 
     }
 
+    public void drawPattern(int [][] pattern){
+
+        board.drawPattern(pattern,gc);
+
+
+    }
+
+
+
     public void setCellColor(Color color){
         this.board.setCellColor(color);
     }

@@ -8,8 +8,10 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,10 +37,6 @@ public class Controller implements Initializable{
 
 
         this.gui = new GUI(canvasFrame);
-
-
-
-
 
 
     }
@@ -77,7 +75,6 @@ public class Controller implements Initializable{
 
     public void FPSClicked(){
         canvasFrame.setFPS((int) sliderFPS.getValue());
-        System.out.println(canvasFrame.FPS);
 
     }
 
@@ -98,6 +95,10 @@ public class Controller implements Initializable{
 
         canvasFrame.boardopen();
 
+
+        ReadGameBoard readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(),canvasFrame.getWIDTH());
+        readGameBoard.readFile();
+        canvasFrame.drawPattern(readGameBoard.pattern);
 
 
     }

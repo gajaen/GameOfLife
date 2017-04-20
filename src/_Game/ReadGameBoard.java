@@ -4,6 +4,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -13,17 +14,24 @@ import java.util.regex.Pattern;
 public class ReadGameBoard{
     private Stage stage;
     File file;
+    //FileChooser fileChooser;
     private int rownumber ;
     private int columnnumber;
     private int cnum;
+    public int [][] pattern;
 
-    private int boardWidth;
 
 
-    public  ReadGameBoard() {
+
+    public  ReadGameBoard(int boardHeight, int boardWidth) {
+
+        pattern = new int[boardWidth][boardHeight];
+
+      //  board = new Board(new int [xPattern] [yPattern], xPattern,yPattern);
+
         try {
             openFile();
-            readFile(file);
+            readFile();
             System.out.println("hei1");
 
 
@@ -40,7 +48,8 @@ public class ReadGameBoard{
 
     }
 
-    public void openFile()  {
+
+    private void openFile() throws IOException  {
         FileChooser fileChooser = new FileChooser();
 
         fileChooser.setTitle("Open GOL Shape");
@@ -52,21 +61,27 @@ public class ReadGameBoard{
 
         );
 
-        File file = fileChooser.showOpenDialog(stage);
+         file = fileChooser.showOpenDialog(stage);
 
 
         if (file != null) {
             System.out.println("Choosen file " + file);
         }
+
+
+
     }
 
 
 
-    public void readFile(File file) throws IOException {
+    public void readFile() throws IOException {
 
         int rownumber = 5;
         int columnnumber = 0;
 
+        if(file == null){
+            return;
+        }
 
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
@@ -124,12 +139,10 @@ public class ReadGameBoard{
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
-                                System.out.println(cnum);
-                                // board.setOpenBoard(rownumber, columnnumber, cnum, board.getBoard());
+                                System.out.println(rownumber + "/" + cnum);
+                                 pattern[rownumber][columnnumber + cnum] = 1;
 
-                                //      canvasFrame.setBoardRandom(cnum,columnnumber);
                                 //columnnumber = columnnumber +1;
-                                System.out.println(cnum);
                             }
                             columnnumber = columnnumber + oNumInt;
                             itemTmp = itemTmp.replaceFirst("^\\d*?o", "");
@@ -140,16 +153,11 @@ public class ReadGameBoard{
                     //if $ ONLY move to next row (row = row + 1 and column =0)
                     if (Pattern.matches(".*\\$", item)) {
                         columnnumber = 0;
-                        setRownumber(getRownumber() + 1);
+                        rownumber = rownumber + 1;
                     }
 
 
                 }
-
-           /*     cell.setCellColor(colorPicker.getValue());
-                canvasFrame.clearCanvas();
-                canvasFrame.drawCells();
-                canvasFrame.drawLines();*/
 
 
             }

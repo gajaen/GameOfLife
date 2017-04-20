@@ -14,7 +14,7 @@ public class Cell {
 
     public Cell(){
 
-        cellSize = 20;
+        cellSize = 3;
         cellGap = 1;
         cellColor = Color.WHITE;
     }
