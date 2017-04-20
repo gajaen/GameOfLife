@@ -72,7 +72,6 @@ public class CanvasFrame  {
 
 
 
-
     public void clearCanvas() {
 
         gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
@@ -140,6 +139,10 @@ public class CanvasFrame  {
 
     public void drawPattern(int [][] pattern){
 
+
+        clearArray();
+        clearCanvas();
+        board.drawLines(this.gc, this.lineWidth,this.lineColor);
         board.drawPattern(pattern,gc);
 
 

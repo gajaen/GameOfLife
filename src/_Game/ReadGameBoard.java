@@ -14,10 +14,6 @@ import java.util.regex.Pattern;
 public class ReadGameBoard{
     private Stage stage;
     File file;
-    //FileChooser fileChooser;
-    private int rownumber ;
-    private int columnnumber;
-    private int cnum;
     public int [][] pattern;
 
 
@@ -27,13 +23,10 @@ public class ReadGameBoard{
 
         pattern = new int[boardWidth][boardHeight];
 
-      //  board = new Board(new int [xPattern] [yPattern], xPattern,yPattern);
 
         try {
             openFile();
             readFile();
-            System.out.println("hei1");
-
 
         } catch(Exception e){
 
@@ -140,7 +133,7 @@ public class ReadGameBoard{
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
                                // System.out.println(rownumber + "/" + cnum);
-                                 pattern[rownumber][columnnumber + cnum] = 1;
+                                 pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
 
                                 //columnnumber = columnnumber +1;
                             }
@@ -169,30 +162,5 @@ public class ReadGameBoard{
         }
 
 
-    }
-
-
-    public int getRownumber() {
-        return rownumber;
-    }
-
-    public void setRownumber(int rownumber) {
-        this.rownumber = rownumber;
-    }
-
-    public int getColumnnumber() {
-        return columnnumber;
-    }
-
-    public void setColumnnumber(int columnnumber) {
-        this.columnnumber = columnnumber;
-    }
-
-    public int getCnum() {
-        return cnum;
-    }
-
-    public void setCnum(int cnum) {
-        this.cnum = cnum;
     }
 }
