@@ -131,13 +131,20 @@ public class CanvasFrame  {
 
     }
 
-    public void CanvasPressed(MouseEvent a) {
 
+    public void CanvasPressed(MouseEvent a) throws ArrayIndexOutOfBoundsException {
+        //  try {
         clearCanvas();
         board.CanvasPressed(a);
         board.drawCells(gc);
-        board.drawLines(this.gc, this.lineWidth,this.lineColor);
+        board.drawLines(this.gc, this.lineWidth, this.lineColor);
         timeline.stop();
+    /*}
+    catch(ArrayIndexOutOfBoundsException exception) {
+
+
+    }*/
+
     }
 
 

@@ -15,6 +15,8 @@ public class Board {
     int canvasHeigth;
     int oldJ;
     int oldI;
+    int i;
+    int j;
 
 
 
@@ -24,6 +26,10 @@ public class Board {
         this.canvasHeigth = canHeight;
         this.canvasWidth = canWidth;
         this.cell = new Cell();
+        oldI = 0;
+        oldJ = 0;
+        i = 0;
+        j = 0;
 
     }
 
@@ -123,24 +129,39 @@ public class Board {
 
     public void CanvasPressed(MouseEvent a) {
 
+try {
 
-        int j = ((int) a.getX() / cell.getCellSize()) + 1;
-        int i = ((int) a.getY() / cell.getCellSize()) + 1;
+    int j = ((int) a.getX() / cell.getCellSize()) + 1;
+    int i = ((int) a.getY() / cell.getCellSize()) + 1;
 
-        if( j != oldJ || i != oldI ) {
+    if (i <= 0) {
+        return;
+    }
+    if (j <= 0) {
+        return;
+    }
 
-            if (board[i][j] == 0) {
-                board[i][j] = 1;
-            }
+    if (j != oldJ || i != oldI) {
+
+        if (board[i][j] == 0) {
+            board[i][j] = 1;
         }
+    }
 
-        if( j == 2 || i == 2){
-            controller.CanvasReleased();
-        }
+    if (j == 2 || i == 2) {
+        controller.CanvasReleased();
+    }
 
 
-        oldJ = j;
-        oldI = i;
+    oldJ = j;
+    oldI = i;
+
+} catch (Exception e){
+
+    //System.err.println(" Exeption: " + e.getMessage());
+
+
+}
 
 
 

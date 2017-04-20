@@ -80,8 +80,8 @@ public class Controller implements Initializable{
 
     public void CellSizeClicked() {
 
-        canvasFrame.cellSize((int) cellSlider.getValue());
 
+        canvasFrame.cellSize((int) cellSlider.getValue());
 
         /*public void CellSizeClicked() {
             cellSize = (int) cellSlider.getValue();
@@ -93,6 +93,7 @@ public class Controller implements Initializable{
     public void CanvasPressed(MouseEvent a) {
 
         canvasFrame.CanvasPressed(a);
+
 
     }
 
