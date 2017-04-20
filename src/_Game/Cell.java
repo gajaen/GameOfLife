@@ -11,6 +11,7 @@ public class Cell {
     public Color cellColor;
     public Color newColor;
     public Controller controller;
+    public CanvasFrame canvasFrame;
 
     public Cell(){
 
@@ -37,6 +38,12 @@ public class Cell {
     }
 
     public int getCellGap() {
+        if (getCellSize() < 2){
+            cellGap = 0;
+        }
+        else{
+            cellGap = 1;
+        }
         return cellGap;
     }
 

@@ -68,7 +68,6 @@ public class Board {
 
         gc.setFill(cell.getCellColor());
 
-
         for (int i = 0; i < this.canvasHeigth; i++) {
             for (int j = 0; j < this.canvasWidth; j++) {
                 if (board[i][j] == 1) {

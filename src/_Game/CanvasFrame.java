@@ -16,7 +16,7 @@ public class CanvasFrame  {
     private GraphicsContext gc;
     private int HEIGHT;
     private int WIDTH;
-    private double lineWidth;
+    public double lineWidth;
     private Color lineColor;
     private Color backgroundColor;
     private Board board;
@@ -34,7 +34,7 @@ public class CanvasFrame  {
         this.HEIGHT = height;
         this.WIDTH = width;
         this.gc = gccontext;
-        lineWidth = 0.5;
+        lineWidth = 0.3;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
@@ -56,7 +56,6 @@ public class CanvasFrame  {
         System.out.println(getFPS());
 
 
-        FPS = getFPS();
 
 
     }
@@ -95,9 +94,7 @@ public class CanvasFrame  {
 
 
     public Timeline SetTimeline() {
-
-
-        TIME = 1000 / getFPS();
+        TIME = 1000/getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clearCanvas();
@@ -107,7 +104,7 @@ public class CanvasFrame  {
             board.drawCells(this.gc);
             board.drawLines(this.gc, this.lineWidth,this.lineColor);
 
-            SetTimeline();
+
             timeline.playFromStart();
 
         }));
@@ -163,8 +160,9 @@ public class CanvasFrame  {
 
     public void drawCanvas(){
         clearCanvas();
-        board.drawLines(gc, lineWidth, lineColor);
         board.drawCells(gc);
+        board.drawLines(gc, lineWidth, lineColor);
+
     }
 
 
@@ -215,6 +213,10 @@ public class CanvasFrame  {
             FPS = 30;
         }
         return FPS;
+    }
+    public void FPS(){
+        TIME = 1000 / getFPS();
+
     }
 
     public void setFPS(int FPS) {
