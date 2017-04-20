@@ -39,9 +39,6 @@ public class CanvasFrame  {
         backgroundColor = Color.GREY;
 
 
-
-
-
         board = new Board(new int [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
 
         board.setBoard(new int[getHEIGHT()][getWIDTH()]);
@@ -53,13 +50,11 @@ public class CanvasFrame  {
 
         clearArray();
 
-        System.out.println(getFPS());
-
-
-
-
     }
 
+    /**
+     * The method for colorPicker
+     */
 
     public void colorPicker(ColorPicker colorPicker){
         System.out.println(newColor + " 2");
@@ -70,12 +65,13 @@ public class CanvasFrame  {
     }
 
     public void cellSize(int size){
-
         board.setCellSize(size);
 
     }
 
-
+    /**
+     * Clearing the current canvas and applying background
+     */
 
     public void clearCanvas() {
 
@@ -84,14 +80,20 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
     }
 
+    /**
+     * Clear the current array with only 0's
+     */
 
     public void clearArray(){
         board.cleanArray();
         board.drawCells(gc);
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
-
     }
 
+    /**
+     *
+     * Timeline
+     */
 
     public Timeline SetTimeline() {
         TIME = 1000/getFPS();
@@ -104,7 +106,6 @@ public class CanvasFrame  {
             board.drawCells(this.gc);
             board.drawLines(this.gc, this.lineWidth,this.lineColor);
 
-
             timeline.playFromStart();
 
         }));
@@ -112,9 +113,12 @@ public class CanvasFrame  {
         return timeline;
     }
 
+    /**
+     * Create's a new random array
+     */
+
     public void RandomButtonAction() {
         clearCanvas();
-        //Lager en ny random array for hver gang start er trykket.
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
 
@@ -123,62 +127,42 @@ public class CanvasFrame  {
         }
         board.drawCells(this.gc);
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
-
-
-
     }
 
 
     public void CanvasPressed(MouseEvent a) throws ArrayIndexOutOfBoundsException {
-        //  try {
         clearCanvas();
         board.CanvasPressed(a);
         board.drawCells(gc);
         board.drawLines(this.gc, this.lineWidth, this.lineColor);
         timeline.stop();
-    /*}
-    catch(ArrayIndexOutOfBoundsException exception) {
-
-
-    }*/
-
     }
 
 
-
-
+    /**
+     * Draw's the pattern from ReadGameBoard
+     * @param pattern
+     */
 
     public void drawPattern(int [][] pattern){
-
-
         clearArray();
         clearCanvas();
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
         board.drawPattern(pattern,gc);
-
     }
+
+    /**
+     * Just a combonation of drawLines and drawCells
+     */
 
     public void drawCanvas(){
         clearCanvas();
         board.drawCells(gc);
         board.drawLines(gc, lineWidth, lineColor);
-
     }
-
-
-
-    public void setCellColor(Color color){
-        this.board.setCellColor(color);
-    }
-
-
 
     public int getHEIGHT() {
         return HEIGHT;
-    }
-
-    public void setHEIGHT(int HEIGHT) {
-        this.HEIGHT = HEIGHT;
     }
 
 
@@ -186,22 +170,8 @@ public class CanvasFrame  {
         return WIDTH;
     }
 
-    public void setWIDTH(int WIDTH) {
-        this.WIDTH = WIDTH;
-    }
-
-
     public Color getBackgroundColor() {
         return backgroundColor;
-    }
-
-    public void setBackgroundColor(Color backgroundColor) {
-        this.backgroundColor = backgroundColor;
-    }
-
-
-    public GraphicsContext getGc() {
-        return gc;
     }
 
     public void setGc(GraphicsContext gc) {
@@ -213,10 +183,6 @@ public class CanvasFrame  {
             FPS = 30;
         }
         return FPS;
-    }
-    public void FPS(){
-        TIME = 1000 / getFPS();
-
     }
 
     public void setFPS(int FPS) {
