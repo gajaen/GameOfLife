@@ -14,20 +14,11 @@ import javafx.util.Duration;
 public class CanvasFrame  {
 
     private GraphicsContext gc;
-    private int HEIGHT;
-    private int WIDTH;
-    public double lineWidth;
-    private Color lineColor;
-    private Color backgroundColor;
+    private Color lineColor, backgroundColor;
     private Board board;
     private Timeline timeline;
-    private GUI gui;
-    public Controller controller;
-    int TIME;
-    private Cell cell;
-    public int FPS;
-    public Color newColor;
-
+    private double lineWidth;
+    private int HEIGHT, WIDTH, TIME, FPS;
 
     public CanvasFrame(int height, int width, GraphicsContext gccontext){
 
@@ -38,15 +29,12 @@ public class CanvasFrame  {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-
         board = new Board(new int [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
-
         board.setBoard(new int[getHEIGHT()][getWIDTH()]);
-        setGc(this.gc);
 
+        setGc(this.gc);
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
-
 
         clearArray();
 
@@ -57,7 +45,6 @@ public class CanvasFrame  {
      */
 
     public void colorPicker(ColorPicker colorPicker){
-        System.out.println(newColor + " 2");
         board.setCellColor(colorPicker.getValue());
         clearCanvas();
         board.drawCells(gc);
@@ -66,7 +53,6 @@ public class CanvasFrame  {
 
     public void cellSize(int size){
         board.setCellSize(size);
-
     }
 
     /**
@@ -74,7 +60,6 @@ public class CanvasFrame  {
      */
 
     public void clearCanvas() {
-
         gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
@@ -91,7 +76,6 @@ public class CanvasFrame  {
     }
 
     /**
-     *
      * Timeline
      */
 
@@ -100,12 +84,9 @@ public class CanvasFrame  {
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clearCanvas();
-
             board.nextGeneration();
-
             board.drawCells(this.gc);
             board.drawLines(this.gc, this.lineWidth,this.lineColor);
-
             timeline.playFromStart();
 
         }));
@@ -129,7 +110,6 @@ public class CanvasFrame  {
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
-
     public void CanvasPressed(MouseEvent a) throws ArrayIndexOutOfBoundsException {
         clearCanvas();
         board.CanvasPressed(a);
@@ -137,7 +117,6 @@ public class CanvasFrame  {
         board.drawLines(this.gc, this.lineWidth, this.lineColor);
         timeline.stop();
     }
-
 
     /**
      * Draw's the pattern from ReadGameBoard
@@ -161,10 +140,16 @@ public class CanvasFrame  {
         board.drawLines(gc, lineWidth, lineColor);
     }
 
+    public int getFPS() {
+        if (FPS == 0){
+            FPS = 30;
+        }
+        return FPS;
+    }
+
     public int getHEIGHT() {
         return HEIGHT;
     }
-
 
     public int getWIDTH() {
         return WIDTH;
@@ -178,17 +163,9 @@ public class CanvasFrame  {
         this.gc = gc;
     }
 
-    public int getFPS() {
-        if (FPS == 0){
-            FPS = 30;
-        }
-        return FPS;
-    }
-
     public void setFPS(int FPS) {
         this.FPS = FPS;
     }
-
 
 
 }
