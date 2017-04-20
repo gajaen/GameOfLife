@@ -139,7 +139,7 @@ public class ReadGameBoard{
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
 
-                                System.out.println(rownumber + "/" + cnum);
+                               // System.out.println(rownumber + "/" + cnum);
                                  pattern[rownumber][columnnumber + cnum] = 1;
 
                                 //columnnumber = columnnumber +1;

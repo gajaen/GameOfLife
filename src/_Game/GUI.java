@@ -6,9 +6,6 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 
-/**
-
- */
 
 public class GUI{
 
@@ -49,10 +46,7 @@ public class GUI{
         timeline.stop();
     }
 
-    public void FPS()
-    {
-        //    FPS = (int) sliderFPS.getValue();
-    }
+
 
 
     public void CellSize() {

@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 public class Board {
 
     private Cell cell;
-    private ReadGameBoard readGameBoard;
     private Controller controller;
     public int[][] board;
     int canvasWidth;
@@ -17,7 +16,6 @@ public class Board {
     int oldJ;
     int oldI;
 
-    public Color newColor;
 
 
     public Board(int[][] boardarray, int canWidth, int canHeight) {
@@ -55,7 +53,6 @@ public class Board {
             }
         }
 
-        //setBoard(nextBoard);
         board = nextBoard;
     }
 
@@ -115,7 +112,6 @@ public class Board {
                 {
                     board[row][col] = 1;
 
-                    //gc.fillRect(cell.getCellSize() * col - cell.getCellSize(), cell.getCellSize() * row - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
                 }
             }
         }
@@ -150,23 +146,6 @@ public class Board {
 
     }
 
-/*    public void color(){
-        ColorPicker colorPicker = new ColorPicker();
-        Color a = colorPicker.getValue();
-        setCellColor(colorPicker.getValue());
-        System.out.println(a);
-        if (a != null) {
-            cell.setCellColor(colorPicker.getValue());
-        }
-
-    }
-*/
-    public void opened(){
-
-
-      //  ReadGameBoard readGameBoard = new ReadGameBoard();
-
-    }
 
     public int setBoardRandom(int i, int j) {
 
@@ -180,16 +159,6 @@ public class Board {
     }
 
 
-    public void setOpenBoard(int rownumber, int columnnumber, int cnum, int[][] board) {
-
-        this.board = board;
-
-        board[rownumber + 5][columnnumber + cnum + 4] = 1;
-
-
-    }
-
-
 
     public void setBoard(int[][] board) {
         this.board = board;
@@ -199,11 +168,6 @@ public class Board {
         return board;
     }
 
-  /*  public void setBoard2(int i, int j){
-        if (getBoard()[i][j] == 1) {
-            canvasFrame.getGc().fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
-        }
-    }*/
 
 
 }

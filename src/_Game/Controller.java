@@ -93,9 +93,6 @@ public class Controller implements Initializable{
     public void openFile() throws IOException {
 
 
-        canvasFrame.boardopen();
-
-
         ReadGameBoard readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(),canvasFrame.getWIDTH());
         readGameBoard.readFile();
         canvasFrame.drawPattern(readGameBoard.pattern);

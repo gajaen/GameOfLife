@@ -137,11 +137,6 @@ public class CanvasFrame  {
 
 
 
-    public void boardopen(){
-
-        board.opened();
-
-    }
 
     public void drawPattern(int [][] pattern){
 
