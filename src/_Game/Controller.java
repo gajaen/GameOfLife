@@ -65,12 +65,15 @@ public class Controller implements Initializable{
                         break;
                     case DOWN:
                         System.out.println("DOWN");
+                        canvasFrame.moveCellsDown();
                         break;
                     case LEFT:
                         System.out.println("LEFT");
+                        canvasFrame.moveCellsLeft();
                         break;
                     case RIGHT:
                         System.out.println("RIGHT");
+                        canvasFrame.moveCellsRight();
                         break;
                 }
                 canvasFrame.drawCanvas();

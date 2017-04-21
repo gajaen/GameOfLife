@@ -198,7 +198,11 @@ public class CanvasFrame  {
     public void moveCellsUp(){
         board.moveCellsUp();
     }
-
+    public void moveCellsLeft(){
+        board.moveCellsLeft();
+    }
+    public void moveCellsRight(){board.moveCellsRight();}
+    public void moveCellsDown(){board.moveCellsDown();}
 
 }
 
