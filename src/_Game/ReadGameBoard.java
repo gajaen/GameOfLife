@@ -4,7 +4,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -131,10 +130,8 @@ public class ReadGameBoard{
 
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
-
-                               // System.out.println(rownumber + "/" + cnum);
+                               System.out.println(rownumber + "/" + cnum);
                                  pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
-
                                 //columnnumber = columnnumber +1;
                             }
                             columnnumber = columnnumber + oNumInt;

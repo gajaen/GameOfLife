@@ -1,20 +1,19 @@
 package _Game;
 
 import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
-import javafx.scene.paint.Color;
+
 
 
 public class GUI{
 
-    public Slider cellSlider, sliderFPS;
     private Timeline timeline;
     private CanvasFrame canvasFrame;
-    private Board board;
-    private Cell cell;
-    private Color cellColor;
+
+    /**
+     * Initializes canvasFrame
+     *
+     *  @param canvasFrame creating CanvasFrame object
+     */
 
 
     public GUI(CanvasFrame canvasFrame){
@@ -23,11 +22,17 @@ public class GUI{
         this.timeline = canvasFrame.SetTimeline();
     }
 
+    /**
+     * This method stop the calling the RandomButtonAction in canvasFrame.
+     */
 
     public void RandomButton() {
         canvasFrame.RandomButtonAction();
     }
 
+    /**
+     * This method stop the timeline, cleaning canvas and clearing the array.
+     */
 
     public void ClearButton() {
         timeline.stop();
@@ -35,35 +40,21 @@ public class GUI{
         canvasFrame.clearArray();
     }
 
+    /**
+     * This method playing the timeline from start.
+     */
 
     public void StartButton() {
         timeline.playFromStart();
-
     }
 
+    /**
+     * This method stop the timeline.
+     */
 
     public void StopButton() {
         timeline.stop();
     }
-
-
-
-
-    public void CellSize() {
-
-        //board.setCellSize((int) cellSlider.getValue());
-        // canvasFrame.clearCanvas();
-        //canvasFrame.drawCells();
-        //canvasFrame.drawLines();
-    }
-
-
-
-    public void closeWindow() {
-        Platform.exit();
-    }
-
-
 
 }
 

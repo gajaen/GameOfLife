@@ -110,7 +110,7 @@ public class CanvasFrame  {
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
-    public void CanvasPressed(MouseEvent a) throws ArrayIndexOutOfBoundsException {
+    public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
         board.CanvasPressed(a);
         board.drawCells(gc);
