@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * The Game Of Life program created for HIOA final project
@@ -103,7 +104,7 @@ public class ReadGameBoard{
         int rownumber = 5;
         int columnnumber = 0;
 
-        if(file == null){
+        if (file == null) {
             return;
         }
 
@@ -162,8 +163,8 @@ public class ReadGameBoard{
 
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
-                               System.out.println(rownumber + "/" + cnum);
-                                 pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
+                                System.out.println(rownumber + "/" + cnum);
+                                pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
                                 //columnnumber = columnnumber +1;
                             }
                             columnnumber = columnnumber + oNumInt;
@@ -185,11 +186,8 @@ public class ReadGameBoard{
             }
 
 
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
+    }}
 
-
-    }
 }

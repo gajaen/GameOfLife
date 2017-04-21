@@ -20,10 +20,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.event.*;
 import javax.swing.*;
-
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import java.io.File;
 /**
  * The Game Of Life program created for HIOA final project
  * The Controller class is the fx for fxml, all the properties in fxml are assign here.
@@ -58,37 +54,20 @@ public class Controller implements Initializable{
 
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
+        key();
 
-        CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
-            @Override
-            public void handle(javafx.scene.input.KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:
-                        canvasFrame.moveCellsUp();
-                        break;
-                    case DOWN:
-                        canvasFrame.moveCellsDown();
-                        break;
-                    case LEFT:
-                        canvasFrame.moveCellsLeft();
-                        break;
-                    case RIGHT:
-                        canvasFrame.moveCellsRight();
-                        break;
-                }
-                canvasFrame.drawCanvas();
-            }
-        });
-
-        String musicFile = "StayTheNight.mp3";     // For example
-
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-
-        //
 
     }
+
+
+    public void key(){
+    CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
+        public void handle(javafx.scene.input.KeyEvent event) {
+            canvasFrame.key(event);
+        }
+    });
+    }
+
     /**
      * This method is calling StartButton method in GUI class.
      */
@@ -165,6 +144,7 @@ public class Controller implements Initializable{
      * @see IOException
      */
     public void openFile() throws IOException {
+
 
         ReadGameBoard readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
         readGameBoard.readFile();

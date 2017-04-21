@@ -2,8 +2,10 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
@@ -59,6 +61,29 @@ public class CanvasFrame  {
 
     }
 
+    public void key(KeyEvent event){
+         {
+                switch (event.getCode()) {
+                    case UP:
+                        System.out.println("UP");
+                        moveCellsUp(event);
+                        break;
+                    case DOWN:
+                        System.out.println("DOWN");
+                        moveCellsDown();
+                        break;
+                    case LEFT:
+                        System.out.println("LEFT");
+                        moveCellsLeft();
+                        break;
+                    case RIGHT:
+                        System.out.println("RIGHT");
+                        moveCellsRight();
+                        break;
+                }
+                drawCanvas();
+            }
+    }
     /**
      * Changing the cell color depending on user input from colorPicker
      * @param colorPicker is choosing color
@@ -195,7 +220,7 @@ public class CanvasFrame  {
         this.FPS = FPS;
     }
 
-    public void moveCellsUp(){
+    public void moveCellsUp(KeyEvent e){
         board.moveCellsUp();
     }
     public void moveCellsLeft(){
