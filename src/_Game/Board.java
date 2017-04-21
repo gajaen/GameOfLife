@@ -296,7 +296,6 @@ public class Board {
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
                 if ((board[x][y] == 1))leftBoard[x-1][y] = 1;
-                else leftBoard[x][y] = board[x][y];
             }
     }
     board = leftBoard;
@@ -308,7 +307,6 @@ public class Board {
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
                 if ((board[x][y] == 1))leftBoard[x][y-1] = 1;
-                else leftBoard[x][y] = board[x][y];
             }
         }
         board = leftBoard;
@@ -316,10 +314,9 @@ public class Board {
     public void moveCellsDown(){
         int[][] leftBoard = new int[canvasHeigth][canvasWidth];
 
-        for (int x = 1; x < canvasHeigth - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++){
-                if ((board[x][y] == 1))leftBoard[x][y+1] = 1;
-                else leftBoard[x][y] = board[x][y];
+        for (int x = 0; x < canvasHeigth; x++) {
+            for (int y = 0; y < canvasWidth; y++){
+                if ((board[x][y] == 1))leftBoard[x+1][y] = 1;
             }
         }
         board = leftBoard;
@@ -329,8 +326,7 @@ public class Board {
 
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((board[x][y] == 1))leftBoard[x+1][y] = 1;
-                else leftBoard[x][y] = board[x][y];
+                if ((board[x][y] == 1))leftBoard[x][y+1] = 1;
             }
         }
         board = leftBoard;
