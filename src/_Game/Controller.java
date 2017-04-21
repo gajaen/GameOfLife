@@ -2,14 +2,24 @@ package _Game;
 
 
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+
+import javafx.scene.input.KeyEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
+import java.awt.event.*;
+import javax.swing.*;
 /**
  * The Game Of Life program created for HIOA final project
  * The Controller class is the fx for fxml, all the properties in fxml are assign here.
@@ -41,15 +51,30 @@ public class Controller implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        canvasFrame = new CanvasFrame( (int)CanvasId.getHeight(),(int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
-
-
+        canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
 
+        CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
+            @Override
+            public void handle(javafx.scene.input.KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP:
+                        System.out.println("UP");
+                        break;
+                    case DOWN:
+                        System.out.println("DOWN");
+                        break;
+                    case LEFT:
+                        System.out.println("LEFT");
+                        break;
+                    case RIGHT:
+                        System.out.println("RIGHT");
+                        break;
+                }
+            }
+        });
 
     }
-
-
     /**
      * This method is calling StartButton method in GUI class.
      */
@@ -76,7 +101,6 @@ public class Controller implements Initializable{
      * This method is assigning the colorPicker in fxml to colorPicker in canvasFrame.
      */
     public void colorPickerClicked() {
-
         canvasFrame.colorPicker(colorPicker);
         }
 
@@ -99,13 +123,11 @@ public class Controller implements Initializable{
      * This method is changing cellSize depended on cellSlider value in fxml.
      */
     public void CellSizeClicked() {
-
         canvasFrame.cellSize((int) cellSlider.getValue());
         canvasFrame.drawCanvas();
 
     }
     public void CanvasReleased(){
-
     }
 
     /**
@@ -135,7 +157,6 @@ public class Controller implements Initializable{
         readGameBoard.readFile();
         System.out.println("hei");
         canvasFrame.drawPattern(readGameBoard.pattern);
-
 
     }
 

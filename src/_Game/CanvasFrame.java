@@ -8,6 +8,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.awt.Canvas;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+
+
 /**
  * The Game Of Life program created for HIOA final project
  * The CanvasFrame class is drawing defined properties on canvas.
@@ -27,7 +37,7 @@ public class CanvasFrame  {
     private double lineWidth;
     private int HEIGHT, WIDTH, TIME, FPS;
 
-    public CanvasFrame(int height, int width, GraphicsContext gccontext){
+    public CanvasFrame(int height, int width, GraphicsContext gccontext) {
 
         this.HEIGHT = height;
         this.WIDTH = width;
@@ -44,6 +54,17 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
+
+
+        /*gc.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent evt) {
+                moveCell(evt);
+            }
+        });
+        */
+
+
 
     }
 
@@ -97,7 +118,6 @@ public class CanvasFrame  {
             timeline.playFromStart();
 
         }));
-
         return timeline;
     }
 
@@ -109,7 +129,6 @@ public class CanvasFrame  {
         clearCanvas();
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
-
                 board.setBoardRandom(i,j);
             }
         }
@@ -174,8 +193,26 @@ public class CanvasFrame  {
         this.FPS = FPS;
     }
 
+    public void moveCell(KeyEvent evt) {
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_DOWN:
+                System.out.println("down");
+                break;
 
-}
+            case KeyEvent.VK_UP:
+                System.out.println("down");
+                break;
+
+            case KeyEvent.VK_LEFT:
+                System.out.println("down");
+                break;
+
+            case KeyEvent.VK_RIGHT:
+                System.out.println("down");
+                break;
+        }
+
+    }}
 
 
 

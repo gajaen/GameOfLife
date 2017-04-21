@@ -45,7 +45,5 @@ public class Main extends Application {
         primaryStage.setTitle("Controller");
         primaryStage.setScene(new Scene(root, 1280, 900));
         primaryStage.show();
-
     }
-
 }

@@ -164,8 +164,6 @@ public class Board {
 
     public  void drawPattern(int[][] pattern, GraphicsContext gc)
     {
-
-
         for (int row=0; row < pattern.length; row++)
         {
             for (int col=0; col < pattern[row].length; col++)
