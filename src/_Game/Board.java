@@ -213,8 +213,6 @@ public class Board {
     if (j == 2 || i == 2) {
         controller.CanvasReleased();
     }
-
-
     oldJ = j;
     oldI = i;
 
@@ -223,7 +221,6 @@ public class Board {
     catch (Exception e){
     //System.err.println(" Exeption: " + e.getMessage());
     System.out.println("Task interrupted");
-
 
 }
 
