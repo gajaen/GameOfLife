@@ -4,12 +4,19 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-
+/**
+ * The Game Of Life program created for HIOA final project
+ * The CanvasFrame class is drawing defined properties on canvas.
+ *
+ * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
+ * Studentnr : S315325 & S315285
+ * @version 1.0
+ * @since   2017-01-14
+ */
 
 public class CanvasFrame  {
 
