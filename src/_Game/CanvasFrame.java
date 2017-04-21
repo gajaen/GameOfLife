@@ -27,11 +27,21 @@ public class CanvasFrame  {
     private double lineWidth;
     private int HEIGHT, WIDTH, TIME, FPS;
 
-    public CanvasFrame(int height, int width, GraphicsContext gccontext){
+    /**
+     *
+     *  Constructs and init a canvas with width, height and gc
+     *
+     *  @param height is the first parameter in CanvasFrame constructor
+     *  @param width is the second parameter in CanvasFrame constructor
+     *  @param gcContext is the third parameter used for drawing
+     */
+
+
+    public CanvasFrame(int height, int width, GraphicsContext gcContext){
 
         this.HEIGHT = height;
         this.WIDTH = width;
-        this.gc = gccontext;
+        this.gc = gcContext;
         lineWidth = 0.3;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
@@ -48,7 +58,8 @@ public class CanvasFrame  {
     }
 
     /**
-     * The method for colorPicker
+     * Changing the cell color depending on user input from colorPicker
+     * @param colorPicker is choosing color
      */
 
     public void colorPicker(ColorPicker colorPicker){
@@ -117,6 +128,14 @@ public class CanvasFrame  {
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
+    /**
+     * This method is used to draw when clicked on canvas.
+     *
+     * @return Nothing.
+     * @param a is getting mouse clicked input from the user.
+     * @exception Exception On input error.
+     * @see Exception
+     */
     public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
         board.CanvasPressed(a);
@@ -127,7 +146,7 @@ public class CanvasFrame  {
 
     /**
      * Draw's the pattern from ReadGameBoard
-     * @param pattern
+     * @param pattern is drawing on the booard
      */
 
     public void drawPattern(int [][] pattern){

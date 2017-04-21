@@ -25,7 +25,12 @@ public class ReadGameBoard{
     File file;
     public int [][] pattern;
 
-
+    /**
+     *  Constructs  board with Height and Width and Initialize a pattern array, and openfile, readfile methods
+     *
+     *  @param boardHeight canvas height
+     *  @param boardWidth canvas width
+     */
 
 
     public  ReadGameBoard(int boardHeight, int boardWidth) {
@@ -43,6 +48,11 @@ public class ReadGameBoard{
         }
     }
 
+    /**
+     *  Constructs and initializes the stage.
+     *
+     *  @param primaryStage unused.
+     */
 
     public void init(Stage primaryStage) {
 
@@ -50,6 +60,12 @@ public class ReadGameBoard{
 
     }
 
+    /**
+     * This method opens the file with FileChooser.
+     *
+     * @exception IOException On input error.
+     * @see IOException
+     */
 
     private void openFile() throws IOException  {
         FileChooser fileChooser = new FileChooser();
@@ -75,7 +91,13 @@ public class ReadGameBoard{
     }
 
 
-
+    /**
+     * This method decodes each line that has string 'b' , 'o' , '$'.
+     * The it is putting it to the pattern array.
+     *
+     * @exception IOException On input error.
+     * @see FileNotFoundException
+     */
     public void readFile() throws IOException {
 
         int rownumber = 5;
