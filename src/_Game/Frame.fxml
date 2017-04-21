@@ -42,7 +42,7 @@
             <children>
                 <VBox prefHeight="100.0" prefWidth="114.0">
                     <children>
-                        <Button fx:id="startButton" mnemonicParsing="false" onAction="#clickedStartButton" prefHeight="25.0" prefWidth="85.0" text="START">
+                        <Button fx:id="startButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedStartButton" pickOnBounds="false" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="START">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -50,7 +50,7 @@
                                 <Insets top="10.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="stopButton" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="25.0" prefWidth="85.0" text="STOP">
+                        <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="STOP">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -65,7 +65,7 @@
                         <Insets />
                     </HBox.margin>
                     <children>
-                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clickedClearButton" prefHeight="25.0" prefWidth="85.0" text="CLEAR">
+                        <Button fx:id="clearButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedClearButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="CLEAR">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -73,7 +73,7 @@
                                 <Insets top="10.0" />
                             </VBox.margin>
                         </Button>
-                        <Button fx:id="randomButton" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="25.0" prefWidth="85.0" text="RANDOM">
+                        <Button fx:id="randomButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="RANDOM">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -94,17 +94,17 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Slider fx:id="cellSlider" majorTickUnit="50.0" max="40.0" min="1" minorTickCount="5" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" showTickLabels="true" showTickMarks="true" value="10.0" GridPane.columnIndex="1">
+                        <Slider fx:id="cellSlider" cacheShape="false" centerShape="false" focusTraversable="false" majorTickUnit="50.0" max="40.0" min="1" minorTickCount="5" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" scaleShape="false" showTickLabels="true" showTickMarks="true" value="10.0" GridPane.columnIndex="1">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
                         </Slider>
-                        <Slider fx:id="sliderFPS" blockIncrement="30.0" majorTickUnit="30.0" max="240.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" majorTickUnit="30.0" max="240.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" scaleShape="false" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>
                         </Slider>
-                        <ColorPicker fx:id="colorPicker" onAction="#colorPickerClicked" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" onAction="#colorPickerClicked" scaleShape="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     </children>
                 </GridPane>
             </children>
@@ -114,6 +114,6 @@
         </HBox>
     </bottom>
     <center>
-        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" width="1224.0" BorderPane.alignment="CENTER" />
+        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" width="1224.0" BorderPane.alignment="CENTER" />
     </center>
 </BorderPane>

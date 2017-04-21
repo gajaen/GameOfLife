@@ -74,10 +74,10 @@ public class Board {
                 }
 
                 cellNeighbors -= getBoard()[x][y];
-                if ((getBoard()[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
-                else if ((getBoard()[x][y] == 1) && (cellNeighbors > 3))
+                if ((board[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
+                else if ((board[x][y] == 1) && (cellNeighbors > 3))
                     nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
-                else if ((getBoard()[x][y] == 0) && (cellNeighbors == 3))
+                else if ((board[x][y] == 0) && (cellNeighbors == 3))
                     nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
                 else nextBoard[x][y] = board[x][y];
             }
@@ -290,18 +290,17 @@ public class Board {
     }
 
     public void moveCellsUp(){
-        System.out.println("UP");
-        int[][] upBoard = new int[canvasHeigth][canvasWidth];
+
+        int[][] leftBoard = new int[canvasHeigth][canvasWidth];
 
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if(board[x][y] == 1){
-                    upBoard[x-1][y] = 1;
-                };
+                if ((board[x][y] == 1))leftBoard[x-1][y] = 1;
+                else leftBoard[x][y] = board[x][y];
             }
-            board = upBoard;
-
-    }}
+    }
+    board = leftBoard;
+    }
 
 
 

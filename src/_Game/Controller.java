@@ -60,8 +60,8 @@ public class Controller implements Initializable{
             public void handle(javafx.scene.input.KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:
+                        System.out.println("UP");
                         canvasFrame.moveCellsUp();
-                        canvasFrame.drawCanvas();
                         break;
                     case DOWN:
                         System.out.println("DOWN");
@@ -73,8 +73,10 @@ public class Controller implements Initializable{
                         System.out.println("RIGHT");
                         break;
                 }
+                canvasFrame.drawCanvas();
             }
         });
+
         //
 
     }
