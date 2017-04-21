@@ -54,35 +54,20 @@ public class Controller implements Initializable{
 
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
+        key();
 
-        CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
-            @Override
-            public void handle(javafx.scene.input.KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:
-                        System.out.println("UP");
-                        canvasFrame.moveCellsUp();
-                        break;
-                    case DOWN:
-                        System.out.println("DOWN");
-                        canvasFrame.moveCellsDown();
-                        break;
-                    case LEFT:
-                        System.out.println("LEFT");
-                        canvasFrame.moveCellsLeft();
-                        break;
-                    case RIGHT:
-                        System.out.println("RIGHT");
-                        canvasFrame.moveCellsRight();
-                        break;
-                }
-                canvasFrame.drawCanvas();
-            }
-        });
-
-        //
 
     }
+
+
+    public void key(){
+    CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
+        public void handle(javafx.scene.input.KeyEvent event) {
+            canvasFrame.key(event);
+        }
+    });
+    }
+
     /**
      * This method is calling StartButton method in GUI class.
      */

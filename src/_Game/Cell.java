@@ -54,7 +54,6 @@ public class Cell {
     }
 
     /**
-     *
      * @param cellSize parameter is assigned to the cellSize for this class
      */
 
