@@ -55,6 +55,8 @@ public class CanvasFrame  {
 
         clearArray();
 
+
+
     }
 
     /**
@@ -191,6 +193,10 @@ public class CanvasFrame  {
 
     public void setFPS(int FPS) {
         this.FPS = FPS;
+    }
+
+    public void moveCellsUp(){
+        board.moveCellsUp();
     }
 
 

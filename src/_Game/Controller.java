@@ -38,6 +38,7 @@ public class Controller implements Initializable{
     public ColorPicker colorPicker;
     private GUI gui;
     public Slider sliderFPS, cellSlider;
+    public Board board;
 
 
 
@@ -59,7 +60,8 @@ public class Controller implements Initializable{
             public void handle(javafx.scene.input.KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:
-                        System.out.println("UP");
+                        canvasFrame.moveCellsUp();
+                        canvasFrame.drawCanvas();
                         break;
                     case DOWN:
                         System.out.println("DOWN");

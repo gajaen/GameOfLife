@@ -289,6 +289,20 @@ public class Board {
         return board;
     }
 
+    public void moveCellsUp(){
+        System.out.println("UP");
+        int[][] upBoard = new int[canvasHeigth][canvasWidth];
+
+        for (int x = 1; x < canvasHeigth - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++){
+                if(board[x][y] == 1){
+                    upBoard[x-1][y] = 1;
+                };
+            }
+            board = upBoard;
+
+    }}
+
 
 
 }
