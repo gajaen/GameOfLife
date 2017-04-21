@@ -8,16 +8,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.image.BufferStrategy;
-import java.awt.event.*;
-import javax.swing.*;
-
-
-
-
 /**
  * The Game Of Life program created for HIOA final project
  * The CanvasFrame class is drawing defined properties on canvas.
@@ -37,11 +27,21 @@ public class CanvasFrame  {
     private double lineWidth;
     private int HEIGHT, WIDTH, TIME, FPS;
 
-    public CanvasFrame(int height, int width, GraphicsContext gccontext) {
+    /**
+     *
+     *  Constructs and init a canvas with width, height and gc
+     *
+     *  @param height is the first parameter in CanvasFrame constructor
+     *  @param width is the second parameter in CanvasFrame constructor
+     *  @param gcContext is the third parameter used for drawing
+     */
+
+
+    public CanvasFrame(int height, int width, GraphicsContext gcContext){
 
         this.HEIGHT = height;
         this.WIDTH = width;
-        this.gc = gccontext;
+        this.gc = gcContext;
         lineWidth = 0.3;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
@@ -55,21 +55,11 @@ public class CanvasFrame  {
 
         clearArray();
 
-
-        /*gc.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent evt) {
-                moveCell(evt);
-            }
-        });
-        */
-
-
-
     }
 
     /**
-     * The method for colorPicker
+     * Changing the cell color depending on user input from colorPicker
+     * @param colorPicker is choosing color
      */
 
     public void colorPicker(ColorPicker colorPicker){
@@ -118,6 +108,7 @@ public class CanvasFrame  {
             timeline.playFromStart();
 
         }));
+
         return timeline;
     }
 
@@ -129,6 +120,7 @@ public class CanvasFrame  {
         clearCanvas();
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
+
                 board.setBoardRandom(i,j);
             }
         }
@@ -136,6 +128,14 @@ public class CanvasFrame  {
         board.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
+    /**
+     * This method is used to draw when clicked on canvas.
+     *
+     * @return Nothing.
+     * @param a is getting mouse clicked input from the user.
+     * @exception Exception On input error.
+     * @see Exception
+     */
     public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
         board.CanvasPressed(a);
@@ -146,7 +146,7 @@ public class CanvasFrame  {
 
     /**
      * Draw's the pattern from ReadGameBoard
-     * @param pattern
+     * @param pattern is drawing on the booard
      */
 
     public void drawPattern(int [][] pattern){
@@ -193,26 +193,8 @@ public class CanvasFrame  {
         this.FPS = FPS;
     }
 
-    public void moveCell(KeyEvent evt) {
-        switch (evt.getKeyCode()) {
-            case KeyEvent.VK_DOWN:
-                System.out.println("down");
-                break;
 
-            case KeyEvent.VK_UP:
-                System.out.println("down");
-                break;
-
-            case KeyEvent.VK_LEFT:
-                System.out.println("down");
-                break;
-
-            case KeyEvent.VK_RIGHT:
-                System.out.println("down");
-                break;
-        }
-
-    }}
+}
 
 
 
