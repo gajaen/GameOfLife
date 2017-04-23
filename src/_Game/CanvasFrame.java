@@ -148,7 +148,6 @@ public class CanvasFrame  {
             board.nextGeneration();
             board.drawCells(this.gc);
             board.drawLines(this.gc, this.lineWidth,this.lineColor);
-            SetTimeline();
             timeline.playFromStart();
 
         }));
@@ -212,7 +211,7 @@ public class CanvasFrame  {
 
     public int getFPS() {
         if (FPS == 0){
-            FPS = 10;
+            FPS = 5;
         }
         return FPS;
     }

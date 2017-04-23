@@ -1,7 +1,10 @@
 package _Game;
 
 import javafx.animation.Timeline;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 
 
 public class GUI{
@@ -28,6 +31,7 @@ public class GUI{
 
     public void RandomButton() {
         canvasFrame.RandomButtonAction();
+        startNoise();
     }
 
     /**
@@ -35,6 +39,7 @@ public class GUI{
      */
 
     public void ClearButton() {
+        startNoise();
         timeline.stop();
         canvasFrame.clearCanvas();
         canvasFrame.clearArray();
@@ -43,8 +48,15 @@ public class GUI{
     /**
      * This method playing the timeline from start.
      */
+    public void startNoise() {
+        String musicFile = "start.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
 
     public void StartButton() {
+        startNoise();
         timeline.playFromStart();
     }
 
@@ -54,6 +66,7 @@ public class GUI{
 
     public void StopButton() {
         timeline.stop();
+        startNoise();
     }
 
 }
