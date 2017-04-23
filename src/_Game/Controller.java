@@ -15,11 +15,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.image.BufferStrategy;
-import java.awt.event.*;
-import javax.swing.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
+
 /**
  * The Game Of Life program created for HIOA final project
  * The Controller class is the fx for fxml, all the properties in fxml are assign here.

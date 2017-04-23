@@ -7,8 +7,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+
+import java.io.File;
 
 /**
  * The Game Of Life program created for HIOA final project
@@ -59,25 +63,34 @@ public class CanvasFrame  {
 
 
 
+
+
+
+
+    }
+
+    public void clickNoise(){
+        String musicFile = "sound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
     }
 
     public void key(KeyEvent event){
          {
                 switch (event.getCode()) {
                     case UP:
-                        System.out.println("UP");
                         moveCellsUp(event);
                         break;
                     case DOWN:
-                        System.out.println("DOWN");
                         moveCellsDown();
                         break;
                     case LEFT:
-                        System.out.println("LEFT");
                         moveCellsLeft();
                         break;
                     case RIGHT:
-                        System.out.println("RIGHT");
+
                         moveCellsRight();
                         break;
                 }
@@ -108,6 +121,7 @@ public class CanvasFrame  {
         gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+
     }
 
     /**
@@ -125,13 +139,16 @@ public class CanvasFrame  {
      */
 
     public Timeline SetTimeline() {
+
         TIME = 1000/getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
+            clickNoise();
             clearCanvas();
             board.nextGeneration();
             board.drawCells(this.gc);
             board.drawLines(this.gc, this.lineWidth,this.lineColor);
+            SetTimeline();
             timeline.playFromStart();
 
         }));
@@ -195,7 +212,7 @@ public class CanvasFrame  {
 
     public int getFPS() {
         if (FPS == 0){
-            FPS = 30;
+            FPS = 10;
         }
         return FPS;
     }

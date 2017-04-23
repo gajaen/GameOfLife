@@ -19,6 +19,7 @@ public class Board {
 
     private Cell cell;
     private Controller controller;
+    private CanvasFrame canvasFrame;
     public int[][] board;
     int canvasWidth;
     int canvasHeigth;
@@ -95,6 +96,7 @@ public class Board {
      */
 
     public void drawCells(GraphicsContext gc) {
+
 
         gc.setFill(cell.getCellColor());
 
