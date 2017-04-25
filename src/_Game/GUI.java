@@ -49,7 +49,7 @@ public class GUI{
      * This method playing the timeline from start.
      */
     public void startNoise() {
-        String musicFile = "start.mp3";
+        String musicFile = "stars.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();

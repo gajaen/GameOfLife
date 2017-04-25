@@ -99,7 +99,7 @@
                                 <Insets />
                             </opaqueInsets>
                         </Slider>
-                        <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" majorTickUnit="30.0" max="240.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" scaleShape="false" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" majorTickUnit="30.0" max="60.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" scaleShape="false" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <opaqueInsets>
                                 <Insets />
                             </opaqueInsets>

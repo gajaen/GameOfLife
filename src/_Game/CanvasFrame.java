@@ -52,8 +52,8 @@ public class CanvasFrame  {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-        board = new Board(new int [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
-        board.setBoard(new int[getHEIGHT()][getWIDTH()]);
+        board = new Board(new byte [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
+        board.setBoard(new byte[getHEIGHT()][getWIDTH()]);
 
         setGc(this.gc);
         gc.setFill(Color.GREY);
@@ -184,7 +184,6 @@ public class CanvasFrame  {
         board.CanvasPressed(a);
         board.drawCells(gc);
         board.drawLines(this.gc, this.lineWidth, this.lineColor);
-        timeline.stop();
     }
 
     /**

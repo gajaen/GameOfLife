@@ -20,7 +20,7 @@ public class Board {
     private Cell cell;
     private Controller controller;
     private CanvasFrame canvasFrame;
-    public int[][] board;
+    public byte[][] board;
     int canvasWidth;
     int canvasHeigth;
     int oldJ;
@@ -39,7 +39,7 @@ public class Board {
      */
 
 
-    public Board(int[][] boardArray, int canWidth, int canHeight) {
+    public Board(byte[][] boardArray, int canWidth, int canHeight) {
 
         this.board = boardArray;
         this.canvasHeigth = canHeight;
@@ -61,7 +61,7 @@ public class Board {
 
     public void nextGeneration() {
 
-        int[][] nextBoard = new int[canvasHeigth][canvasWidth];
+        byte[][] nextBoard = new byte[canvasHeigth][canvasWidth];
 
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++)
@@ -238,7 +238,7 @@ public class Board {
 
     public int setBoardRandom(int i, int j) {
 
-        return  board[i][j] = (int) (Math.random() * 2);
+        return  board[i][j] = (byte) (Math.random() * 2);
 
     }
 
@@ -274,7 +274,7 @@ public class Board {
      *
      */
 
-    public void setBoard(int[][] board) {
+    public void setBoard(byte[][] board) {
         this.board = board;
     }
 
@@ -284,13 +284,13 @@ public class Board {
      * @return int this returns current board.
      */
 
-    public int[][] getBoard() {
+    public byte[][] getBoard() {
         return board;
     }
 
     public void moveCellsUp(){
 
-        int[][] leftBoard = new int[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
 
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
@@ -301,7 +301,7 @@ public class Board {
     }
     public void moveCellsLeft(){
 
-        int[][] leftBoard = new int[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
 
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
@@ -311,7 +311,7 @@ public class Board {
         board = leftBoard;
     }
     public void moveCellsDown(){
-        int[][] leftBoard = new int[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
 
         for (int x = 0; x < canvasHeigth; x++) {
             for (int y = 0; y < canvasWidth; y++){
@@ -321,7 +321,7 @@ public class Board {
         board = leftBoard;
     }
     public void moveCellsRight(){
-        int[][] leftBoard = new int[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
 
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){

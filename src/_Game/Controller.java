@@ -155,7 +155,8 @@ public class Controller implements Initializable{
     /**
      * This method is closing the window.
      */
-    public void closeWindow(){Platform.exit();}
+    public void closeWindow(){
+        Platform.exit();}
 
 }
 
