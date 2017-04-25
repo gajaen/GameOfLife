@@ -53,6 +53,7 @@ public class GUI{
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+        //
     }
 
     public void StartButton() {
