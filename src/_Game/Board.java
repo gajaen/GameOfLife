@@ -97,7 +97,6 @@ public class Board {
      * This method is used to draw a cell on canvas.
      *
      * @return Nothing.
-     * @param gc parameter to draw on canvas
      *
      */
 
@@ -197,7 +196,6 @@ public class Board {
      * This method is used to draw when clicked on canvas.
      *
      * @return Nothing.
-     * @param a is getting mouse clicked input from the user.
      * @exception Exception On input error.
      * @see Exception
      */

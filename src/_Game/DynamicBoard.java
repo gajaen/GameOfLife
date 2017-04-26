@@ -22,7 +22,7 @@ public class DynamicBoard {
                 inner.add(0);
             liste.add(inner);
         }
-        */
+*/
 
 
    }

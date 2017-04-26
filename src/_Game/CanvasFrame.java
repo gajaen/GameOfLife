@@ -65,21 +65,26 @@ public class CanvasFrame  {
         clearArray();
 
        // board.dboard();
-        dynamicBoard.Dynamic();
 
+        dynamicBoard = new DynamicBoard();
 
-
-
+    dboard();
 
 
 
     }
+
 
     public void clickNoise(){
         String musicFile = "sound.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+
+    }
+
+    public void dboard(){
+        dynamicBoard.Dynamic();
 
     }
 
@@ -103,6 +108,7 @@ public class CanvasFrame  {
                 drawCanvas();
             }
     }
+
     /**
      * Changing the cell color depending on user input from colorPicker
      * @param colorPicker is choosing color
@@ -160,6 +166,9 @@ public class CanvasFrame  {
 
         return timeline;
     }
+
+
+
 
     /**
      * Create's a new random array
