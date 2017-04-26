@@ -7,12 +7,8 @@ import java.util.List;
 public class DynamicBoard {
 
 
-    public Board board;
-
-
-
    public void Dynamic() {
-       System.out.println("test");
+       System.out.println("DynamicBoard");
 
 
 /*

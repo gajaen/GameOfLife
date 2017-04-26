@@ -25,8 +25,8 @@ public class Board {
     private Cell cell;
     private Controller controller;
     private CanvasFrame canvasFrame;
+    private DynamicBoard dynamicBoard;
     byte[][] board;
-    DynamicBoard dynamicBoard;
     int canvasWidth;
     int canvasHeigth;
     int oldJ;
@@ -102,6 +102,7 @@ public class Board {
      */
 
     public void dboard(){
+        System.out.print("1");
         dynamicBoard.Dynamic();
     }
 

@@ -64,7 +64,8 @@ public class CanvasFrame  {
 
         clearArray();
 
-        board.dboard();
+       // board.dboard();
+        dynamicBoard.Dynamic();
 
 
 
