@@ -29,6 +29,7 @@ public class CanvasFrame  {
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
     private Board board;
+    public DynamicBoard dynamicBoard;
     private Timeline timeline;
     private double lineWidth;
     private int HEIGHT, WIDTH, TIME, FPS;
@@ -45,6 +46,8 @@ public class CanvasFrame  {
 
     public CanvasFrame(int height, int width, GraphicsContext gcContext){
 
+
+
         this.HEIGHT = height;
         this.WIDTH = width;
         this.gc = gcContext;
@@ -60,6 +63,8 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
+
+        board.dboard();
 
 
 
@@ -236,13 +241,19 @@ public class CanvasFrame  {
     }
 
     public void moveCellsUp(KeyEvent e){
+        clickNoise();
         board.moveCellsUp();
     }
     public void moveCellsLeft(){
+        clickNoise();
         board.moveCellsLeft();
     }
-    public void moveCellsRight(){board.moveCellsRight();}
-    public void moveCellsDown(){board.moveCellsDown();}
+    public void moveCellsRight(){
+        clickNoise();
+        board.moveCellsRight();}
+    public void moveCellsDown(){
+        clickNoise();
+        board.moveCellsDown();}
 
 }
 

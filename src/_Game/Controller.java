@@ -9,15 +9,11 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 
-import javafx.scene.input.KeyEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import java.io.File;
+
 
 /**
  * The Game Of Life program created for HIOA final project

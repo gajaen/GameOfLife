@@ -13,20 +13,24 @@ package _Game;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+
+import java.io.File;
+
 
 public class Board {
 
     private Cell cell;
     private Controller controller;
     private CanvasFrame canvasFrame;
-    public byte[][] board;
+    byte[][] board;
+    DynamicBoard dynamicBoard;
     int canvasWidth;
     int canvasHeigth;
     int oldJ;
     int oldI;
-    int i;
-    int j;
 
     /**
      *
@@ -45,12 +49,14 @@ public class Board {
         this.canvasHeigth = canHeight;
         this.canvasWidth = canWidth;
         this.cell = new Cell();
-        oldI = 0;
-        oldJ = 0;
-        i = 0;
-        j = 0;
 
     }
+
+
+
+
+
+
 
     /**
      * This method is used to make a new board with rules.
@@ -94,6 +100,10 @@ public class Board {
      * @param gc parameter to draw on canvas
      *
      */
+
+    public void dboard(){
+        dynamicBoard.Dynamic();
+    }
 
     public void drawCells(GraphicsContext gc) {
 
@@ -190,6 +200,13 @@ public class Board {
      * @exception Exception On input error.
      * @see Exception
      */
+    public void clickNoise(){
+        String musicFile = "sound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
+    }
 
     public void CanvasPressed(MouseEvent a) throws Exception {
 
@@ -206,15 +223,12 @@ public class Board {
     }
 
     if (j != oldJ || i != oldI) {
-
+        clickNoise();
         if (board[i][j] == 0) {
             board[i][j] = 1;
         }
     }
 
-    if (j == 2 || i == 2) {
-        controller.CanvasReleased();
-    }
     oldJ = j;
     oldI = i;
 
@@ -288,6 +302,10 @@ public class Board {
         return board;
     }
 
+
+
+
+
     public void moveCellsUp(){
 
         byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
@@ -300,7 +318,6 @@ public class Board {
     board = leftBoard;
     }
     public void moveCellsLeft(){
-
         byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
 
         for (int x = 1; x < canvasHeigth - 1; x++) {
