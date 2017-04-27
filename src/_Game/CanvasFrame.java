@@ -62,10 +62,9 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
-        dynamicBoard = new DynamicBoard();
+        dynamicBoard = new DynamicBoard(height,width);
 
         dboard();
-
 
 
 
@@ -84,8 +83,8 @@ public class CanvasFrame  {
     public void dboard(){
         dynamicBoard.Dynamic();
 
-        for(byte[] inner : sBoard.getBoard())
-            System.out.println(Arrays.toString(inner));
+    //    for(byte[] inner : sBoard.getBoard())
+    //        System.out.println(Arrays.toString(inner));
 
 
     }
