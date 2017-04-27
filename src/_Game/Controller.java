@@ -113,7 +113,12 @@ public class Controller implements Initializable{
      * This method is changing cellSize depended on cellSlider value in fxml.
      */
     public void CellSizeClicked() {
-        canvasFrame.cellSize((int) cellSlider.getValue());
+        double a = cellSlider.getValue();
+        System.out.println(a);
+
+        //CanvasId.setScaleX(a);
+        //CanvasId.setScaleY(a);
+        canvasFrame.cellSize(a);
         canvasFrame.drawCanvas();
 
     }

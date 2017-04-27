@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  */
 
 public class Cell {
-    private int cellSize;
+    private double cellSize;
     private int cellGap;
     public Color cellColor;
 
@@ -23,7 +23,7 @@ public class Cell {
 
     public Cell(){
 
-        cellSize = 20;
+        cellSize = 10;
         cellGap = 1;
         cellColor = Color.WHITE;
     }
@@ -49,7 +49,7 @@ public class Cell {
      * This method returning cell size
      * @return cellSize
      */
-    public int getCellSize() {
+    public double getCellSize() {
         return cellSize;
     }
 
@@ -57,7 +57,8 @@ public class Cell {
      * @param cellSize parameter is assigned to the cellSize for this class
      */
 
-    public void setCellSize(int cellSize) {
+    public void setCellSize(double cellSize) {
+
         this.cellSize = cellSize;
     }
 

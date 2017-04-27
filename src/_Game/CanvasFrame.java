@@ -65,10 +65,13 @@ public class CanvasFrame  {
         dBoard = new DynamicBoard(height,width,sBoard.getBoard());
 
         dboard();
-
-
-
     }
+
+
+    public void setLine(double lineWidth){
+        this.lineWidth = lineWidth;
+    }
+
 
 
     public void clickNoise(){
@@ -129,7 +132,7 @@ public class CanvasFrame  {
         sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
-    public void cellSize(int size){
+    public void cellSize(double size){
         sBoard.setCellSize(size);
     }
 
@@ -235,7 +238,7 @@ public class CanvasFrame  {
 
     public int getFPS() {
         if (FPS == 0){
-            FPS = 5;
+            FPS = 60;
         }
         return FPS;
     }

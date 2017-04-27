@@ -26,7 +26,7 @@ public class DynamicBoard {
     public void Dynamic() {
         System.out.println(board);
         ArrayList<Byte> board = new ArrayList<Byte>();
-        System.out.println("\nDynamisk 2D tabell:");
+        System.out.println("\n");
 
 
 

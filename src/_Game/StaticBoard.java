@@ -128,8 +128,8 @@ public class StaticBoard {
         gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeigth);
         gc.setLineWidth(lineWidth);
 
-        int a = cell.getCellSize();
-        int b = cell.getCellSize();
+        double a = cell.getCellSize();
+        double b = cell.getCellSize();
 
         for (int i = 0; i < this.canvasHeigth; i++) {
             gc.strokeLine(0, a, this.canvasWidth, a);
@@ -195,8 +195,8 @@ public class StaticBoard {
 
     try {
 
-    int j = ((int) a.getX() / cell.getCellSize()) + 1;
-    int i = ((int) a.getY() / cell.getCellSize()) + 1;
+    int j = (int)(a.getX() / cell.getCellSize()) + 1;
+    int i = (int)(a.getY() / cell.getCellSize()) + 1;
 
     if (i <= 0) {
         return;
@@ -213,7 +213,6 @@ public class StaticBoard {
 
     oldJ = j;
     oldI = i;
-
     }
 
     catch (Exception e){
@@ -258,7 +257,7 @@ public class StaticBoard {
      * @return Nothing.
      */
 
-    public void setCellSize(int size){
+    public void setCellSize(double size){
         this.cell.setCellSize(size);
     }
 
@@ -283,6 +282,8 @@ public class StaticBoard {
     public byte[][] getBoard() {
         return board;
     }
+
+
 
     public void moveCellsUp(){
 
