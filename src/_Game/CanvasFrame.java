@@ -209,8 +209,9 @@ public class CanvasFrame  {
     public void drawPattern(int [][] pattern){
         clearArray();
         clearCanvas();
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+
         sBoard.drawPattern(pattern,gc);
+        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**

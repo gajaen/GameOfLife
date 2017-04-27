@@ -190,13 +190,6 @@ public class StaticBoard {
      * @exception Exception On input error.
      * @see Exception
      */
-    public void clickNoise(){
-        String musicFile = "sound.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-
-    }
 
     public void CanvasPressed(MouseEvent a) throws Exception {
 
@@ -213,7 +206,6 @@ public class StaticBoard {
     }
 
     if (j != oldJ || i != oldI) {
-        clickNoise();
         if (board[i][j] == 0) {
             board[i][j] = 1;
         }

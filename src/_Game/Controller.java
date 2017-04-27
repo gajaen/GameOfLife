@@ -145,7 +145,6 @@ public class Controller implements Initializable{
 
         ReadGameBoard readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
         readGameBoard.readFile();
-        System.out.println("hei");
         canvasFrame.drawPattern(readGameBoard.pattern);
 
     }

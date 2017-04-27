@@ -17,19 +17,10 @@ public class DynamicBoard {
 
    public void Dynamic() {
 
-
-
-       System.out.print(height);
-
-       int x = 10;
-       int y = 10;
-
-     //  System.out.print(x);
-
-        List<List<Integer>> liste = new ArrayList<List<Integer>>();
-        for (int i = 0; i < x; i++) {
+       List<List<Integer>> liste = new ArrayList<List<Integer>>();
+        for (int i = 0; i < height; i++) {
             List<Integer> inner = new ArrayList<Integer>();
-            for (int j = 0; j < y; j++)
+            for (int j = 0; j < width; j++)
                 inner.add(0);
             liste.add(inner);
         }
