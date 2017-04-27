@@ -88,6 +88,7 @@ public class CanvasFrame  {
     }
 
     public void dboard(){
+        dBoard.Dynamic();
 
     //    for(byte[] inner : sBoard.getBoard())
     //        System.out.println(Arrays.toString(inner));
@@ -190,6 +191,7 @@ public class CanvasFrame  {
         }
         sBoard.drawCells(this.gc);
         sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+        dBoard.Dynamic();
     }
 
     /**

@@ -8,19 +8,28 @@ public class DynamicBoard {
     private StaticBoard staticBoard;
     private int height;
     private int width;
+    private byte [][] board;
     private List<List<Integer>> dBoard = new ArrayList<List<Integer>>();
 
 
-    public DynamicBoard(int height1, int width2) {
+    public DynamicBoard(int height1, int width2, byte[][]board1) {
 
         this.height = height1;
-
+        this.board = board1;
         this.width = width2;
+
+
         //byte[][] sBoard = new staticBoard.getBoard();
 
     }
 
     public void Dynamic() {
+        System.out.println(board);
+        ArrayList<Byte> board = new ArrayList<Byte>();
+        System.out.println("\nDynamisk 2D tabell:");
+
+
+
         int x = height;
         int y = width;
 
