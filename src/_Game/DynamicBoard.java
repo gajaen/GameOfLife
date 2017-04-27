@@ -8,13 +8,15 @@ public class DynamicBoard {
     private StaticBoard staticBoard;
     private int height;
     private int width;
+    byte [][] board;
     private List<List<Integer>> dBoard = new ArrayList<List<Integer>>();
 
 
 
 
-    public DynamicBoard(int height1, int width2) {
+    public DynamicBoard(int height1, int width2, byte [][] board1) {
 
+        this.board = board1;
         this.height = height1;
         this.width = width2;
         //byte[][] sBoard = new staticBoard.getBoard();
@@ -54,9 +56,13 @@ public class DynamicBoard {
         return dBoard;
     }
 
+
     public void setdBoard(List<List<Integer>> dBoard) {
         this.dBoard = dBoard;
     }
+
+
+
 }
 
 

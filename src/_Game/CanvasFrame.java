@@ -30,7 +30,7 @@ public class CanvasFrame  {
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
     private StaticBoard sBoard;
-    public DynamicBoard dynamicBoard;
+    public DynamicBoard dBoard;
     private Timeline timeline;
     private double lineWidth;
     public int HEIGHT, WIDTH, TIME, FPS;
@@ -62,10 +62,9 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
-        dynamicBoard = new DynamicBoard(height,width);
+        dBoard = new DynamicBoard(height,width,sBoard.getBoard());
 
         dboard();
-
 
 
 
@@ -80,8 +79,15 @@ public class CanvasFrame  {
 
     }
 
+    public void getSBoard(){
+        sBoard.getBoard();
+    }
+
+    public void setsBoard(byte [][] board){
+        sBoard.setBoard(board);
+    }
+
     public void dboard(){
-        dynamicBoard.Dynamic();
 
     //    for(byte[] inner : sBoard.getBoard())
     //        System.out.println(Arrays.toString(inner));
