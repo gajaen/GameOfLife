@@ -5,10 +5,10 @@ import java.util.List;
 
 public class DynamicBoard {
 
-
-    StaticBoard staticBoard;
+    private StaticBoard staticBoard;
     private int height;
     private int width;
+
 
 
 
@@ -16,10 +16,15 @@ public class DynamicBoard {
 
         this.height = height1;
         this.width = width2;
+        //byte[][] sBoard = new staticBoard.getBoard();
+
+
+
+
     }
 
     public void Dynamic() {
-        List<List<Integer>> liste = new ArrayList<List<Integer>>();
+        List<List<Integer>> dBoard = new ArrayList<List<Integer>>();
         int x = height;
         int y = width;
 
@@ -31,17 +36,17 @@ public class DynamicBoard {
             List<Integer> inner = new ArrayList<Integer>();
             for(int j = 0; j < y1; j++)
                 inner.add(0);
-            liste.add(inner);
+            dBoard.add(inner);
         }
 
-        liste.get(0).set(0, 5); // replace fordi Integer er immutable
+        dBoard.get(0).set(0, 5); // replace fordi Integer er immutable
 
         System.out.println("\nDynamisk 2D tabell:");
-        liste.forEach((l)->System.out.println(l));
+        dBoard.forEach((l)->System.out.println(l));
 
-        liste.get(1).add(10);
+        dBoard.get(1).add(10);
         System.out.println("\nJagged 2D tabell:");
-        liste.forEach((l)->System.out.println(l));
+        dBoard.forEach((l)->System.out.println(l));
     }
 }
 
