@@ -14,6 +14,7 @@ public class DynamicBoard {
     public DynamicBoard(int height1, int width2) {
 
         this.height = height1;
+
         this.width = width2;
         //byte[][] sBoard = new staticBoard.getBoard();
 
