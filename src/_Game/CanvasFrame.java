@@ -33,7 +33,7 @@ public class CanvasFrame  {
     public DynamicBoard dynamicBoard;
     private Timeline timeline;
     private double lineWidth;
-    private int HEIGHT, WIDTH, TIME, FPS;
+    public int HEIGHT, WIDTH, TIME, FPS;
 
     /**
      *
@@ -62,10 +62,9 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
-
-       // board.dboard();
-
         dynamicBoard = new DynamicBoard();
+
+        dboard();
 
 
 
@@ -254,7 +253,6 @@ public class CanvasFrame  {
     }
 
     public void moveCellsUp(KeyEvent e){
-        dboard();
         clickNoise();
         sBoard.moveCellsUp();
     }

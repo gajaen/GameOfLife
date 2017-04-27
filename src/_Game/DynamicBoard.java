@@ -13,9 +13,13 @@ public class DynamicBoard {
    public void Dynamic() {
 
 
+       int height = canvasFrame.getHEIGHT();
+       int width = canvasFrame.getWIDTH();
+
+       System.out.print(height);
 
        int x = 10;
-       int y = 20;
+       int y = 10;
 
        System.out.print(x);
 
