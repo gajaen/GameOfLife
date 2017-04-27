@@ -33,7 +33,8 @@ public class Controller implements Initializable{
     public ColorPicker colorPicker;
     private GUI gui;
     public Slider sliderFPS, cellSlider;
-    public Board board;
+    public StaticBoard sBoard;
+    public DynamicBoard dynamicBoard;
 
 
 
@@ -50,6 +51,7 @@ public class Controller implements Initializable{
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
         key();
+
 
 
     }

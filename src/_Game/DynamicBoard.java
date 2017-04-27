@@ -6,23 +6,26 @@ import java.util.List;
 
 public class DynamicBoard {
 
+    StaticBoard sBoard;
+    CanvasFrame canvasFrame;
+
 
    public void Dynamic() {
-       System.out.println("DynamicBoard");
 
 
-/*
-       int antallRader = 3;
-        int antallCol = 5;
+
+       int x = 10;
+       int y = 20;
+
+       System.out.print(x);
 
         List<List<Integer>> liste = new ArrayList<List<Integer>>();
-        for (int i = 0; i < antallRader; i++) {
+        for (int i = 0; i < x; i++) {
             List<Integer> inner = new ArrayList<Integer>();
-            for (int j = 0; j < antallCol; j++)
+            for (int j = 0; j < y; j++)
                 inner.add(0);
             liste.add(inner);
         }
-*/
 
 
    }

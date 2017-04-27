@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
 import java.io.File;
 
 
-public class Board {
+public class StaticBoard {
 
     private Cell cell;
     private Controller controller;
@@ -43,7 +43,7 @@ public class Board {
      */
 
 
-    public Board(byte[][] boardArray, int canWidth, int canHeight) {
+    public StaticBoard(byte[][] boardArray, int canWidth, int canHeight) {
 
         this.board = boardArray;
         this.canvasHeigth = canHeight;
@@ -51,11 +51,6 @@ public class Board {
         this.cell = new Cell();
 
     }
-
-
-
-
-
 
 
     /**
@@ -100,10 +95,6 @@ public class Board {
      *
      */
 
-    public void dboard(){
-        System.out.print("1");
-        dynamicBoard.Dynamic();
-    }
 
     public void drawCells(GraphicsContext gc) {
 
@@ -300,10 +291,6 @@ public class Board {
     public byte[][] getBoard() {
         return board;
     }
-
-
-
-
 
     public void moveCellsUp(){
 

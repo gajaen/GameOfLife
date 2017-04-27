@@ -2,7 +2,6 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.EventHandler;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
@@ -13,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.util.*;
+
 
 /**
  * The Game Of Life program created for HIOA final project
@@ -28,7 +29,7 @@ public class CanvasFrame  {
 
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
-    private Board board;
+    private StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
     private Timeline timeline;
     private double lineWidth;
@@ -46,8 +47,6 @@ public class CanvasFrame  {
 
     public CanvasFrame(int height, int width, GraphicsContext gcContext){
 
-
-
         this.HEIGHT = height;
         this.WIDTH = width;
         this.gc = gcContext;
@@ -55,8 +54,8 @@ public class CanvasFrame  {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-        board = new Board(new byte [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
-        board.setBoard(new byte[getHEIGHT()][getWIDTH()]);
+        sBoard = new StaticBoard(new byte [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
+        sBoard.setBoard(new byte[getHEIGHT()][getWIDTH()]);
 
         setGc(this.gc);
         gc.setFill(Color.GREY);
@@ -68,7 +67,7 @@ public class CanvasFrame  {
 
         dynamicBoard = new DynamicBoard();
 
-    dboard();
+
 
 
 
@@ -85,6 +84,10 @@ public class CanvasFrame  {
 
     public void dboard(){
         dynamicBoard.Dynamic();
+
+        for(byte[] inner : sBoard.getBoard())
+            System.out.println(Arrays.toString(inner));
+
 
     }
 
@@ -115,14 +118,14 @@ public class CanvasFrame  {
      */
 
     public void colorPicker(ColorPicker colorPicker){
-        board.setCellColor(colorPicker.getValue());
+        sBoard.setCellColor(colorPicker.getValue());
         clearCanvas();
-        board.drawCells(gc);
-        board.drawLines(this.gc, this.lineWidth,this.lineColor);
+        sBoard.drawCells(gc);
+        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     public void cellSize(int size){
-        board.setCellSize(size);
+        sBoard.setCellSize(size);
     }
 
     /**
@@ -141,9 +144,9 @@ public class CanvasFrame  {
      */
 
     public void clearArray(){
-        board.cleanArray();
-        board.drawCells(gc);
-        board.drawLines(this.gc, this.lineWidth,this.lineColor);
+        sBoard.cleanArray();
+        sBoard.drawCells(gc);
+        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**
@@ -157,11 +160,10 @@ public class CanvasFrame  {
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clickNoise();
             clearCanvas();
-            board.nextGeneration();
-            board.drawCells(this.gc);
-            board.drawLines(this.gc, this.lineWidth,this.lineColor);
+            sBoard.nextGeneration();
+            sBoard.drawCells(this.gc);
+            sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
-
         }));
 
         return timeline;
@@ -179,11 +181,11 @@ public class CanvasFrame  {
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
 
-                board.setBoardRandom(i,j);
+                sBoard.setBoardRandom(i,j);
             }
         }
-        board.drawCells(this.gc);
-        board.drawLines(this.gc, this.lineWidth,this.lineColor);
+        sBoard.drawCells(this.gc);
+        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**
@@ -196,9 +198,9 @@ public class CanvasFrame  {
      */
     public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
-        board.CanvasPressed(a);
-        board.drawCells(gc);
-        board.drawLines(this.gc, this.lineWidth, this.lineColor);
+        sBoard.CanvasPressed(a);
+        sBoard.drawCells(gc);
+        sBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
     /**
@@ -209,8 +211,8 @@ public class CanvasFrame  {
     public void drawPattern(int [][] pattern){
         clearArray();
         clearCanvas();
-        board.drawLines(this.gc, this.lineWidth,this.lineColor);
-        board.drawPattern(pattern,gc);
+        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+        sBoard.drawPattern(pattern,gc);
     }
 
     /**
@@ -219,8 +221,9 @@ public class CanvasFrame  {
 
     public void drawCanvas(){
         clearCanvas();
-        board.drawCells(gc);
-        board.drawLines(gc, lineWidth, lineColor);
+        sBoard.drawCells(gc);
+        sBoard.drawLines(gc, lineWidth, lineColor);
+
     }
 
     public int getFPS() {
@@ -251,19 +254,20 @@ public class CanvasFrame  {
     }
 
     public void moveCellsUp(KeyEvent e){
+        dboard();
         clickNoise();
-        board.moveCellsUp();
+        sBoard.moveCellsUp();
     }
     public void moveCellsLeft(){
         clickNoise();
-        board.moveCellsLeft();
+        sBoard.moveCellsLeft();
     }
     public void moveCellsRight(){
         clickNoise();
-        board.moveCellsRight();}
+        sBoard.moveCellsRight();}
     public void moveCellsDown(){
         clickNoise();
-        board.moveCellsDown();}
+        sBoard.moveCellsDown();}
 
 }
 
