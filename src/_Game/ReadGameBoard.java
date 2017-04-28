@@ -1,11 +1,9 @@
 package _Game;
 
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.net.FileNameMap;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,10 +12,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
-import java.util.StringJoiner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 /**
  * The Game Of Life program created for HIOA final project
@@ -35,7 +31,7 @@ public class ReadGameBoard {
     File file;
     public int[][] pattern;
     String line;
-
+    private String patterName;
     /**
      * Constructs  board with Height and Width and Initialize a pattern array, and openfile, readfile methods
      *
@@ -116,12 +112,22 @@ public class ReadGameBoard {
         }
 
 
-        System.out.println(getCreationDetails(file));
 
         Scanner scanner1 = new Scanner(file);
-        scanner1.nextLine();
-        System.out.printf(scanner1.nextLine());
         String line2 = scanner1.nextLine();
+
+        Pattern p = Pattern.compile(".*#.*");
+        Matcher m = p.matcher(line2);
+        boolean b = m.matches();
+
+         setPatterName(m.group());
+
+
+      /*  Scanner scanner1 = new Scanner(file);
+        scanner1.nextLine();
+        System.out.println("funker dette");
+        System.out.printf(scanner1.nextLine());
+       String line2 = scanner1.nextLine();
 
         if (Pattern.matches(".*#.*", line2)) {
 
@@ -135,7 +141,7 @@ public class ReadGameBoard {
             }else {
                 System.out.println("NO MATCH");
             }
-        }
+        }*/
 
 
     }
@@ -172,7 +178,6 @@ public class ReadGameBoard {
                 }
 
 
-                System.out.println(line);
 
                 // split the line with $
                 Pattern p = Pattern.compile("(?<=\\$)");
@@ -253,7 +258,6 @@ public class ReadGameBoard {
                     = Files.getFileAttributeView(p, BasicFileAttributeView.class)
                     .readAttributes();
             FileTime fileTime = view.creationTime();
-            System.out.println(file.getName());
 
             return ("" + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format((fileTime.toMillis())));
 
@@ -264,9 +268,11 @@ public class ReadGameBoard {
     }
 
 
+    public String getPatterName() {
+        return patterName;
+    }
 
-
-
-
-
+    public void setPatterName(String patterName) {
+        this.patterName = patterName;
+    }
 }
