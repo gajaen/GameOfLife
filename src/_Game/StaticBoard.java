@@ -302,6 +302,7 @@ public class StaticBoard {
         for (int x = 1; x < canvasHeigth - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
                 if ((board[x][y] == 1))leftBoard[x][y-1] = 1;
+
             }
         }
         board = leftBoard;

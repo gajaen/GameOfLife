@@ -1,11 +1,20 @@
 package _Game;
 
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
+import java.io.*;
+import java.net.FileNameMap;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.StringJoiner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -21,38 +30,57 @@ import java.util.regex.PatternSyntaxException;
  */
 
 
-public class ReadGameBoard{
+public class ReadGameBoard {
     private Stage stage;
     File file;
-    public int [][] pattern;
+    public int[][] pattern;
+    String line;
 
     /**
-     *  Constructs  board with Height and Width and Initialize a pattern array, and openfile, readfile methods
+     * Constructs  board with Height and Width and Initialize a pattern array, and openfile, readfile methods
      *
-     *  @param boardHeight canvas height
-     *  @param boardWidth canvas width
+     * @param boardHeight canvas height
+     * @param boardWidth  canvas width
      */
 
 
-    public  ReadGameBoard(int boardHeight, int boardWidth) {
+    public ReadGameBoard(int boardHeight, int boardWidth) {
 
         pattern = new int[boardWidth][boardHeight];
 
 
         try {
             openFile();
-            readFile();
+            readFile(line);
+           // setText();
 
-        } catch(Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
     }
 
+ /*  public void setText(){
+
+
+        Pattern hash = Pattern.compile(".*#.*");
+
+        Matcher m = hash.matcher(line);
+        if (m.find( )) {
+            System.out.println("Found value: " + m.group(0) );
+        }else {
+            System.out.println("NO MATCH");
+
+        }
+
+
+    }*/
+
+
     /**
-     *  Constructs and initializes the stage.
+     * Constructs and initializes the stage.
      *
-     *  @param primaryStage unused.
+     * @param primaryStage unused.
      */
 
     public void init(Stage primaryStage) {
@@ -64,11 +92,11 @@ public class ReadGameBoard{
     /**
      * This method opens the file with FileChooser.
      *
-     * @exception IOException On input error.
+     * @throws IOException On input error.
      * @see IOException
      */
 
-    private void openFile() throws IOException  {
+    private void openFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
 
         fileChooser.setTitle("Open GOL Shape");
@@ -80,13 +108,34 @@ public class ReadGameBoard{
 
         );
 
-         file = fileChooser.showOpenDialog(stage);
+        file = fileChooser.showOpenDialog(stage);
 
 
         if (file != null) {
             System.out.println("Choosen file " + file);
         }
 
+
+        System.out.println(getCreationDetails(file));
+
+        Scanner scanner1 = new Scanner(file);
+        scanner1.nextLine();
+        System.out.printf(scanner1.nextLine());
+        String line2 = scanner1.nextLine();
+
+        if (Pattern.matches(".*#.*", line2)) {
+
+            Pattern hash = Pattern.compile(".*#.*");
+
+            Matcher m = hash.matcher(line2);
+            if (m.find( )) {
+                System.out.println("Found value: " + m.group(0) );
+                System.out.println("Found value: " + m.group(1) );
+                System.out.println("Found value: " + m.group(2) );
+            }else {
+                System.out.println("NO MATCH");
+            }
+        }
 
 
     }
@@ -96,27 +145,32 @@ public class ReadGameBoard{
      * This method decodes each line that has string 'b' , 'o' , '$'.
      * The it is putting it to the pattern array.
      *
-     * @exception IOException On input error.
+     * @throws IOException On input error.
      * @see FileNotFoundException
      */
-    public void readFile() throws IOException {
+    public void readFile(String line1) throws IOException {
 
         int rownumber = 5;
         int columnnumber = 0;
-
+        this.line = line1;
         if (file == null) {
             return;
         }
 
         try (Scanner scanner = new Scanner(file)) {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+
+
             while (scanner.hasNextLine()) {
 
-                String line = scanner.nextLine();
+                 line = scanner.nextLine();
 
                 // checkin g line is empty or commented or with rule line
-                if (line.isEmpty() || Pattern.matches(".*#.*", line) || Pattern.matches(".*rule.*", line)) {
+                if (line.isEmpty() || Pattern.matches(".*rule.*" , line)|| Pattern.matches(".*#.*", line)) {
+
                     continue;
                 }
+
 
                 System.out.println(line);
 
@@ -163,7 +217,6 @@ public class ReadGameBoard{
 
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
-                                System.out.println(rownumber + "/" + cnum);
                                 pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
                                 //columnnumber = columnnumber +1;
                             }
@@ -180,14 +233,40 @@ public class ReadGameBoard{
                     }
 
 
-                }
 
 
-            }
+
+
+            }}
+
 
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-    }}
+        }
+    }
+
+    public String getCreationDetails(File file) {
+        try {
+            Path p = Paths.get(file.getAbsolutePath());
+            BasicFileAttributes view
+                    = Files.getFileAttributeView(p, BasicFileAttributeView.class)
+                    .readAttributes();
+            FileTime fileTime = view.creationTime();
+            System.out.println(file.getName());
+
+            return ("" + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format((fileTime.toMillis())));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+
+
+
+
+
 
 }

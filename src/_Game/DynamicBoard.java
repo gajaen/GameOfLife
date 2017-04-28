@@ -46,6 +46,8 @@ public class DynamicBoard {
 
         dBoard.get(0).set(0, 5); // replace fordi Integer er immutable
 
+
+
         System.out.println("\nDynamisk 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
 

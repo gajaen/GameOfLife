@@ -34,6 +34,13 @@
                                 <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                             </accelerator></MenuItem>
                     </items>
+               <graphic>
+                  <HBox prefHeight="34.0" prefWidth="372.0">
+                     <children>
+                        <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="463.98577880859375" />
+                     </children>
+                  </HBox>
+               </graphic>
                 </Menu>
             </menus>
         </MenuBar>
@@ -115,9 +122,13 @@
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" />
             </padding>
+         <BorderPane.margin>
+            <Insets bottom="30.0" />
+         </BorderPane.margin>
         </HBox>
     </bottom>
-   <center>
-        <Canvas fx:id="CanvasId" focusTraversable="true" height="750.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" width="1248.0" BorderPane.alignment="CENTER" />
-   </center>
+    <center>
+        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" width="1224.0" BorderPane.alignment="CENTER" />
+    </center>
+
 </BorderPane>

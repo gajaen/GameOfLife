@@ -6,8 +6,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,8 +39,9 @@ public class Controller implements Initializable{
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
+    String line;
 
-
+    public Text tekst;
 
     /**
      *  Constructs and initializes the canvas and gui.
@@ -51,9 +56,7 @@ public class Controller implements Initializable{
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
         key();
-
-
-
+        setTxtBox();
     }
 
 
@@ -149,8 +152,13 @@ public class Controller implements Initializable{
 
 
         ReadGameBoard readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
-        readGameBoard.readFile();
+
+        readGameBoard.readFile(line);
+
         canvasFrame.drawPattern(readGameBoard.pattern);
+
+        tekst.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.file) + " \nfile name: " + readGameBoard.file.getName() + "\n created by: " + readGameBoard.file.getParent());
+
 
     }
 
@@ -159,6 +167,11 @@ public class Controller implements Initializable{
      */
     public void closeWindow(){
         Platform.exit();}
+
+        public void setTxtBox(){
+
+
+        }
 
 }
 

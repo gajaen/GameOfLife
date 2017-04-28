@@ -82,13 +82,7 @@ public class CanvasFrame  {
 
     }
 
-    public void getSBoard(){
-        sBoard.getBoard();
-    }
 
-    public void setsBoard(byte [][] board){
-        sBoard.setBoard(board);
-    }
 
     public void dboard(){
         dBoard.Dynamic();
