@@ -108,8 +108,10 @@ public class Controller implements Initializable{
      * This method is changing FPS depended on sliderFPS value in fxml.
      */
     public void FPSClicked(){
-        canvasFrame.setFPS((int) sliderFPS.getValue());
-
+        int a =  (int)sliderFPS.getValue();
+        canvasFrame.setFPS(a);
+        canvasFrame.SetTimeline();
+        canvasFrame.drawCanvas();
     }
 
     /**
@@ -117,10 +119,6 @@ public class Controller implements Initializable{
      */
     public void CellSizeClicked() {
         double a = cellSlider.getValue();
-        System.out.println(a);
-
-        //CanvasId.setScaleX(a);
-        //CanvasId.setScaleY(a);
         canvasFrame.cellSize(a);
         canvasFrame.drawCanvas();
 
