@@ -28,7 +28,7 @@ public class StaticBoard {
     private DynamicBoard dynamicBoard;
     byte[][] board;
     int canvasWidth;
-    int canvasHeigth;
+    int canvasHeight;
     int oldJ;
     int oldI;
 
@@ -46,7 +46,7 @@ public class StaticBoard {
     public StaticBoard(byte[][] boardArray, int canWidth, int canHeight) {
 
         this.board = boardArray;
-        this.canvasHeigth = canHeight;
+        this.canvasHeight = canHeight;
         this.canvasWidth = canWidth;
         this.cell = new Cell();
 
@@ -62,9 +62,9 @@ public class StaticBoard {
 
     public void nextGeneration() {
 
-        byte[][] nextBoard = new byte[canvasHeigth][canvasWidth];
+        byte[][] nextBoard = new byte[canvasHeight][canvasWidth];
 
-        for (int x = 1; x < canvasHeigth - 1; x++) {
+        for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++)
 
             {
@@ -101,7 +101,7 @@ public class StaticBoard {
 
         gc.setFill(cell.getCellColor());
 
-        for (int i = 0; i < this.canvasHeigth; i++) {
+        for (int i = 0; i < this.canvasHeight; i++) {
             for (int j = 0; j < this.canvasWidth; j++) {
                 if (board[i][j] == 1) {
                     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
@@ -125,18 +125,18 @@ public class StaticBoard {
 
         gc.setStroke(lineColor);
         gc.setLineWidth(3);
-        gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeigth);
+        gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
         gc.setLineWidth(lineWidth);
 
         double a = cell.getCellSize();
         double b = cell.getCellSize();
 
-        for (int i = 0; i < this.canvasHeigth; i++) {
+        for (int i = 0; i < this.canvasHeight; i++) {
             gc.strokeLine(0, a, this.canvasWidth, a);
             a += cell.getCellSize();
         }
         for (int i = 0; i < this.canvasWidth; i++) {
-            gc.strokeLine(b, 0, b, this.canvasHeigth);
+            gc.strokeLine(b, 0, b, this.canvasHeight);
             b += cell.getCellSize();
         }
     }
@@ -149,7 +149,7 @@ public class StaticBoard {
      */
 
     public void cleanArray() {
-        for (int i = 0; i < canvasHeigth; i++) {
+        for (int i = 0; i < canvasHeight; i++) {
             for (int j = 0; j < canvasWidth; j++) {
                 board[i][j] = 0;
             }
@@ -287,9 +287,9 @@ public class StaticBoard {
 
     public void moveCellsUp(){
 
-        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 
-        for (int x = 1; x < canvasHeigth - 1; x++) {
+        for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
                 if ((board[x][y] == 1))leftBoard[x-1][y] = 1;
             }
@@ -297,9 +297,9 @@ public class StaticBoard {
     board = leftBoard;
     }
     public void moveCellsLeft(){
-        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 
-        for (int x = 1; x < canvasHeigth - 1; x++) {
+        for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
                 if ((board[x][y] == 1))leftBoard[x][y-1] = 1;
             }
@@ -307,9 +307,9 @@ public class StaticBoard {
         board = leftBoard;
     }
     public void moveCellsDown(){
-        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 
-        for (int x = 0; x < canvasHeigth; x++) {
+        for (int x = 0; x < canvasHeight; x++) {
             for (int y = 0; y < canvasWidth; y++){
                 if ((board[x][y] == 1))leftBoard[x+1][y] = 1;
             }
@@ -317,9 +317,9 @@ public class StaticBoard {
         board = leftBoard;
     }
     public void moveCellsRight(){
-        byte[][] leftBoard = new byte[canvasHeigth][canvasWidth];
+        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 
-        for (int x = 1; x < canvasHeigth - 1; x++) {
+        for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
                 if ((board[x][y] == 1))leftBoard[x][y+1] = 1;
             }
