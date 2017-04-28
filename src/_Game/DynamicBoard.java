@@ -18,10 +18,7 @@ public class DynamicBoard {
         this.width = width2;
         this.board = board1;
 
-
-
         //byte[][] sBoard = new staticBoard.getBoard();
-
     }
 
     public void Dynamic() {
@@ -36,7 +33,6 @@ public class DynamicBoard {
 
         int x1 = 10; //Testtall
         int y1 = 10; //Testtall
-
 
         for (int i = 0; i < x1; i++) {
             List<Integer> inner = new ArrayList<Integer>();

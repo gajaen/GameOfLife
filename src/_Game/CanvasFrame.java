@@ -33,7 +33,7 @@ public class CanvasFrame  {
     public DynamicBoard dBoard;
     private Timeline timeline;
     private double lineWidth;
-    public int HEIGHT, WIDTH, TIME, FPS;
+    private int HEIGHT, WIDTH, TIME, FPS;
 
     /**
      *
@@ -177,6 +177,13 @@ public class CanvasFrame  {
         return timeline;
     }
 
+    public int getFPS() {
+        if (FPS == 0){
+            FPS = 30;
+        }
+        return FPS;
+    }
+
 
 
 
@@ -236,12 +243,7 @@ public class CanvasFrame  {
 
     }
 
-    public int getFPS() {
-        if (FPS == 0){
-            FPS = 60;
-        }
-        return FPS;
-    }
+
 
     public int getHEIGHT() {
         return HEIGHT;
@@ -262,6 +264,7 @@ public class CanvasFrame  {
     public void setFPS(int FPS) {
         this.FPS = FPS;
     }
+
 
     public void moveCellsUp(KeyEvent e){
         clickNoise();
