@@ -19,33 +19,34 @@ import java.util.*;
  * The Game Of Life program created for HIOA final project
  * The CanvasFrame class is drawing defined properties on canvas.
  *
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
+ * @author Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
+ *         Studentnr : S315325 & S315285
  * @version 1.0
- * @since   2017-01-14
+ * @since 2017-01-14
  */
 
-public class CanvasFrame  {
+public class CanvasFrame {
 
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
     private StaticBoard sBoard;
     public DynamicBoard dBoard;
+    private DrawCanvas drawCanvas;
     private Timeline timeline;
+    private Cell cell;
     private double lineWidth;
     private int HEIGHT, WIDTH, TIME, FPS;
 
     /**
+     * Constructs and init a canvas with width, height and gc
      *
-     *  Constructs and init a canvas with width, height and gc
-     *
-     *  @param height is the first parameter in CanvasFrame constructor
-     *  @param width is the second parameter in CanvasFrame constructor
-     *  @param gcContext is the third parameter used for drawing
+     * @param height    is the first parameter in CanvasFrame constructor
+     * @param width     is the second parameter in CanvasFrame constructor
+     * @param gcContext is the third parameter used for drawing
      */
 
 
-    public CanvasFrame(int height, int width, GraphicsContext gcContext){
+    public CanvasFrame(int height, int width, GraphicsContext gcContext) {
 
         this.HEIGHT = height;
         this.WIDTH = width;
@@ -54,27 +55,24 @@ public class CanvasFrame  {
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-        sBoard = new StaticBoard(new byte [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
+        sBoard = new StaticBoard(new byte[this.WIDTH][this.HEIGHT], this.WIDTH, this.HEIGHT);
         sBoard.setBoard(new byte[getHEIGHT()][getWIDTH()]);
+        cell = new Cell();
+        drawCanvas = new DrawCanvas();
+
 
         setGc(this.gc);
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
-        dBoard = new DynamicBoard(height,width,sBoard.getBoard());
+        dBoard = new DynamicBoard(height, width, sBoard.getBoard());
 
         dboard();
     }
 
 
-    public void setLine(double lineWidth){
-        this.lineWidth = lineWidth;
-    }
-
-
-
-    public void clickNoise(){
+    public void clickNoise() {
         String musicFile = "sound.mp3";
         Media sound = new Media(new File(musicFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
@@ -83,72 +81,66 @@ public class CanvasFrame  {
     }
 
 
-
-    public void dboard(){
+    public void dboard() {
         dBoard.Dynamic();
 
-    //    for(byte[] inner : sBoard.getBoard())
-    //        System.out.println(Arrays.toString(inner));
+        //    for(byte[] inner : sBoard.getBoard())
+        //        System.out.println(Arrays.toString(inner));
 
 
     }
 
-    public void key(KeyEvent event){
-         {
-                switch (event.getCode()) {
-                    case UP:
-                        moveCellsUp(event);
-                        break;
-                    case DOWN:
-                        moveCellsDown();
-                        break;
-                    case LEFT:
-                        moveCellsLeft();
-                        break;
-                    case RIGHT:
+    public void key(KeyEvent event) {
+        {
+            switch (event.getCode()) {
+                case UP:
+                    moveCellsUp(event);
+                    break;
+                case DOWN:
+                    moveCellsDown();
+                    break;
+                case LEFT:
+                    moveCellsLeft();
+                    break;
+                case RIGHT:
 
-                        moveCellsRight();
-                        break;
-                }
-                drawCanvas();
+                    moveCellsRight();
+                    break;
             }
+            drawCanvas();
+        }
     }
 
     /**
      * Changing the cell color depending on user input from colorPicker
+     *
      * @param colorPicker is choosing color
      */
 
-    public void colorPicker(ColorPicker colorPicker){
-        sBoard.setCellColor(colorPicker.getValue());
-        clearCanvas();
-        sBoard.drawCells(gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+    public void colorPicker(ColorPicker colorPicker) {
+        cell.setCellColor(colorPicker.getValue());
+        drawCanvas.clearCanvas();
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
-    public void cellSize(double size){
-        sBoard.setCellSize(size);
+    public void cellSize(double size) {
+        cell.setCellSize(size);
     }
 
     /**
      * Clearing the current canvas and applying background
      */
 
-    public void clearCanvas() {
-        gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
-        gc.setFill(getBackgroundColor());
-        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
-
-    }
 
     /**
      * Clear the current array with only 0's
      */
 
-    public void clearArray(){
+    public void clearArray() {
         sBoard.cleanArray();
-        sBoard.drawCells(gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
     /**
@@ -157,14 +149,14 @@ public class CanvasFrame  {
 
     public Timeline SetTimeline() {
 
-        TIME = 1000/getFPS();
+        TIME = 1000 / getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clickNoise();
-            clearCanvas();
+            drawCanvas.clearCanvas();
             sBoard.nextGeneration();
-            sBoard.drawCells(this.gc);
-            sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+            drawCanvas.drawCells(this.gc);
+            drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
             timeline.playFromStart();
         }));
 
@@ -172,13 +164,11 @@ public class CanvasFrame  {
     }
 
     public int getFPS() {
-        if (FPS == 0){
+        if (FPS == 0) {
             FPS = 30;
         }
         return FPS;
     }
-
-
 
 
     /**
@@ -186,57 +176,56 @@ public class CanvasFrame  {
      */
 
     public void RandomButtonAction() {
-        clearCanvas();
+        drawCanvas.clearCanvas();
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
 
-                sBoard.setBoardRandom(i,j);
+                sBoard.setBoardRandom(i, j);
             }
         }
-        sBoard.drawCells(this.gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
-        dBoard.Dynamic();
+        drawCanvas.drawCells(this.gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
     /**
      * This method is used to draw when clicked on canvas.
      *
-     * @return Nothing.
      * @param a is getting mouse clicked input from the user.
-     * @exception Exception On input error.
+     * @return Nothing.
+     * @throws Exception On input error.
      * @see Exception
      */
     public void CanvasPressed(MouseEvent a) throws Exception {
-        clearCanvas();
+        drawCanvas.clearCanvas();
         sBoard.CanvasPressed(a);
-        sBoard.drawCells(gc);
-        sBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
     /**
      * Draw's the pattern from ReadGameBoard
+     *
      * @param pattern is drawing on the booard
      */
 
-    public void drawPattern(int [][] pattern){
+    public void drawPattern(int[][] pattern) {
         clearArray();
-        clearCanvas();
+        drawCanvas.clearCanvas();
 
-        sBoard.drawPattern(pattern,gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+        drawCanvas.drawPattern(pattern, gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
     /**
      * Just a combonation of drawLines and drawCells
      */
 
-    public void drawCanvas(){
-        clearCanvas();
-        sBoard.drawCells(gc);
-        sBoard.drawLines(gc, lineWidth, lineColor);
+    public void drawCanvas() {
+        drawCanvas.clearCanvas();
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(gc, lineWidth, lineColor);
 
     }
-
 
 
     public int getHEIGHT() {
@@ -260,22 +249,85 @@ public class CanvasFrame  {
     }
 
 
-    public void moveCellsUp(KeyEvent e){
+    public void moveCellsUp(KeyEvent e) {
         clickNoise();
-        sBoard.moveCellsUp();
+        moveCellsUp();
     }
-    public void moveCellsLeft(){
-        clickNoise();
-        sBoard.moveCellsLeft();
-    }
-    public void moveCellsRight(){
-        clickNoise();
-        sBoard.moveCellsRight();}
-    public void moveCellsDown(){
-        clickNoise();
-        sBoard.moveCellsDown();}
 
+    public void moveCellsLeft() {
+        clickNoise();
+        moveCellsLeft();
+    }
+
+    public void moveCellsRight() {
+        clickNoise();
+        moveCellsRight();
+    }
+
+    public void moveCellsDown() {
+        clickNoise();
+        moveCellsDown();
+    }
+
+
+//*********************************************************************************************************************
+//*********************************************************************************************************************
+
+    public void moveCellsUp() {
+
+        byte[][] upBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 1; x < canvasHeight - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++) {
+                if ((board[x][y] == 1)) upBoard[x - 1][y] = 1;
+            }
+        }
+        board = upBoard;
+    }
+
+    public void moveCellsLeft() {
+        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 1; x < canvasHeight - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++) {
+                if ((board[x][y] == 1)) leftBoard[x][y - 1] = 1;
+
+            }
+        }
+        board = leftBoard;
+    }
+
+    public void moveCellsDown() {
+        byte[][] downBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 0; x < canvasHeight; x++) {
+            for (int y = 0; y < canvasWidth; y++) {
+                if ((board[x][y] == 1)) downBoard[x + 1][y] = 1;
+            }
+        }
+        board = downBoard;
+    }
+
+    public void moveCellsRight() {
+        byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 1; x < canvasHeight - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++) {
+                if ((board[x][y] == 1)) rightBoard[x][y + 1] = 1;
+            }
+        }
+        board = rightBoard;
+    }
 }
+
+
+
+
+
+
+
+
+
 
 
 

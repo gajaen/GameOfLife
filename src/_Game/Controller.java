@@ -132,7 +132,6 @@ public class Controller implements Initializable{
      * @see Exception
      */
     public void CanvasPressed(MouseEvent a) throws Exception {
-
         canvasFrame.CanvasPressed(a);
 
     }
