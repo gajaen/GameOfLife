@@ -9,7 +9,7 @@ public class DynamicBoard {
     private int height;
     private int width;
     private byte [][] board;
-    private List<List<Byte>> dBoard = new ArrayList<>();
+    private List<List<Integer>> dBoard = new ArrayList<List<Integer>>();
 
 
     public DynamicBoard(int height1, int width2, byte[][]board1) {
@@ -22,8 +22,10 @@ public class DynamicBoard {
     }
 
     public void Dynamic() {
-
+        System.out.println(board);
+        ArrayList<Byte> board = new ArrayList<Byte>();
         System.out.println("\n");
+
 
 
         int x = height;
@@ -33,20 +35,20 @@ public class DynamicBoard {
         int y1 = 10; //Testtall
 
         for (int i = 0; i < x1; i++) {
-            List<Byte> inner = new ArrayList<Byte>();
+            List<Integer> inner = new ArrayList<Integer>();
             for (int j = 0; j < y1; j++)
-                inner.add((byte)(0));
+                inner.add(0);
             dBoard.add(inner);
         }
 
-        dBoard.get(1).set(1,(byte) 1);
+        dBoard.get(1).set(1, 1); // replace fordi Integer er immutable
 
 
 
         System.out.println("\nDynamisk 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
 
-        dBoard.get(2).add((byte)1);
+        dBoard.get(2).add(1);
         System.out.println("\nJagged 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
     }

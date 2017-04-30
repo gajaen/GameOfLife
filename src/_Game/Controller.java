@@ -59,11 +59,11 @@ public class Controller implements Initializable{
 
 
     public void key(){
-    CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
-        public void handle(javafx.scene.input.KeyEvent event) {
-            canvasFrame.key(event);
-        }
-    });
+        CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
+            public void handle(javafx.scene.input.KeyEvent event) {
+                canvasFrame.key(event);
+            }
+        });
     }
 
     /**
@@ -93,7 +93,7 @@ public class Controller implements Initializable{
      */
     public void colorPickerClicked() {
         canvasFrame.colorPicker(colorPicker);
-        }
+    }
 
     /**
      * This method is calling StopButton method in GUI class.
@@ -132,6 +132,7 @@ public class Controller implements Initializable{
      * @see Exception
      */
     public void CanvasPressed(MouseEvent a) throws Exception {
+
         canvasFrame.CanvasPressed(a);
 
     }
@@ -165,10 +166,10 @@ public class Controller implements Initializable{
     public void closeWindow(){
         Platform.exit();}
 
-        public void setTxtBox(){
+    public void setTxtBox(){
 
 
-        }
+    }
 
 }
 
