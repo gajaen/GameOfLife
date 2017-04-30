@@ -75,7 +75,7 @@ public class StaticBoard {
                     }
                 }
 
-                cellNeighbors -= getBoard()[x][y];
+                cellNeighbors -= getsBoard()[x][y];
                 if ((board[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
                 else if ((board[x][y] == 1) && (cellNeighbors > 3))
                     nextBoard[x][y] = 0;           // Fler enn 3 rundt seg

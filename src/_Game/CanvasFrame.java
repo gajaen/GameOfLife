@@ -153,7 +153,7 @@ public class CanvasFrame {
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clickNoise();
-            drawCanvas.clearCanvas();
+            clearCanvas();
             sBoard.nextGeneration();
             drawCanvas.drawCells(this.gc);
             drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
@@ -170,13 +170,20 @@ public class CanvasFrame {
         return FPS;
     }
 
+    public void clearCanvas() {
+        gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
+        gc.setFill(getBackgroundColor());
+        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+
+    }
+
 
     /**
      * Create's a new random array
      */
 
     public void RandomButtonAction() {
-        drawCanvas.clearCanvas();
+        clearCanvas();
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
 
@@ -196,7 +203,7 @@ public class CanvasFrame {
      * @see Exception
      */
     public void CanvasPressed(MouseEvent a) throws Exception {
-        drawCanvas.clearCanvas();
+        clearCanvas();
         sBoard.CanvasPressed(a);
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
@@ -210,7 +217,7 @@ public class CanvasFrame {
 
     public void drawPattern(int[][] pattern) {
         clearArray();
-        drawCanvas.clearCanvas();
+        clearCanvas();
 
         drawCanvas.drawPattern(pattern, gc);
         drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
@@ -221,7 +228,7 @@ public class CanvasFrame {
      */
 
     public void drawCanvas() {
-        drawCanvas.clearCanvas();
+        clearCanvas();
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(gc, lineWidth, lineColor);
 
@@ -254,17 +261,17 @@ public class CanvasFrame {
         moveCellsUp();
     }
 
-    public void moveCellsLeft() {
+    public void moveCellsLeft(KeyEvent e) {
         clickNoise();
         moveCellsLeft();
     }
 
-    public void moveCellsRight() {
+    public void moveCellsRight(KeyEvent e) {
         clickNoise();
         moveCellsRight();
     }
 
-    public void moveCellsDown() {
+    public void moveCellsDown(KeyEvent e) {
         clickNoise();
         moveCellsDown();
     }
@@ -275,48 +282,48 @@ public class CanvasFrame {
 
     public void moveCellsUp() {
 
-        byte[][] upBoard = new byte[canvasHeight][canvasWidth];
+        byte[][] upBoard = new byte[sBoard.canvasHeight][sBoard.canvasWidth];
 
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++) {
-                if ((board[x][y] == 1)) upBoard[x - 1][y] = 1;
+        for (int x = 1; x < sBoard.canvasHeight - 1; x++) {
+            for (int y = 1; y < sBoard.canvasWidth - 1; y++) {
+                if ((sBoard.getsBoard()[x][y] == 1)) upBoard[x - 1][y] = 1;
             }
         }
-        board = upBoard;
+        sBoard.setsBoard() = upBoard;
     }
 
     public void moveCellsLeft() {
-        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
+        byte[][] leftBoard = new byte[sBoard.canvasHeight][sBoard.canvasWidth];
 
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++) {
-                if ((board[x][y] == 1)) leftBoard[x][y - 1] = 1;
+        for (int x = 1; x < sBoard.canvasHeight - 1; x++) {
+            for (int y = 1; y < sBoard.canvasWidth - 1; y++) {
+                if ((sBoard.getsBoard()[x][y] == 1)) leftBoard[x][y - 1] = 1;
 
             }
         }
-        board = leftBoard;
+        sBoard.setsBoard() = leftBoard;
     }
 
     public void moveCellsDown() {
-        byte[][] downBoard = new byte[canvasHeight][canvasWidth];
+        byte[][] downBoard = new byte[sBoard.canvasHeight][sBoard.canvasWidth];
 
-        for (int x = 0; x < canvasHeight; x++) {
-            for (int y = 0; y < canvasWidth; y++) {
-                if ((board[x][y] == 1)) downBoard[x + 1][y] = 1;
+        for (int x = 0; x < sBoard.canvasHeight; x++) {
+            for (int y = 0; y < sBoard.canvasWidth; y++) {
+                if ((sBoard.getsBoard()[x][y] == 1)) downBoard[x + 1][y] = 1;
             }
         }
-        board = downBoard;
+        sBoard.setsBoard() = downBoard;
     }
 
     public void moveCellsRight() {
-        byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
+        byte[][] rightBoard = new byte[sBoard.canvasHeight][sBoard.canvasWidth];
 
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++) {
-                if ((board[x][y] == 1)) rightBoard[x][y + 1] = 1;
+        for (int x = 1; x < sBoard.canvasHeight - 1; x++) {
+            for (int y = 1; y < sBoard.canvasWidth - 1; y++) {
+                if ((sBoard.getsBoard()[x][y]] == 1)) rightBoard[x][y + 1] = 1;
             }
         }
-        board = rightBoard;
+        sBoard.setsBoard()  = rightBoard;
     }
 }
 

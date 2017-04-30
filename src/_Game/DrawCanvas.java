@@ -55,9 +55,9 @@ public class DrawCanvas {
 
         gc.setFill(cell.getCellColor());
 
-        for (int i = 0; i < this.canvasHeight; i++) {
-            for (int j = 0; j < this.canvasWidth; j++) {
-                if (board[i][j] == 1) {
+        for (int i = 0; i < sBoard.canvasHeight; i++) {
+            for (int j = 0; j < sBoard.canvasWidth; j++) {
+                if (sBoard.board[i][j] == 1) {
                     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
                 }
             }
@@ -79,28 +79,22 @@ public class DrawCanvas {
 
         gc.setStroke(lineColor);
         gc.setLineWidth(3);
-        gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
+        gc.strokeRect(0, 0, sBoard.canvasWidth, sBoard.canvasHeight);
         gc.setLineWidth(lineWidth);
 
         double a = cell.getCellSize();
         double b = cell.getCellSize();
 
-        for (int i = 0; i < this.canvasHeight; i++) {
-            gc.strokeLine(0, a, this.canvasWidth, a);
+        for (int i = 0; i < sBoard.canvasHeight; i++) {
+            gc.strokeLine(0, a, sBoard.canvasWidth, a);
             a += cell.getCellSize();
         }
-        for (int i = 0; i < this.canvasWidth; i++) {
-            gc.strokeLine(b, 0, b, this.canvasHeight);
+        for (int i = 0; i < sBoard.canvasWidth; i++) {
+            gc.strokeLine(b, 0, b, sBoard.canvasHeight);
             b += cell.getCellSize();
         }
     }
 
-    public void clearCanvas() {
-        gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
-        gc.setFill(getBackgroundColor());
-        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
-
-    }
 
 
 
