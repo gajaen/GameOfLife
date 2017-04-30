@@ -3,10 +3,12 @@ package _Game;
 import javafx.application.Platform;
 import javafx.scene.canvas.*;
 import javafx.scene.canvas.Canvas;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.awt.*;
 import java.awt.color.ColorSpace;
+import java.io.File;
 import java.io.IOException;
 
 import static java.awt.Color.BLUE;
@@ -22,6 +24,8 @@ public class SaveGame {
     GraphicsContext gc;
     public Canvas saveCanvas;
     Cell cell;
+    private Stage stage;
+
 
     public SaveGame()  {
 
@@ -65,8 +69,29 @@ public class SaveGame {
         }
     }
 
+    public void init(Stage primaryStage) {
+
+        this.stage = stage;
+
+    }
+
     public void saveBtn() throws IOException {
-       // drawCells(gc);
+
+        FileChooser fileChooser = new FileChooser();
+
+        File file = fileChooser.showSaveDialog(stage);
+
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("GIF", "*.gif"),
+                new FileChooser.ExtensionFilter("All files", "*")
+
+        );
+
+        if(file != null){
+            System.out.println("hei");
+        }
+
        /* String path = "testgif2.gif";
         int width = 100;
         int height = 100;
