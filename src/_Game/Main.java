@@ -39,6 +39,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Frame.fxml"));
         Parent root = loader.load();
 
@@ -46,4 +47,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1280, 900));
         primaryStage.show();
     }
+
+
 }

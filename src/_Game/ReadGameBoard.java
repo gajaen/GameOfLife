@@ -50,8 +50,11 @@ public class ReadGameBoard {
             readFile(line);
            // setText();
 
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
 
+            e.printStackTrace();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -110,6 +113,8 @@ public class ReadGameBoard {
         if (file != null) {
             System.out.println("Choosen file " + file);
         }
+
+
 
 
 

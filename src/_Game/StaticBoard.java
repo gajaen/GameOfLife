@@ -219,9 +219,8 @@ public class StaticBoard {
             //System.err.println(" Exeption: " + e.getMessage());
             System.out.println("Task interrupted");
 
-        }
+        }}
 
-    }
 
     /**
      * This method is used to set a random board.

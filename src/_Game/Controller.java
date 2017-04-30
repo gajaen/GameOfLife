@@ -3,17 +3,21 @@ package _Game;
 
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -54,7 +58,7 @@ public class Controller implements Initializable{
         this.gui = new GUI(canvasFrame);
         key();
         tekst.setText("");
-        setTxtBox();
+
     }
 
 
@@ -166,8 +170,22 @@ public class Controller implements Initializable{
     public void closeWindow(){
         Platform.exit();}
 
-    public void setTxtBox(){
+    public void saveBoard(){
 
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("saveBoard.fxml"));
+
+            //  fxmlLoader.setController(saveBoardController.class);
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
+
+        }
+        catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);        }
 
     }
 
