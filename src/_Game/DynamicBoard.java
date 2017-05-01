@@ -1,6 +1,7 @@
 package _Game;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DynamicBoard {
@@ -22,9 +23,7 @@ public class DynamicBoard {
     }
 
     public void Dynamic() {
-        System.out.println(board);
-        ArrayList<Byte> board = new ArrayList<Byte>();
-        System.out.println("\n");
+
 
 
 

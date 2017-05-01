@@ -81,16 +81,8 @@ public class CanvasFrame  {
         mediaPlayer.play();
 
     }
-
-
-
     public void dboard(){
         dBoard.Dynamic();
-
-        //    for(byte[] inner : sBoard.getBoard())
-        //        System.out.println(Arrays.toString(inner));
-
-
     }
 
     public void key(KeyEvent event){

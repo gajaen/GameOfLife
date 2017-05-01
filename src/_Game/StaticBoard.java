@@ -286,14 +286,14 @@ public class StaticBoard {
 
     public void moveCellsUp(){
 
-        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
+        byte[][] upBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((board[x][y] == 1))leftBoard[x-1][y] = 1;
+                if ((board[x][y] == 1))upBoard[x-1][y] = 1;
             }
         }
-        board = leftBoard;
+        board = upBoard;
     }
     public void moveCellsLeft(){
         byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
@@ -307,24 +307,24 @@ public class StaticBoard {
         board = leftBoard;
     }
     public void moveCellsDown(){
-        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
+        byte[][] downBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 0; x < canvasHeight; x++) {
             for (int y = 0; y < canvasWidth; y++){
-                if ((board[x][y] == 1))leftBoard[x+1][y] = 1;
+                if ((board[x][y] == 1))downBoard[x+1][y] = 1;
             }
         }
-        board = leftBoard;
+        board = downBoard;
     }
     public void moveCellsRight(){
-        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
+        byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((board[x][y] == 1))leftBoard[x][y+1] = 1;
+                if ((board[x][y] == 1))rightBoard[x][y+1] = 1;
             }
         }
-        board = leftBoard;
+        board = rightBoard;
     }
 
 
