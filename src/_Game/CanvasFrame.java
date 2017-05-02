@@ -153,6 +153,7 @@ public class CanvasFrame  {
         TIME = 1000/getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
+            drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
             clickNoise();
             clearCanvas();
             staticBoard.nextGeneration();
@@ -165,6 +166,7 @@ public class CanvasFrame  {
                 System.out.println(Arrays.toString(inner));
                 */
         }));
+
 
         return timeline;
     }

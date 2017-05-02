@@ -22,6 +22,8 @@ import java.io.File;
 
 public class StaticBoard {
 
+    DrawCanvas drawCanvas;
+
 
     byte[][] sBoard;
     int canvasWidth;

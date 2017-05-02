@@ -115,21 +115,6 @@ public class DrawCanvas {
 
         }}
 
-    public void setBoard(byte[][] board) {
-
-        this.sboard = board;
-    }
-
-    /**
-     * This method is used to get current board.
-     *
-     * @return int this returns current board.
-     */
-
-    public byte[][] getBoard() {
-
-        return staticBoard.getBoard();
-    }
 
 
 
