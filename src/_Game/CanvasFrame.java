@@ -159,8 +159,10 @@ public class CanvasFrame  {
             drawCanvas.drawCells(this.gc);
             drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
-            dBoard = new DynamicBoard(this.HEIGHT,this.WIDTH,sBoard.getBoard());
-            dBoard.DynamicTest();
+
+            System.out.println("Utskrift av statisk 2D tabell:");
+            for(byte[] inner : sBoard.getBoard())
+                System.out.println(Arrays.toString(inner));
         }));
 
         return timeline;
@@ -203,7 +205,7 @@ public class CanvasFrame  {
      */
     public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
-        sBoard.CanvasPressed(a);
+        drawCanvas.CanvasPressed(a);
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
@@ -257,18 +259,18 @@ public class CanvasFrame  {
 
     public void moveCellsUp(KeyEvent e){
         clickNoise();
-        sBoard.moveCellsUp();
+        drawCanvas.moveCellsUp();
     }
     public void moveCellsLeft(){
         clickNoise();
-        sBoard.moveCellsLeft();
+        drawCanvas.moveCellsLeft();
     }
     public void moveCellsRight(){
         clickNoise();
-        sBoard.moveCellsRight();}
+        drawCanvas.moveCellsRight();}
     public void moveCellsDown(){
         clickNoise();
-        sBoard.moveCellsDown();}
+        drawCanvas.moveCellsDown();}
 
 }
 

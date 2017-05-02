@@ -29,8 +29,6 @@ public class StaticBoard {
     byte[][] sBoard;
     int canvasWidth;
     int canvasHeight;
-    int oldJ;
-    int oldI;
 
     /**
      *
@@ -75,7 +73,7 @@ public class StaticBoard {
                     }
                 }
 
-                cellNeighbors -= getBoard()[x][y];
+                cellNeighbors -= sBoard[x][y];
                 if ((sBoard[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
                 else if ((sBoard[x][y] == 1) && (cellNeighbors > 3))
                     nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
@@ -87,8 +85,6 @@ public class StaticBoard {
 
         sBoard = nextBoard;
     }
-
-
 
 
 
@@ -135,43 +131,8 @@ public class StaticBoard {
 
     }
 
-    /**
-     * This method is used to draw when clicked on canvas.
-     *
-     * @return Nothing.
-     * @exception Exception On input error.
-     * @see Exception
-     */
 
-    public void CanvasPressed(MouseEvent a) throws Exception {
 
-        try {
-
-            int j = (int)(a.getX() / cell.getCellSize()) + 1;
-            int i = (int)(a.getY() / cell.getCellSize()) + 1;
-
-            if (i <= 0) {
-                return;
-            }
-            if (j <= 0) {
-                return;
-            }
-
-            if (j != oldJ || i != oldI) {
-                if (sBoard[i][j] == 0) {
-                    sBoard[i][j] = 1;
-                }
-            }
-
-            oldJ = j;
-            oldI = i;
-        }
-
-        catch (Exception e){
-            //System.err.println(" Exeption: " + e.getMessage());
-            System.out.println("Task interrupted");
-
-        }}
 
 
     /**
@@ -233,52 +194,6 @@ public class StaticBoard {
     public byte[][] getBoard() {
         return sBoard;
     }
-
-
-
-    public void moveCellsUp(){
-
-        byte[][] upBoard = new byte[canvasHeight][canvasWidth];
-
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++){
-                if ((sBoard[x][y] == 1))upBoard[x-1][y] = 1;
-            }
-        }
-        sBoard = upBoard;
-    }
-    public void moveCellsLeft(){
-        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
-
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++){
-                if ((sBoard[x][y] == 1))leftBoard[x][y-1] = 1;
-
-            }
-        }
-        sBoard = leftBoard;
-    }
-    public void moveCellsDown(){
-        byte[][] downBoard = new byte[canvasHeight][canvasWidth];
-
-        for (int x = 0; x < canvasHeight; x++) {
-            for (int y = 0; y < canvasWidth; y++){
-                if ((sBoard[x][y] == 1))downBoard[x+1][y] = 1;
-            }
-        }
-        sBoard = downBoard;
-    }
-    public void moveCellsRight(){
-        byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
-
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++){
-                if ((sBoard[x][y] == 1))rightBoard[x][y+1] = 1;
-            }
-        }
-        sBoard = rightBoard;
-    }
-
 
 
 

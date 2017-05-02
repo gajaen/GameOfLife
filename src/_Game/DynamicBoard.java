@@ -68,8 +68,7 @@ public class DynamicBoard {
         }
         dBoard.get(1).set(1, (byte)1); // replace fordi Integer er immutable
 
-        System.out.println("\nDynamisk 2D tabell:");
-        dBoard.forEach((l) -> System.out.println(l));
+        //dBoard.forEach((l) -> System.out.println(l));
     }
 
 
@@ -134,6 +133,14 @@ public class DynamicBoard {
     public void setdBoard(List<List<Byte>> dBoard) {
         this.dBoard = dBoard;
     }
+
+    /*public int setdBoardRandom(int i, int j) {
+
+        return  dBoard[i][j].add((byte) (Math.random() * 2));
+
+    }
+    */
+
 }
 
 
