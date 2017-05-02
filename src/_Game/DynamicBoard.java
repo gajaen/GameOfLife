@@ -3,9 +3,7 @@ package _Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class DynamicBoard {
 
@@ -17,7 +15,6 @@ public class DynamicBoard {
     private int canvasWidth;
     private byte[][] sBoard;
     private List<List<Byte>> dBoard;
-
 
     public DynamicBoard(int height, int width, byte[][] board) {
 
@@ -31,9 +28,11 @@ public class DynamicBoard {
 
     public void DynamicTest() {
 
-        System.out.println(sBoard);
-        /*int x = height;
-        int y = width;
+
+
+        /*System.out.println(sBoard);
+        int x = 10;
+        int y = 10;
 
         int x1 = 10; //Testtall
         int y1 = 10; //Testtall
@@ -47,25 +46,48 @@ public class DynamicBoard {
 
         dBoard.get(1).set(1, (byte)1); // replace fordi Integer er immutable
 
-
-
         System.out.println("\nDynamisk 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
 
         dBoard.get(2).add((byte)1);
         System.out.println("\nJagged 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
-    */
+        */
+        cleanArray();
+        testCleanArray();
+
     }
 
     public void cleanArray() {
-        for (int i = 0; i < canvasHeight; i++) {
+        List<List<Byte>> dBoard = new ArrayList<List<Byte>>();
+        for (int i = 0; i < 10; i++) {
             List<Byte> inner = new ArrayList<Byte>();
-            for (int j = 0; j < canvasWidth; j++) {
-                inner.add((byte) 0);
-                dBoard.add(inner);
+            for (int j = 0; j < 10; j++)
+                inner.add((byte)0);
+            dBoard.add(inner);
+        }
+        dBoard.get(1).set(1, (byte)1); // replace fordi Integer er immutable
+
+        System.out.println("\nDynamisk 2D tabell:");
+        dBoard.forEach((l) -> System.out.println(l));
+    }
+
+
+    public void testCleanArray(){
+        /*int x = 10;
+        int y = 10;
+        ArrayList[][] tBoard = new ArrayList[x][y];
+
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                tBoard[i][j].add((byte)0);
             }
         }
+        */
+
+
+
+
     }
 
     /**
@@ -77,7 +99,8 @@ public class DynamicBoard {
 
     public void nextGeneration() {
 
-       /* List<List<Byte>>[][] nextdBoard = new List[canvasHeight][canvasWidth];
+       /*
+        ArrayList[][] nextdBoard = new ArrayList[canvasHeight][canvasWidth];
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++)
@@ -90,17 +113,16 @@ public class DynamicBoard {
                     }
                 }
 
-                cellNeighbors -= dBoard()[x][y];
-                if ((dBoard[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
-                else if ((dBoard[x][y] == 1) && (cellNeighbors > 3))
-                    nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
-                else if ((dBoard[x][y] == 0) && (cellNeighbors == 3))
-                    nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
-                else nextBoard[x][y] = dBoard[x][y];
+                cellNeighbors -= dBoard[x][y];
+                if ((dBoard[x][y] == 1) && (cellNeighbors < 2)) nextdBoard[x][y].add((byte)0);           // Mindre enn 2 rundt
+                else if ((dBoard[x][y] == 1)) && (cellNeighbors > 3)) nextdBoard[x][y].add((byte)0);           // Fler enn 3 rundt seg
+                else if ((dBoard[x][y] == 0) && (cellNeighbors == 3)) nextdBoard[x][y].add((byte)0);           // Akkurat 3 rundt seg
+                else nextdBoard[x][y] = dBoard[x][y];
             }
         }
 
         dBoard = nextdBoard;
+        */
 
     }
 
@@ -111,8 +133,6 @@ public class DynamicBoard {
 
     public void setdBoard(List<List<Byte>> dBoard) {
         this.dBoard = dBoard;
-    }
-*/
     }
 }
 
