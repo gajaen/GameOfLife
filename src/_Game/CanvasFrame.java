@@ -90,7 +90,7 @@ public class CanvasFrame  {
         {
             switch (event.getCode()) {
                 case UP:
-                    moveCellsUp(event);
+                    moveCellsUp();
                     break;
                 case DOWN:
                     moveCellsDown();
@@ -104,6 +104,7 @@ public class CanvasFrame  {
                     break;
             }
             drawCanvas();
+
         }
     }
 
@@ -154,7 +155,6 @@ public class CanvasFrame  {
         TIME = 1000/getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
             clickNoise();
             clearCanvas();
             staticBoard.nextGeneration();
@@ -262,19 +262,19 @@ public class CanvasFrame  {
     }
 
 
-    public void moveCellsUp(KeyEvent e){
+    public void moveCellsUp(){
         clickNoise();
-        drawCanvas.moveCellsUp();
+        staticBoard.moveCellsUp();
     }
     public void moveCellsLeft(){
         clickNoise();
-        drawCanvas.moveCellsLeft();
+        staticBoard.moveCellsLeft();
     }
     public void moveCellsRight(){
         clickNoise();
-        drawCanvas.moveCellsRight();}
+        staticBoard.moveCellsRight();}
     public void moveCellsDown(){
         clickNoise();
-        drawCanvas.moveCellsDown();}
+        staticBoard.moveCellsDown();}
 
 }

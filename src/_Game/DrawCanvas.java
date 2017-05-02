@@ -122,49 +122,7 @@ public class DrawCanvas {
 
     //*************************MOVE CELLS WITH ARROWS***************************
 
-    public void moveCellsRight(){
-        byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
 
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++){
-                if ((staticBoard.getBoard()[x][y] == 1))rightBoard[x][y+1] = 1;
-            }
-        }
-        staticBoard.setBoard(rightBoard);
-    }
-
-    public void moveCellsUp(){
-
-        byte[][] upBoard = new byte[canvasHeight][canvasWidth];
-
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++){
-                if ((staticBoard.getBoard()[x][y] == 1))upBoard[x-1][y] = 1;
-            }
-        }
-        staticBoard.setBoard(upBoard);
-    }
-    public void moveCellsLeft(){
-        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
-
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++){
-                if ((staticBoard.getBoard()[x][y] == 1))leftBoard[x][y-1] = 1;
-
-            }
-        }
-        staticBoard.setBoard(leftBoard);
-    }
-    public void moveCellsDown(){
-        byte[][] downBoard = new byte[canvasHeight][canvasWidth];
-
-        for (int x = 0; x < canvasHeight; x++) {
-            for (int y = 0; y < canvasWidth; y++){
-                if ((staticBoard.getBoard()[x][y] == 1))downBoard[x+1][y] = 1;
-            }
-        }
-        staticBoard.setBoard(downBoard);
-    }
 
     //**********************************************************************************
 

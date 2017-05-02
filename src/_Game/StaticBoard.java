@@ -187,6 +187,50 @@ public class StaticBoard {
         return sBoard;
     }
 
+    public void moveCellsRight(){
+        byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 1; x < canvasHeight - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++){
+                if ((sBoard[x][y] == 1))rightBoard[x][y+1] = 1;
+            }
+        }
+        sBoard = rightBoard;
+
+    }
+
+    public void moveCellsUp(){
+
+        byte[][] upBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 1; x < canvasHeight - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++){
+                if ((sBoard[x][y] == 1))upBoard[x-1][y] = 1;
+            }
+        }
+        sBoard = upBoard;
+    }
+    public void moveCellsLeft(){
+        byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 1; x < canvasHeight - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++){
+                if ((sBoard[x][y] == 1))leftBoard[x][y-1] = 1;
+
+            }
+        }
+        sBoard = leftBoard;
+    }
+    public void moveCellsDown(){
+        byte[][] downBoard = new byte[canvasHeight][canvasWidth];
+
+        for (int x = 0; x < canvasHeight; x++) {
+            for (int y = 0; y < canvasWidth; y++){
+                if ((sBoard[x][y] == 1))downBoard[x+1][y] = 1;
+            }
+        }
+        sBoard = downBoard;
+    }
 
 
 }
