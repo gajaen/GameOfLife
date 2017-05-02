@@ -32,6 +32,7 @@ public class CanvasFrame  {
     private StaticBoard staticBoard;
     public DynamicBoard dynamicBoard;
     private DrawCanvas drawCanvas;
+    private Cell cell;
     private Timeline timeline;
     private double lineWidth;
     private int canvasWidth, canvasHeight, TIME, FPS;
@@ -114,14 +115,14 @@ public class CanvasFrame  {
      */
 
     public void colorPicker(ColorPicker colorPicker){
-        //sBoard.setCellColor(colorPicker.getValue());
+        drawCanvas.setCellColor(colorPicker.getValue());
         clearCanvas();
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     public void cellSize(double size){
-       // drawCanvas.setCellSize(size);
+       drawCanvas.setCellSize(size);
     }
 
     /**

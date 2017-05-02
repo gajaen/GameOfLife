@@ -147,12 +147,7 @@ public class StaticBoard {
 
     }
 
-    /**
-     * This method is used to change cell color.
-     *
-     * @param color this parameter changes the cell color in cell class
-     * @return Nothing.
-     */
+
 
 
 

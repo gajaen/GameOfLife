@@ -16,6 +16,7 @@ public class DrawCanvas {
 
     public DrawCanvas(int height, int width, byte[][] sboard){
         staticBoard = new StaticBoard(sboard,width,height);
+        cell = new Cell();
 
         this.canvasHeight = height;
         this.canvasWidth = width;
@@ -117,6 +118,31 @@ public class DrawCanvas {
             System.out.println("Task interrupted");
 
         }}
+
+    /**
+     * This method is used to change cell color.
+     *
+     * @param color this parameter changes the cell color in cell class
+     * @return Nothing.
+     */
+
+    public void setCellColor(Color color){
+
+        this.cell.setCellColor(color);
+
+    }
+
+    /**
+     * This method is used to change cell size.
+     *
+     * @param size this parameter changes the cell size
+     * @return Nothing.
+     */
+
+    public void setCellSize(double size){
+        this.cell.setCellSize(size);
+    }
+
 
 
 
