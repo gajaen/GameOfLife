@@ -267,6 +267,7 @@ public class CanvasFrame  {
     public void moveCellsUp(){
         clickNoise();
         staticBoard.moveCellsUp();
+        dynamicBoard.nextGeneration();
     }
 
     public void moveCellsLeft(){

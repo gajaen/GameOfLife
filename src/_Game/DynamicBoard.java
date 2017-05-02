@@ -16,6 +16,7 @@ public class DynamicBoard {
     private byte[][] sBoard;
     public ArrayList[][] dBoard;
     public ArrayList[][] cleanArray;
+    public ArrayList[][] trueBoard;
 
     public DynamicBoard(int height, int width, byte[][] board) {
         this.canvasHeight = height;
@@ -28,6 +29,7 @@ public class DynamicBoard {
 
 
     public void DynamicTest() {
+
 
 
 
@@ -91,6 +93,7 @@ public class DynamicBoard {
 
     public void cleanArrayTest2() {
 
+
         System.out.println(" ");
 
         int x = 10;
@@ -110,13 +113,11 @@ public class DynamicBoard {
 
     }
     public void randomBoard() {
-
-        System.out.println(" ");
-
         ArrayList[][] trueBoard = new ArrayList[1][1];
         trueBoard[0][0] = new ArrayList();
         trueBoard[0][0].add((byte)1);
 
+        System.out.println(" ");
         int x = 10;
         int y = 10;
         ArrayList[][] randomBoard = new ArrayList[x][y];
@@ -131,8 +132,9 @@ public class DynamicBoard {
             System.out.println(Arrays.toString(inner));
 
         if (randomBoard[0][0].equals(trueBoard[0][0])){
-                    System.out.println("[0][0] is true");
+                    System.out.println("[0][0] = True");
                 }
+        else System.out.println("[0][0] = False");
     }
 
 
@@ -143,41 +145,41 @@ public class DynamicBoard {
      * @return Nothing.
      */
     public void nextGeneration() {
-/*
+        ArrayList[][] trueBoard = new ArrayList[1][1];
+        trueBoard[0][0] = new ArrayList();
+        trueBoard[0][0].add((byte) 1);
+
         ArrayList[][] nextBoard = new ArrayList[canvasHeight][canvasWidth];
+        for (int a = 0; a < 10; a++) {
+            for (int b = 0; b < 10; b++)
+                nextBoard[10][10] = new ArrayList();
 
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++)
 
-            {
-                int cellNeighbors = 0;
-                for (int i = -1; i <= 1; i++) {
-                    for (int j = -1; j <= 1; j++) {
-                        cellNeighbors += sBoard[x + i][y + j];
+            for (int x = 1; x < canvasHeight - 1; x++) {
+                for (int y = 1; y < canvasWidth - 1; y++) {
+                    int cellNeighbors = 0;
+
+                    for (int i = -1; i <= 1; i++) {
+                        for (int j = -1; j <= 1; j++) {
+                            cellNeighbors += dBoard[x + i][y + j];
+                        }
                     }
+
+                    cellNeighbors -= dBoard[x][y];
+                    if ((dBoard[x][y].equals(trueBoard[0][0])) && (cellNeighbors < 2))
+                        nextBoard[x][y].add((byte) 0);           // Mindre enn 2 rundt
+
+                    else if ((dBoard[x][y].equals(trueBoard[0][0])) && (cellNeighbors > 3))
+                        nextBoard[x][y].add((byte) 0);           // Fler enn 3 rundt seg
+
+                    else if ((dBoard[x][y].equals(trueBoard[0][0])) && (cellNeighbors == 3))
+                        nextBoard[x][y].add((byte) 1);           // Akkurat 3 rundt seg
+
+                    else nextBoard[x][y] = dBoard[x][y];
                 }
-
-                cellNeighbors -= sBoard[x][y];
-                if ((sBoard[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
-                else if ((sBoard[x][y] == 1) && (cellNeighbors > 3))
-                    nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
-                else if ((sBoard[x][y] == 0) && (cellNeighbors == 3))
-                    nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
-                else nextBoard[x][y] = sBoard[x][y];
             }
+            dBoard = nextBoard;
         }
-
-        sBoard = nextBoard;
-        */
-
-    }
-
-    public ArrayList[][] getdBoard() {
-        return dBoard;
-    }
-
-    public void setdBoard() {
-        //this.dBoard = dBoard;
     }
 
 
