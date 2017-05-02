@@ -1,8 +1,10 @@
 package _Game;
 
 
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -25,8 +27,6 @@ import java.util.logging.Logger;
  * The Controller class is the fx for fxml, all the properties in fxml are assign here.
  * The class is also implementing Initializable interface.
  *
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
  * @version 1.0
  * @since   2017-01-14
  */
@@ -34,13 +34,15 @@ import java.util.logging.Logger;
 
 public class Controller implements Initializable{
     public Canvas CanvasId;
-    private CanvasFrame canvasFrame;
+    @FXML private CanvasFrame canvasFrame;
     public ColorPicker colorPicker;
     private GUI gui;
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
     String line;
+
+     int user_id = 2;
 
     public Text tekst;
 
@@ -176,10 +178,14 @@ public class Controller implements Initializable{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("saveBoard.fxml"));
 
             //  fxmlLoader.setController(saveBoardController.class);
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            SaveGame controller = fxmlLoader.<SaveGame>getController();
+            controller.setUser(user_id);
+            controller.setBoard(canvasFrame.board());
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+
 
 
         }
@@ -188,6 +194,8 @@ public class Controller implements Initializable{
             logger.log(Level.SEVERE, "Failed to create new Window.", e);        }
 
     }
+
+
 
 }
 

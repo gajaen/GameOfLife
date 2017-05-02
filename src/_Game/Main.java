@@ -10,8 +10,6 @@ import javafx.stage.Stage;
  * The Game Of Life program created for HIOA final project
  * The Main class starts the project from the main method and loading fxml.
  *
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
  * @version 1.0
  * @since   2017-01-14
  */
@@ -42,6 +40,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Frame.fxml"));
         Parent root = loader.load();
+
 
         primaryStage.setTitle("Controller");
         primaryStage.setScene(new Scene(root, 1280, 900));

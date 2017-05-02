@@ -2,6 +2,7 @@ package _Game;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXML;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
@@ -12,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.io.File;
-import java.util.*;
 
 
 /**
@@ -29,9 +29,8 @@ public class CanvasFrame  {
 
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
-    private StaticBoard sBoard;
+    @FXML private StaticBoard sBoard;
     public DynamicBoard dBoard;
-    private DrawCanvas drawCanvas;
     private Timeline timeline;
     private double lineWidth;
     private int HEIGHT, WIDTH, TIME, FPS;
@@ -64,9 +63,9 @@ public class CanvasFrame  {
         dBoard = new DynamicBoard(this.HEIGHT,this.WIDTH,sBoard.getBoard());
         //dboard.setdBoard();
 
-        setGc(this.gc);
-        gc.setFill(Color.GREY);
-        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+        setGc(this.getGc());
+        getGc().setFill(Color.GREY);
+        getGc().fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
         dboard();
@@ -128,9 +127,9 @@ public class CanvasFrame  {
      */
 
     public void clearCanvas() {
-        gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
-        gc.setFill(getBackgroundColor());
-        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+        getGc().clearRect(0, 0, this.WIDTH, this.HEIGHT);
+        getGc().setFill(getBackgroundColor());
+        getGc().fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
     }
 
@@ -234,7 +233,9 @@ public class CanvasFrame  {
 
     }
 
-
+    public void nextGeneration(){
+        sBoard.nextGeneration();
+    }
 
     public int getHEIGHT() {
         return HEIGHT;
@@ -246,6 +247,11 @@ public class CanvasFrame  {
 
     public Color getBackgroundColor() {
         return backgroundColor;
+    }
+
+    public byte [][] board(){
+      return sBoard.getBoard();
+
     }
 
     public void setGc(GraphicsContext gc) {
@@ -272,6 +278,10 @@ public class CanvasFrame  {
         clickNoise();
         drawCanvas.moveCellsDown();}
 
+
+    public GraphicsContext getGc() {
+        return gc;
+    }
 }
 
 

@@ -6,8 +6,6 @@ import javafx.scene.paint.Color;
  * The Game Of Life program created for HIOA final project
  * The Board class have all the variables of the cell property.
  *
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
  * @version 1.0
  * @since   2017-01-14
  */

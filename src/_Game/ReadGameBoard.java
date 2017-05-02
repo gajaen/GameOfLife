@@ -19,8 +19,6 @@ import java.util.regex.Pattern;
  * The Game Of Life program created for HIOA final project
  * The ReadGameBoard class opens RLE file and decoding it to pattern on board.
  *
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
  * @version 1.0
  * @since   2017-01-14
  */
