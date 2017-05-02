@@ -12,6 +12,7 @@ public class GUI{
     private Timeline timeline;
     private CanvasFrame canvasFrame;
 
+
     /**
      * Initializes canvasFrame
      *

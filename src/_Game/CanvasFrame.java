@@ -144,6 +144,7 @@ public class CanvasFrame  {
     public void clearArray(){
         drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         staticBoard.cleanArray();
+        dynamicBoard.cleanArrayTest2();
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
@@ -199,7 +200,7 @@ public class CanvasFrame  {
         }
         drawCanvas.drawCells(this.gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
-        dynamicBoard.DynamicTest();
+        dynamicBoard.randomBoard();
     }
 
     /**

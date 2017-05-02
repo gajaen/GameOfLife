@@ -74,7 +74,7 @@ public class DrawCanvas {
                 }
             }
         }
-        System.out.println("draw");
+        //System.out.println("draw");
     }
 
 
