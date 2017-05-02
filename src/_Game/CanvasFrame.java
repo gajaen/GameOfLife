@@ -128,6 +128,7 @@ public class CanvasFrame  {
      */
 
     public void clearCanvas() {
+        drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         gc.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -231,6 +232,7 @@ public class CanvasFrame  {
      */
 
     public void drawCanvas(){
+        drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         clearCanvas();
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(gc, lineWidth, lineColor);
