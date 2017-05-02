@@ -131,7 +131,7 @@ public class DynamicBoard {
             System.out.println(Arrays.toString(inner));
 
         if (randomBoard[0][0].equals(trueBoard[0][0])){
-                    System.out.println("2,2 is true");
+                    System.out.println("[0][0] is true");
                 }
     }
 
