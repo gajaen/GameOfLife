@@ -70,7 +70,7 @@ public class DrawCanvas {
         for (int i = 0; i < this.canvasHeight; i++) {
             for (int j = 0; j < this.canvasWidth; j++) {
                 if (sBoard[i][j] == 1) {
-                    gc.fillRect(cell.getCellSize()  j - cell.getCellSize(), cell.getCellSize()  i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+                    gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
                 }
             }
         }

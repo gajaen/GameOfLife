@@ -27,11 +27,8 @@ public class StaticBoard {
     private CanvasFrame canvasFrame;
     private DynamicBoard dynamicBoard;
     byte[][] sBoard;
-    @FXML byte[][] board;
     int canvasWidth;
     int canvasHeight;
-    int oldJ;
-    int oldI;
 
     /**
      *
@@ -88,8 +85,6 @@ public class StaticBoard {
 
         sBoard = nextBoard;
     }
-
-
 
 
 

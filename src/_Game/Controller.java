@@ -181,7 +181,7 @@ public class Controller implements Initializable{
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             SaveGame controller = fxmlLoader.<SaveGame>getController();
             controller.setUser(user_id);
-            controller.setBoard(canvasFrame.board());
+            //controller.setBoard(canvasFrame.board());
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();

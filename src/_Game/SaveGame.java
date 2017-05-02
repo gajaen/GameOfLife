@@ -12,7 +12,6 @@ import javafx.scene.transform.Affine;
 import javafx.scene.transform.Translate;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import sun.tools.tree.Context;
 
 import java.awt.*;
 import java.awt.ScrollPane;
@@ -172,13 +171,12 @@ public class SaveGame implements Initializable {
 
     }
 
-    public void writeGoLSequenceToGIF(lieng.GIFWriter writer, SaveGame game, int counter){
+    //public void writeGoLSequenceToGIF(lieng.GIFWriter writer, SaveGame game, int counter){
 
 
 
 
 
-    }
 
     public void closeBtn(){
 
