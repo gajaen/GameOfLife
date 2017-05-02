@@ -15,6 +15,7 @@ public class DynamicBoard {
     private int canvasWidth;
     private byte[][] sBoard;
     public ArrayList[][] dBoard;
+    public ArrayList[][] cleanArray;
 
     public DynamicBoard(int height, int width, byte[][] board) {
         this.canvasHeight = height;
@@ -112,6 +113,10 @@ public class DynamicBoard {
 
         System.out.println(" ");
 
+        ArrayList[][] trueBoard = new ArrayList[1][1];
+        trueBoard[0][0] = new ArrayList();
+        trueBoard[0][0].add((byte)1);
+
         int x = 10;
         int y = 10;
         ArrayList[][] randomBoard = new ArrayList[x][y];
@@ -125,13 +130,10 @@ public class DynamicBoard {
         for (ArrayList[] inner : randomBoard)
             System.out.println(Arrays.toString(inner));
 
-        if (randomBoard[1][1].equals(1)) {
+        if (randomBoard[0][0].equals(trueBoard[0][0])){
                     System.out.println("2,2 is true");
                 }
     }
-
-
-
 
 
 
