@@ -1,5 +1,8 @@
 package _Game;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,49 +10,109 @@ import java.util.List;
 public class DynamicBoard {
 
     private StaticBoard staticBoard;
-    private int height;
-    private int width;
-    private byte [][] board;
-    private List<List<Integer>> dBoard = new ArrayList<List<Integer>>();
+    private Controller controller;
+    private CanvasFrame canvasFrame;
+    private Cell cell;
+    private int canvasHeight;
+    private int canvasWidth;
+    private byte[][] sBoard;
+    private List<List<Byte>> dBoard;
 
 
-    public DynamicBoard(int height1, int width2, byte[][]board1) {
+    public DynamicBoard(int height, int width, byte[][] board) {
 
-        this.height = height1;
-        this.width = width2;
-        this.board = board1;
+        this.canvasHeight = height;
+        this.canvasWidth = width;
+        this.sBoard = board;
+        this.cell = new Cell();
 
         //byte[][] sBoard = new staticBoard.getBoard();
     }
 
-    public void Dynamic() {
+    public void DynamicTest() {
 
-
-
-
-        int x = height;
+        System.out.println(sBoard);
+        /*int x = height;
         int y = width;
 
         int x1 = 10; //Testtall
         int y1 = 10; //Testtall
 
-        for (int i = 0; i < x1; i++) {
-            List<Integer> inner = new ArrayList<Integer>();
-            for (int j = 0; j < y1; j++)
-                inner.add(0);
+        for (int i = 0; i < x; i++) {
+            List<Byte> inner = new ArrayList<Byte>();
+            for (int j = 0; j < y; j++)
+                inner.add((byte)0);
             dBoard.add(inner);
         }
 
-        dBoard.get(1).set(1, 1); // replace fordi Integer er immutable
+        dBoard.get(1).set(1, (byte)1); // replace fordi Integer er immutable
 
 
 
         System.out.println("\nDynamisk 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
 
-        dBoard.get(2).add(1);
+        dBoard.get(2).add((byte)1);
         System.out.println("\nJagged 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
+    */
+    }
+
+    public void cleanArray() {
+        for (int i = 0; i < canvasHeight; i++) {
+            List<Byte> inner = new ArrayList<Byte>();
+            for (int j = 0; j < canvasWidth; j++) {
+                inner.add((byte) 0);
+                dBoard.add(inner);
+            }
+        }
+    }
+
+    /**
+     * This method is used to make a new board with rules.
+     *
+     * @return Nothing.
+     */
+
+
+    public void nextGeneration() {
+
+       /* List<List<Byte>>[][] nextdBoard = new List[canvasHeight][canvasWidth];
+
+        for (int x = 1; x < canvasHeight - 1; x++) {
+            for (int y = 1; y < canvasWidth - 1; y++)
+
+            {
+                int cellNeighbors = 0;
+                for (int i = -1; i <= 1; i++) {
+                    for (int j = -1; j <= 1; j++) {
+                        cellNeighbors += dBoard[x + i][y + j];
+                    }
+                }
+
+                cellNeighbors -= dBoard()[x][y];
+                if ((dBoard[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
+                else if ((dBoard[x][y] == 1) && (cellNeighbors > 3))
+                    nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
+                else if ((dBoard[x][y] == 0) && (cellNeighbors == 3))
+                    nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
+                else nextBoard[x][y] = dBoard[x][y];
+            }
+        }
+
+        dBoard = nextdBoard;
+
+    }
+
+
+    public List<List<Byte>> getdBoard() {
+        return dBoard;
+    }
+
+    public void setdBoard(List<List<Byte>> dBoard) {
+        this.dBoard = dBoard;
+    }
+*/
     }
 }
 

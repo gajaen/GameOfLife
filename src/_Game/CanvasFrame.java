@@ -31,6 +31,7 @@ public class CanvasFrame  {
     private Color lineColor, backgroundColor;
     private StaticBoard sBoard;
     public DynamicBoard dBoard;
+    private DrawCanvas drawCanvas;
     private Timeline timeline;
     private double lineWidth;
     private int HEIGHT, WIDTH, TIME, FPS;
@@ -55,22 +56,22 @@ public class CanvasFrame  {
         backgroundColor = Color.GREY;
 
         sBoard = new StaticBoard(new byte [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
-        sBoard.setBoard(new byte[getHEIGHT()][getWIDTH()]);
+        sBoard.setBoard(new byte[HEIGHT][WIDTH]);
+
+        drawCanvas = new DrawCanvas(this.HEIGHT, this.WIDTH, sBoard.getBoard());
+
+
+        dBoard = new DynamicBoard(this.HEIGHT,this.WIDTH,sBoard.getBoard());
+        //dboard.setdBoard();
 
         setGc(this.gc);
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
 
         clearArray();
-        dBoard = new DynamicBoard(height,width,sBoard.getBoard());
-
         dboard();
     }
 
-
-    public void setLine(double lineWidth){
-        this.lineWidth = lineWidth;
-    }
 
 
 
@@ -82,7 +83,7 @@ public class CanvasFrame  {
 
     }
     public void dboard(){
-        dBoard.Dynamic();
+        dBoard.DynamicTest();
     }
 
     public void key(KeyEvent event){
@@ -114,8 +115,8 @@ public class CanvasFrame  {
     public void colorPicker(ColorPicker colorPicker){
         sBoard.setCellColor(colorPicker.getValue());
         clearCanvas();
-        sBoard.drawCells(gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     public void cellSize(double size){
@@ -139,8 +140,8 @@ public class CanvasFrame  {
 
     public void clearArray(){
         sBoard.cleanArray();
-        sBoard.drawCells(gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**
@@ -155,9 +156,11 @@ public class CanvasFrame  {
             clickNoise();
             clearCanvas();
             sBoard.nextGeneration();
-            sBoard.drawCells(this.gc);
-            sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+            drawCanvas.drawCells(this.gc);
+            drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
+            dBoard = new DynamicBoard(this.HEIGHT,this.WIDTH,sBoard.getBoard());
+            dBoard.DynamicTest();
         }));
 
         return timeline;
@@ -185,9 +188,9 @@ public class CanvasFrame  {
                 sBoard.setBoardRandom(i,j);
             }
         }
-        sBoard.drawCells(this.gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
-        dBoard.Dynamic();
+        drawCanvas.drawCells(this.gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
+        dBoard.DynamicTest();
     }
 
     /**
@@ -201,8 +204,8 @@ public class CanvasFrame  {
     public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
         sBoard.CanvasPressed(a);
-        sBoard.drawCells(gc);
-        sBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
     /**
@@ -215,7 +218,7 @@ public class CanvasFrame  {
         clearCanvas();
 
         sBoard.drawPattern(pattern,gc);
-        sBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**
@@ -224,8 +227,8 @@ public class CanvasFrame  {
 
     public void drawCanvas(){
         clearCanvas();
-        sBoard.drawCells(gc);
-        sBoard.drawLines(gc, lineWidth, lineColor);
+        drawCanvas.drawCells(gc);
+        drawCanvas.drawLines(gc, lineWidth, lineColor);
 
     }
 

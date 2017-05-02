@@ -26,7 +26,7 @@ public class StaticBoard {
     private Controller controller;
     private CanvasFrame canvasFrame;
     private DynamicBoard dynamicBoard;
-    byte[][] board;
+    byte[][] sBoard;
     int canvasWidth;
     int canvasHeight;
     int oldJ;
@@ -45,7 +45,7 @@ public class StaticBoard {
 
     public StaticBoard(byte[][] boardArray, int canWidth, int canHeight) {
 
-        this.board = boardArray;
+        this.sBoard = boardArray;
         this.canvasHeight = canHeight;
         this.canvasWidth = canWidth;
         this.cell = new Cell();
@@ -71,75 +71,27 @@ public class StaticBoard {
                 int cellNeighbors = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
-                        cellNeighbors += board[x + i][y + j];
+                        cellNeighbors += sBoard[x + i][y + j];
                     }
                 }
 
                 cellNeighbors -= getBoard()[x][y];
-                if ((board[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
-                else if ((board[x][y] == 1) && (cellNeighbors > 3))
+                if ((sBoard[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
+                else if ((sBoard[x][y] == 1) && (cellNeighbors > 3))
                     nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
-                else if ((board[x][y] == 0) && (cellNeighbors == 3))
+                else if ((sBoard[x][y] == 0) && (cellNeighbors == 3))
                     nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
-                else nextBoard[x][y] = board[x][y];
+                else nextBoard[x][y] = sBoard[x][y];
             }
         }
 
-        board = nextBoard;
+        sBoard = nextBoard;
     }
 
-    /**
-     * This method is used to draw a cell on canvas.
-     *
-     * @return Nothing.
-     *
-     */
 
 
-    public void drawCells(GraphicsContext gc) {
 
 
-        gc.setFill(cell.getCellColor());
-
-        for (int i = 0; i < this.canvasHeight; i++) {
-            for (int j = 0; j < this.canvasWidth; j++) {
-                if (board[i][j] == 1) {
-                    gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
-                }
-            }
-        }
-    }
-
-    /**
-     * This method is used to draw a vertical and horizontal lines on canvas.
-     *
-     * @return Nothing.
-     * @param gc is the first parameter to draw on canvas
-     * @param lineWidth is the second choosing the thickness of line
-     * @param lineColor is the third parameter and it is choosing the color of line
-     *
-     */
-
-
-    public void drawLines(GraphicsContext gc, double lineWidth, Color lineColor) {
-
-        gc.setStroke(lineColor);
-        gc.setLineWidth(3);
-        gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
-        gc.setLineWidth(lineWidth);
-
-        double a = cell.getCellSize();
-        double b = cell.getCellSize();
-
-        for (int i = 0; i < this.canvasHeight; i++) {
-            gc.strokeLine(0, a, this.canvasWidth, a);
-            a += cell.getCellSize();
-        }
-        for (int i = 0; i < this.canvasWidth; i++) {
-            gc.strokeLine(b, 0, b, this.canvasHeight);
-            b += cell.getCellSize();
-        }
-    }
 
     /**
      * This method is used to zero the numbers in board array.
@@ -151,7 +103,7 @@ public class StaticBoard {
     public void cleanArray() {
         for (int i = 0; i < canvasHeight; i++) {
             for (int j = 0; j < canvasWidth; j++) {
-                board[i][j] = 0;
+                sBoard[i][j] = 0;
             }
         }
     }
@@ -173,13 +125,13 @@ public class StaticBoard {
             {
                 if(pattern[row][col] ==1)
                 {
-                    board[row][col] = 1;
+                    sBoard[row][col] = 1;
 
                 }
             }
         }
 
-        drawCells(gc);
+        //drawCells(gc);
 
     }
 
@@ -206,8 +158,8 @@ public class StaticBoard {
             }
 
             if (j != oldJ || i != oldI) {
-                if (board[i][j] == 0) {
-                    board[i][j] = 1;
+                if (sBoard[i][j] == 0) {
+                    sBoard[i][j] = 1;
                 }
             }
 
@@ -232,7 +184,7 @@ public class StaticBoard {
 
     public int setBoardRandom(int i, int j) {
 
-        return  board[i][j] = (byte) (Math.random() * 2);
+        return  sBoard[i][j] = (byte) (Math.random() * 2);
 
     }
 
@@ -269,7 +221,7 @@ public class StaticBoard {
      */
 
     public void setBoard(byte[][] board) {
-        this.board = board;
+        this.sBoard = board;
     }
 
     /**
@@ -279,7 +231,7 @@ public class StaticBoard {
      */
 
     public byte[][] getBoard() {
-        return board;
+        return sBoard;
     }
 
 
@@ -290,41 +242,41 @@ public class StaticBoard {
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((board[x][y] == 1))upBoard[x-1][y] = 1;
+                if ((sBoard[x][y] == 1))upBoard[x-1][y] = 1;
             }
         }
-        board = upBoard;
+        sBoard = upBoard;
     }
     public void moveCellsLeft(){
         byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((board[x][y] == 1))leftBoard[x][y-1] = 1;
+                if ((sBoard[x][y] == 1))leftBoard[x][y-1] = 1;
 
             }
         }
-        board = leftBoard;
+        sBoard = leftBoard;
     }
     public void moveCellsDown(){
         byte[][] downBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 0; x < canvasHeight; x++) {
             for (int y = 0; y < canvasWidth; y++){
-                if ((board[x][y] == 1))downBoard[x+1][y] = 1;
+                if ((sBoard[x][y] == 1))downBoard[x+1][y] = 1;
             }
         }
-        board = downBoard;
+        sBoard = downBoard;
     }
     public void moveCellsRight(){
         byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((board[x][y] == 1))rightBoard[x][y+1] = 1;
+                if ((sBoard[x][y] == 1))rightBoard[x][y+1] = 1;
             }
         }
-        board = rightBoard;
+        sBoard = rightBoard;
     }
 
 
