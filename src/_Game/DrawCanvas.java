@@ -5,23 +5,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 public class DrawCanvas {
-    private StaticBoard staticBoard;
-    private Controller controller;
-    private CanvasFrame canvasFrame;
-    private Cell cell;
+
+     Cell cell;
+    StaticBoard staticBoard;
     private int canvasHeight;
     private int canvasWidth;
-    private byte[][] sBoard;
+    private byte[][] sboard;
     int oldJ;
     int oldI;
 
-    public DrawCanvas(int height, int width, byte[][] sBoard){
+    public DrawCanvas(int height, int width, byte[][] sboard){
+        staticBoard = new StaticBoard(sboard,width,height);
+
         this.canvasHeight = height;
         this.canvasWidth = width;
-        this.sBoard = sBoard;
-        this.cell = new Cell();
-
-        System.out.print(sBoard);
+        this.sboard = sboard;
+        cell = new Cell();
+        System.out.println(sboard + "drawcanvas");
     }
 
 
@@ -69,7 +69,7 @@ public class DrawCanvas {
 
         for (int i = 0; i < this.canvasHeight; i++) {
             for (int j = 0; j < this.canvasWidth; j++) {
-                if (sBoard[i][j] == 1) {
+                if (staticBoard.getBoard()[i][j] == 1) {
                     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
                 }
             }
@@ -100,8 +100,8 @@ public class DrawCanvas {
             }
 
             if (j != oldJ || i != oldI) {
-                if (sBoard[i][j] == 0) {
-                    sBoard[i][j] = 1;
+                if (staticBoard.getBoard()[i][j] == 0) {
+                    staticBoard.getBoard()[i][j] = 1;
                 }
             }
 
@@ -117,7 +117,7 @@ public class DrawCanvas {
 
     public void setBoard(byte[][] board) {
 
-        this.sBoard = board;
+        this.sboard = board;
     }
 
     /**
@@ -128,7 +128,7 @@ public class DrawCanvas {
 
     public byte[][] getBoard() {
 
-        return sBoard;
+        return staticBoard.getBoard();
     }
 
 
@@ -142,10 +142,10 @@ public class DrawCanvas {
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((sBoard[x][y] == 1))rightBoard[x][y+1] = 1;
+                if ((staticBoard.getBoard()[x][y] == 1))rightBoard[x][y+1] = 1;
             }
         }
-        sBoard = rightBoard;
+        staticBoard.setBoard(rightBoard);
     }
 
     public void moveCellsUp(){
@@ -154,34 +154,48 @@ public class DrawCanvas {
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((sBoard[x][y] == 1))upBoard[x-1][y] = 1;
+                if ((staticBoard.getBoard()[x][y] == 1))upBoard[x-1][y] = 1;
             }
         }
-        sBoard = upBoard;
+        staticBoard.setBoard(upBoard);
     }
     public void moveCellsLeft(){
         byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 1; x < canvasHeight - 1; x++) {
             for (int y = 1; y < canvasWidth - 1; y++){
-                if ((sBoard[x][y] == 1))leftBoard[x][y-1] = 1;
+                if ((staticBoard.getBoard()[x][y] == 1))leftBoard[x][y-1] = 1;
 
             }
         }
-        sBoard = leftBoard;
+        staticBoard.setBoard(leftBoard);
     }
     public void moveCellsDown(){
         byte[][] downBoard = new byte[canvasHeight][canvasWidth];
 
         for (int x = 0; x < canvasHeight; x++) {
             for (int y = 0; y < canvasWidth; y++){
-                if ((sBoard[x][y] == 1))downBoard[x+1][y] = 1;
+                if ((staticBoard.getBoard()[x][y] == 1))downBoard[x+1][y] = 1;
             }
         }
-        sBoard = downBoard;
+        staticBoard.setBoard(downBoard);
     }
 
     //**********************************************************************************
+
+    public void setStaticBoard(byte[][] board) {
+        staticBoard.setBoard(board);
+    }
+
+    /**
+     * This method is used to get current board.
+     *
+     * @return int this returns current board.
+     */
+
+    public byte[][] getStatic() {
+        return staticBoard.getBoard();
+    }
 
 
 }

@@ -22,10 +22,7 @@ import java.io.File;
 
 public class StaticBoard {
 
-    private Cell cell;
-    private Controller controller;
-    private CanvasFrame canvasFrame;
-    private DynamicBoard dynamicBoard;
+
     byte[][] sBoard;
     int canvasWidth;
     int canvasHeight;
@@ -46,7 +43,7 @@ public class StaticBoard {
         this.sBoard = boardArray;
         this.canvasHeight = canHeight;
         this.canvasWidth = canWidth;
-        this.cell = new Cell();
+        System.out.println(sBoard + "staticboard");
 
     }
 
@@ -156,11 +153,7 @@ public class StaticBoard {
      * @return Nothing.
      */
 
-    public void setCellColor(Color color){
 
-        this.cell.setCellColor(color);
-
-    }
 
     /**
      * This method is used to change cell size.
@@ -169,9 +162,6 @@ public class StaticBoard {
      * @return Nothing.
      */
 
-    public void setCellSize(double size){
-        this.cell.setCellSize(size);
-    }
 
     /**
      * This method is used to assign a new board.

@@ -113,14 +113,14 @@ public class CanvasFrame  {
      */
 
     public void colorPicker(ColorPicker colorPicker){
-        sBoard.setCellColor(colorPicker.getValue());
+        //sBoard.setCellColor(colorPicker.getValue());
         clearCanvas();
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     public void cellSize(double size){
-        sBoard.setCellSize(size);
+       // drawCanvas.setCellSize(size);
     }
 
     /**
@@ -161,8 +161,8 @@ public class CanvasFrame  {
             timeline.playFromStart();
 
             System.out.println("Utskrift av statisk 2D tabell:");
-            for(byte[] inner : sBoard.getBoard())
-                System.out.println(Arrays.toString(inner));
+          //  for(byte[] inner : sBoard.getBoard())
+            //    System.out.println(Arrays.toString(inner));
         }));
 
         return timeline;
