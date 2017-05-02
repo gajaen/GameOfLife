@@ -53,7 +53,7 @@ public class DynamicBoard {
         System.out.println("\nJagged 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
         */
-        cleanArrayTest();
+        cleanArrayTest2();
 
     }
 
@@ -88,18 +88,18 @@ public class DynamicBoard {
     }
 
     public void cleanArrayTest2() {
-
-        ArrayList[][] table = new ArrayList[10][10];
-        table[0][0] = new ArrayList(); // add another ArrayList object to [0,0]
-        table[0][0].add((byte )1);
+        int x = 10;
+        int y = 10;
+        ArrayList[][] table = new ArrayList[x][y];
+        table[0][0] = new ArrayList();
+        for( int i = 0; i < x ; i++){
+            for(int j = 0; j < y; j++) {
+                table[i][j] = new ArrayList();
+                table[i][j].add((byte)0);
+            }}
 
         for(ArrayList[] inner : table)
             System.out.println(Arrays.toString(inner));
-        for( int i = 0; i < 11 ; i++){
-            for(int j = 0; j < 11; j++) {
-                table[i][j].add((byte)1);
-            }}
-
 
     }
 
