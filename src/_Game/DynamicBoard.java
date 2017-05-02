@@ -16,7 +16,7 @@ public class DynamicBoard {
     private byte[][] sBoard;
     private List<List<Byte>> dBoard;
 
-    public DynamicBoard(int height, int width, byte[][] board) {
+   public DynamicBoard(int height, int width, byte[][] board) {
 
         this.canvasHeight = height;
         this.canvasWidth = width;
@@ -25,6 +25,7 @@ public class DynamicBoard {
 
         //byte[][] sBoard = new staticBoard.getBoard();
     }
+
 
     public void DynamicTest() {
 

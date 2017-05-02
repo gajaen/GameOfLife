@@ -29,12 +29,12 @@ public class CanvasFrame  {
 
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
-    private StaticBoard sBoard;
-    public DynamicBoard dBoard;
+    private StaticBoard staticBoard;
+    public DynamicBoard dynamicBoard;
     private DrawCanvas drawCanvas;
     private Timeline timeline;
     private double lineWidth;
-    private int HEIGHT, WIDTH, TIME, FPS;
+    private int canvasWidth, canvasHeight, TIME, FPS;
 
     /**
      *
@@ -48,25 +48,25 @@ public class CanvasFrame  {
 
     public CanvasFrame(int height, int width, GraphicsContext gcContext){
 
-        this.HEIGHT = height;
-        this.WIDTH = width;
+        this.canvasHeight = height;
+        this.canvasWidth = width;
         this.gc = gcContext;
         lineWidth = 0.3;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
-        sBoard = new StaticBoard(new byte [this.WIDTH] [this.HEIGHT], this.WIDTH, this.HEIGHT);
-        sBoard.setBoard(new byte[HEIGHT][WIDTH]);
+        staticBoard = new StaticBoard(new byte [this.canvasWidth] [this.canvasHeight], this.canvasWidth, this.canvasHeight);
+        staticBoard.setBoard(new byte[canvasHeight][canvasWidth]);
 
-        drawCanvas = new DrawCanvas(this.HEIGHT, this.WIDTH, sBoard.getBoard());
+        drawCanvas = new DrawCanvas(this.canvasHeight, this.canvasWidth, staticBoard.getBoard());
 
 
-        dBoard = new DynamicBoard(this.HEIGHT,this.WIDTH,sBoard.getBoard());
+        dynamicBoard = new DynamicBoard(this.canvasHeight,this.canvasWidth,staticBoard.getBoard());
         //dboard.setdBoard();
 
         setGc(this.gc);
         gc.setFill(Color.GREY);
-        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+        gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
         clearArray();
         dboard();
@@ -83,7 +83,7 @@ public class CanvasFrame  {
 
     }
     public void dboard(){
-        dBoard.DynamicTest();
+        dynamicBoard.DynamicTest();
     }
 
     public void key(KeyEvent event){
@@ -128,9 +128,9 @@ public class CanvasFrame  {
      */
 
     public void clearCanvas() {
-        gc.clearRect(0, 0, this.WIDTH, this.HEIGHT);
+        gc.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         gc.setFill(getBackgroundColor());
-        gc.fillRect(0, 0, this.WIDTH, this.HEIGHT);
+        gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
     }
 
@@ -139,7 +139,7 @@ public class CanvasFrame  {
      */
 
     public void clearArray(){
-        sBoard.cleanArray();
+        staticBoard.cleanArray();
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
@@ -155,14 +155,15 @@ public class CanvasFrame  {
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             clickNoise();
             clearCanvas();
-            sBoard.nextGeneration();
+            staticBoard.nextGeneration();
             drawCanvas.drawCells(this.gc);
             drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
 
             System.out.println("Utskrift av statisk 2D tabell:");
-          //  for(byte[] inner : sBoard.getBoard())
-            //    System.out.println(Arrays.toString(inner));
+            /*for(byte[] inner : staticBoard.getBoard())
+                System.out.println(Arrays.toString(inner));
+                */
         }));
 
         return timeline;
@@ -187,12 +188,12 @@ public class CanvasFrame  {
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
 
-                sBoard.setBoardRandom(i,j);
+                staticBoard.setBoardRandom(i,j);
             }
         }
         drawCanvas.drawCells(this.gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
-        dBoard.DynamicTest();
+        dynamicBoard.DynamicTest();
     }
 
     /**
@@ -219,7 +220,7 @@ public class CanvasFrame  {
         clearArray();
         clearCanvas();
 
-        sBoard.drawPattern(pattern,gc);
+        staticBoard.drawPattern(pattern,gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
@@ -237,11 +238,11 @@ public class CanvasFrame  {
 
 
     public int getHEIGHT() {
-        return HEIGHT;
+        return canvasHeight;
     }
 
     public int getWIDTH() {
-        return WIDTH;
+        return canvasWidth;
     }
 
     public Color getBackgroundColor() {
