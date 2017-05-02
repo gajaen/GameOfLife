@@ -14,10 +14,9 @@ public class DynamicBoard {
     private int canvasHeight;
     private int canvasWidth;
     private byte[][] sBoard;
-    private List<List<Byte>> dBoard;
+    public ArrayList<ArrayList<Byte>> dBoard;
 
    public DynamicBoard(int height, int width, byte[][] board) {
-
         this.canvasHeight = height;
         this.canvasWidth = width;
         this.sBoard = board;
@@ -54,55 +53,69 @@ public class DynamicBoard {
         System.out.println("\nJagged 2D tabell:");
         dBoard.forEach((l) -> System.out.println(l));
         */
-        cleanArray();
-        testCleanArray();
+        cleanArrayTest();
 
     }
 
     public void cleanArray() {
-        List<List<Byte>> dBoard = new ArrayList<List<Byte>>();
+
+
+        ArrayList<ArrayList<Byte>> dBoard = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            List<Byte> inner = new ArrayList<Byte>();
+            ArrayList<Byte> inner = new ArrayList<>();
             for (int j = 0; j < 10; j++)
                 inner.add((byte)0);
             dBoard.add(inner);
         }
         dBoard.get(1).set(1, (byte)1); // replace fordi Integer er immutable
 
-        //dBoard.forEach((l) -> System.out.println(l));
+        dBoard.forEach((l) -> System.out.println(l));
     }
 
 
-    public void testCleanArray(){
-        /*int x = 10;
-        int y = 10;
-        ArrayList[][] tBoard = new ArrayList[x][y];
+    public void cleanArrayTest(){
+       int x = canvasHeight;
+       int y = canvasWidth;
+       ArrayList<ArrayList<Byte>> cleanArray = new ArrayList<ArrayList<Byte>>();
+       for( int i = 0; i < x ; i++){
+           ArrayList<Byte> rowArrayList = new ArrayList<Byte>();
+           for(int j = 0; j < y; j++){
+               rowArrayList.add((byte)0);
+           }
+           cleanArray.add(rowArrayList);
+       }
+        cleanArray.forEach((l) -> System.out.println(l));
+    }
 
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                tBoard[i][j].add((byte)0);
-            }
-        }
-        */
+    public void cleanArrayTest2() {
 
+        ArrayList[][] table = new ArrayList[10][10];
+        table[0][0] = new ArrayList(); // add another ArrayList object to [0,0]
+        table[0][0].add((byte )1);
 
+        for(ArrayList[] inner : table)
+            System.out.println(Arrays.toString(inner));
+        for( int i = 0; i < 11 ; i++){
+            for(int j = 0; j < 11; j++) {
+                table[i][j].add((byte)1);
+            }}
 
 
     }
 
-    /**
-     * This method is used to make a new board with rules.
-     *
-     * @return Nothing.
-     */
+
+            /**
+             * This method is used to make a new board with rules.
+             *
+             * @return Nothing.
+             */
 
 
-    public void nextGeneration() {
-
-       /*
-        ArrayList[][] nextdBoard = new ArrayList[canvasHeight][canvasWidth];
-
+        public void nextGeneration () {
+/*
+        ArrayList<ArrayList<Byte>> nextdBoard = new ArrayList<ArrayList<Byte>>();
         for (int x = 1; x < canvasHeight - 1; x++) {
+            ArrayList<Byte> rowArrayList = new ArrayList<Byte>();
             for (int y = 1; y < canvasWidth - 1; y++)
 
             {
@@ -124,10 +137,9 @@ public class DynamicBoard {
         dBoard = nextdBoard;
         */
 
-    }
+        }
 
-
-    public List<List<Byte>> getdBoard() {
+    /*public List<List<Byte>> getdBoard() {
         return dBoard;
     }
 
@@ -135,15 +147,14 @@ public class DynamicBoard {
         this.dBoard = dBoard;
     }
 
-    /*public int setdBoardRandom(int i, int j) {
+    public int setdBoardRandom(int i, int j) {
 
         return  dBoard[i][j].add((byte) (Math.random() * 2));
 
-    }
-    */
+    }*/
+
 
 }
-
 
 
 
