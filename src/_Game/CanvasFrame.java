@@ -129,6 +129,7 @@ public class CanvasFrame  {
      */
 
     public void clearCanvas() {
+
         gc.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -163,8 +164,8 @@ public class CanvasFrame  {
             drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
 
-            System.out.println("Utskrift av statisk 2D tabell:");
-            /*for(byte[] inner : staticBoard.getBoard())
+            /*System.out.println("Utskrift av statisk 2D tabell:");
+            for(byte[] inner : staticBoard.getBoard())
                 System.out.println(Arrays.toString(inner));
                 */
         }));
@@ -222,11 +223,8 @@ public class CanvasFrame  {
 
     public void drawPattern(int [][] pattern){
         clearArray();
-        clearCanvas();
-
         staticBoard.drawPattern(pattern,gc);
-        drawCanvas.drawCells(gc);
-        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
+        drawCanvas();
     }
 
     /**
@@ -268,15 +266,20 @@ public class CanvasFrame  {
         clickNoise();
         staticBoard.moveCellsUp();
     }
+
     public void moveCellsLeft(){
         clickNoise();
         staticBoard.moveCellsLeft();
     }
+
     public void moveCellsRight(){
         clickNoise();
-        staticBoard.moveCellsRight();}
+        staticBoard.moveCellsRight();
+    }
+
     public void moveCellsDown(){
         clickNoise();
-        staticBoard.moveCellsDown();}
+        staticBoard.moveCellsDown();
+    }
 
 }

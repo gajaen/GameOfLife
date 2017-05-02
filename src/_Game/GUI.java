@@ -40,9 +40,9 @@ public class GUI{
 
     public void ClearButton() {
         startNoise();
-        timeline.stop();
         canvasFrame.clearCanvas();
         canvasFrame.clearArray();
+        timeline.stop();
     }
 
     /**
@@ -66,6 +66,7 @@ public class GUI{
 
     public void StopButton() {
         timeline.stop();
+        canvasFrame.drawCanvas();
         startNoise();
     }
 

@@ -21,7 +21,6 @@ public class DrawCanvas {
         this.canvasWidth = width;
         this.sboard = sboard;
         cell = new Cell();
-        System.out.println(sboard + "drawcanvas");
     }
 
 
@@ -74,6 +73,7 @@ public class DrawCanvas {
                 }
             }
         }
+        System.out.println("draw");
     }
 
 
@@ -98,12 +98,15 @@ public class DrawCanvas {
             if (j <= 0) {
                 return;
             }
-
             if (j != oldJ || i != oldI) {
-                if (staticBoard.getBoard()[i][j] == 0) {
+                if (staticBoard.getBoard()[i][j] == 0){
                     staticBoard.getBoard()[i][j] = 1;
                 }
+                else{ staticBoard.getBoard()[i][j] = 0;
+                }
+
             }
+
 
             oldJ = j;
             oldI = i;
@@ -115,30 +118,6 @@ public class DrawCanvas {
 
         }}
 
-
-
-
-
-
-    //*************************MOVE CELLS WITH ARROWS***************************
-
-
-
-    //**********************************************************************************
-
-    public void setStaticBoard(byte[][] board) {
-        staticBoard.setBoard(board);
-    }
-
-    /**
-     * This method is used to get current board.
-     *
-     * @return int this returns current board.
-     */
-
-    public byte[][] getStatic() {
-        return staticBoard.getBoard();
-    }
 
 
 }

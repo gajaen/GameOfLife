@@ -45,7 +45,7 @@ public class StaticBoard {
         this.sBoard = boardArray;
         this.canvasHeight = canHeight;
         this.canvasWidth = canWidth;
-        System.out.println(sBoard + "staticboard");
+
 
     }
 
