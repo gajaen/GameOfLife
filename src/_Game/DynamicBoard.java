@@ -112,6 +112,21 @@ public class DynamicBoard {
         dBoard = cleanArray;
 
     }
+
+    /*public void prove(){
+
+
+            for (int i = 0; i < canvasHeight; i++) {
+                for (int j = 0; j < canvasWidth; i++) {
+                    if (sBoard[i][j] == 1) {
+                        dBoard.add(sBoard[i][j]);
+                        gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+
+                    }
+
+                }
+            }
+    }*/
     public void randomBoard() {
         ArrayList[][] trueBoard = new ArrayList[1][1];
         trueBoard[0][0] = new ArrayList();
@@ -148,6 +163,7 @@ public class DynamicBoard {
         ArrayList[][] trueBoard = new ArrayList[1][1];
         trueBoard[0][0] = new ArrayList();
         trueBoard[0][0].add((byte) 1);
+
 
         ArrayList[][] nextBoard = new ArrayList[canvasHeight][canvasWidth];
         for (int a = 0; a < 10; a++) {

@@ -10,8 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -114,7 +116,7 @@ public class Controller implements Initializable{
     public void FPSClicked(){
         int a =  (int)sliderFPS.getValue();
         canvasFrame.setFPS(a);
-        canvasFrame.SetTimeline();
+        //canvasFrame.SetTimeline();
         canvasFrame.drawCanvas();
     }
 
@@ -175,14 +177,16 @@ public class Controller implements Initializable{
     public void saveBoard(){
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("saveBoard.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/_Game/SaveBoard.fxml"));
 
             //  fxmlLoader.setController(saveBoardController.class);
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             SaveGame controller = fxmlLoader.<SaveGame>getController();
             controller.setUser(user_id);
-            //controller.setBoard(canvasFrame.board());
+            controller.setBoard(canvasFrame.getBoard());
             Stage stage = new Stage();
+
+
             stage.setScene(scene);
             stage.show();
 

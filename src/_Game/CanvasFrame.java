@@ -11,6 +11,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import java.applet.Applet;
 import java.io.File;
 import java.util.*;
 
@@ -25,7 +26,7 @@ import java.util.*;
  * @since   2017-01-14
  */
 
-public class CanvasFrame  {
+public class CanvasFrame extends Applet implements Runnable  {
 
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
@@ -36,6 +37,7 @@ public class CanvasFrame  {
     private Timeline timeline;
     private double lineWidth;
     private int canvasWidth, canvasHeight, TIME, FPS;
+    Thread thread;
 
     /**
      *
@@ -153,7 +155,7 @@ public class CanvasFrame  {
      * Timeline
      */
 
-    public Timeline SetTimeline() {
+     public Timeline SetTimeline() {
 
         TIME = 1000/getFPS();
 
@@ -166,11 +168,12 @@ public class CanvasFrame  {
             drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
 
-            /*System.out.println("Utskrift av statisk 2D tabell:");
+            System.out.println("Utskrift av statisk 2D tabell:");
             for(byte[] inner : staticBoard.getBoard())
                 System.out.println(Arrays.toString(inner));
-                */
+
         }));
+
 
 
         return timeline;
@@ -241,6 +244,13 @@ public class CanvasFrame  {
 
     }
 
+    public byte[][] getBoard() {
+        return drawCanvas.staticBoard.getBoard();
+    }
+
+
+
+
 
 
     public int getHEIGHT() {
@@ -284,5 +294,55 @@ public class CanvasFrame  {
         clickNoise();
         staticBoard.moveCellsDown();
     }
+
+    @Override
+    public void start(){
+        thread = new Thread();
+        thread.start();
+
+
+    }
+
+
+
+    @Override
+    public void run() {
+
+            while(true){
+                staticBoard.nextGeneration();
+                drawCanvas.drawCells(gc);
+            }
+
+
+            /*try  {
+
+               // Thread.sleep(15);
+
+              /*  TIME = 1000/getFPS();
+
+                timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
+                    drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
+                    clickNoise();
+                    clearCanvas();
+                    staticBoard.nextGeneration();
+                    drawCanvas.drawCells(this.gc);
+                    drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
+                    timeline.playFromStart();
+
+            System.out.println("Utskrift av statisk 2D tabell:");
+            for(byte[] inner : staticBoard.getBoard())
+                System.out.println(Arrays.toString(inner));
+
+                }));
+
+            } catch (InterruptedException ie) {
+                ie.printStackTrace();
+            }*/
+
+        }
+
+
+
+
 
 }

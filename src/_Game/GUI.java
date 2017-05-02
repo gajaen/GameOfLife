@@ -59,6 +59,7 @@ public class GUI{
     public void StartButton() {
         startNoise();
         timeline.playFromStart();
+      //  canvasFrame.run();
     }
 
     /**

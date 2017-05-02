@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.canvas.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
@@ -50,14 +51,21 @@ public class SaveGame implements Initializable {
 
     int user_id;
 
-
-    public SaveGame()  {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         cellSize = 5;
         cellGap = 1;
         cellColor = Color.BLACK;
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        CanvasFrame canvasFrame = fxmlLoader.getController();
+   //     drawCells(saveCanvas.getGraphicsContext2D());
+
+
+    }
+
+    public SaveGame() throws IOException {
+
+
+
 
     }
 
@@ -103,8 +111,8 @@ public class SaveGame implements Initializable {
 
         gc.setFill(cellColor);
         try {
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board.length; j++) {
+            for (int i = 0; i < saveCanvas.getWidth(); i++) {
+                for (int j = 0; j < saveCanvas.getHeight(); j++) {
                     if (board[i][j] == 1) {
                         gc.fillRect(cellSize * j - cellSize, cellSize * i - cellSize, cellSize - cellGap, cellSize - cellGap);
                     }
@@ -138,7 +146,7 @@ public class SaveGame implements Initializable {
         if(file != null){
             System.out.println("hei");
         }
-        /*
+
 
         String path = "gife.gif";
         int width = 100;
@@ -149,7 +157,7 @@ public class SaveGame implements Initializable {
         lieng.GIFWriter gwriter = new lieng.GIFWriter(width,height,path,timePerMilliSecond);
 
         // fill the upper half of the image with blue
-        gwriter.fillRect(0, width-1, 0, height/2, BLUE);
+        //drawCells(can);
 
         // insert the painted image to the animation sequence
         // and proceed to the next image
@@ -165,7 +173,7 @@ public class SaveGame implements Initializable {
         gwriter.close();
 
 
-        System.out.println("done!");*/
+        System.out.println("done!");
 
 
 
@@ -180,6 +188,25 @@ public class SaveGame implements Initializable {
 
     public void closeBtn(){
 
+
+        double xpadding = 0;
+
+        canvasScroll.getGraphicsContext2D().clearRect(0,0,canvasScroll.widthProperty().doubleValue(),canvasScroll.heightProperty().doubleValue());
+        Affine affine = new Affine();
+        double tx = xpadding;
+
+
+   //     for(int a = 0; a<10; a++){
+            affine.setTx(tx);
+//            gc.setTransform(affine);
+            nextGeneration();
+            drawCells(canvasScroll.getGraphicsContext2D());
+            tx += canvasScroll.getWidth() + xpadding;
+
+ //       }
+
+        affine.setTx(0.0);
+        gc.setTransform(affine);
 
         drawCells(saveCanvas.getGraphicsContext2D());
 //            drawCells(gc);
@@ -237,8 +264,5 @@ public class SaveGame implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
 }
