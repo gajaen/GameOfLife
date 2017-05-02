@@ -129,7 +129,6 @@ public class CanvasFrame  {
      */
 
     public void clearCanvas() {
-        drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         gc.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -155,6 +154,7 @@ public class CanvasFrame  {
         TIME = 1000/getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
+            drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
             clickNoise();
             clearCanvas();
             staticBoard.nextGeneration();
@@ -224,6 +224,7 @@ public class CanvasFrame  {
         clearCanvas();
 
         staticBoard.drawPattern(pattern,gc);
+        drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 

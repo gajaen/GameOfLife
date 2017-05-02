@@ -94,6 +94,7 @@ public class ReadGameBoard {
      */
 
     private void openFile() throws IOException {
+
         FileChooser fileChooser = new FileChooser();
 
         fileChooser.setTitle("Open GOL Shape");
