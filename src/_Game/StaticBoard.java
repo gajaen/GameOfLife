@@ -3,8 +3,6 @@
  * The Board class creates arrays for the board.
  * it does also drawing each cell and line.
  *
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
  * @version 1.0
  * @since   2017-01-14
  */
@@ -45,7 +43,6 @@ public class StaticBoard {
         this.sBoard = boardArray;
         this.canvasHeight = canHeight;
         this.canvasWidth = canWidth;
-
 
     }
 
@@ -204,6 +201,7 @@ public class StaticBoard {
         }
         sBoard = upBoard;
     }
+
     public void moveCellsLeft(){
         byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 

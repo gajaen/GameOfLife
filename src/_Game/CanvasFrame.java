@@ -160,6 +160,9 @@ public class CanvasFrame extends Applet implements Runnable  {
             clickNoise();
             clearCanvas();
             staticBoard.nextGeneration();
+
+            try{Thread.sleep(100);} catch (Exception a){}
+
             drawCanvas.drawCells(this.gc);
             drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();

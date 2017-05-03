@@ -2,7 +2,9 @@ package _Game;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
 
+import javax.lang.model.element.Element;
 import java.util.*;
 
 public class DynamicBoard {
@@ -20,6 +22,7 @@ public class DynamicBoard {
     public ArrayList[][] trueBoard;
     //public List<List> testdBoard;
     public ArrayList[][] testdBoard;
+    public LinkedList testDBoard;
 
     public DynamicBoard(int height, int width, byte[][] board) {
         this.canvasHeight = height;
@@ -45,7 +48,6 @@ public class DynamicBoard {
 
         for(byte[] inner : testBoard)
             System.out.println(Arrays.toString(inner));
-
         ArrayConvert();
     }
 
@@ -56,21 +58,33 @@ public class DynamicBoard {
         //gjør om statisk brett og skriver ut
 
         List<List> testdBoard = new ArrayList<>();
+
         for(byte[] array : testBoard){
-            testdBoard.add(Arrays.asList(array) );
+           /* testdBoard.add(Arrays.asList(array));
+            System.out.println(Arrays.toString(testdBoard.toArray()));;
+            System.out.println(Arrays.toString(array));*/
+
         }
 
         System.out.println("testdBoard = dynamic");
         testdBoard.forEach((l)->System.out.println(l));
 
+        for(int c = 0; c > testdBoard.size(); c++){
+
+            System.out.println(testdBoard.get(c));
+        }
+
         ElementArray();
+
+
+
     }
 
     public void ArrayConvert(){
         System.out.println("\nArray til ArrayList (2)");
         int x= 10;
         int y = 10;
-        ArrayList[][] testdBoard = new ArrayList[x][y];
+        //testdBoard = new ArrayList[x][y];
         testdBoard[0][0] = new ArrayList();
 
         for (int i = 0; i < x; i++) {
@@ -133,12 +147,12 @@ public class DynamicBoard {
                 dBoard[i][j] = new ArrayList();
             }
         }
+
         for (int a = 0; a < x; a++)
             for (int b = 0; b < y; b++) {
                 dBoard[a][b].add(sBoard[a][b]);
             }
-        for (ArrayList[] inner : dBoard)
-            System.out.println(Arrays.toString(inner));
+       // for (ArrayList[] inner : dBoard) System.out.println(Arrays.toString(inner));
     }
 
 
@@ -165,6 +179,7 @@ public class DynamicBoard {
         */
 
     }
+
 
     public void randomBoard() {
         ArrayList[][] trueBoard = new ArrayList[1][1];
@@ -199,13 +214,13 @@ public class DynamicBoard {
      * @return Nothing.
      */
     public void nextGeneration() {
-       /*ArrayList[][] trueBoard = new ArrayList[1][1];
+       ArrayList[][] trueBoard = new ArrayList[1][1];
         trueBoard[0][0] = new ArrayList();
         trueBoard[0][0].add((byte) 1);
 
 
         ArrayList[][] nextBoard = new ArrayList[canvasHeight][canvasWidth];
-        for (int a = 0; a < 10; a++) {
+  /*      for (int a = 0; a < 10; a++) {
             for (int b = 0; b < 10; b++)
                 nextBoard[10][10] = new ArrayList();
 
