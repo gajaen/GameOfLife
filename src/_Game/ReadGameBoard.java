@@ -46,12 +46,11 @@ public class ReadGameBoard {
         try {
             openFile();
             readFile(line);
+
            // setText();
 
-        } catch (FileNotFoundException e) {
-
-            e.printStackTrace();
-
+        }  catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("arrayIndex" + e);;
         } catch (IOException e) {
             e.printStackTrace();
         }

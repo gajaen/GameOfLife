@@ -66,17 +66,22 @@ public class DrawCanvas {
 
 
         gc.setFill(cell.getCellColor());
-
-        for (int i = 0; i < this.canvasHeight; i++) {
-            for (int j = 0; j < this.canvasWidth; j++) {
-                if (staticBoard.getBoard()[i][j] == 1) {
-                    gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+        try {
+            for (int i = 0; i < this.canvasHeight; i++) {
+                for (int j = 0; j < this.canvasWidth; j++) {
+                    if (staticBoard.getBoard()[i][j] == 1) {
+                        gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+                    }
                 }
             }
-        }
-        //System.out.println("draw");
-    }
 
+
+            //System.out.println("draw");
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+            System.out.println("ArrayIndexOutOfBoundsException" + e);
+        }
+    }
 
     /**
      * This method is used to draw when clicked on canvas.

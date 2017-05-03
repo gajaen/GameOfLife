@@ -10,7 +10,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-
 import java.applet.Applet;
 import java.io.File;
 import java.util.*;
@@ -38,6 +37,7 @@ public class CanvasFrame extends Applet implements Runnable  {
     private double lineWidth;
     private int canvasWidth, canvasHeight, TIME, FPS;
     Thread thread;
+    public List<List<Byte>> dynamic;
 
     /**
      *
@@ -50,6 +50,9 @@ public class CanvasFrame extends Applet implements Runnable  {
 
 
     public CanvasFrame(int height, int width, GraphicsContext gcContext){
+
+
+        dynamic = new ArrayList<List<Byte>>();
 
         this.canvasHeight = height;
         this.canvasWidth = width;
@@ -64,7 +67,7 @@ public class CanvasFrame extends Applet implements Runnable  {
         drawCanvas = new DrawCanvas(this.canvasHeight, this.canvasWidth, staticBoard.getBoard());
 
 
-        dynamicBoard = new DynamicBoard(this.canvasHeight,this.canvasWidth,staticBoard.getBoard());
+        dynamicBoard = new DynamicBoard(this.canvasHeight,this.canvasWidth,dynamic);
         //dboard.setdBoard();
 
         setGc(this.gc);
@@ -89,20 +92,21 @@ public class CanvasFrame extends Applet implements Runnable  {
         {
             switch (event.getCode()) {
                 case UP:
-                    moveCellsUp();
+                    dynamicBoard.moveCellsUp();
                     break;
                 case DOWN:
-                    moveCellsDown();
+                    dynamicBoard.moveCellsDown();
                     break;
                 case LEFT:
-                    moveCellsLeft();
+                    dynamicBoard.moveCellsLeft();
                     break;
                 case RIGHT:
 
-                    moveCellsRight();
+                    dynamicBoard.moveCellsRight();
                     break;
             }
-            drawCanvas();
+          //  dynamicBoard.drawCells(gc);
+          //  drawCanvas();
 
         }
     }
@@ -142,7 +146,7 @@ public class CanvasFrame extends Applet implements Runnable  {
     public void clearArray(){
         drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         staticBoard.cleanArray();
-        dynamicBoard.cleanArrayTest2();
+
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
@@ -156,20 +160,17 @@ public class CanvasFrame extends Applet implements Runnable  {
         TIME = 1000/getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
+
             clickNoise();
             clearCanvas();
-            staticBoard.nextGeneration();
+            dynamicBoard.nextGeneration();
 
             try{Thread.sleep(100);} catch (Exception a){}
 
-            drawCanvas.drawCells(this.gc);
-            drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
+            dynamicBoard.drawCells(this.gc);
+            dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
 
-            System.out.println("Utskrift av statisk 2D tabell:");
-            for(byte[] inner : staticBoard.getBoard())
-                System.out.println(Arrays.toString(inner));
 
         }));
 
@@ -193,16 +194,26 @@ public class CanvasFrame extends Applet implements Runnable  {
      */
 
     public void RandomButtonAction() {
-        clearCanvas();
+        /*clearCanvas();
         for (int i = 0; i < this.getHEIGHT(); i++) {
             for (int j = 0; j < this.getWIDTH(); j++) {
 
                 staticBoard.setBoardRandom(i,j);
             }
-        }
-        drawCanvas.drawCells(this.gc);
-        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
-        dynamicBoard.randomBoard();
+        }*/
+
+
+        //drawCanvas.drawCells(this.gc);
+        clearCanvas();
+        dynamicBoard.drawLines(gc,lineWidth,lineColor);
+
+        dynamicBoard.randomButton();
+
+        dynamicBoard.drawCells(gc);
+
+        System.out.println("test 1");
+
+
     }
 
     /**
@@ -215,9 +226,9 @@ public class CanvasFrame extends Applet implements Runnable  {
      */
     public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
-        drawCanvas.CanvasPressed(a);
-        drawCanvas.drawCells(gc);
-        drawCanvas.drawLines(this.gc, this.lineWidth, this.lineColor);
+        dynamicBoard.CanvasPressed(a);
+        dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
 
     /**
@@ -227,8 +238,10 @@ public class CanvasFrame extends Applet implements Runnable  {
 
     public void drawPattern(int [][] pattern){
         clearArray();
-        staticBoard.drawPattern(pattern,gc);
         drawCanvas();
+        dynamicBoard.drawPattern(pattern,gc);
+        dynamicBoard.drawCells(gc);
+
     }
 
     /**
@@ -276,7 +289,7 @@ public class CanvasFrame extends Applet implements Runnable  {
     public void moveCellsUp(){
         clickNoise();
         staticBoard.moveCellsUp();
-        dynamicBoard.ArrayConvert();
+
     }
 
     public void moveCellsLeft(){
@@ -286,7 +299,7 @@ public class CanvasFrame extends Applet implements Runnable  {
 
     public void moveCellsRight(){
         clickNoise();
-        staticBoard.moveCellsRight();
+        dynamicBoard.moveCellsRight();
     }
 
     public void moveCellsDown(){
