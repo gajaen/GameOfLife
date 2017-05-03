@@ -30,40 +30,15 @@ public class DynamicBoard {
 
     public void DynamicTest() {
 
-
-
-
-        /*System.out.println(sBoard);
-        int x = 10;
-        int y = 10;
-
-        int x1 = 10; //Testtall
-        int y1 = 10; //Testtall
-
-        for (int i = 0; i < x; i++) {
-            List<Byte> inner = new ArrayList<Byte>();
-            for (int j = 0; j < y; j++)
-                inner.add((byte)0);
-            dBoard.add(inner);
-        }
-
-        dBoard.get(1).set(1, (byte)1); // replace fordi Integer er immutable
-
-        System.out.println("\nDynamisk 2D tabell:");
-        dBoard.forEach((l) -> System.out.println(l));
-
-        dBoard.get(2).add((byte)1);
-        System.out.println("\nJagged 2D tabell:");
-        dBoard.forEach((l) -> System.out.println(l));
-        */
-
-
     }
 
     public void ArrayListConvert(){
     }
 
     public void ArrayConvert() {
+
+        staticBoard = new StaticBoard(new byte [this.canvasWidth] [this.canvasHeight], this.canvasWidth, this.canvasHeight);
+
         int x = canvasHeight;
         int y = canvasWidth;
         ArrayList[][] dBoard = new ArrayList[x][y];
@@ -73,7 +48,6 @@ public class DynamicBoard {
                 dBoard[i][j] = new ArrayList();
             }
         }
-
         for (int a = 0; a < x; a++)
             for (int b = 0; b < y; b++) {
                 dBoard[a][b].add(sBoard[a][b]);
@@ -104,20 +78,6 @@ public class DynamicBoard {
 
     }
 
-    /*public void prove(){
-
-
-            for (int i = 0; i < canvasHeight; i++) {
-                for (int j = 0; j < canvasWidth; i++) {
-                    if (sBoard[i][j] == 1) {
-                        dBoard.add(sBoard[i][j]);
-                        gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
-
-                    }
-
-                }
-            }
-    }*/
     public void randomBoard() {
         ArrayList[][] trueBoard = new ArrayList[1][1];
         trueBoard[0][0] = new ArrayList();
@@ -151,7 +111,7 @@ public class DynamicBoard {
      * @return Nothing.
      */
     public void nextGeneration() {
-       /* ArrayList[][] trueBoard = new ArrayList[1][1];
+       /*ArrayList[][] trueBoard = new ArrayList[1][1];
         trueBoard[0][0] = new ArrayList();
         trueBoard[0][0].add((byte) 1);
 
