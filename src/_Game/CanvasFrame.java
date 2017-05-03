@@ -277,7 +277,7 @@ public class CanvasFrame extends Applet implements Runnable  {
     public void moveCellsUp(){
         clickNoise();
         staticBoard.moveCellsUp();
-        dynamicBoard.nextGeneration();
+        dynamicBoard.ArrayConvert();
     }
 
     public void moveCellsLeft(){

@@ -60,40 +60,31 @@ public class DynamicBoard {
 
     }
 
-    public void cleanArray() {
-
-
-
-        ArrayList<ArrayList<Byte>> dBoard = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            ArrayList<Byte> inner = new ArrayList<>();
-            for (int j = 0; j < 10; j++)
-                inner.add((byte) 0);
-            dBoard.add(inner);
-        }
-        dBoard.get(1).set(1, (byte) 1); // replace fordi Integer er immutable
-
-        dBoard.forEach((l) -> System.out.println(l));
+    public void ArrayListConvert(){
     }
 
-
-    public void cleanArrayTest() {
+    public void ArrayConvert() {
         int x = canvasHeight;
         int y = canvasWidth;
-        ArrayList<ArrayList<Byte>> cleanArray = new ArrayList<ArrayList<Byte>>();
+        ArrayList[][] dBoard = new ArrayList[x][y];
+        dBoard[0][0] = new ArrayList();
         for (int i = 0; i < x; i++) {
-            ArrayList<Byte> rowArrayList = new ArrayList<Byte>();
             for (int j = 0; j < y; j++) {
-                rowArrayList.add((byte) 0);
+                dBoard[i][j] = new ArrayList();
             }
-            cleanArray.add(rowArrayList);
         }
-        cleanArray.forEach((l) -> System.out.println(l));
+
+        for (int a = 0; a < x; a++)
+            for (int b = 0; b < y; b++) {
+                dBoard[a][b].add(sBoard[a][b]);
+            }
+        for (ArrayList[] inner : dBoard)
+            System.out.println(Arrays.toString(inner));
     }
 
+
+
     public void cleanArrayTest2() {
-
-
         System.out.println(" ");
 
         int x = 10;
@@ -160,7 +151,7 @@ public class DynamicBoard {
      * @return Nothing.
      */
     public void nextGeneration() {
-        ArrayList[][] trueBoard = new ArrayList[1][1];
+       /* ArrayList[][] trueBoard = new ArrayList[1][1];
         trueBoard[0][0] = new ArrayList();
         trueBoard[0][0].add((byte) 1);
 
@@ -195,7 +186,7 @@ public class DynamicBoard {
                 }
             }
             dBoard = nextBoard;
-        }
+      }*/
     }
 
 

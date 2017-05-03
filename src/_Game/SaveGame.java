@@ -32,7 +32,7 @@ import static java.awt.Color.BLUE;
 
 public class SaveGame implements Initializable {
     private int HEIGHT, WIDTH, TIME, FPS;
-    byte [][] board ;/* = {{0,1,1,0},
+    byte[][] board;/* = {{0,1,1,0},
                         {1,0,0,1},
                         {1,0,0,1},
                         {0,1,1,0}};*/
@@ -57,7 +57,7 @@ public class SaveGame implements Initializable {
         cellGap = 1;
         cellColor = Color.BLACK;
 
-   //     drawCells(saveCanvas.getGraphicsContext2D());
+        //     drawCells(saveCanvas.getGraphicsContext2D());
 
 
     }
@@ -65,15 +65,13 @@ public class SaveGame implements Initializable {
     public SaveGame() throws IOException {
 
 
-
-
     }
 
-    public void setUser(int user_id){
+    public void setUser(int user_id) {
         this.user_id = user_id;
     }
 
-    public void setBoard(byte[][] board1){
+    public void setBoard(byte[][] board1) {
 
 
         this.board = board1;
@@ -81,28 +79,27 @@ public class SaveGame implements Initializable {
     }
 
 
-    public void saveCanvas(){
+    public void saveCanvas() {
 
-      //  board.drawCells(gc);
+        //  board.drawCells(gc);
 
     }
 
-    public void fileName(){
+    public void fileName() {
         System.out.println("gei");
     }
 
-    public void author(){
+    public void author() {
         System.out.println("gei");
     }
 
-    public void description(){
+    public void description() {
         System.out.println("gei");
     }
 
-    public void rules(){
+    public void rules() {
         System.out.println("gei");
     }
-
 
 
     public void drawCells(GraphicsContext gc) throws ArrayIndexOutOfBoundsException {
@@ -118,7 +115,7 @@ public class SaveGame implements Initializable {
                     }
                 }
             }
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.printf("dette" + e);
         }
 
@@ -131,7 +128,7 @@ public class SaveGame implements Initializable {
     }
 
     public void saveBtn() throws IOException {
-
+/*
         FileChooser fileChooser = new FileChooser();
 
         File file = fileChooser.showSaveDialog(stage);
@@ -152,6 +149,7 @@ public class SaveGame implements Initializable {
         int width = 100;
         int height = 100;
         int timePerMilliSecond = 1000; // 1 second
+
 
         // create the GIFWriter object
         lieng.GIFWriter gwriter = new lieng.GIFWriter(width,height,path,timePerMilliSecond);
@@ -261,8 +259,8 @@ public class SaveGame implements Initializable {
 
         xform.setTx(0.0);
 //        gc.setTransform(xform);
-
     }
-
-
+}
+*/
+    }
 }
