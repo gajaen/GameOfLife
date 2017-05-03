@@ -14,28 +14,112 @@ public class DynamicBoard {
     private int canvasHeight;
     private int canvasWidth;
     private byte[][] sBoard;
+    public byte[][] testBoard;
     public ArrayList[][] dBoard;
     public ArrayList[][] cleanArray;
     public ArrayList[][] trueBoard;
+    //public List<List> testdBoard;
+    public ArrayList[][] testdBoard;
 
     public DynamicBoard(int height, int width, byte[][] board) {
         this.canvasHeight = height;
         this.canvasWidth = width;
         this.sBoard = board;
         this.cell = new Cell();
+        testBoard = new byte[10][10];
+        testdBoard = new ArrayList[10][10];
+        System.out.println(testdBoard);
+        testBoard();
+    }
 
-        //byte[][] sBoard = new staticBoard.getBoard();
+    public void testBoard(){
+
+        //Starter med å lage et statisk brett
+        System.out.println("\ntestBoard = Static");
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                testBoard[i][j] = (byte) (Math.random() * 2);
+            }
+        }
+
+        for(byte[] inner : testBoard)
+            System.out.println(Arrays.toString(inner));
+
+        ArrayConvert();
     }
 
 
-    public void DynamicTest() {
+    public void ArrayConvert2(){
+        System.out.println("\nArray til ArrayList");
+
+        //gjør om statisk brett og skriver ut
+
+        List<List> testdBoard = new ArrayList<>();
+        for(byte[] array : testBoard){
+            testdBoard.add(Arrays.asList(array) );
+        }
+
+        System.out.println("testdBoard = dynamic");
+        testdBoard.forEach((l)->System.out.println(l));
+
+        ElementArray();
+    }
+
+    public void ArrayConvert(){
+        System.out.println("\nArray til ArrayList (2)");
+        int x= 10;
+        int y = 10;
+        ArrayList[][] testdBoard = new ArrayList[x][y];
+        testdBoard[0][0] = new ArrayList();
+
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                testdBoard[i][j] = new ArrayList();
+            }
+        }
+        for (int a = 0; a < x; a++)
+            for (int b = 0; b < y; b++) {
+                testdBoard[a][b].add(testBoard[a][b]);
+            }
+
+        //testdBoard[8][8].add((byte)1);
+
+        for (ArrayList[] inner : testdBoard)
+            System.out.println(Arrays.toString(inner));
+
+        System.out.println(testdBoard);
+        ElementArray();
 
     }
+
+
+    public void ElementArray(){
+        System.out.println(testdBoard + "Element");
+        System.out.println("\naddElement");
+        for (ArrayList[] inner : testdBoard)
+            System.out.println(Arrays.toString(inner));
+
+        //testdBoard[0][0].add((byte)1);
+        //testdBoard.forEach((l)->System.out.println(l));
+
+        //ArrayListConvert();
+    }
+
+
 
     public void ArrayListConvert(){
+        System.out.println("\n ArrayList to Array");
+
+
     }
 
-    public void ArrayConvert() {
+
+
+
+    //****************************************************************************
+
+    public void ArrayConvert3() {
 
         staticBoard = new StaticBoard(new byte [this.canvasWidth] [this.canvasHeight], this.canvasWidth, this.canvasHeight);
 
@@ -58,6 +142,8 @@ public class DynamicBoard {
 
 
 
+
+
     public void cleanArrayTest2() {
         System.out.println(" ");
 
@@ -71,10 +157,11 @@ public class DynamicBoard {
                 cleanArray[i][j].add((byte)0);
             }
         }
-        for (ArrayList[] inner : cleanArray)
+        /*for (ArrayList[] inner : cleanArray)
             System.out.println(Arrays.toString(inner));
 
         dBoard = cleanArray;
+        */
 
     }
 
@@ -148,7 +235,6 @@ public class DynamicBoard {
             dBoard = nextBoard;
       }*/
     }
-
 
 }
 

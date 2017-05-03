@@ -72,7 +72,6 @@ public class CanvasFrame extends Applet implements Runnable  {
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
         clearArray();
-        dboard();
     }
 
 
@@ -84,9 +83,6 @@ public class CanvasFrame extends Applet implements Runnable  {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
 
-    }
-    public void dboard(){
-        dynamicBoard.DynamicTest();
     }
 
     public void key(KeyEvent event){
