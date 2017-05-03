@@ -1,294 +1,257 @@
 package _Game;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
 import javax.lang.model.element.Element;
 import java.util.*;
 
-public class DynamicBoard{
+public class DynamicBoard {
 
+    private StaticBoard staticBoard;
+    private Controller controller;
+    private CanvasFrame canvasFrame;
     private Cell cell;
     private int canvasHeight;
     private int canvasWidth;
-    int  oldJ = 0;
-    int  oldI = 0;
-
-
-    public List<List<Byte>> dynamicBoard;
-
+    private byte[][] sBoard;
+    public int[][] testBoard;
+    public ArrayList[][] dBoard;
+    public ArrayList[][] cleanArray;
+    public ArrayList[][] trueBoard;
+    //public List<List> testdBoard;
     public ArrayList[][] testdBoard;
     public LinkedList testDBoard;
 
-    public DynamicBoard(int height, int width, List<List<Byte>> dynamic)  {
-
-        this.dynamicBoard = dynamic;
-
+    public DynamicBoard(int height, int width, byte[][] board) {
         this.canvasHeight = height;
         this.canvasWidth = width;
-
+        this.sBoard = board;
         this.cell = new Cell();
-        fillBoard(dynamicBoard);
-
-
+        testBoard = new int[10][10];
+        testdBoard = new ArrayList[10][10];
+        testBoard();
     }
 
+    public void testBoard(){
 
-    public void fillBoard(List<List<Byte>> board){
-        for(int x = 0; x < canvasWidth; x++){
-            List<Byte> row = new ArrayList<Byte>();
-            for(int y = 0; y < canvasHeight; y++){
-                row.add((byte)0);
+        //Starter med å lage et statisk brett
+        System.out.println("\ntestBoard = Static");
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                testBoard[i][j] =  (int)(Math.random() * 2);
             }
-            board.add(row);
         }
+
+        for(int[] inner : testBoard)
+            System.out.println(Arrays.toString(inner));
+        ArrayConvert();
+    }
+
+
+    public void ArrayConvert(){
+        System.out.println("\nArray til ArrayList");
+
+        //gjør om statisk brett og skriver ut
+
+        List<List> testdBoard = new ArrayList<>();
+
+        for(int[] array : testBoard){
+            testdBoard.add(Arrays.asList(array));
+            System.out.println(Arrays.toString(array));
+        }
+        /*
+
+        ArrayList<byte[]> dBoard = new ArrayList<byte[]>(testBoard.length);
+        for(byte[] foo: testBoard){
+            dBoard.add(foo);
+        }
+        */
+
+
+
+        ElementArray();
+
+
+
+    }
+
+    public void ArrayConvert2(){
+        System.out.println("\nArray til ArrayList (2)");
+        int x= 10;
+        int y = 10;
+        //testdBoard = new ArrayList[x][y];
+        testdBoard[0][0] = new ArrayList();
+
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                testdBoard[i][j] = new ArrayList();
+            }
+        }
+        for (int a = 0; a < x; a++)
+            for (int b = 0; b < y; b++) {
+                testdBoard[a][b].add(testBoard[a][b]);
+            }
+
+        for (ArrayList[] inner : testdBoard)
+            System.out.println(Arrays.toString(inner));
+
+        System.out.println(testdBoard);
+        ElementArray();
+
+
+    }
+
+
+    public void ElementArray(){
+        System.out.println("\naddElement");
+
+        System.out.println(testBoard);
+        System.out.println(testdBoard);
+
+
+
+
+
+        //for (ArrayList[] inner : testdBoard)
+          //  System.out.println(Arrays.toString(inner));
+
+        //testdBoard[0][0].add((byte)1);
+        //testdBoard.forEach((l)->System.out.println(l));
+
+        //ArrayListConvert();
     }
 
 
 
-    public void drawCells(GraphicsContext gc) {
+    public void ArrayListConvert(){
+        System.out.println("\n ArrayList to Array");
+    }
 
 
-        gc.setFill(cell.getCellColor());
-            for (int i = 0; i <  dynamicBoard.size(); i++) {
 
-                for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
 
-                    if (dynamicBoard.get(i).get(j) == 1) {
+    //****************************************************************************
 
-                        gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+    public void ArrayConvert3() {
 
-                    }
+        staticBoard = new StaticBoard(new byte [this.canvasWidth] [this.canvasHeight], this.canvasWidth, this.canvasHeight);
 
+        int x = canvasHeight;
+        int y = canvasWidth;
+        ArrayList[][] dBoard = new ArrayList[x][y];
+        dBoard[0][0] = new ArrayList();
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                dBoard[i][j] = new ArrayList();
+            }
+        }
+
+        for (int a = 0; a < x; a++)
+            for (int b = 0; b < y; b++) {
+                dBoard[a][b].add(sBoard[a][b]);
+            }
+       // for (ArrayList[] inner : dBoard) System.out.println(Arrays.toString(inner));
+    }
+
+
+
+
+
+    public void cleanArrayTest2() {
+        System.out.println(" ");
+
+        int x = 10;
+        int y = 10;
+        ArrayList[][] cleanArray = new ArrayList[x][y];
+        cleanArray[0][0] = new ArrayList();
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                cleanArray[i][j] = new ArrayList();
+                cleanArray[i][j].add((byte)0);
+            }
+        }
+        /*for (ArrayList[] inner : cleanArray)
+            System.out.println(Arrays.toString(inner));
+
+        dBoard = cleanArray;
+        */
+
+    }
+
+
+    public void randomBoard() {
+        ArrayList[][] trueBoard = new ArrayList[1][1];
+        trueBoard[0][0] = new ArrayList();
+        trueBoard[0][0].add((byte)1);
+
+        System.out.println(" ");
+        int x = 10;
+        int y = 10;
+        ArrayList[][] randomBoard = new ArrayList[x][y];
+        randomBoard[0][0] = new ArrayList();
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                randomBoard[i][j] = new ArrayList();
+                randomBoard[i][j].add((byte) (Math.random() * 2));
+            }
+        }
+        for (ArrayList[] inner : randomBoard)
+            System.out.println(Arrays.toString(inner));
+
+        if (randomBoard[0][0].equals(trueBoard[0][0])){
+                    System.out.println("[0][0] = True");
                 }
-            }
-
+        else System.out.println("[0][0] = False");
     }
 
 
 
-    public void drawLines(GraphicsContext gc, double lineWidth, Color lineColor) {
-
-        gc.setStroke(lineColor);
-        gc.setLineWidth(3);
-        gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
-        gc.setLineWidth(lineWidth);
-
-        double a = cell.getCellSize();
-        double b = cell.getCellSize();
-
-        for (int i = 0; i < this.canvasHeight; i++) {
-            gc.strokeLine(0, a, this.canvasWidth, a);
-            a += cell.getCellSize();
-        }
-        for (int i = 0; i < this.canvasWidth; i++) {
-            gc.strokeLine(b, 0, b, this.canvasHeight);
-            b += cell.getCellSize();
-        }
-
-    }
-
+    /**
+     * This method is used to make a new board with rules.
+     *
+     * @return Nothing.
+     */
     public void nextGeneration() {
+       ArrayList[][] trueBoard = new ArrayList[1][1];
+        trueBoard[0][0] = new ArrayList();
+        trueBoard[0][0].add((byte) 1);
 
-        List<List<Byte>> nextBoard =  new ArrayList<List<Byte>>();
 
-        for (int x = 1; x < dynamicBoard.size() + 1; x++) {
-            for (int y = 1; y < dynamicBoard.get(x).size() + 1; y++)
+        ArrayList[][] nextBoard = new ArrayList[canvasHeight][canvasWidth];
+  /*      for (int a = 0; a < 10; a++) {
+            for (int b = 0; b < 10; b++)
+                nextBoard[10][10] = new ArrayList();
 
-            {
-                int cellNeighbors = 0;
-                for (int i = -1; i <= 1; i++) {
-                    for (int j = -1; j <= 1; j++) {
-                        cellNeighbors += dynamicBoard.get(x + i).get(y + j);
+
+            for (int x = 1; x < canvasHeight - 1; x++) {
+                for (int y = 1; y < canvasWidth - 1; y++) {
+                    int cellNeighbors = 0;
+
+                    for (int i = -1; i <= 1; i++) {
+                        for (int j = -1; j <= 1; j++) {
+                            cellNeighbors += dBoard[x + i][y + j];
+                        }
                     }
-                }
 
-                cellNeighbors -= dynamicBoard.get(x).get(y);
-                if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))  nextBoard.get(x).set(y, (byte) 0);           // Mindre enn 2 rundt
-                else if ((dynamicBoard.get(x).get(y)  == 1) && (cellNeighbors > 3))
-                    nextBoard.get(x).set(y, (byte) 0);           // Fler enn 3 rundt seg
-                else if ((dynamicBoard.get(x).get(y)  == 0) && (cellNeighbors == 3))
-                    nextBoard.get(x).set(y, (byte) 1);
-                else {
-                    System.out.println("x = " + x + ", y = " + y + " dboard val = " + dynamicBoard.get(x).get(y));
-                    nextBoard.get(x).set(y, dynamicBoard.get(x).get(y));
-                }
+                    cellNeighbors -= dBoard[x][y];
+                    if ((dBoard[x][y].equals(trueBoard[0][0])) && (cellNeighbors < 2))
+                        nextBoard[x][y].add((byte) 0);           // Mindre enn 2 rundt
 
+                    else if ((dBoard[x][y].equals(trueBoard[0][0])) && (cellNeighbors > 3))
+                        nextBoard[x][y].add((byte) 0);           // Fler enn 3 rundt seg
+
+                    else if ((dBoard[x][y].equals(trueBoard[0][0])) && (cellNeighbors == 3))
+                        nextBoard[x][y].add((byte) 1);           // Akkurat 3 rundt seg
+
+                    else nextBoard[x][y] = dBoard[x][y];
+                }
             }
-        }
-
-        dynamicBoard = nextBoard;
+            dBoard = nextBoard;
+      }*/
     }
-
-    public void cleanArray() {
-        for (int i = 0; i < dynamicBoard.size(); i++) {
-            for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
-                dynamicBoard.get(i).set(j, (byte) 0);
-            }
-        }
-    }
-
-    public  void drawPattern(int[][] pattern, GraphicsContext gc) {
-        for (int row = 0; row < pattern.length; row++) {
-            for (int col = 0; col < pattern[row].length; col++) {
-                if (pattern[row][col] == 1) {
-                    dynamicBoard.get(row).set(col, (byte) 1);
-
-
-
-                }
-            }
-        }
-    }
-
-
-    public void randomButton(){
-        System.out.println(dynamicBoard.size());
-
-        for (int i = 0; i < dynamicBoard.size(); i++) {
-            for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
-
-                dynamicBoard.get(i).set(j, (byte) (Math.random() * 2));
-
-
-            }
-
-        }
-
-
-    }
-
-
-
-
-    public void CanvasPressed(MouseEvent a) throws Exception {
-
-
-
-        try {
-
-            int j = (int)(a.getX() / cell.getCellSize()) + 1;
-            int i = (int)(a.getY() / cell.getCellSize()) + 1;
-
-            if (i <= 0) {
-                return;
-            }
-            if (j <= 0) {
-                return;
-            }
-            if (j != oldJ || i != oldI) {
-                if (dynamicBoard.get(i).get(j) == 0){
-                    dynamicBoard.get(i).set(j,(byte)1);
-                }
-                else{ dynamicBoard.get(i).set(j,(byte)0);
-
-                }
-
-            }
-
-
-            oldJ = j;
-            oldI = i;
-        }
-
-        catch (Exception e){
-            //System.err.println(" Exeption: " + e.getMessage());
-            System.out.println("Task interrupted");
-
-        }}
-
-
-    public void moveCellsRight(){
-        List<List<Byte>> rightBoard =  new ArrayList<List<Byte>>();
-        fillBoard(rightBoard);
-
-
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
-                if (dynamicBoard.get(x).get(y) == 1){
-
-                    rightBoard.get(x).set(y + 1, (byte) 1);
-
-                }
-
-            }
-        }
-        dynamicBoard = rightBoard;
-
-    }
-
-
-    public void moveCellsUp(){
-
-        List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
-        fillBoard(upBoard);
-
-
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
-
-                if (dynamicBoard.get(x).get(y) == 1){
-
-                    upBoard.get(x).set(y + 1, (byte) 1);
-
-                }
-
-
-            }
-        }
-        dynamicBoard = upBoard;
-    }
-
-    public void moveCellsLeft() {
-
-        List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
-        fillBoard(leftBoard);
-
-
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
-
-                if (dynamicBoard.get(x).get(y) == 1) {
-
-                    leftBoard.get(x).set(y + 1, (byte) 1);
-
-                }
-
-
-            }
-            dynamicBoard = leftBoard;
-        }
-    }
-
-    public void moveCellsDown() {
-        List<List<Byte>> downBoard = new ArrayList<List<Byte>>();
-        fillBoard(downBoard);
-
-        for (int x = 1; x < dynamicBoard.size(); x++) {
-            for (int y = 1; y < dynamicBoard.get(x).size(); y++){
-
-                if (dynamicBoard.get(x).get(y) == 1) {
-
-                    downBoard.get(x).set(y + 1, (byte) 1);
-
-                }
-
-
-            }
-            dynamicBoard = downBoard;
-        }
-    }
-
-
-
-
-
-
-
-
-
 
 }
 
