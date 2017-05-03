@@ -83,7 +83,8 @@ public class DynamicBoard {
                 testdBoard[a][b].add(testBoard[a][b]);
             }
 
-        //testdBoard[8][8].add((byte)1);
+        //testdBoard[7][0].add((byte)1);
+
 
         for (ArrayList[] inner : testdBoard)
             System.out.println(Arrays.toString(inner));
@@ -91,12 +92,14 @@ public class DynamicBoard {
         System.out.println(testdBoard);
         ElementArray();
 
+
     }
 
 
     public void ElementArray(){
         System.out.println(testdBoard + "Element");
         System.out.println("\naddElement");
+
         for (ArrayList[] inner : testdBoard)
             System.out.println(Arrays.toString(inner));
 
@@ -110,8 +113,6 @@ public class DynamicBoard {
 
     public void ArrayListConvert(){
         System.out.println("\n ArrayList to Array");
-
-
     }
 
 
