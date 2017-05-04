@@ -1,7 +1,11 @@
 package _Game;
 
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +20,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
@@ -51,6 +56,7 @@ public class Controller implements Initializable {
     public ToolBar Toolbar;
     String line;
     TextField textBox;
+    private Timeline tl;
 
 
 
@@ -139,8 +145,21 @@ public class Controller implements Initializable {
     public void clickedToolbar(){
     }
     public void clickedStartButton() {
-        sounds.click();
-        gui.StartButton();
+        int TIME = 1000/canvasFrame.getFPS();
+
+        tl = new Timeline();
+        tl.setCycleCount(Animation.INDEFINITE);
+        KeyFrame moveBall = new KeyFrame(Duration.millis(TIME),
+                new EventHandler<ActionEvent>() {
+                    public void handle(ActionEvent event) {
+                        canvasFrame.getDynamicBoard().nextGeneration();
+                        canvasFrame.clearCanvas();
+                        canvasFrame.pressedCanvas();
+                    }
+                });
+
+        tl.getKeyFrames().add(moveBall);
+        tl.play();
     }
 
     public void clickedClearButton() {

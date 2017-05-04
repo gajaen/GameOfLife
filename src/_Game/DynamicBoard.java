@@ -4,10 +4,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.util.*;
-import java.lang.Object;
-import javafx.scene.effect.Effect;
-import javafx.scene.effect.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DynamicBoard{
@@ -17,7 +15,7 @@ public class DynamicBoard{
     private int canvasWidth;
     int  oldJ ;
     int  oldI ;
-    private int neighbours;
+
 
     public List<List<Byte>> dynamicBoard;
 
@@ -49,77 +47,23 @@ public class DynamicBoard{
 
 
 
-    public void drawCells(GraphicsContext gc ) {
+    public void drawCells(GraphicsContext gc) {
 
 
         gc.setFill(cell.getCellColor());
-       // System.out.println("1,1" + dynamicBoard.get(1).get(1) );
-       // System.out.println("1,2 " + dynamicBoard.get(1).get(2) );
-        //this.dynamicBoard = dynamicBoard;
         for (int i = 0; i <  dynamicBoard.size(); i++) {
 
-                for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
-                  //  System.out.println(this.dynamicBoard.get(i).get(j) + "i = " + i + "j = " + j);
-                    if (dynamicBoard.get(i).get(j) == 1) {
+            for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
 
-                        gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
+                if (dynamicBoard.get(i).get(j) == 1) {
 
-                    }
+                    gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
 
                 }
+
             }
+        }
 
-    }
-
-
-
-
-    public int countNeighbors(int x, int y){
-         neighbours = 0;
-        if (x>0 && y>0 && dynamicBoard.get(x-1).get(y-1) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if (y>0 &&dynamicBoard.get(x).get(y-1) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if ( y>0 &&dynamicBoard.get(x+1).get(y-1) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if (x>0 &&dynamicBoard.get(x-1).get(y) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if (x>0 && y>0 &&dynamicBoard.get(x+1).get(y) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if (x>=0  &&dynamicBoard.get(x-1).get(y+1) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if (x>0 && y>0 && dynamicBoard.get(x).get(x+1) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if (x>0 && y>0 &&dynamicBoard.get(x+1).get(y+1) == 1){
-            neighbours+=1;
-        }else{
-            neighbours+=0;
-        }
-        if(x>0 && y>0 &&dynamicBoard.get(x).get(y) == 1){
-            neighbours--;
-        }
-        return neighbours;
     }
 
 
@@ -129,7 +73,6 @@ public class DynamicBoard{
         gc.setStroke(lineColor);
         gc.setLineWidth(1);
         gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
-
 
         gc.setLineWidth(lineWidth);
 
@@ -144,163 +87,66 @@ public class DynamicBoard{
             gc.strokeLine(b, 0, b, this.canvasHeight);
             b += cell.getCellSize();
         }
-
     }
 
-    public void nextGeneration(){
+    public void nextGeneration() {
+        List<List<Byte>> nextBoard =  new ArrayList<List<Byte>>();
 
-        List<List<Byte>> nextBoard = new ArrayList<List<Byte>>();
+        for(int i = 0; i < canvasWidth; i++) {
+            List<Byte> inner = new ArrayList<Byte>();
+            for (int j = 0; j < canvasHeight; j++)
+                inner.add((byte) 0);
+            nextBoard.add(inner);
+        }
 
-        fillBoard(nextBoard);
+      /*  System.out.println(dynamicBoard.size());
+        System.out.println(dynamicBoard.get(1).size());
+        System.out.println(nextBoard.size());
+        System.out.println(nextBoard.get(1).size());*/
 
         for (int x = 1; x < dynamicBoard.size(); x++) {
             for (int y = 1; y < dynamicBoard.get(x).size(); y++) {
-                    countNeighbors(x, y);
-
-                    if ((dynamicBoard.get(x).get(y) == 1 && neighbours < 2 && neighbours >= 0))
-                        nextBoard.get(x).set(y, ((byte) 0));
-
-                    else if ((dynamicBoard.get(x).get(y) == 1) && (neighbours > 3)
-                            )
-                        dynamicBoard.get(x).set(y, (byte) 0);
-
-                    else if ((dynamicBoard.get(x).get(y) == 0) && (neighbours == 3))
-                        dynamicBoard.get(x).set(y, (byte) 1);
-
-                    else dynamicBoard.get(x).set(y, nextBoard.get(x).get(y));
-
-                    //System.out.println(neighbours);
-
-
-            }
-
-        }
-
-    }
-
-
-
-/*    public void nextGeneration() {
-        System.out.println(countNeighbors(2, 2));
-
-        List<List<Byte>> nextBoard = new ArrayList<List<Byte>>();
-        fillBoard(nextBoard);
-
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++)
-
-            {
-                int count = 0;
-                for(int i = x - 1; i <= x + 1; i++) {
-                    if (i >= 0 && i < dynamicBoard.size()) // fixed here
-                        for(int j = y - 1; j <= y + 1; j++)
-                            if (j >= 0 && j < dynamicBoard.get(i).size()) // fixed here
-                                if (i != x || j != y)
-                                    if (dynamicBoard.get(x).get(y) == 1)
-                                        count++;
-
-
-                }
-
-                    //   System.out.println("2");
-
                 int cellNeighbors = 0;
-               for (int i = -1; i <= 1; i++) {
-                    for (int j = -1; j <= 1; j++) {
-                        if(x+i>= 0 && y+j >= 0 && x+i<dynamicBoard.size() && y+j<dynamicBoard.get(x).size())
-                        cellNeighbors = cellNeighbors + dynamicBoard.get(x + i).get(y + j);
 
-                    }
-                }
-
-             //   System.out.println ("3");
-
-             //  cellNeighbors = getNeighbours(dynamicBoard,x,y);
-
-             //   System.out.println("cellneighbors" + cellNeighbors + " x = " + x + " y = " + y );
-
-                //cellNeighbors = cellNeighbors - dynamicBoard.get(x ).get(y);
-                //System.out.println("cellneighbors" + cellNeighbors + " x = " + x + " y = " + y );
-              //  System.out.println("dynamic value " + dynamicBoard.get(x).get(y) + "x = " + x + "y = " + y + "cell neighbor " + cellNeighbors);
-                if ((dynamicBoard.get(x).get(y) == 1) && (count < 2))  nextBoard.get(x).set(y, (byte) 0);           // Mindre enn 2 rundt
-                else if ((dynamicBoard.get(x).get(y)  == 1) && (count > 3))
-                    nextBoard.get(x).set(y, (byte) 0);// Fler enn 3 rundt seg
-                 else if ((dynamicBoard.get(x).get(y)  == 0) && (count == 3))
-                    nextBoard.get(x).set(y, (byte) 1);
-                else {
-                  //  System.out.println("x = " + x + ", y = " + y + " dboard val = " + dynamicBoard.get(x).get(y));
-                    dynamicBoard.get(x).set(y, nextBoard.get(x).get(y));
-                }
-
-            }
-        }
-
-        dynamicBoard = nextBoard;
-    }
-
-        public void nextGeneration2() {
-
-         /*   List<List<Byte>> nextBoard =  new ArrayList<List<Byte>>();
-            fillBoard(nextBoard);
-
-        for (int x = 1; x < canvasHeight - 1; x++) {
-            for (int y = 1; y < canvasWidth - 1; y++)
-
-            {
-                int cellNeighbors = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
-                        cellNeighbors += sBoard[x + i][y + j];
-                        cellNeighbors = cellNeighbors + dynamicBoard.get(x + i).get(y + j);
-
+                        if(x+i>=0 && y+j >=0) {
+                            if (x+i < dynamicBoard.size() && y+j < dynamicBoard.get(x).size()) {
+                                cellNeighbors += dynamicBoard.get(x + i).get(y + j);
+                            }
+                        }
                     }
                 }
 
-                cellNeighbors = cellNeighbors - dynamicBoard.get(x ).get(y);
-                cellNeighbors -= sBoard[x][y];
+                cellNeighbors -= dynamicBoard.get(x).get(y);
 
-                if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))  nextBoard.get(x).set(y, (byte) 0);           // Mindre enn 2 rundt
-
-                if ((sBoard[x][y] == 1) && (cellNeighbors < 2)) nextBoard[x][y] = 0;           // Mindre enn 2 rundt
+                if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))
+                    nextBoard.get(x).set(y, (byte) 0);
+                    //Mindre en 2 rundt -> cellen dør
 
                 else if ((dynamicBoard.get(x).get(y)  == 1) && (cellNeighbors > 3))
-                else if ((sBoard[x][y] == 1) && (cellNeighbors > 3))
-
-                    nextBoard.get(x).set(y, (byte) 0);// Fler enn 3 rundt seg
-                nextBoard[x][y] = 0;           // Fler enn 3 rundt seg
+                    nextBoard.get(x).set(y, (byte) 0);
+                    //Fler en tre rundt -> cellen dør
 
                 else if ((dynamicBoard.get(x).get(y)  == 0) && (cellNeighbors == 3))
-                else if ((sBoard[x][y] == 0) && (cellNeighbors == 3))
-                nextBoard.get(x).set(y, (byte) 1);
-                nextBoard[x][y] = 1;           // Akkurat 3 rundt seg
+                    nextBoard.get(x).set(y, (byte) 1);
+                    //Cellen er lik 3 -> cellen kommer til live
 
-                else nextBoard[x][y] = sBoard[x][y];
-                dynamicBoard.get(x).set(y, nextBoard.get(x).get(y));
-
-            }
-        }
-
-        sBoard = nextBoard;
-            dynamicBoard = nextBoard;
-
-        }
-    }
-*/
-
-
-
-
-    private int getNeighbours( List<List<Byte>> board, int row, int col) {
-        int neighbours = 0;
-        for (int xOffset = -1; xOffset < 2; xOffset++) {
-            for (int yOffset = -1; yOffset < 2; yOffset++) {
-                if ((xOffset != 0 || yOffset != 0) && (board.get(row + yOffset).get(col + xOffset) != 0)) {
-                    neighbours++;
+                else {
+                    //Cellen lever
+                    //System.out.println("x = " + x + ", y = " + y + " dboard val = " + dynamicBoard.get(x).get(y));
+                    nextBoard.get(x).set(y, dynamicBoard.get(x).get(y));
+                    //dynamicBoard.get(x).set(y, nextBoard.get(x).get(y));
                 }
             }
         }
-        return neighbours;
+        dynamicBoard = nextBoard;
+
+
+        //System.out.println("Start");
     }
+
+
 
     public void cleanArray() {
         for (int i = 0; i < dynamicBoard.size(); i++) {
@@ -315,9 +161,6 @@ public class DynamicBoard{
             for (int col = 0; col < pattern[row].length; col++) {
                 if (pattern[row][col] == 1) {
                     dynamicBoard.get(row).set(col, (byte) 1);
-
-
-
                 }
             }
         }
@@ -330,23 +173,12 @@ public class DynamicBoard{
 
         for (int i = 0; i < dynamicBoard.size(); i++) {
             for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
-
                 dynamicBoard.get(i).set(j, (byte) (Math.random() * 2));
-
             }
-
         }
-
-
     }
 
-
-
-
     public void CanvasPressed(MouseEvent a) throws Exception {
-
-
-
         try {
 
             int j = (int)(a.getX() / cell.getCellSize()) + 1;
@@ -391,12 +223,9 @@ public class DynamicBoard{
         for (int x = 0; x < dynamicBoard.size(); x++) {
             for (int y = 0; y < dynamicBoard.get(x).size(); y++){
                 if (dynamicBoard.get(x).get(y) == 1){
-                    if((y +1 ) <= dynamicBoard.get(x).size()) {
-                        rightBoard.get(x).set(y + 1, (byte) 1);
-                    } else{
-                        rightBoard.get(x).set(y, (byte) 1);
 
-                    }
+                    rightBoard.get(x).set(y + 1, (byte) 1);
+
                 }
 
 
@@ -429,6 +258,7 @@ public class DynamicBoard{
     }
 
     public void moveCellsLeft() {
+        System.out.println("funker");
 
         List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
         fillBoard(leftBoard);
@@ -439,8 +269,7 @@ public class DynamicBoard{
 
                 if (dynamicBoard.get(x).get(y) == 1) {
 
-                    //leftBoard.get(y).set(x - 1, (byte) 1);
-                    leftBoard.get(x-1).set(y,(byte)1);
+                    leftBoard.get(y).set(x - 1, (byte) 1);
 
                 }
 
@@ -475,15 +304,6 @@ public class DynamicBoard{
 
         this.cell.setCellColor(color);
 
-    }
-
-
-    public int getNeighbours() {
-        return neighbours;
-    }
-
-    public void setNeighbours(int neighbours) {
-        this.neighbours = neighbours;
     }
 }
 

@@ -116,6 +116,8 @@ public class CanvasFrame  {
         }
     }
 
+
+
     /**
      * Changing the cell color depending on user input from colorPicker
      * @param colorPicker is choosing color
@@ -155,6 +157,7 @@ public class CanvasFrame  {
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
+
 
     /**
      * Timeline
@@ -197,25 +200,17 @@ public class CanvasFrame  {
      */
 
     public void RandomButtonAction() {
-        /*clearCanvas();
-        for (int i = 0; i < this.getHEIGHT(); i++) {
-            for (int j = 0; j < this.getWIDTH(); j++) {
 
-                staticBoard.setBoardRandom(i,j);
-            }
-        }*/
+            clearCanvas();
 
+            dynamicBoard.randomButton();
 
-        //drawCanvas.drawCells(this.gc);
-        clearCanvas();
+            dynamicBoard.drawCells(gc);
+            dynamicBoard.drawLines(gc,lineWidth,lineColor);
+
+            System.out.println("test 1");
 
 
-        dynamicBoard.randomButton();
-
-        dynamicBoard.drawCells(gc);
-        dynamicBoard.drawLines(gc,lineWidth,lineColor);
-
-        System.out.println("test 1");
 
 
     }
@@ -231,6 +226,10 @@ public class CanvasFrame  {
     public void CanvasPressed(MouseEvent a) throws Exception {
         clearCanvas();
         dynamicBoard.CanvasPressed(a);
+        dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
+    }
+    public void pressedCanvas(){
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
     }
@@ -318,6 +317,10 @@ public class CanvasFrame  {
 
 
     }
+    public DynamicBoard getDynamicBoard(){
+        return dynamicBoard;
+    }
+
 
 
 
