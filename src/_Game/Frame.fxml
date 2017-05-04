@@ -8,130 +8,84 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.input.KeyCodeCombination?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1300.0" style="-fx-background-color: ALICEBLUE;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
-    <top>
-        <MenuBar BorderPane.alignment="CENTER">
-            <menus>
-                <Menu text="File">
-                    <items>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
+   <children>
+      <Button fx:id="startButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="210.0" layoutY="705.0" mnemonicParsing="false" onAction="#clickedStartButton" pickOnBounds="false" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="START">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="722.0" layoutX="197.0" layoutY="42.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" width="1065.0" />
+      <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="112.0" layoutY="75.0" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="STOP">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="clearButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="14.0" layoutY="117.0" mnemonicParsing="false" onAction="#clickedClearButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="CLEAR">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="randomButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="112.0" layoutY="117.0" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="RANDOM">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Slider fx:id="cellSlider" blockIncrement="1.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="14.0" layoutY="195.0" majorTickUnit="2.0" max="40.0" min="1.0" minorTickCount="2" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" prefHeight="14.0" prefWidth="171.0" scaleShape="false" value="10.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Slider>
+      <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="14.0" layoutY="240.0" majorTickUnit="30.0" max="60.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" prefHeight="14.0" prefWidth="171.0" scaleShape="false" value="30.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Slider>
+      <Text layoutX="67.0" layoutY="191.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="44.955078125" />
+      <Text layoutX="77.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FPS" textAlignment="RIGHT" wrappingWidth="23.955081045627594" />
+      <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="15.0" layoutY="273.0" onAction="#colorPickerClicked" scaleShape="false" />
+      <ToolBar layoutX="-1.0" layoutY="-6.0" prefHeight="40.0" prefWidth="1280.0">
+         <items>
+            <MenuBar prefHeight="25.0" prefWidth="109.0">
+               <menus>
+                  <Menu text="File">
+                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator>
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
                         </MenuItem>
                         <MenuItem onAction="#closeWindow" text="Exit">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator></MenuItem>
-                        <MenuItem onAction="#saveBoard" text="Save"><accelerator>
-                            <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                        </accelerator></MenuItem>
-                    </items>
-               <graphic>
-                  <HBox prefHeight="34.0" prefWidth="372.0">
-                     <children>
-                        <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="463.98577880859375" />
-                     </children>
-                  </HBox>
-               </graphic>
-                </Menu>
-            </menus>
-        </MenuBar>
-    </top>
-    <bottom>
-        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <VBox prefHeight="100.0" prefWidth="114.0">
-                    <children>
-                        <Button fx:id="startButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedStartButton" pickOnBounds="false" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="START">
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="10.0" />
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="STOP">
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="10.0" />
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-                <VBox prefHeight="100.0" prefWidth="122.0">
-                    <HBox.margin>
-                        <Insets />
-                    </HBox.margin>
-                    <children>
-                        <Button fx:id="clearButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedClearButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="CLEAR">
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="10.0" />
-                            </VBox.margin>
-                        </Button>
-                        <Button fx:id="randomButton" cacheShape="false" centerShape="false" focusTraversable="false" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="RANDOM">
-                            <font>
-                                <Font name="System Bold" size="12.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets top="10.0" />
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-                <GridPane alignment="TOP_RIGHT" prefHeight="80.0" prefWidth="989.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Slider fx:id="cellSlider" blockIncrement="1.0" cacheShape="false" centerShape="false" focusTraversable="false" majorTickUnit="2.0" max="40.0" min="1.0" minorTickCount="2" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" prefHeight="14.0" prefWidth="443.0" scaleShape="false" value="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                        </Slider>
-                        <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" majorTickUnit="30.0" max="60.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" scaleShape="false" value="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                        </Slider>
-                        <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" onAction="#colorPickerClicked" scaleShape="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Text strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="491.955078125" GridPane.rowIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FPS" textAlignment="RIGHT" wrappingWidth="491.955078125" GridPane.rowIndex="2" />
-                    </children>
-                </GridPane>
-            </children>
-            <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" />
-            </padding>
-         <BorderPane.margin>
-            <Insets bottom="30.0" />
-         </BorderPane.margin>
-        </HBox>
-    </bottom>
-    <center>
-        <Canvas fx:id="CanvasId" focusTraversable="true" height="675.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" width="1224.0" BorderPane.alignment="CENTER" />
-    </center>
-
-</BorderPane>
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#saveBoard" text="Save">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="183.98577880859375" />
+         </items>
+      </ToolBar>
+      <Text layoutX="46.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pattern Link" />
+      <Button layoutX="46.0" layoutY="390.0" mnemonicParsing="false" text="Load Pattern" />
+      <TextField layoutX="14.0" layoutY="355.0" />
+   </children>
+</Pane>

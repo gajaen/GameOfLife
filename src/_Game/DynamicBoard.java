@@ -91,17 +91,20 @@ public class DynamicBoard{
 
         List<List<Byte>> nextBoard =  new ArrayList<List<Byte>>();
 
-        for (int x = 1; x < dynamicBoard.size() + 1; x++) {
-            for (int y = 1; y < dynamicBoard.get(x).size() + 1; y++)
+        System.out.println("1");
+
+        for (int x = 0; x < dynamicBoard.size(); x++) {
+            for (int y = 0; y < dynamicBoard.get(x).size(); y++)
 
             {
+                System.out.println("2");
                 int cellNeighbors = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
                         cellNeighbors += dynamicBoard.get(x + i).get(y + j);
                     }
                 }
-
+                System.out.println("3");
                 cellNeighbors -= dynamicBoard.get(x).get(y);
 
                 if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))  nextBoard.get(x).set(y, (byte) 0);           // Mindre enn 2 rundt

@@ -43,7 +43,7 @@ public class Main extends Application {
 
 
         primaryStage.setTitle("Controller");
-        primaryStage.setScene(new Scene(root, 1280, 900));
+        primaryStage.setScene(new Scene(root, 1280, 780));
         primaryStage.show();
     }
 
