@@ -49,6 +49,9 @@ public class Controller implements Initializable {
     public ColorPicker colorPicker;
     public ChoiceBox choiceBox, musicChoiceBox;
     private GUI gui;
+    private Timeline timeline;
+
+
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
@@ -150,9 +153,9 @@ public class Controller implements Initializable {
     public void clickedToolbar(){
     }
     public void clickedStartButton() {
-        int TIME = 1000/canvasFrame.getFPS();
+       int TIME = 1000/canvasFrame.getFPS();
 
-        tl = new Timeline();
+       /* tl = new Timeline();
         tl.setCycleCount(Animation.INDEFINITE);
         KeyFrame moveBall = new KeyFrame(Duration.millis(TIME),
                 new EventHandler<ActionEvent>() {
@@ -164,10 +167,26 @@ public class Controller implements Initializable {
                 });
 
         tl.getKeyFrames().add(moveBall);
-        tl.play();
+        tl.play();*/
+
+        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
+
+            canvasFrame.clickNoise();
+            canvasFrame.getDynamicBoard().nextGeneration();
+            canvasFrame.clearCanvas();
+
+//            try{Thread.sleep(100);} catch (Exception a){}
+            canvasFrame.pressedCanvas();
+            timeline.playFromStart();
+
+
+        }));
+    timeline.play();
+
     }
 
     public void clickedClearButton() {
+        timeline.stop();
         sounds.click();
         gui.ClearButton();
     }
@@ -193,8 +212,8 @@ public class Controller implements Initializable {
     }
 
     public void clickedStopButton() {
+        timeline.stop();
         sounds.click();
-        gui.StopButton();
     }
 
     public void FPSClicked() {
