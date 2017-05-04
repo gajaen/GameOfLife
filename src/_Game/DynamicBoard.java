@@ -3,9 +3,7 @@ package _Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
 
-import javax.lang.model.element.Element;
 import java.util.*;
 
 public class DynamicBoard{
@@ -13,14 +11,13 @@ public class DynamicBoard{
     private Cell cell;
     private int canvasHeight;
     private int canvasWidth;
-    int  oldJ = 0;
-    int  oldI = 0;
+    int  oldJ ;
+    int  oldI ;
 
 
     public List<List<Byte>> dynamicBoard;
 
-    public ArrayList[][] testdBoard;
-    public LinkedList testDBoard;
+
 
     public DynamicBoard(int height, int width, List<List<Byte>> dynamic)  {
 
@@ -32,11 +29,11 @@ public class DynamicBoard{
         this.cell = new Cell();
         fillBoard(dynamicBoard);
 
-
     }
 
 
     public void fillBoard(List<List<Byte>> board){
+
         for(int x = 0; x < canvasWidth; x++){
             List<Byte> row = new ArrayList<Byte>();
             for(int y = 0; y < canvasHeight; y++){
@@ -106,14 +103,15 @@ public class DynamicBoard{
                 }
 
                 cellNeighbors -= dynamicBoard.get(x).get(y);
+
                 if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))  nextBoard.get(x).set(y, (byte) 0);           // Mindre enn 2 rundt
                 else if ((dynamicBoard.get(x).get(y)  == 1) && (cellNeighbors > 3))
-                    nextBoard.get(x).set(y, (byte) 0);           // Fler enn 3 rundt seg
-                else if ((dynamicBoard.get(x).get(y)  == 0) && (cellNeighbors == 3))
+                    nextBoard.get(x).set(y, (byte) 0);// Fler enn 3 rundt seg
+                 else if ((dynamicBoard.get(x).get(y)  == 0) && (cellNeighbors == 3))
                     nextBoard.get(x).set(y, (byte) 1);
                 else {
                     System.out.println("x = " + x + ", y = " + y + " dboard val = " + dynamicBoard.get(x).get(y));
-                    nextBoard.get(x).set(y, dynamicBoard.get(x).get(y));
+                    dynamicBoard.get(x).set(y, nextBoard.get(x).get(y));
                 }
 
             }
@@ -121,6 +119,8 @@ public class DynamicBoard{
 
         dynamicBoard = nextBoard;
     }
+
+
 
     public void cleanArray() {
         for (int i = 0; i < dynamicBoard.size(); i++) {
@@ -145,6 +145,7 @@ public class DynamicBoard{
 
 
     public void randomButton(){
+
         System.out.println(dynamicBoard.size());
 
         for (int i = 0; i < dynamicBoard.size(); i++) {
@@ -201,7 +202,10 @@ public class DynamicBoard{
 
 
     public void moveCellsRight(){
+
         List<List<Byte>> rightBoard =  new ArrayList<List<Byte>>();
+
+
         fillBoard(rightBoard);
 
 
@@ -213,7 +217,9 @@ public class DynamicBoard{
 
                 }
 
+
             }
+
         }
         dynamicBoard = rightBoard;
 
@@ -225,13 +231,12 @@ public class DynamicBoard{
         List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
         fillBoard(upBoard);
 
-
         for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
+            for (int y = 0; y < dynamicBoard.get(y).size(); y++){
 
                 if (dynamicBoard.get(x).get(y) == 1){
 
-                    upBoard.get(x).set(y + 1, (byte) 1);
+                    upBoard.get(y).set(x + 1, (byte) 1);
 
                 }
 
@@ -242,6 +247,7 @@ public class DynamicBoard{
     }
 
     public void moveCellsLeft() {
+        System.out.println("funker");
 
         List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
         fillBoard(leftBoard);
@@ -252,7 +258,7 @@ public class DynamicBoard{
 
                 if (dynamicBoard.get(x).get(y) == 1) {
 
-                    leftBoard.get(x).set(y + 1, (byte) 1);
+                    leftBoard.get(y).set(x - 1, (byte) 1);
 
                 }
 
@@ -271,7 +277,7 @@ public class DynamicBoard{
 
                 if (dynamicBoard.get(x).get(y) == 1) {
 
-                    downBoard.get(x).set(y + 1, (byte) 1);
+                    downBoard.get(x).set(y - 1, (byte) 1);
 
                 }
 
@@ -281,6 +287,15 @@ public class DynamicBoard{
         }
     }
 
+    public void setCellSize(double size){
+        this.cell.setCellSize(size);
+    }
+
+    public void setCellColor(Color color){
+
+        this.cell.setCellColor(color);
+
+    }
 
 
 
