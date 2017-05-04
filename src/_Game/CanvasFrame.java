@@ -207,11 +207,12 @@ public class CanvasFrame  {
 
         //drawCanvas.drawCells(this.gc);
         clearCanvas();
-        dynamicBoard.drawLines(gc,lineWidth,lineColor);
+
 
         dynamicBoard.randomButton();
 
         dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(gc,lineWidth,lineColor);
 
         System.out.println("test 1");
 

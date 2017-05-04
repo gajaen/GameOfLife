@@ -5,6 +5,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.util.*;
+import java.lang.Object;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.*;
+
 
 public class DynamicBoard{
 
@@ -69,8 +73,10 @@ public class DynamicBoard{
     public void drawLines(GraphicsContext gc, double lineWidth, Color lineColor) {
 
         gc.setStroke(lineColor);
-        gc.setLineWidth(3);
+        gc.setLineWidth(2);
         gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
+
+
         gc.setLineWidth(lineWidth);
 
         double a = cell.getCellSize();
@@ -155,7 +161,6 @@ public class DynamicBoard{
             for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
 
                 dynamicBoard.get(i).set(j, (byte) (Math.random() * 2));
-
 
             }
 
