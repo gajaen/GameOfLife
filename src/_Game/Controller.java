@@ -47,15 +47,12 @@ public class Controller implements Initializable {
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
-    public Main main;
     public Button musicStartButton;
     public ToolBar Toolbar;
     String line;
-    @FXML
     TextField textBox;
 
-    double xOffset = 0;
-    double yOffset = 0;
+
 
     int user_id = 2;
     ReadGameBoard readGameBoard;
