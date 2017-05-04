@@ -90,6 +90,8 @@ public class Controller implements Initializable {
         musicChoiceBox.getItems().add("Take On Me");
         musicChoiceBox.getItems().add("Through The Fire and Flames");
         musicChoiceBox.getItems().add("Shooting Stars");
+        musicChoiceBox.getItems().add("Radioactive");
+        musicChoiceBox.getItems().add("Knights of Cydonia");
         musicChoiceBox.setValue("Take On Me");
 
         musicStartButton.setOnAction(event -> getChoice(musicChoiceBox));
@@ -107,6 +109,11 @@ public class Controller implements Initializable {
             case "Shooting Stars":
                 ShootingStars();
                 break;
+            case "Radioactive":
+                Radioactive();
+                break;
+            case "Knights of Cydonia":
+                KnightsofCydonia();
 
         }
     }
@@ -130,6 +137,23 @@ public class Controller implements Initializable {
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
+    public void Radioactive(){
+        String musicFile = "Radioactive.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
+    }
+    public void KnightsofCydonia(){
+        String musicFile = "KnightsofCydonia.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
+    }
+
+
+
     
 //test
     public void clickedMusicStartButton(){

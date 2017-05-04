@@ -47,7 +47,7 @@
             <Insets />
          </opaqueInsets>
       </Slider>
-      <Text fontSmoothingType="LCD" layoutX="608.0" layoutY="692.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="MusicPLayer" textAlignment="RIGHT" wrappingWidth="97.99999237060547">
+      <Text fontSmoothingType="LCD" layoutX="598.0" layoutY="698.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="MusicPlayer" textAlignment="CENTER" wrappingWidth="85.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
