@@ -91,6 +91,7 @@ public class CanvasFrame  {
     }
 
     public void key(KeyEvent event){
+        clearCanvas();
 
         {
             switch (event.getCode()) {
@@ -108,8 +109,9 @@ public class CanvasFrame  {
                     dynamicBoard.moveCellsRight();
                     break;
             }
-         //   dynamicBoard.drawCells(gc);
-        //    drawCanvas();
+
+            dynamicBoard.drawCells(gc);
+            dynamicBoard.drawLines(gc,lineWidth,lineColor);
 
         }
     }
@@ -251,6 +253,7 @@ public class CanvasFrame  {
      */
 
     public void drawCanvas(){
+
         drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         clearCanvas();
         drawCanvas.drawCells(gc);
