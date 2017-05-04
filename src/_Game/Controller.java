@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -48,9 +45,14 @@ public class Controller implements Initializable {
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
+    public Main main;
+    public ToolBar Toolbar;
     String line;
     @FXML
     TextField textBox;
+
+    double xOffset = 0;
+    double yOffset = 0;
 
     int user_id = 2;
     ReadGameBoard readGameBoard;
@@ -71,8 +73,6 @@ public class Controller implements Initializable {
         key();
         tekst.setText("");
         ChoiceBox();
-
-
     }
 
 
@@ -148,6 +148,12 @@ public class Controller implements Initializable {
         double a = cellSlider.getValue();
         canvasFrame.cellSize(a);
         canvasFrame.drawCanvas();
+
+    }
+
+    public void clickedToolbar(){
+
+        System.out.println("TOOL");
 
     }
 

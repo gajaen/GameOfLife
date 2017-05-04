@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.application.Application;
@@ -57,8 +58,8 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 1280, 780));
         primaryStage.show();
-/*
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+        /*root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 xOffset = event.getSceneX();
@@ -72,11 +73,9 @@ public class Main extends Application {
                 primaryStage.setY(event.getScreenY() - yOffset);
             }
         });
+        */
+
+    }
 
 
-    }*/
-
-
-
-
-}}
+}
