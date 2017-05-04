@@ -32,7 +32,6 @@ public class GUI{
 
     public void RandomButton() {
         canvasFrame.RandomButtonAction();
-        startNoise();
     }
 
     /**
@@ -40,7 +39,6 @@ public class GUI{
      */
 
     public void ClearButton() {
-        startNoise();
         canvasFrame.clearCanvas();
         canvasFrame.clearArray();
         timeline.stop();
@@ -49,17 +47,10 @@ public class GUI{
     /**
      * This method playing the timeline from start.
      */
-    public void startNoise() {
-        String musicFile = "button.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-    }
+
 
     public void StartButton() {
         canvasFrame.dynamicBoard.nextGeneration();
-        startNoise();//timeline.playFromStart();
-      //  canvasFrame.run();
     }
 
     /**
@@ -69,7 +60,6 @@ public class GUI{
     public void StopButton() {
         timeline.stop();
         canvasFrame.drawCanvas();
-        startNoise();
     }
 
 }

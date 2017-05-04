@@ -40,6 +40,7 @@ public class Controller implements Initializable {
     public Canvas CanvasId;
     @FXML
     private CanvasFrame canvasFrame;
+    private Sounds sounds;
     public ColorPicker colorPicker;
     public ChoiceBox choiceBox, musicChoiceBox;
     private GUI gui;
@@ -71,10 +72,12 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
+        sounds = new Sounds();
         key();
         tekst.setText("");
         ChoiceBox();
         MusicChoiceBox();
+        sounds.startClick();
     }
 
 
@@ -98,59 +101,26 @@ public class Controller implements Initializable {
     }
 
     public void getChoice(ChoiceBox<String>musicChoiceBox) {
-
         switch (musicChoiceBox.getValue()) {
             case "Take On Me":
-                TakeOnMe();
+                sounds.TakeOnMe();
                 break;
             case "Through The Fire and Flames":
-                FireAndFlames();
+                sounds.FireAndFlames();
                 break;
             case "Shooting Stars":
-                ShootingStars();
+                sounds.ShootingStars();
                 break;
             case "Radioactive":
-                Radioactive();
+                sounds.Radioactive();
                 break;
             case "Knights of Cydonia":
-                KnightsofCydonia();
+                sounds.KnightsofCydonia();
 
         }
     }
 
-    public void TakeOnMe(){
-        String musicFile = "TakeOnMe.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-    }
 
-    public void FireAndFlames(){
-        String musicFile = "FireAndFlames.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-    }
-    public void ShootingStars(){
-        String musicFile = "ShootingStars.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-    }
-    public void Radioactive(){
-        String musicFile = "Radioactive.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-
-    }
-    public void KnightsofCydonia(){
-        String musicFile = "KnightsofCydonia.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-
-    }
 
 
 
@@ -160,28 +130,29 @@ public class Controller implements Initializable {
 
     }
     public void clickedMusicPauseButton(){
+        sounds.click();
+        sounds.Pause();
 
     }
     public void clickedMusicStopButton(){
-        String musicFile = "Button.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        sounds.click();
+        sounds.Stop();
+
     }
-
-
-
     public void clickedToolbar(){
     }
     public void clickedStartButton() {
+        sounds.click();
         gui.StartButton();
     }
 
     public void clickedClearButton() {
+        sounds.click();
         gui.ClearButton();
     }
 
     public void clickedRandomButton() {
+        sounds.click();
         gui.RandomButton();
     }
 
@@ -191,14 +162,17 @@ public class Controller implements Initializable {
     }
 
     public void clickedExitButton(){
+        sounds.click();
         Platform.exit();
     }
 
     public void colorPickerClicked() {
+        sounds.click();
         canvasFrame.colorPicker(colorPicker);
     }
 
     public void clickedStopButton() {
+        sounds.click();
         gui.StopButton();
     }
 
