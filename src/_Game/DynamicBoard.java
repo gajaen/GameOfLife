@@ -96,8 +96,7 @@ public class DynamicBoard{
     public void nextGeneration() {
 
         List<List<Byte>> nextBoard =  new ArrayList<List<Byte>>();
-
-        System.out.println("1");
+        fillBoard(nextBoard);
 
         for (int x = 0; x < dynamicBoard.size(); x++) {
             for (int y = 0; y < dynamicBoard.get(x).size(); y++)
@@ -107,6 +106,7 @@ public class DynamicBoard{
                 int cellNeighbors = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
+                        if(x+i>=0 && y+j >=0)
                         cellNeighbors += dynamicBoard.get(x + i).get(y + j);
                     }
                 }

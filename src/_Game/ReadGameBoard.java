@@ -4,6 +4,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,8 +29,9 @@ public class ReadGameBoard {
     private Stage stage;
     File file;
     public int[][] pattern;
-    String line;
+    private String line;
     private String patterName;
+
     /**
      * Constructs  board with Height and Width and Initialize a pattern array, and openfile, readfile methods
      *
@@ -45,7 +47,7 @@ public class ReadGameBoard {
 
         try {
             openFile();
-            readFile(line);
+            readFile(getLine());
 
            // setText();
 
@@ -150,6 +152,8 @@ public class ReadGameBoard {
     }
 
 
+
+
     /**
      * This method decodes each line that has string 'b' , 'o' , '$'.
      * The it is putting it to the pattern array.
@@ -157,17 +161,33 @@ public class ReadGameBoard {
      * @throws IOException On input error.
      * @see FileNotFoundException
      */
-    public void readFile(String line1) throws IOException {
+    public void readFile(String line) throws IOException {
 
+        System.out.println("hei");
+        this.setLine(line);
         int rownumber = 5;
         int columnnumber = 0;
-        this.line = line1;
         if (file == null) {
             return;
         }
 
-        try (Scanner scanner = new Scanner(file)) {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+        String url2 = "test";
+        URL url = new URL(url2);
+        InputStream in = url.openStream();
+        Scanner scan = new Scanner(in);
+
+
+
+        while (scan.hasNext())
+        {
+            String str = scan.nextLine();
+//            readGameBoard.readFile(str);
+            System.out.println(str);
+        }
+        scan.close();
+
+        try (Scanner scanner = new Scanner(file )) {
+            //BufferedReader reader = new BufferedReader(new FileReader(file));
 
 
             while (scanner.hasNextLine()) {
@@ -252,6 +272,37 @@ public class ReadGameBoard {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+
+    }
+
+    public void readGameBoardFromURL(String text) throws IOException
+    {
+
+       /* URL oracle = new URL("http://www.conwaylife.com/patterns/gosperglidergungliderdestruction.rle");
+        BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
+
+        URLConnection conn = oracle.openConnection();
+        openFile(new InputStreamReader(conn.getInputStream()));
+
+        while ((inputLine = in.readLine()) != null)
+            System.out.println(inputLine);
+        in.close();
+
+        readFile(inputLine);
+*/
+        URL url = new URL(text);
+        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+
+        String in;
+
+        while((in = br.readLine()) != null){
+            System.out.println(in);
+        }
+
+        br.close();
+
+
     }
 
     public String getCreationDetails(File file) {
@@ -277,5 +328,13 @@ public class ReadGameBoard {
 
     public void setPatterName(String patterName) {
         this.patterName = patterName;
+    }
+
+    public String getLine() {
+        return line;
+    }
+
+    public void setLine(String line) {
+        this.line = line;
     }
 }
