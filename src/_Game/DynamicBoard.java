@@ -262,7 +262,6 @@ public class DynamicBoard{
 
                 }
 
-
             }
             dynamicBoard = leftBoard;
         }
@@ -280,7 +279,6 @@ public class DynamicBoard{
                     downBoard.get(x).set(y - 1, (byte) 1);
 
                 }
-
 
             }
             dynamicBoard = downBoard;
