@@ -25,9 +25,10 @@ import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
+
     double xOffset = 0;
     double yOffset = 0;
-
+    Controller controller;
 
 
     /**
@@ -55,27 +56,30 @@ public class Main extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("GameOfLife");
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root, 1280, 780));
+
+        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.setScene(new Scene(root, 1280, 800));
+
+        controller = new Controller();
+
+
         primaryStage.show();
-
-        /*root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                primaryStage.setX(event.getScreenX() - xOffset);
-                primaryStage.setY(event.getScreenY() - yOffset);
-            }
-        });
-        */
-
     }
 
 
-}
+
+
+
+
+
+
+
+         /*
+        The two following lambda expressions makes it possible to move the application without the standard StageStyle
+         */
+        //Lambda mouse event handler
+
+
+
+    }
+

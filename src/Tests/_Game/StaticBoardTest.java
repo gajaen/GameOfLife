@@ -1,0 +1,17 @@
+package _Game;
+
+import junit.framework.TestCase;
+
+/**
+ * Created by Sivert on 04.05.2017.
+ */
+public class StaticBoardTest extends TestCase {
+    byte test[][];
+    int a;
+    int b;
+    public void testGetBoard() throws Exception {
+        StaticBoard staticBoard = new StaticBoard(test, a, b);
+
+    }
+
+}

@@ -96,7 +96,7 @@ public class CanvasFrame  {
             switch (event.getCode()) {
                 case UP:
                     dynamicBoard.moveCellsUp();
-                    break;
+                break;
                 case DOWN:
                     dynamicBoard.moveCellsDown();
                     break;
@@ -167,9 +167,7 @@ public class CanvasFrame  {
             clickNoise();
             clearCanvas();
             dynamicBoard.nextGeneration();
-
             try{Thread.sleep(100);} catch (Exception a){}
-
             dynamicBoard.drawCells(this.gc);
             dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();

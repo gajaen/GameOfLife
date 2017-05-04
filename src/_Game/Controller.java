@@ -6,17 +6,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ResourceBundle;
@@ -40,12 +41,13 @@ public class Controller implements Initializable {
     @FXML
     private CanvasFrame canvasFrame;
     public ColorPicker colorPicker;
-    public ChoiceBox choiceBox;
+    public ChoiceBox choiceBox, musicChoiceBox;
     private GUI gui;
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
     public Main main;
+    public Button musicStartButton;
     public ToolBar Toolbar;
     String line;
     @FXML
@@ -67,12 +69,12 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
         key();
         tekst.setText("");
         ChoiceBox();
+        MusicChoiceBox();
     }
 
 
@@ -84,24 +86,77 @@ public class Controller implements Initializable {
         });
     }
 
-    /**
-     * This method is calling StartButton method in GUI class.
-     */
+    public void MusicChoiceBox(){
+        musicChoiceBox.getItems().add("Take On Me");
+        musicChoiceBox.getItems().add("Through The Fire and Flames");
+        musicChoiceBox.getItems().add("Shooting Stars");
+        musicChoiceBox.setValue("Take On Me");
 
+        musicStartButton.setOnAction(event -> getChoice(musicChoiceBox));
+    }
+
+    public void getChoice(ChoiceBox<String>musicChoiceBox) {
+
+        switch (musicChoiceBox.getValue()) {
+            case "Take On Me":
+                TakeOnMe();
+                break;
+            case "Through The Fire and Flames":
+                FireAndFlames();
+                break;
+            case "Shooting Stars":
+                ShootingStars();
+                break;
+
+        }
+    }
+
+    public void TakeOnMe(){
+        String musicFile = "TakeOnMe.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+    public void FireAndFlames(){
+        String musicFile = "FireAndFlames.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+    public void ShootingStars(){
+        String musicFile = "ShootingStars.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+    
+
+    public void clickedMusicStartButton(){
+
+    }
+    public void clickedMusicPauseButton(){
+
+    }
+    public void clickedMusicStopButton(){
+        String musicFile = "Button.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+
+
+    public void clickedToolbar(){
+    }
     public void clickedStartButton() {
         gui.StartButton();
     }
 
-    /**
-     * This method is calling ClearButton method in GUI class.
-     */
     public void clickedClearButton() {
         gui.ClearButton();
     }
 
-    /**
-     * This method is calling RandomButton method in GUI class.
-     */
     public void clickedRandomButton() {
         gui.RandomButton();
     }
@@ -109,31 +164,20 @@ public class Controller implements Initializable {
     public void ChoiceBox(){
         choiceBox.getItems().add("Random");
         choiceBox.setValue("Random");
-
     }
 
     public void clickedExitButton(){
         Platform.exit();
-
     }
 
-    /**
-     * This method is assigning the colorPicker in fxml to colorPicker in canvasFrame.
-     */
     public void colorPickerClicked() {
         canvasFrame.colorPicker(colorPicker);
     }
 
-    /**
-     * This method is calling StopButton method in GUI class.
-     */
     public void clickedStopButton() {
         gui.StopButton();
     }
 
-    /**
-     * This method is changing FPS depended on sliderFPS value in fxml.
-     */
     public void FPSClicked() {
         int a = (int) sliderFPS.getValue();
         canvasFrame.setFPS(a);
@@ -141,37 +185,17 @@ public class Controller implements Initializable {
         canvasFrame.drawCanvas();
     }
 
-    /**
-     * This method is changing cellSize depended on cellSlider value in fxml.
-     */
     public void CellSizeClicked() {
         double a = cellSlider.getValue();
         canvasFrame.cellSize(a);
         canvasFrame.drawCanvas();
-
-    }
-
-    public void clickedToolbar(){
-
-        System.out.println("TOOL");
-
     }
 
     public void CanvasReleased() {
     }
 
-    /**
-     * This method is creating a Mouseevent and assigning it to CanvasPressed in canvasFrame.
-     *
-     * @param a MouseEvent.
-     * @return Nothing.
-     * @throws Exception On input error.
-     * @see Exception
-     */
     public void CanvasPressed(MouseEvent a) throws Exception {
-
         canvasFrame.CanvasPressed(a);
-
     }
 
 
@@ -215,11 +239,8 @@ public class Controller implements Initializable {
             controller.setUser(user_id);
             controller.setBoard(canvasFrame.getBoard());
             Stage stage = new Stage();
-
-
             stage.setScene(scene);
             stage.show();
-
 
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
