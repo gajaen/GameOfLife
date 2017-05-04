@@ -57,7 +57,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("GameOfLife");
 
-        //primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(new Scene(root, 1280, 780));
 
         controller = new Controller();

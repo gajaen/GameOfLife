@@ -98,7 +98,8 @@ public class Controller implements Initializable {
         musicChoiceBox.getItems().add("Shooting Stars");
         musicChoiceBox.getItems().add("Radioactive");
         musicChoiceBox.getItems().add("Knights of Cydonia");
-        musicChoiceBox.setValue("Take On Me");
+        musicChoiceBox.getItems().add("Shape Of You");
+        musicChoiceBox.setValue("Shape Of You");
 
         musicStartButton.setOnAction(event -> getChoice(musicChoiceBox));
     }
@@ -119,6 +120,10 @@ public class Controller implements Initializable {
                 break;
             case "Knights of Cydonia":
                 sounds.KnightsofCydonia();
+                break;
+            case "Shape Of You":
+                sounds.ShapeOfYou();
+                break;
 
         }
     }

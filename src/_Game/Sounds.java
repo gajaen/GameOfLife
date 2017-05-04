@@ -82,6 +82,12 @@ public class Sounds {
         musicFile = "KnightsofCydonia.mp3";
         Play();
     }
+
+    public void ShapeOfYou(){
+        musicFile = "ShapeOfYou.mp3";
+        Play();
+    }
+
     public void startClick(){
         String musicFile = "Button.mp3";
         sound = new Media(new File(musicFile).toURI().toString());

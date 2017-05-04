@@ -37,12 +37,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Slider fx:id="cellSlider" blockIncrement="1.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="697.0" layoutY="684.0" majorTickUnit="2.0" max="40.0" min="1.0" minorTickCount="2" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" prefHeight="14.0" prefWidth="98.0" scaleShape="false" value="10.0">
+      <Slider fx:id="cellSlider" blockIncrement="1.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="947.0" layoutY="691.0" majorTickUnit="2.0" max="40.0" min="1.0" minorTickCount="2" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" prefHeight="14.0" prefWidth="98.0" scaleShape="false" value="10.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Slider>
-      <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="697.0" layoutY="707.0" majorTickUnit="30.0" max="60.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" prefHeight="14.0" prefWidth="98.0" scaleShape="false" style="-fx-major-tick-unit: 10;" value="30.0">
+      <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="947.0" layoutY="710.0" majorTickUnit="30.0" max="60.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" prefHeight="14.0" prefWidth="98.0" scaleShape="false" style="-fx-major-tick-unit: 10;" value="30.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -51,24 +51,24 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Text fontSmoothingType="LCD" layoutX="671.0" layoutY="718.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FPS" textAlignment="RIGHT" wrappingWidth="23.955081045627594">
+      <Text fontSmoothingType="LCD" layoutX="919.0" layoutY="721.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FPS" textAlignment="RIGHT" wrappingWidth="23.955081045627594">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="671.0" layoutY="729.0" onAction="#colorPickerClicked" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" />
-      <Text fontSmoothingType="LCD" layoutX="857.0" layoutY="718.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pattern Link">
+      <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="919.0" layoutY="733.0" onAction="#colorPickerClicked" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" />
+      <Text fontSmoothingType="LCD" layoutX="690.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pattern Link">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Button layoutX="946.0" layoutY="733.0" mnemonicParsing="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Load Pattern" />
-      <TextField layoutX="837.0" layoutY="733.0" prefHeight="27.0" prefWidth="109.0" style="-fx-border-color: black; -fx-border-radius: 3;" />
-      <Button fx:id="randomButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="946.0" layoutY="701.0" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="14.0" prefWidth="85.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="RANDOM" />
+      <Button layoutX="783.0" layoutY="733.0" mnemonicParsing="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Load Pattern" />
+      <TextField layoutX="674.0" layoutY="733.0" prefHeight="27.0" prefWidth="109.0" style="-fx-border-color: black; -fx-border-radius: 3;" />
+      <Button fx:id="randomButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="489.0" layoutY="733.0" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="27.0" prefWidth="98.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="RANDOM" />
       <ImageView fitHeight="83.0" fitWidth="507.0" layoutX="371.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Game-of-Life.png" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="choiceBox" layoutX="475.0" layoutY="733.0" prefWidth="150.0" style="-fx-border-radius: 3; -fx-border-color: Black;" />
+      <ChoiceBox fx:id="choiceBox" layoutX="404.0" layoutY="733.0" prefHeight="27.0" prefWidth="85.0" style="-fx-border-radius: 3; -fx-border-color: Black;" />
       <ToolBar fx:id="Toolbar" onDragDetected="#clickedToolbar" onMousePressed="#clickedToolbar" prefHeight="16.0" prefWidth="1280.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-background-color: rgb(250,250,250); -fx-border-width: 2; -fx-background-radius: 2;">
          <items>
             <MenuBar blendMode="SRC_ATOP" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="113.0" scaleShape="false" style="-fx-background-color: rgb(250,250,250);">
@@ -128,14 +128,14 @@
          </image>
       </ImageView>
       <ChoiceBox fx:id="musicChoiceBox" layoutX="1073.0" layoutY="733.0" prefHeight="27.0" prefWidth="175.0" style="-fx-background-radius: 3; -fx-border-color: black; -fx-border-radius: 3;" />
-      <Button fx:id="musicStartButton" layoutX="1076.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicStartButton" prefHeight="27.0" prefWidth="56.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3;" text="PLAY" />
-      <Text fontSmoothingType="LCD" layoutX="649.0" layoutY="695.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="44.955078125">
+      <Button fx:id="musicStartButton" layoutX="1073.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicStartButton" prefHeight="17.0" prefWidth="56.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: green;" text="▶" />
+      <Text fontSmoothingType="LCD" layoutX="897.0" layoutY="703.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="44.955078125">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Button fx:id="musicStopButton" layoutX="1188.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicStopButton" prefHeight="25.0" prefWidth="56.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3;" text="STOP" />
-      <Button fx:id="musicPauseButton" layoutX="1132.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicPauseButton" prefHeight="27.0" prefWidth="56.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3;" text="PAUSE" />
+      <Button fx:id="musicStopButton" layoutX="1192.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicStopButton" prefHeight="25.0" prefWidth="56.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: rgb(220,0,0);" text="⏹" />
+      <Button fx:id="musicPauseButton" layoutX="1133.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicPauseButton" prefHeight="27.0" prefWidth="56.0" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: lightgrey;" text="⏸" />
    </children>
    <opaqueInsets>
       <Insets />
