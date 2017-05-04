@@ -5,6 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.application.Application;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * The Game Of Life program created for HIOA final project
@@ -16,6 +24,10 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
+    double xOffset = 0;
+    double yOffset = 0;
+
+
 
     /**
      * This is the main method which makes us start the program.
@@ -41,11 +53,30 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Frame.fxml"));
         Parent root = loader.load();
 
-
-        primaryStage.setTitle("Controller");
+        primaryStage.setTitle("GameOfLife");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 1280, 780));
         primaryStage.show();
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                primaryStage.setX(event.getScreenX() - xOffset);
+                primaryStage.setY(event.getScreenY() - yOffset);
+            }
+        });
+
+
     }
+
+
 
 
 }

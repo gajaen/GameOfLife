@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Slider;
@@ -38,6 +39,7 @@ public class Controller implements Initializable{
     public Canvas CanvasId;
     @FXML private CanvasFrame canvasFrame;
     public ColorPicker colorPicker;
+    public ChoiceBox choiceBox;
     private GUI gui;
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
@@ -61,7 +63,8 @@ public class Controller implements Initializable{
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
         key();
-        tekst.setText("");
+//        tekst.setText("");
+        ChoiceBox();
 
     }
 
@@ -94,6 +97,12 @@ public class Controller implements Initializable{
      */
     public void clickedRandomButton() {
         gui.RandomButton();
+    }
+
+    public void ChoiceBox(){
+        choiceBox.getItems().add("Random");
+        choiceBox.setValue("Random");
+
     }
 
     /**

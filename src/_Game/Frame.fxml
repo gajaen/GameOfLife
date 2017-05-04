@@ -10,7 +10,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
@@ -25,7 +24,7 @@
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Canvas fx:id="CanvasId" focusTraversable="true" height="566.0" layoutX="14.0" layoutY="94.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" width="1250.0" />
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="566.0" layoutX="25.0" layoutY="107.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" style="-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,1), 5, 5, 0, 0);" width="1250.0" />
       <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="163.0" layoutY="726.0" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="33.0" prefWidth="109.0" scaleShape="false" style="-fx-border-color: BLACK; -fx-border-radius: 3;" text="STOP">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -55,42 +54,6 @@
             <Font name="System Bold" size="12.0" />
          </font></Text>
       <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1128.0" layoutY="722.0" onAction="#colorPickerClicked" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" />
-      <ToolBar accessibleRole="BUTTON" layoutX="-1.0" layoutY="-6.0" prefHeight="40.0" prefWidth="1280.0" style="-fx-border-color: BLACK;">
-         <items>
-            <MenuBar minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="101.0">
-               <menus>
-                  <Menu text="File">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem onAction="#closeWindow" text="Exit">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem onAction="#saveBoard" text="Save">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Help">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                     </items>
-                  </Menu>
-               </menus>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </MenuBar>
-            <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="183.98577880859375" />
-         </items>
-      </ToolBar>
       <Text fontSmoothingType="LCD" layoutX="766.0" layoutY="740.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pattern Link">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -102,12 +65,43 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <ImageView fitHeight="53.0" fitWidth="425.0" layoutX="439.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="83.0" fitWidth="507.0" layoutX="380.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Game-of-Life.png" />
          </image>
       </ImageView>
-      <ChoiceBox layoutX="856.0" layoutY="685.0" prefWidth="150.0" style="-fx-border-radius: 3; -fx-border-color: Black;" />
+      <ChoiceBox fx:id="choiceBox" layoutX="856.0" layoutY="685.0" prefWidth="150.0" style="-fx-border-radius: 3; -fx-border-color: Black;" />
+      <MenuBar blendMode="SRC_ATOP" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="27.0" prefWidth="1280.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;">
+         <menus>
+            <Menu text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem onAction="#closeWindow" text="Exit">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem onAction="#saveBoard" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </MenuBar>
    </children>
    <opaqueInsets>
       <Insets />
