@@ -25,7 +25,7 @@ import java.util.*;
  * @since   2017-01-14
  */
 
-public class CanvasFrame extends Applet implements Runnable  {
+public class CanvasFrame  {
 
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
@@ -73,6 +73,7 @@ public class CanvasFrame extends Applet implements Runnable  {
         setGc(this.gc);
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+       // dynamicBoard.setCellSize(canvasWidth/dynamicBoard.dynamicBoard.size());
 
         clearArray();
     }
@@ -89,6 +90,7 @@ public class CanvasFrame extends Applet implements Runnable  {
     }
 
     public void key(KeyEvent event){
+
         {
             switch (event.getCode()) {
                 case UP:
@@ -105,8 +107,8 @@ public class CanvasFrame extends Applet implements Runnable  {
                     dynamicBoard.moveCellsRight();
                     break;
             }
-          //  dynamicBoard.drawCells(gc);
-          //  drawCanvas();
+         //   dynamicBoard.drawCells(gc);
+        //    drawCanvas();
 
         }
     }
@@ -117,14 +119,14 @@ public class CanvasFrame extends Applet implements Runnable  {
      */
 
     public void colorPicker(ColorPicker colorPicker){
-        drawCanvas.setCellColor(colorPicker.getValue());
+        dynamicBoard.setCellColor(colorPicker.getValue());
         clearCanvas();
-        drawCanvas.drawCells(gc);
-        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
+        dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     public void cellSize(double size){
-       drawCanvas.setCellSize(size);
+       dynamicBoard.setCellSize(size);
     }
 
     /**
@@ -145,10 +147,10 @@ public class CanvasFrame extends Applet implements Runnable  {
 
     public void clearArray(){
         drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
-        staticBoard.cleanArray();
+        dynamicBoard.cleanArray();
 
-        drawCanvas.drawCells(gc);
-        drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
+        dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**
@@ -288,13 +290,13 @@ public class CanvasFrame extends Applet implements Runnable  {
 
     public void moveCellsUp(){
         clickNoise();
-        staticBoard.moveCellsUp();
+        dynamicBoard.moveCellsUp();
 
     }
 
     public void moveCellsLeft(){
         clickNoise();
-        staticBoard.moveCellsLeft();
+        dynamicBoard.moveCellsLeft();
     }
 
     public void moveCellsRight(){
@@ -304,10 +306,9 @@ public class CanvasFrame extends Applet implements Runnable  {
 
     public void moveCellsDown(){
         clickNoise();
-        staticBoard.moveCellsDown();
+        dynamicBoard.moveCellsDown();
     }
 
-    @Override
     public void start(){
         thread = new Thread();
         thread.start();
@@ -317,7 +318,6 @@ public class CanvasFrame extends Applet implements Runnable  {
 
 
 
-    @Override
     public void run() {
 
             while(true){
