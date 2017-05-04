@@ -17,40 +17,40 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
    <children>
-      <Button fx:id="startButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="210.0" layoutY="705.0" mnemonicParsing="false" onAction="#clickedStartButton" pickOnBounds="false" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="START">
+      <Button fx:id="startButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="19.0" layoutY="677.0" mnemonicParsing="false" onAction="#clickedStartButton" pickOnBounds="false" prefHeight="67.0" prefWidth="140.0" scaleShape="false" text="START">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Canvas fx:id="CanvasId" focusTraversable="true" height="722.0" layoutX="197.0" layoutY="42.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" width="1065.0" />
-      <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="112.0" layoutY="75.0" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="STOP">
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="602.0" layoutX="14.0" layoutY="43.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" width="1250.0" />
+      <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="163.0" layoutY="711.0" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="33.0" prefWidth="109.0" scaleShape="false" text="STOP">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="clearButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="14.0" layoutY="117.0" mnemonicParsing="false" onAction="#clickedClearButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="CLEAR">
+      <Button fx:id="clearButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="163.0" layoutY="677.0" mnemonicParsing="false" onAction="#clickedClearButton" prefHeight="33.0" prefWidth="109.0" scaleShape="false" text="CLEAR">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="randomButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="112.0" layoutY="117.0" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="25.0" prefWidth="85.0" scaleShape="false" text="RANDOM">
+      <Button fx:id="randomButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="903.0" layoutY="680.0" mnemonicParsing="false" onAction="#clickedRandomButton" prefHeight="25.0" prefWidth="91.0" scaleShape="false" text="RANDOM">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Slider fx:id="cellSlider" blockIncrement="1.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="14.0" layoutY="195.0" majorTickUnit="2.0" max="40.0" min="1.0" minorTickCount="2" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" prefHeight="14.0" prefWidth="171.0" scaleShape="false" value="10.0">
+      <Slider fx:id="cellSlider" blockIncrement="1.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1128.0" layoutY="687.0" majorTickUnit="2.0" max="40.0" min="1.0" minorTickCount="2" onMouseClicked="#CellSizeClicked" onMouseDragged="#CellSizeClicked" prefHeight="14.0" prefWidth="98.0" scaleShape="false" value="10.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Slider>
-      <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="14.0" layoutY="240.0" majorTickUnit="30.0" max="60.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" prefHeight="14.0" prefWidth="171.0" scaleShape="false" value="30.0">
+      <Slider fx:id="sliderFPS" blockIncrement="30.0" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1006.0" layoutY="687.0" majorTickUnit="30.0" max="60.0" min="1.0" minorTickCount="5" onMouseClicked="#FPSClicked" onMouseDragged="#FPSClicked" prefHeight="14.0" prefWidth="98.0" scaleShape="false" value="30.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Slider>
-      <Text layoutX="67.0" layoutY="191.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="44.955078125" />
-      <Text layoutX="77.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FPS" textAlignment="RIGHT" wrappingWidth="23.955081045627594" />
-      <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="15.0" layoutY="273.0" onAction="#colorPickerClicked" scaleShape="false" />
+      <Text layoutX="1147.0" layoutY="673.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="44.955078125" />
+      <Text layoutX="1043.0" layoutY="673.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FPS" textAlignment="RIGHT" wrappingWidth="23.955081045627594" />
+      <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1115.0" layoutY="715.0" onAction="#colorPickerClicked" scaleShape="false" />
       <ToolBar layoutX="-1.0" layoutY="-6.0" prefHeight="40.0" prefWidth="1280.0">
          <items>
             <MenuBar prefHeight="25.0" prefWidth="109.0">
@@ -84,8 +84,8 @@
             <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="183.98577880859375" />
          </items>
       </ToolBar>
-      <Text layoutX="46.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pattern Link" />
-      <Button layoutX="46.0" layoutY="390.0" mnemonicParsing="false" text="Load Pattern" />
-      <TextField layoutX="14.0" layoutY="355.0" />
+      <Text layoutX="777.0" layoutY="732.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pattern Link" />
+      <Button layoutX="1013.0" layoutY="715.0" mnemonicParsing="false" text="Load Pattern" />
+      <TextField layoutX="856.0" layoutY="715.0" />
    </children>
 </Pane>
