@@ -57,7 +57,7 @@ public class CanvasFrame  {
         this.canvasHeight = height;
         this.canvasWidth = width;
         this.gc = gcContext;
-        lineWidth = 0.3;
+        lineWidth = 0.5;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
@@ -66,8 +66,9 @@ public class CanvasFrame  {
 
         drawCanvas = new DrawCanvas(this.canvasHeight, this.canvasWidth, staticBoard.getBoard());
 
-
         dynamicBoard = new DynamicBoard(this.canvasHeight,this.canvasWidth,dynamic);
+
+
         //dboard.setdBoard();
 
         setGc(this.gc);

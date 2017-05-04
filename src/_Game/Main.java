@@ -57,7 +57,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 1280, 780));
         primaryStage.show();
-
+/*
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -74,9 +74,9 @@ public class Main extends Application {
         });
 
 
-    }
+    }*/
 
 
 
 
-}
+}}

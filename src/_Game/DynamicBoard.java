@@ -93,13 +93,30 @@ public class DynamicBoard{
 
     }
 
+
+
+
+
+
+
+
+
+
     public void nextGeneration() {
 
         List<List<Byte>> nextBoard =  new ArrayList<List<Byte>>();
-        fillBoard(nextBoard);
 
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++)
+        for(int i = 0; i < canvasHeight; i++) {
+            List<Byte> inner = new ArrayList<Byte>();
+            for (int j = 0; j < canvasWidth; j++)
+                inner.add((byte) 0);
+            nextBoard.add(inner);
+        }
+
+        nextBoard.forEach((l)->System.out.println(l));
+
+        for (int x = 1; x < dynamicBoard.size(); x++) {
+            for (int y = 1; y < dynamicBoard.get(x).size(); y++)
 
             {
                 System.out.println("2");
@@ -107,17 +124,22 @@ public class DynamicBoard{
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
                         if(x+i>=0 && y+j >=0)
-                        cellNeighbors += dynamicBoard.get(x + i).get(y + j);
+                        cellNeighbors += dynamicBoard.get(x + i).get(y + i);
                     }
                 }
                 System.out.println("3");
                 cellNeighbors -= dynamicBoard.get(x).get(y);
 
-                if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))  nextBoard.get(x).set(y, (byte) 0);           // Mindre enn 2 rundt
+                if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))
+                    nextBoard.get(x).set(y, (byte) 0);
+                    // Mindre enn 2 rundt
+
                 else if ((dynamicBoard.get(x).get(y)  == 1) && (cellNeighbors > 3))
                     nextBoard.get(x).set(y, (byte) 0);// Fler enn 3 rundt seg
+
                  else if ((dynamicBoard.get(x).get(y)  == 0) && (cellNeighbors == 3))
                     nextBoard.get(x).set(y, (byte) 1);
+
                 else {
                     System.out.println("x = " + x + ", y = " + y + " dboard val = " + dynamicBoard.get(x).get(y));
                     dynamicBoard.get(x).set(y, nextBoard.get(x).get(y));

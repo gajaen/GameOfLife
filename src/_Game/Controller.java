@@ -69,7 +69,7 @@ public class Controller implements Initializable {
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         this.gui = new GUI(canvasFrame);
         key();
-//        tekst.setText("");
+        tekst.setText("");
         ChoiceBox();
 
 
@@ -109,6 +109,11 @@ public class Controller implements Initializable {
     public void ChoiceBox(){
         choiceBox.getItems().add("Random");
         choiceBox.setValue("Random");
+
+    }
+
+    public void clickedExitButton(){
+        Platform.exit();
 
     }
 
