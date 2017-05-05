@@ -244,32 +244,30 @@ public class DynamicBoard{
 
         List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
         fillBoard(upBoard);
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
+        for (int x = 0; x < dynamicBoard.get(x).size(); x++) {
+            for (int y = 0; y < dynamicBoard.get(y).size(); y++){
                 if (dynamicBoard.get(x).get(y) == 1){
 
-                    upBoard.get(x).set(y -1,(byte)1);
+                    upBoard.get(x-1).set(y,(byte)1);
                 }
             }
         }
         dynamicBoard = upBoard;
     }
 
-    public void moveCellsDown() {
-        List<List<Byte>> downBoard = new ArrayList<List<Byte>>();
+    public void moveCellsDown(){
+
+        List<List<Byte>> downBoard =  new ArrayList<List<Byte>>();
         fillBoard(downBoard);
+        for (int x = 0; x < dynamicBoard.get(x).size(); x++) {
+            for (int y = 0; y < dynamicBoard.get(y).size(); y++){
+                if (dynamicBoard.get(x).get(y) == 1){
 
-        for (int x = 1; x < dynamicBoard.size(); x++) {
-            for (int y = 1; y < dynamicBoard.get(x).size(); y++){
-
-                if (dynamicBoard.get(y).get(x) == 1) {
-                    downBoard.get(x).set(y - 1, (byte) 1);
-
+                    downBoard.get(x+1).set(y,(byte)1);
                 }
-
             }
-            dynamicBoard = downBoard;
         }
+        dynamicBoard = downBoard;
     }
 
     public void setCellSize(double size){
