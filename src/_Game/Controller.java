@@ -75,6 +75,24 @@ public class Controller implements Initializable {
 
     }
 
+    public void clickedRulesButton(){
+        System.out.println("Help");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/_Game/Fxml/RulesScene.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load(), 650, 300);
+            Rules controller = fxmlLoader.<Rules>getController();
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+
+
+    }
 
     @FXML
     private void key() {
@@ -301,7 +319,7 @@ public class Controller implements Initializable {
     private void saveBoard() {
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/_Game/SaveBoard.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/_Game/Fxml/SaveBoard.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             SaveGame controller = fxmlLoader.<SaveGame>getController();

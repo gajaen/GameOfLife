@@ -14,13 +14,13 @@ import java.util.ResourceBundle;
 import javafx.scene.paint.Color;
 
 
-public class About implements Initializable {
+public class Rules implements Initializable {
     @Override
 
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    public About() throws IOException {
+    public Rules() throws IOException {
 
 
     }

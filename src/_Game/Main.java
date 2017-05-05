@@ -40,7 +40,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Frame.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Fxml/Frame.fxml"));
         Parent root = loader.load();
 
         primaryStage.setTitle("GameOfLife");

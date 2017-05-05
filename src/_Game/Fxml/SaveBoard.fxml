@@ -24,7 +24,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
             <children>
                 <Button fx:id="saveBtn" layoutX="38.0" layoutY="32.0" mnemonicParsing="false" onAction="#saveBtn" text="Save pattern" />
-                <Button fx:id="closeBtn" layoutX="38.0" layoutY="74.0" mnemonicParsing="false" onAction="#closeBtn" text="Close" />
+                <Button fx:id="closeBtn" layoutX="38.0" layoutY="74.0" mnemonicParsing="false" text="Close" />
                 <ScrollPane fx:id="scroll" layoutX="8.0" layoutY="139.0" prefHeight="150.0" prefWidth="787.0">
                <content>
                   <Canvas fx:id="canvasScroll" height="140.0" width="700.0" />
