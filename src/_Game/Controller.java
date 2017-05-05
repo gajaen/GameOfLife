@@ -95,7 +95,7 @@ public class Controller implements Initializable {
     }
     public void aboutButtonClicked(){
         About about = new About();
-        about.display();
+        about.About();
     }
 
     public void musicChoiceBox(){
