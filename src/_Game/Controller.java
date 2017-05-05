@@ -93,6 +93,10 @@ public class Controller implements Initializable {
             }
         });
     }
+    public void aboutButtonClicked(){
+        About about = new About();
+        about.display();
+    }
 
     public void musicChoiceBox(){
         sounds.startClick();
