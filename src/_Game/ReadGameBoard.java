@@ -12,6 +12,7 @@ import java.nio.file.attribute.BasicFileAttributeView;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,9 +32,6 @@ public class ReadGameBoard {
     public int[][] pattern;
     private String line;
     private String patterName;
-    private int wNumInt;
-    private int hNumInt;
-    private int cellSize;
 
     /**
      * Constructs  board with Height and Width and Initialize a pattern array, and openfile, readfile methods
@@ -52,7 +50,7 @@ public class ReadGameBoard {
             openFile();
             readFile(getLine());
 
-           // setText();
+            // setText();
 
         }  catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("arrayIndex" + e);;
@@ -118,7 +116,9 @@ public class ReadGameBoard {
         }
 
 
-
+        if (file == null) {
+            return;
+        }
 
 
         Scanner scanner1 = new Scanner(file);
@@ -128,7 +128,7 @@ public class ReadGameBoard {
         Matcher m = p.matcher(line2);
         boolean b = m.matches();
 
-         setPatterName(m.group());
+        setPatterName(m.group());
 
 
       /*  Scanner scanner1 = new Scanner(file);
@@ -166,14 +166,13 @@ public class ReadGameBoard {
      */
     public void readFile(String line) throws IOException {
 
+        System.out.println("hei");
         this.setLine(line);
         int rownumber = 5;
         int columnnumber = 0;
-        if (file == null) {
-            return;
-        }
 
-       /* String url2 = "test";
+
+      /*  String url2 = "test";
         URL url = new URL(url2);
         InputStream in = url.openStream();
         Scanner scan = new Scanner(in);
@@ -186,56 +185,23 @@ public class ReadGameBoard {
 //            readGameBoard.readFile(str);
             System.out.println(str);
         }
-        scan.close();*/
-
-        System.out.println(pattern.length);
-
-        // check if website or file
-
+        scan.close();
+*/
         try (Scanner scanner = new Scanner(file )) {
             //BufferedReader reader = new BufferedReader(new FileReader(file));
+            if (file == null) {
+                return;
+            }
 
             while (scanner.hasNextLine()) {
-                 line = scanner.nextLine();
+
+                line = scanner.nextLine();
 
                 // checkin g line is empty or commented or with rule line
                 if (line.isEmpty() || Pattern.matches(".*rule.*" , line)|| Pattern.matches(".*#.*", line)) {
-                    Pattern hnumber = Pattern.compile(".*x = (?<cnumber>\\d*?),.*");
-                    Matcher hmatcher = hnumber.matcher(line);
-
-                    Pattern wnumber = Pattern.compile(".*y = (?<cnumber>\\d*?),.*");
-                    Matcher wmatcher = wnumber.matcher(line);
-                     hNumInt = 1;
-                     wNumInt = 1;
-                    //System.out.println("ready to get height");
-                    if (hmatcher.find()) {
-                        String bNumString = hmatcher.group("cnumber");
-                        if (!bNumString.isEmpty()) {
-                            System.out.println("he not empty");
-                            hNumInt = Integer.parseInt(bNumString);
-                        }
-
-                        System.out.println("heigh" +  bNumString);
-                        System.out.println("test");
-                        //columnnumber = columnnumber + bNumInt;
-                    }
-
-                    if (wmatcher.find()) {
-                        String bNumString = wmatcher.group("cnumber");
-                        if (!bNumString.isEmpty()) {
-
-                            wNumInt = Integer.parseInt(bNumString);
-                        }
-
-                        pattern = new int[hNumInt][wNumInt];
-                        //columnnumber = columnnumber + bNumInt;
-                        System.out.println("wdth" + wNumInt);
-                    }
-
 
                     continue;
                 }
-
 
 
 
@@ -243,12 +209,12 @@ public class ReadGameBoard {
                 Pattern p = Pattern.compile("(?<=\\$)");
 
                 String[] items = p.split(line);
+
                 for (String item : items) {
-                    //x = 1714, y = 1647, rule = s23/b3
+
+
                     // itemTmp = 2b3o1b2o$
                     String itemTmp = item;
-                    // get height and width'
-
 
                     // while itemTmp is a valid form
                     while ((!itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp)) {
@@ -281,15 +247,18 @@ public class ReadGameBoard {
                             }
 
 
-
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
-
-                                pattern[rownumber+ cellSize][columnnumber + cnum +cellSize] = 1;
-                                //pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
+                                try {
 
 
-                                //columnnumber = columnnumber +1;
+                                    pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
+                                }//columnnumber = columnnumber +1;
+                            catch(ArrayIndexOutOfBoundsException e){
+                                System.out.println(e);
+
                             }
+                            }
+
                             columnnumber = columnnumber + oNumInt;
                             itemTmp = itemTmp.replaceFirst("^\\d*?o", "");
                         }
@@ -307,7 +276,7 @@ public class ReadGameBoard {
 
 
 
-            }}
+                }}
 
 
 
@@ -378,29 +347,5 @@ public class ReadGameBoard {
 
     public void setLine(String line) {
         this.line = line;
-    }
-
-    public int getwNumInt() {
-        return wNumInt;
-    }
-
-    public void setwNumInt(int wNumInt) {
-        this.wNumInt = wNumInt;
-    }
-
-    public int gethNumInt() {
-        return hNumInt;
-    }
-
-    public void sethNumInt(int hNumInt) {
-        this.hNumInt = hNumInt;
-    }
-
-    public int getCellSize() {
-        return cellSize;
-    }
-
-    public void setCellSize(int cellSize) {
-        this.cellSize = cellSize;
     }
 }

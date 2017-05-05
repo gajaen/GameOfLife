@@ -240,20 +240,14 @@ public class Controller implements Initializable {
      * @throws IOException On input error.
      * @see IOException
      */
-    public void openFile() throws IOException {
-
-
+    @FXML
+    private void openFile() throws IOException {
         readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
-
         readGameBoard.readFile(line);
-
         canvasFrame.drawPattern(readGameBoard.pattern);
-
         tekst.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.file) + " File name: " + readGameBoard.file.getName() +
                 "  Created by: " + readGameBoard.file.getParent() +
                 "  Pattern name: " + readGameBoard.getPatterName());
-
-            cellSlider.setValue(readGameBoard.getCellSize());
     }
 
     /**
