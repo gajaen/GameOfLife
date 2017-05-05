@@ -5,26 +5,19 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.*;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -47,7 +40,7 @@ public class Controller implements Initializable {
     private CanvasFrame canvasFrame;
     private Sounds sounds;
     public ColorPicker colorPicker;
-    public ChoiceBox choiceBox, musicChoiceBox;
+    public ChoiceBox patternChoiceBox, musicChoiceBox;
     private GUI gui;
     private Timeline timeline;
 
@@ -55,13 +48,12 @@ public class Controller implements Initializable {
     public Slider sliderFPS, cellSlider;
     public StaticBoard sBoard;
     public DynamicBoard dynamicBoard;
-    public Button musicStartButton;
+    public Button musicStartButton, drawPattern;
     public ToolBar Toolbar;
     String line;
     @FXML
     TextField textBox;
     private Timeline tl;
-
 
 
     int user_id = 2;
@@ -82,7 +74,7 @@ public class Controller implements Initializable {
         sounds = new Sounds();
         key();
         tekst.setText("");
-        ChoiceBox();
+        patternChoiceBox();
         MusicChoiceBox();
         sounds.startClick();
     }
@@ -105,11 +97,10 @@ public class Controller implements Initializable {
         musicChoiceBox.getItems().add("Knights of Cydonia");
         musicChoiceBox.getItems().add("Shape Of You");
         musicChoiceBox.setValue("Shape Of You");
-
-        musicStartButton.setOnAction(event -> getChoice(musicChoiceBox));
+        musicStartButton.setOnAction(event -> getMusicChoice(musicChoiceBox));
     }
 
-    public void getChoice(ChoiceBox<String>musicChoiceBox) {
+    public void getMusicChoice(ChoiceBox<String>musicChoiceBox) {
         switch (musicChoiceBox.getValue()) {
             case "Take On Me":
                 sounds.TakeOnMe();
@@ -134,11 +125,6 @@ public class Controller implements Initializable {
     }
 
 
-
-
-
-    
-//test
     public void clickedMusicStartButton(){
 
     }
@@ -184,9 +170,26 @@ public class Controller implements Initializable {
         gui.RandomButton();
     }
 
-    public void ChoiceBox(){
-        choiceBox.getItems().add("Random");
-        choiceBox.setValue("Random");
+    public void patternChoiceBox(){
+        patternChoiceBox.getItems().add("Random");
+        patternChoiceBox.setValue("Random");
+        drawPattern.setOnAction(event -> getPatternChoice(patternChoiceBox));
+    }
+
+    public void getPatternChoice(ChoiceBox<String>patternChoiceBox) {
+        switch (patternChoiceBox.getValue()) {
+            case "Random":
+                System.out.println(patternChoiceBox.getValue());
+                canvasFrame.RandomButtonAction();
+                break;
+        }
+    }
+
+    public void clickedToggleBoard(){
+
+    }
+    public void clickedDrawButton(){
+
     }
 
     public void clickedExitButton(){

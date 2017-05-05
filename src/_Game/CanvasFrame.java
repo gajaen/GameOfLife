@@ -55,7 +55,7 @@ public class CanvasFrame  {
         this.canvasHeight = height;
         this.canvasWidth = width;
         this.gc = gcContext;
-        lineWidth = 0.5;
+        lineWidth = 0.4;
         lineColor = Color.BLACK;
         backgroundColor = Color.GREY;
 
