@@ -10,12 +10,6 @@
 package _Game;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-
-import java.io.File;
 
 
 public class StaticBoard {

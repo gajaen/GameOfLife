@@ -63,17 +63,20 @@ public class CanvasFrame  {
         dynamicBoard = new DynamicBoard(this.canvasHeight,this.canvasWidth,dynamic);
 
 
-        //dboard.setdBoard();
 
         setGc(this.gc);
         gc.setFill(Color.GREY);
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-       // dynamicBoard.setCellSize(canvasWidth/dynamicBoard.dynamicBoard.size());
 
         clearArray();
     }
 
-
+    /**
+     * Action when key is pressed.
+     *
+     * @param event when key is pressed
+     *
+     */
 
     public void key(KeyEvent event){
         clearCanvas();
@@ -106,6 +109,7 @@ public class CanvasFrame  {
     /**
      * Changing the cell color depending on user input from colorPicker
      * @param colorPicker is choosing color
+     *
      */
 
     public void colorPicker(ColorPicker colorPicker){
@@ -114,6 +118,12 @@ public class CanvasFrame  {
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
+
+    /**
+     * Changing cell size depending on user input from colorPicker
+     * @param size is choosing size
+     *
+     */
 
     public void cellSize(double size){
        dynamicBoard.setCellSize(size);
@@ -124,6 +134,7 @@ public class CanvasFrame  {
 
     /**
      * Clearing the current canvas and applying background
+     *
      */
 
     public void clearCanvas() {
@@ -136,6 +147,7 @@ public class CanvasFrame  {
 
     /**
      * Clear the current array with only 0's
+     *
      */
 
     public void clearArray(){
@@ -146,35 +158,6 @@ public class CanvasFrame  {
         dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
-
-    /**
-     * Timeline
-     */
-
-     public Timeline SetTimeline() {
-
-        TIME = 1000/getFPS();
-
-        timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-            clearCanvas();
-            dynamicBoard.nextGeneration();
-            try{Thread.sleep(100);} catch (Exception a){}
-            dynamicBoard.drawCells(this.gc);
-            dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
-            timeline.playFromStart();
-        }));
-
-
-
-        return timeline;
-    }
-
-    public int getFPS() {
-        if (FPS == 0){
-            FPS = 30;
-        }
-        return FPS;
-    }
 
 
     /**
@@ -198,20 +181,25 @@ public class CanvasFrame  {
      * @exception Exception On input error.
      * @see Exception
      */
+
     public void CanvasPressed(MouseEvent a)  {
         clearCanvas();
         dynamicBoard.CanvasPressed(a);
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
+
     }
+
     public void pressedCanvas(){
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
+
     }
 
     /**
      * Draw's the pattern from ReadGameBoard
      * @param pattern is drawing on the booard
+     *
      */
 
     public void drawPattern(int [][] pattern){
@@ -224,19 +212,13 @@ public class CanvasFrame  {
 
     }
 
-    /**
-     * Just a combonation of drawLines and drawCells
-     */
 
-    public void drawCanvas(){
 
-/*
-        drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
-        clearCanvas();
-        drawCanvas.drawCells(gc);
-        drawCanvas.drawLines(gc, lineWidth, lineColor);
-        */
-
+    public int getFPS() {
+        if (FPS == 0){
+            FPS = 30;
+        }
+        return FPS;
     }
 
     public byte[][] getBoard() {
