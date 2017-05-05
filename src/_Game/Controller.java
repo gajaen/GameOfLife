@@ -54,6 +54,7 @@ public class Controller implements Initializable {
     public Button musicStartButton, drawPattern;
     public ToolBar Toolbar;
     String line;
+    public ToggleButton toggleButton;
     @FXML
     TextField textBox;
     private Timeline tl;
@@ -210,8 +211,13 @@ public class Controller implements Initializable {
         }
     }
 
-    public void clickedToggleButton(){
-        //ToggleKnapp med  ID: ToggleButton
+    public void clickedToggleButton(ActionEvent event){
+        if (toggleButton.isSelected()) {
+            System.out.println("Toggled");
+        }
+        else {
+            System.out.println("UnToggled");
+        }
 
     }
     public void clickedDrawButton(){
