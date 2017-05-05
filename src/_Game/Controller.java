@@ -211,14 +211,13 @@ public class Controller implements Initializable {
         }
     }
 
-    public void clickedToggleButton(ActionEvent event){
+    public void clickedToggleButton(ActionEvent event) {
         if (toggleButton.isSelected()) {
-            System.out.println("Toggled");
-        }
-        else {
-            System.out.println("UnToggled");
-        }
+            System.out.println("Toggle Static");
+        } else {
+            System.out.println("Toggle Dunamic");
 
+        }
     }
     public void clickedDrawButton(){
 

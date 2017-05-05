@@ -142,7 +142,7 @@
       </Text>
       <Button fx:id="musicStopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1197.0" layoutY="697.0" mnemonicParsing="false" onAction="#clickedMusicStopButton" prefHeight="27.0" prefWidth="35.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: #bf3333;" text="⏹" />
       <Button fx:id="musicPauseButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1157.0" layoutY="697.0" mnemonicParsing="false" onAction="#clickedMusicPauseButton" prefHeight="27.0" prefWidth="35.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: lightgrey;" text="⏸" />
-      <ToggleButton fx:id="toggleButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="270.0" layoutY="705.0" mnemonicParsing="false" onAction="#clickedToggleButton" prefHeight="56.0" prefWidth="109.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3;" text="Toggle DynamicBoard" textAlignment="CENTER" wrapText="true">
+      <ToggleButton fx:id="toggleButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="270.0" layoutY="712.0" mnemonicParsing="false" onAction="#clickedToggleButton" prefHeight="49.0" prefWidth="91.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3;" text="Toggle StaticBoard" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

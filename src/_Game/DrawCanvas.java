@@ -38,8 +38,6 @@ public class DrawCanvas {
     public void drawLines(GraphicsContext gc, double lineWidth, Color lineColor) {
 
         gc.setStroke(lineColor);
-        gc.setLineWidth(3);
-        gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
         gc.setLineWidth(lineWidth);
 
         double a = cell.getCellSize();
