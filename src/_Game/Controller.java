@@ -79,11 +79,7 @@ public class Controller implements Initializable {
         key();
         tekst.setText("");
         patternChoiceBox();
-        MusicChoiceBox();
-        sounds.startClick();
-
-
-
+        musicChoiceBox();
 
     }
 
@@ -97,7 +93,8 @@ public class Controller implements Initializable {
         });
     }
 
-    public void MusicChoiceBox(){
+    public void musicChoiceBox(){
+        sounds.startClick();
         musicChoiceBox.getItems().add("Take On Me");
         musicChoiceBox.getItems().add("Through The Fire and Flames");
         musicChoiceBox.getItems().add("Shooting Stars");
@@ -161,10 +158,6 @@ public class Controller implements Initializable {
             window.setY(event.getScreenY() - yOffset);
         });
     }
-
-
-
-
 
 
     public void clickedStartButton() {

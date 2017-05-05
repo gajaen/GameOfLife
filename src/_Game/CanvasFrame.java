@@ -181,8 +181,6 @@ public class CanvasFrame  {
     }
 
 
-
-
     /**
      * Create's a new random array
      */

@@ -24,7 +24,7 @@
    <children>
       <ImageView fitHeight="748.0" fitWidth="1287.0" layoutY="30.0">
          <image>
-            <Image url="@../../../../Desktop/Background.png" />
+            <Image url="@Pictures/Background.png" />
          </image>
       </ImageView>
       <Button fx:id="startButton" alignment="CENTER" cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="1.0" layoutX="12.0" layoutY="690.0" mnemonicParsing="false" onAction="#clickedStartButton" pickOnBounds="false" prefHeight="70.0" prefWidth="144.0" scaleShape="false" style="-fx-border-color: BLACK; -fx-border-radius: 3;" text="START" textAlignment="CENTER" textOverrun="CLIP">
@@ -32,7 +32,7 @@
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Canvas fx:id="CanvasId" focusTraversable="true" height="559.0" layoutX="13.0" layoutY="114.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" style="-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,1), 5, 5, 0, 0);" width="1263.0" />
+      <Canvas fx:id="CanvasId" accessibleRole="BUTTON" focusTraversable="true" height="559.0" layoutX="13.0" layoutY="114.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" style="-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,1), 5, 5, 0, 0);" width="1252.0" />
       <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="163.0" layoutY="689.0" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="33.0" prefWidth="98.0" scaleShape="false" style="-fx-border-color: BLACK; -fx-border-radius: 3;" text="STOP">
          <font>
             <Font name="System Bold" size="12.0" />

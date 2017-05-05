@@ -3,8 +3,7 @@ package _Game;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
-import javafx.scene.media.*;
-import java.lang.Object;
+
 import java.io.File;
 
 /**
