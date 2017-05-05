@@ -12,9 +12,9 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <TextArea cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="44.0" layoutY="59.0" prefHeight="176.0" prefWidth="561.0" scaleShape="false" text="1. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.&#10;&#10;2. Any live cell with two or three live neighbours lives on to the next generation.&#10;&#10;3. Any live cell with more than three live neighbours dies, as if by overpopulation.&#10;&#10;4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.&#10;&#10;">
+      <TextArea cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="21.0" layoutY="57.0" prefHeight="166.0" prefWidth="600.0" scaleShape="false" text="&#10;1. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.&#10;&#10;2. Any live cell with two or three live neighbours lives on to the next generation.&#10;&#10;3. Any live cell with more than three live neighbours dies, as if by overpopulation.&#10;&#10;4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.">
          <font>
-            <Font name="Arial" size="13.0" />
+            <Font name="Arial" size="14.0" />
          </font>
       </TextArea>
    </children>

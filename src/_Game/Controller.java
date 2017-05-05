@@ -113,7 +113,7 @@ public class Controller implements Initializable {
         musicChoiceBox.getItems().add("Radioactive");
         musicChoiceBox.getItems().add("Knights of Cydonia");
         musicChoiceBox.getItems().add("Shape Of You");
-        musicChoiceBox.setValue("Shape Of You");
+        musicChoiceBox.setValue("Take On Me");
         musicStartButton.setOnAction(event -> getMusicChoice(musicChoiceBox));
 
     }
