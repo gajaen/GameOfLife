@@ -32,6 +32,7 @@ public class ReadGameBoard {
     public int[][] pattern;
     private String line;
     private String patterName;
+    private int cell;
 
     /**
      * Constructs  board with Height and Width and Initialize a pattern array, and openfile, readfile methods
@@ -44,7 +45,6 @@ public class ReadGameBoard {
     public ReadGameBoard(int boardHeight, int boardWidth) {
 
         pattern = new int[boardWidth][boardHeight];
-
 
         try {
             openFile();
@@ -249,14 +249,22 @@ public class ReadGameBoard {
 
                             for (int cnum = 1; cnum <= oNumInt; cnum++) {
                                 try {
-
-
                                     pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
                                 }//columnnumber = columnnumber +1;
                             catch(ArrayIndexOutOfBoundsException e){
-                                System.out.println(e);
 
+                               // System.out.println(e);
+                                if(rownumber>500 && columnnumber>500){
+                                setCell((rownumber+columnnumber)/pattern.length);
+                                System.out.println("rownumber" + rownumber);
+                                System.out.println("collumn " + columnnumber);
+                                System.out.println("r+c" + rownumber+columnnumber);
+                                System.out.println("r+c/p" + (rownumber+columnnumber)/pattern.length);
+                            }else{
+                                setCell(10);
+                                }
                             }
+
                             }
 
                             columnnumber = columnnumber + oNumInt;
@@ -347,5 +355,13 @@ public class ReadGameBoard {
 
     public void setLine(String line) {
         this.line = line;
+    }
+
+    public int getCell() {
+        return cell;
+    }
+
+    public void setCell(int cell) {
+        this.cell = cell;
     }
 }

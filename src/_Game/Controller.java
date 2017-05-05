@@ -268,6 +268,12 @@ public class Controller implements Initializable {
         tekst.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.file) + " File name: " + readGameBoard.file.getName() +
                 "  Created by: " + readGameBoard.file.getParent() +
                 "  Pattern name: " + readGameBoard.getPatterName());
+        if(readGameBoard.getCell() > 0){
+        canvasFrame.cellSize(readGameBoard.getCell());}
+
+        canvasFrame.clearCanvas();
+
+        canvasFrame.pressedCanvas();
     }
 
     /**

@@ -232,6 +232,7 @@ public class CanvasFrame  {
      */
 
     public void drawCanvas(){
+
 /*
         drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         clearCanvas();

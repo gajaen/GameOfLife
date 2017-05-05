@@ -278,10 +278,19 @@ public class DynamicBoard{
         this.cell.setCellSize(size);
     }
 
+    public int getCellGap() {
+
+        return cell.getCellGap();
+    }
+
     public void setCellColor(Color color){
 
         this.cell.setCellColor(color);
 
+    }
+
+    public Cell getCell() {
+        return cell;
     }
 }
 
