@@ -19,8 +19,6 @@ import java.util.*;
  * The Game Of Life program created for HIOA final project
  * The CanvasFrame class is drawing defined properties on canvas.
  *
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
  * @version 1.0
  * @since   2017-01-14
  */

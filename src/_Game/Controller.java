@@ -58,6 +58,7 @@ public class Controller implements Initializable {
     public Button musicStartButton;
     public ToolBar Toolbar;
     String line;
+    @FXML
     TextField textBox;
     private Timeline tl;
 
@@ -282,7 +283,6 @@ public class Controller implements Initializable {
         while (scan.hasNext())
         {
             String str = scan.nextLine();
-//            readGameBoard.readFile(str);
             System.out.println(str);
         }
         scan.close();
