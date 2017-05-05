@@ -47,10 +47,7 @@ public class ReadGameBoard {
 
         openFile();
         readFile();
-
     }
-
-
 
     /**
      * This method opens the file with FileChooser.
@@ -84,9 +81,6 @@ public class ReadGameBoard {
      */
 
     public void readFile() {
-
-
-
         int rowNumber = 5;
         int columnNumber = 0;
 
@@ -186,35 +180,6 @@ public class ReadGameBoard {
 
     }
 
-    public void readGameBoardFromURL(String text) throws IOException
-    {
-
-       /* URL oracle = new URL("http://www.conwaylife.com/patterns/gosperglidergungliderdestruction.rle");
-        BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
-
-        URLConnection conn = oracle.openConnection();
-        openFile(new InputStreamReader(conn.getInputStream()));
-
-        while ((inputLine = in.readLine()) != null)
-            System.out.println(inputLine);
-        in.close();
-
-        readFile(inputLine);
-*/
-        URL url = new URL(text);
-        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-
-        String in;
-
-        while((in = br.readLine()) != null){
-            System.out.println(in);
-        }
-
-        br.close();
-
-
-    }
-
     /**
      * Gets MetaData from file
      *
@@ -239,24 +204,39 @@ public class ReadGameBoard {
         return "";
     }
 
-
+    /**
+     * Returns PatterName
+     * @return
+     */
     public String getPatterName() {
         return patterName;
     }
+
+    /**
+     * Returns Cell
+     * @return
+     */
 
     public int getCell() {
         return cell;
     }
 
+    /**
+     * Sets Cell
+     * @param cell
+     */
+
     public void setCell(int cell) {
         this.cell = cell;
     }
+
+    /**
+     * Gets File
+     * @return
+     */
 
     public File getFile() {
         return file;
     }
 
-    public void setFile(File file) {
-        this.file = file;
-    }
 }

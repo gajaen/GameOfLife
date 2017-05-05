@@ -182,7 +182,6 @@ public class Controller implements Initializable {
     }
 
 
-
     /**
      * Toolbar settings.
      */
@@ -364,45 +363,6 @@ public class Controller implements Initializable {
      */
     @FXML
     private void closeWindow() {Platform.exit();}
-
-    @FXML
-    private void saveBoard() {
-
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/_Game/Fxml/SaveBoard.fxml"));
-
-            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-            SaveGame controller = fxmlLoader.<SaveGame>getController();
-            controller.setBoard(canvasFrame.getBoard());
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException e) {
-            Logger logger = Logger.getLogger(getClass().getName());
-            logger.log(Level.SEVERE, "Failed to create new Window.", e);
-        }
-
-    }
-
-    @FXML
-    private void patternLoad() throws IOException {
-
-        URL url = new URL(textBox.getText());
-        InputStream in = url.openStream();
-        Scanner scan = new Scanner(in);
-
-        while (scan.hasNextLine())
-        {
-            String str = scan.nextLine();
-            System.out.println(str);
-        }
-
-        scan.close();
-
-    }
-
-
 
 }
 
