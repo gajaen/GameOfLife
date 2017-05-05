@@ -210,7 +210,8 @@ public class Controller implements Initializable {
         }
     }
 
-    public void clickedToggleBoard(){
+    public void clickedToggleButton(){
+        //ToggleKnapp med  ID: ToggleButton
 
     }
     public void clickedDrawButton(){
