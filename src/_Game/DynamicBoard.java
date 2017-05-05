@@ -246,8 +246,8 @@ public class DynamicBoard{
     public void moveCellsRight(){
         List<List<Byte>> rightBoard =  new ArrayList<List<Byte>>();
         fillBoard(rightBoard);
-        for (int x = 0; x < canvasHeight; x++) {
-            for (int y = 0; y < canvasWidth; y++){
+        for (int x = 0; x < canvasHeight-10; x++) {
+            for (int y = 0; y < canvasWidth-10; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
                     rightBoard.get(x).set(y + 1,(byte)1);
                 }
@@ -264,8 +264,8 @@ public class DynamicBoard{
     public void moveCellsLeft() {
         List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
         fillBoard(leftBoard);
-        for (int x = 0; x < canvasHeight; x++) {
-            for (int y = 0; y < canvasWidth; y++){
+        for (int x = 0; x < canvasHeight-10; x++) {
+            for (int y = 0; y < canvasWidth-10; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
                     leftBoard.get(x).set(y - 1,(byte)1);
                 }
@@ -281,8 +281,8 @@ public class DynamicBoard{
     public void moveCellsUp(){
         List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
         fillBoard(upBoard);
-        for (int x = 0; x < canvasHeight; x++) {
-            for (int y = 0; y < canvasWidth; y++){
+        for (int x = 0; x < canvasHeight-10; x++) {
+            for (int y = 0; y < canvasWidth-10; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
                     upBoard.get(x-1).set(y,(byte)1);
                 }
@@ -299,8 +299,8 @@ public class DynamicBoard{
     public void moveCellsDown(){
         List<List<Byte>> downBoard =  new ArrayList<List<Byte>>();
         fillBoard(downBoard);
-        for (int x = 0; x < canvasHeight; x++) {
-            for (int y = 0; y < canvasWidth; y++){
+        for (int x = 0; x < canvasHeight-10; x++) {
+            for (int y = 0; y < canvasWidth-10; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
 
                     downBoard.get(x+1).set(y,(byte)1);
