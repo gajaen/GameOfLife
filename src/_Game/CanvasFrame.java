@@ -196,7 +196,6 @@ public class CanvasFrame  {
             dynamicBoard.drawCells(gc);
             dynamicBoard.drawLines(gc,lineWidth,lineColor);
 
-            System.out.println("test 1");
 
 
 

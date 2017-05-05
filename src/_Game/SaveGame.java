@@ -1,29 +1,16 @@
 package _Game;
 
-import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.canvas.*;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.*;
-import javafx.scene.transform.Affine;
-import javafx.scene.transform.Translate;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.awt.ScrollPane;
-import java.awt.color.ColorSpace;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.paint.Color;
 
-import static java.awt.Color.BLUE;
 
 /**
  * Created by Gajaen on 30.04.2017.
@@ -31,11 +18,7 @@ import static java.awt.Color.BLUE;
 
 
 public class SaveGame implements Initializable {
-    private int HEIGHT, WIDTH, TIME, FPS;
-    byte[][] board;/* = {{0,1,1,0},
-                        {1,0,0,1},
-                        {1,0,0,1},
-                        {0,1,1,0}};*/
+    byte[][] board;
 
 
     public Canvas saveCanvas;

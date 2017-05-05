@@ -92,6 +92,7 @@ public class Controller implements Initializable {
         CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
             public void handle(javafx.scene.input.KeyEvent event) {
                 canvasFrame.key(event);
+
             }
         });
     }
@@ -244,6 +245,7 @@ public class Controller implements Initializable {
                 "  Created by: " + readGameBoard.file.getParent() +
                 "  Pattern name: " + readGameBoard.getPatterName());
 
+            cellSlider.setValue(readGameBoard.getCellSize());
     }
 
     /**
