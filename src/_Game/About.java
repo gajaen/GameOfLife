@@ -13,15 +13,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.paint.Color;
 
-/**
- * Created by Sivert on 05.05.2017.
- */
-public class About implements Initializable{
+
+public class About implements Initializable {
     @Override
 
     public void initialize(URL location, ResourceBundle resources) {
     }
-    public About() throws IOException{
+
+    public About() throws IOException {
+
 
     }
 }
