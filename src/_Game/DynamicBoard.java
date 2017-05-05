@@ -246,8 +246,8 @@ public class DynamicBoard{
     public void moveCellsRight(){
         List<List<Byte>> rightBoard =  new ArrayList<List<Byte>>();
         fillBoard(rightBoard);
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
+        for (int x = 0; x < canvasHeight; x++) {
+            for (int y = 0; y < canvasWidth; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
                     rightBoard.get(x).set(y + 1,(byte)1);
                 }
@@ -264,32 +264,27 @@ public class DynamicBoard{
     public void moveCellsLeft() {
         List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
         fillBoard(leftBoard);
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
+        for (int x = 0; x < canvasHeight; x++) {
+            for (int y = 0; y < canvasWidth; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
                     leftBoard.get(x).set(y - 1,(byte)1);
                 }
             }
-
         }
         dynamicBoard = leftBoard;
     }
-
 
     /**
      * Moves the whole array list up
      *
      */
-
     public void moveCellsUp(){
-
         List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
         fillBoard(upBoard);
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
+        for (int x = 0; x < canvasHeight; x++) {
+            for (int y = 0; y < canvasWidth; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
-
-                    upBoard.get(x).set(y -1,(byte)1);
+                    upBoard.get(x-1).set(y,(byte)1);
                 }
             }
         }
@@ -301,26 +296,34 @@ public class DynamicBoard{
      *
      */
 
-    public void moveCellsDown() {
-        List<List<Byte>> downBoard = new ArrayList<List<Byte>>();
+    public void moveCellsDown(){
+        List<List<Byte>> downBoard =  new ArrayList<List<Byte>>();
         fillBoard(downBoard);
+        for (int x = 0; x < canvasHeight; x++) {
+            for (int y = 0; y < canvasWidth; y++){
+                if (dynamicBoard.get(x).get(y) == 1){
 
-        for (int x = 1; x < dynamicBoard.size(); x++) {
-            for (int y = 1; y < dynamicBoard.get(x).size(); y++){
-
-                if (dynamicBoard.get(y).get(x) == 1) {
-                    downBoard.get(x).set(y - 1, (byte) 1);
+                    downBoard.get(x+1).set(y,(byte)1);
                 }
             }
-            dynamicBoard = downBoard;
         }
+        dynamicBoard = downBoard;
     }
+
+    /**
+     * Sets cellSize
+     * @param size
+     */
 
 
     public void setCellSize(double size){
         this.cell.setCellSize(size);
     }
 
+    /**
+     * Sets cellColor
+     * @param color
+     */
 
     public void setCellColor(Color color){
         this.cell.setCellColor(color);
