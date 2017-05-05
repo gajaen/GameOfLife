@@ -20,19 +20,13 @@ import javafx.scene.paint.Color;
 public class SaveGame implements Initializable {
     byte[][] board;
 
-
-    public Canvas saveCanvas;
-    public Canvas canvasScroll;
+    public Canvas saveCanvas, canvasScroll;
     public GraphicsContext gc;
     private Stage stage;
     StaticBoard staticBoard;
     public Color cellColor;
     private double cellSize;
-    private int cellGap;
-    ScrollPane scrollPane;
-
-
-    int user_id;
+    private int cellGap, user_id;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

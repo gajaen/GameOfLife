@@ -65,14 +65,12 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
         sounds = new Sounds();
         tekst.setText("");
         patternChoiceBox();
         musicChoiceBox();
         key();
-
     }
 
     public void clickedRulesButton(){
@@ -105,8 +103,6 @@ public class Controller implements Initializable {
 
     @FXML
     private void musicChoiceBox(){
-
-        sounds.startClick();
         musicChoiceBox.getItems().add("Take On Me");
         musicChoiceBox.getItems().add("Through The Fire and Flames");
         musicChoiceBox.getItems().add("Shooting Stars");
@@ -139,10 +135,8 @@ public class Controller implements Initializable {
             case "Shape Of You":
                 sounds.ShapeOfYou();
                 break;
-
         }
     }
-
 
 
     @FXML
@@ -157,14 +151,12 @@ public class Controller implements Initializable {
         sounds.Stop();
     }
 
-
     @FXML
     private void clickedToolbar(){
         final double xOffset = 640;
         final double yOffset = 20;
 
-        Toolbar.setOnMouseDragged(event ->
-        {
+        Toolbar.setOnMouseDragged(event -> {
             Window window = ((Node)event.getTarget()).getScene().getWindow();
             window.setX(event.getScreenX() - xOffset);
             window.setY(event.getScreenY() - yOffset);
@@ -173,31 +165,26 @@ public class Controller implements Initializable {
 
     @FXML
     private void clickedStartButton() {
+        sounds.startClick();
        int TIME = 1000/canvasFrame.getFPS();
-
-
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-
             canvasFrame.getDynamicBoard().nextGeneration();
             canvasFrame.clearCanvas();
 
 //            try{Thread.sleep(100);} catch (Exception a){}
             canvasFrame.pressedCanvas();
             timeline.playFromStart();
-
-
         }));
     timeline.play();
-
     }
 
     @FXML
     private void clickedClearButton() {
+        sounds.startClick();
         canvasFrame.clearCanvas();
         canvasFrame.clearArray();
         timeline.stop();
     }
-
 
     @FXML
     private void patternChoiceBox(){
@@ -205,6 +192,7 @@ public class Controller implements Initializable {
         patternChoiceBox.getItems().add("None");
         patternChoiceBox.setValue("Random");
         drawPattern.setOnAction(event -> getPatternChoice(patternChoiceBox));
+        sounds.startClick();
     }
 
     @FXML
@@ -223,6 +211,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void clickedToggleButton(ActionEvent event){
+        sounds.startClick();
         if (toggleButton.isSelected()) {
             System.out.println("Toggled");
         }
@@ -246,8 +235,9 @@ public class Controller implements Initializable {
 
     @FXML
     private void clickedStopButton() {
-        timeline.stop();
         sounds.click();
+        timeline.stop();
+
     }
 
     @FXML
@@ -263,8 +253,6 @@ public class Controller implements Initializable {
         canvasFrame.cellSize(a);
         canvasFrame.drawCanvas();
     }
-
-
 
     @FXML
     private void CanvasPressed(MouseEvent a)  {
@@ -349,10 +337,6 @@ public class Controller implements Initializable {
         }
 
         scan.close();
-
     }
-
-
-
 }
 

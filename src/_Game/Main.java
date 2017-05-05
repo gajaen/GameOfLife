@@ -17,8 +17,6 @@ import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
-
-
     /**
      * This is the main method which makes us start the program.
      * @param args lunching.

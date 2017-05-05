@@ -26,52 +26,29 @@ public class Cell {
         cellColor = Color.WHITE;
     }
 
-    /**
-     * This method returning cell color
-     * @return cellColor
-     */
 
     public Color getCellColor() {
         return cellColor;
     }
 
-    /**
-     * @param cellColor parameter is assigned to the cellColor for this class
-     */
 
     public void setCellColor(Color cellColor) {
         this.cellColor = cellColor;
     }
 
-    /**
-     * This method returning cell size
-     * @return cellSize
-     */
     public double getCellSize() {
         return cellSize;
     }
 
-    /**
-     * @param cellSize parameter is assigned to the cellSize for this class
-     */
-
     public void setCellSize(double cellSize) {
-
         this.cellSize = cellSize;
     }
 
-    /**
-     * This method returning cell gap
-     * @return cellGap
-     */
-
     public int getCellGap() {
         if (getCellSize() < 2){
-            cellGap = 0;
-        }
+            cellGap = 0;}
         else{
-            cellGap = 1;
-        }
+            cellGap = 1;}
         return cellGap;
     }
 
