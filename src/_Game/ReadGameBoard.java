@@ -44,7 +44,7 @@ public class ReadGameBoard {
 
     public ReadGameBoard(int boardHeight, int boardWidth)  {
 
-        pattern = new int[boardWidth][boardHeight];
+        pattern = new int[boardHeight][boardWidth];
 
         openFile();
         readFile();
@@ -144,7 +144,7 @@ public class ReadGameBoard {
                                     try {
                                         pattern[rowNumber + 10][columnNumber + cnum + 10] = 1;
                                     } catch (ArrayIndexOutOfBoundsException e) {
-                                        if (rowNumber > 500 && columnNumber > 500) {
+                                        if (rowNumber > 1000 && columnNumber > 1000) {
                                             setCell((rowNumber + columnNumber) / pattern.length);
                                         }
                                     }

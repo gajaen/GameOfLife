@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GameOfLife:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GameOfLife_jar</output-path>
+    <root id="archive" name="GameOfLife.jar">
+      <element id="module-output" name="GameOfLife" />
+      <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/lib/junit.jar" path-in-jar="/" />
+      <element id="library" level="project" name="GIFLib" />
+      <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/junit.jar" />
+    </root>
+  </artifact>
+</component>

@@ -70,8 +70,8 @@ public class DynamicBoard{
 
         gc.setFill(cell.getCellColor());
         //drawing on canvas
-        for (int i = 0; i <  dynamicBoard.size(); i++) {
-            for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
+        for (int i = 0; i <  canvasHeight/cell.getCellSize(); i++) {
+            for (int j = 0; j < canvasWidth/cell.getCellSize(); j++) {
                 if (dynamicBoard.get(i).get(j) == 1) {
                     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
                 }
@@ -177,8 +177,8 @@ public class DynamicBoard{
      */
 
     public  void drawPattern(int[][] pattern, GraphicsContext gc) {
-        for (int row = 0; row < pattern.length; row++) {
-            for (int col = 0; col < pattern[row].length; col++) {
+        for (int row = 0; row < canvasHeight; row++) {
+            for (int col = 0; col < canvasWidth; col++) {
                 if (pattern[row][col] == 1) {
                     dynamicBoard.get(row).set(col, (byte) 1);
                 }
@@ -192,8 +192,8 @@ public class DynamicBoard{
      */
 
     public void randomButton(){
-        for (int i = 0; i < dynamicBoard.size(); i++) {
-            for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
+        for (int i = 0; i < canvasHeight/cell.getCellSize(); i++) {
+            for (int j = 0; j < canvasWidth/cell.getCellSize(); j++) {
                 dynamicBoard.get(i).set(j, (byte) (Math.random() * 2));
             }
         }
@@ -228,6 +228,7 @@ public class DynamicBoard{
             oldI = i;
         }
 
+
         catch (Exception e){
         }}
 
@@ -255,8 +256,8 @@ public class DynamicBoard{
     public void moveCellsLeft() {
         List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
         fillBoard(leftBoard);
-        for (int x = 0; x < canvasHeight-10; x++) {
-            for (int y = 0; y < canvasWidth-10; y++){
+        for (int x = 0; x < canvasHeight-20; x++) {
+            for (int y = 0; y < canvasWidth-20; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
                     leftBoard.get(x).set(y - 1,(byte)1);
                 }
@@ -272,8 +273,8 @@ public class DynamicBoard{
     public void moveCellsUp(){
         List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
         fillBoard(upBoard);
-        for (int x = 0; x < canvasHeight-10; x++) {
-            for (int y = 0; y < canvasWidth-10; y++){
+        for (int x = 0; x < canvasHeight-20; x++) {
+            for (int y = 0; y < canvasWidth-20; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
                     upBoard.get(x-1).set(y,(byte)1);
                 }
@@ -289,8 +290,8 @@ public class DynamicBoard{
     public void moveCellsDown(){
         List<List<Byte>> downBoard =  new ArrayList<List<Byte>>();
         fillBoard(downBoard);
-        for (int x = 0; x < canvasHeight-10; x++) {
-            for (int y = 0; y < canvasWidth-10; y++){
+        for (int x = 0; x < canvasHeight-20; x++) {
+            for (int y = 0; y < canvasWidth-20; y++){
                 if (dynamicBoard.get(x).get(y) == 1){
 
                     downBoard.get(x+1).set(y,(byte)1);
@@ -320,6 +321,7 @@ public class DynamicBoard{
     }
 
 }
+
 
 
 

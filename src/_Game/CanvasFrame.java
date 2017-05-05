@@ -95,7 +95,6 @@ public class CanvasFrame  {
         }
     }
 
-
     /**
      * Changing the cell color depending on user input from colorPicker
      * @param colorPicker is choosing color
