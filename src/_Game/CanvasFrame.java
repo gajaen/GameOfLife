@@ -59,10 +59,7 @@ public class CanvasFrame  {
         staticBoard.setBoard(new byte[canvasHeight][canvasWidth]);
 
         drawCanvas = new DrawCanvas(this.canvasHeight, this.canvasWidth, staticBoard.getBoard());
-
         dynamicBoard = new DynamicBoard(this.canvasHeight,this.canvasWidth,dynamic);
-
-
 
         setGc(this.gc);
         gc.setFill(Color.GREY);
@@ -97,7 +94,6 @@ public class CanvasFrame  {
                     dynamicBoard.moveCellsRight();
                     break;
             }
-
             dynamicBoard.drawCells(gc);
             dynamicBoard.drawLines(gc,lineWidth,lineColor);
 
@@ -138,11 +134,9 @@ public class CanvasFrame  {
      */
 
     public void clearCanvas() {
-
         gc.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         gc.setFill(getBackgroundColor());
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-
     }
 
     /**
@@ -153,7 +147,6 @@ public class CanvasFrame  {
     public void clearArray(){
         drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         dynamicBoard.cleanArray();
-
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
@@ -209,10 +202,12 @@ public class CanvasFrame  {
         clearCanvas();
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(gc, lineWidth, lineColor);
-
     }
 
-
+    /**
+     * Returns FPS
+     * @return
+     */
 
     public int getFPS() {
         if (FPS == 0){
@@ -221,15 +216,28 @@ public class CanvasFrame  {
         return FPS;
     }
 
+
+    /**
+     * Returns Board
+     * @return
+     */
     public byte[][] getBoard() {
         return drawCanvas.staticBoard.getBoard();
     }
 
+    /**
+     * Returns Height
+     * @return
+     */
 
     public int getHEIGHT() {
         return canvasHeight;
     }
 
+    /**
+     * Returns Width
+     * @return
+     */
     public int getWIDTH() {
         return canvasWidth;
     }
@@ -246,77 +254,7 @@ public class CanvasFrame  {
         this.FPS = FPS;
     }
 
-
-    public void moveCellsUp(){
-        dynamicBoard.moveCellsUp();
-
-    }
-
-    public void moveCellsLeft(){
-
-        dynamicBoard.moveCellsLeft();
-    }
-
-    public void moveCellsRight(){
-
-        dynamicBoard.moveCellsRight();
-    }
-
-    public void moveCellsDown(){
-
-        dynamicBoard.moveCellsDown();
-    }
-
-    public void start(){
-        thread = new Thread();
-        thread.start();
-
-
-    }
     public DynamicBoard getDynamicBoard(){
         return dynamicBoard;
     }
-
-
-
-
-    public void run() {
-
-            while(true){
-                staticBoard.nextGeneration();
-                drawCanvas.drawCells(gc);
-            }
-
-
-            /*try  {
-
-               // Thread.sleep(15);
-
-              /*  TIME = 1000/getFPS();
-
-                timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-                    drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
-
-                    clearCanvas();
-                    staticBoard.nextGeneration();
-                    drawCanvas.drawCells(this.gc);
-                    drawCanvas.drawLines(this.gc, this.lineWidth,this.lineColor);
-                    timeline.playFromStart();
-
-            System.out.println("Utskrift av statisk 2D tabell:");
-            for(byte[] inner : staticBoard.getBoard())
-                System.out.println(Arrays.toString(inner));
-
-                }));
-
-            } catch (InterruptedException ie) {
-                ie.printStackTrace();
-            }*/
-
-        }
-
-
-
-
-
 }

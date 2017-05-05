@@ -34,9 +34,7 @@ public class DynamicBoard{
         this.canvasHeight = height;
         this.canvasWidth  = width;
         this.cell         = new Cell();
-
         fillBoard(dynamicBoard);
-
     }
 
     /**
@@ -54,7 +52,6 @@ public class DynamicBoard{
                 row.add((byte)0);
             }
             board.add(row);
-
         }
     }
 
@@ -76,12 +73,9 @@ public class DynamicBoard{
                 if (dynamicBoard.get(i).get(j) == 1) {
 
                     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
-
                 }
-
             }
         }
-
     }
 
     /**
@@ -189,7 +183,6 @@ public class DynamicBoard{
      */
 
     public  void drawPattern(int[][] pattern, GraphicsContext gc) {
-        System.out.println("draw");
         for (int row = 0; row < pattern.length; row++) {
             for (int col = 0; col < pattern[row].length; col++) {
                 if (pattern[row][col] == 1) {
@@ -206,9 +199,6 @@ public class DynamicBoard{
      */
 
     public void randomButton(){
-
-        System.out.println(dynamicBoard.size());
-
         for (int i = 0; i < dynamicBoard.size(); i++) {
             for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
                 dynamicBoard.get(i).set(j, (byte) (Math.random() * 2));
@@ -239,17 +229,13 @@ public class DynamicBoard{
                     dynamicBoard.get(i).set(j,(byte)1);
                 }
                 else{ dynamicBoard.get(i).set(j,(byte)0);
-
                 }
-
             }
             oldJ = j;
             oldI = i;
         }
 
         catch (Exception e){
-            System.out.println("Task interrupted");
-
         }}
 
     /**
@@ -258,7 +244,6 @@ public class DynamicBoard{
      */
 
     public void moveCellsRight(){
-
         List<List<Byte>> rightBoard =  new ArrayList<List<Byte>>();
         fillBoard(rightBoard);
         for (int x = 0; x < dynamicBoard.size(); x++) {
@@ -325,14 +310,11 @@ public class DynamicBoard{
 
                 if (dynamicBoard.get(y).get(x) == 1) {
                     downBoard.get(x).set(y - 1, (byte) 1);
-
                 }
-
             }
             dynamicBoard = downBoard;
         }
     }
-
 
 
     public void setCellSize(double size){

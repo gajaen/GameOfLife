@@ -215,8 +215,6 @@ public class Controller implements Initializable {
             canvasFrame.clearCanvas();
             canvasFrame.pressedCanvas();
             timeline.playFromStart();
-
-
         }));
         timeline.play();
 
@@ -266,21 +264,6 @@ public class Controller implements Initializable {
 
 
     /**
-     * Toggle button clicked.
-     */
-
-    @FXML
-    private void clickedToggleButton(ActionEvent event){
-        if (toggleButton.isSelected()) {
-            System.out.println("Toggled");
-        }
-        else {
-            System.out.println("UnToggled");
-        }
-
-    }
-
-    /**
      * Exit game.
      */
 
@@ -311,7 +294,6 @@ public class Controller implements Initializable {
 
     }
 
-
     /**
      * Choose FPS for timeline from slider.
      */
@@ -319,6 +301,7 @@ public class Controller implements Initializable {
     private void FPSClicked() {
         int a = (int) sliderFPS.getValue();
         canvasFrame.setFPS(a);
+        clickedStartButton();
     }
 
     /**
