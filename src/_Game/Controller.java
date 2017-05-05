@@ -76,7 +76,6 @@ public class Controller implements Initializable {
     }
 
     public void clickedRulesButton(){
-        System.out.println("Help");
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/_Game/Fxml/RulesScene.fxml"));
 
