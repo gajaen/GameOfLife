@@ -23,7 +23,6 @@ public class Sounds {
      */
 
     public void Stop() {
-        System.out.println(mediaPlayer.getStatus());
         mediaPlayer.stop();
     }
 
@@ -53,7 +52,7 @@ public class Sounds {
      */
 
     public void Play() {
-        System.out.println(mediaPlayer.getStatus());
+        click();
         if(mediaPlayer.getStatus() == Status.UNKNOWN) {
             Resetmedia();
             mediaPlayer.play();

@@ -48,9 +48,9 @@ public class DynamicBoard{
 
     public void fillBoard(List<List<Byte>> board){
 
-        for(int x = 0; x < canvasWidth; x++){
+        for(int x = 0; x < canvasHeight; x++){
             List<Byte> row = new ArrayList<Byte>();
-            for(int y = 0; y < canvasHeight; y++){
+            for(int y = 0; y < canvasWidth; y++){
                 row.add((byte)0);
             }
             board.add(row);
@@ -121,9 +121,9 @@ public class DynamicBoard{
     public void nextGeneration() {
         List<List<Byte>> nextBoard =  new ArrayList<List<Byte>>();
 
-        for(int i = 0; i < canvasWidth; i++) {
+        for(int i = 0; i < canvasHeight; i++) {
             List<Byte> inner = new ArrayList<Byte>();
-            for (int j = 0; j < canvasHeight; j++)
+            for (int j = 0; j < canvasWidth; j++)
                 inner.add((byte) 0);
             nextBoard.add(inner);
         }

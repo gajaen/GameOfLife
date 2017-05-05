@@ -211,7 +211,6 @@ public class Controller implements Initializable {
 
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-
             canvasFrame.getDynamicBoard().nextGeneration();
             canvasFrame.clearCanvas();
             canvasFrame.pressedCanvas();
