@@ -42,21 +42,14 @@ public class ReadGameBoard {
      */
 
 
-    public ReadGameBoard(int boardHeight, int boardWidth) {
+    public ReadGameBoard(int boardHeight, int boardWidth)  {
 
         pattern = new int[boardWidth][boardHeight];
 
-        try {
             openFile();
             readFile(getLine());
 
-            // setText();
 
-        }  catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("arrayIndex" + e);;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
  /*  public void setText(){
@@ -95,7 +88,7 @@ public class ReadGameBoard {
      * @see IOException
      */
 
-    private void openFile() throws IOException {
+    private void openFile() {
 
         FileChooser fileChooser = new FileChooser();
 
@@ -108,48 +101,26 @@ public class ReadGameBoard {
 
         );
 
-        file = fileChooser.showOpenDialog(stage);
 
+        try {
+            file = fileChooser.showOpenDialog(stage);
+            if(file != null){
+                Scanner scanner1 = new Scanner(file);
+                String line2 = scanner1.nextLine();
 
-        if (file != null) {
-            System.out.println("Choosen file " + file);
-        }
+                Pattern p = Pattern.compile(".*#.*");
+                Matcher m = p.matcher(line2);
+                boolean b = m.matches();
 
+                setPatterName(m.group());
 
-        if (file == null) {
-            return;
-        }
-
-
-        Scanner scanner1 = new Scanner(file);
-        String line2 = scanner1.nextLine();
-
-        Pattern p = Pattern.compile(".*#.*");
-        Matcher m = p.matcher(line2);
-        boolean b = m.matches();
-
-        setPatterName(m.group());
-
-
-      /*  Scanner scanner1 = new Scanner(file);
-        scanner1.nextLine();
-        System.out.println("funker dette");
-        System.out.printf(scanner1.nextLine());
-       String line2 = scanner1.nextLine();
-
-        if (Pattern.matches(".*#.*", line2)) {
-
-            Pattern hash = Pattern.compile(".*#.*");
-
-            Matcher m = hash.matcher(line2);
-            if (m.find( )) {
-                System.out.println("Found value: " + m.group(0) );
-                System.out.println("Found value: " + m.group(1) );
-                System.out.println("Found value: " + m.group(2) );
-            }else {
-                System.out.println("NO MATCH");
             }
-        }*/
+        }catch (Exception e){
+            System.out.println("file not seldcted");
+        }
+
+
+
 
 
     }
@@ -164,7 +135,7 @@ public class ReadGameBoard {
      * @throws IOException On input error.
      * @see FileNotFoundException
      */
-    public void readFile(String line) throws IOException {
+    public void readFile(String line) {
 
         System.out.println("hei");
         this.setLine(line);
@@ -187,111 +158,103 @@ public class ReadGameBoard {
         }
         scan.close();
 */
-        try (Scanner scanner = new Scanner(file )) {
-            //BufferedReader reader = new BufferedReader(new FileReader(file));
-            if (file == null) {
-                return;
-            }
+        if(file != null){
+            try {
+                Scanner scanner = new Scanner(file);
+                while (scanner.hasNextLine()) {
 
-            while (scanner.hasNextLine()) {
+                    line = scanner.nextLine();
 
-                line = scanner.nextLine();
+                    // checkin g line is empty or commented or with rule line
+                    if (line.isEmpty() || Pattern.matches(".*rule.*", line) || Pattern.matches(".*#.*", line)) {
 
-                // checkin g line is empty or commented or with rule line
-                if (line.isEmpty() || Pattern.matches(".*rule.*" , line)|| Pattern.matches(".*#.*", line)) {
-
-                    continue;
-                }
+                        continue;
+                    }
 
 
+                    // split the line with $
+                    Pattern p = Pattern.compile("(?<=\\$)");
 
-                // split the line with $
-                Pattern p = Pattern.compile("(?<=\\$)");
+                    String[] items = p.split(line);
 
-                String[] items = p.split(line);
-
-                for (String item : items) {
-
-
-                    // itemTmp = 2b3o1b2o$
-                    String itemTmp = item;
-
-                    // while itemTmp is a valid form
-                    while ((!itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp)) {
+                    for (String item : items) {
 
 
-                        // b pattern - eg. 34b --> cnumber will be 34
-                        Pattern bnumber = Pattern.compile("^(?<cnumber>\\d*?)b");
-                        Matcher bmatcher = bnumber.matcher(itemTmp);
+                        // itemTmp = 2b3o1b2o$
+                        String itemTmp = item;
 
-                        // o pattern eg. 3o -> onumber will be 3
-                        Pattern onumber = Pattern.compile("^(?<onumber>\\d*?)o");
-                        Matcher omatcher = onumber.matcher(itemTmp);
-
-                        if (bmatcher.find()) {
-                            String bNumString = bmatcher.group("cnumber");
-                            int bNumInt = 1;
-                            if (!bNumString.isEmpty()) {
-
-                                bNumInt = Integer.parseInt(bNumString);
-                            }
-                            columnnumber = columnnumber + bNumInt;
-                            itemTmp = itemTmp.replaceFirst("^\\d*?b", "");
-                        } else if (omatcher.find()) {
-                            String oNumString = omatcher.group("onumber");
-
-                            int oNumInt = 1;
-                            if (!oNumString.isEmpty()) {
-
-                                oNumInt = Integer.parseInt(oNumString);
-                            }
+                        // while itemTmp is a valid form
+                        while ((!itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp)) {
 
 
-                            for (int cnum = 1; cnum <= oNumInt; cnum++) {
-                                try {
-                                    pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
-                                }//columnnumber = columnnumber +1;
-                            catch(ArrayIndexOutOfBoundsException e){
+                            // b pattern - eg. 34b --> cnumber will be 34
+                            Pattern bnumber = Pattern.compile("^(?<cnumber>\\d*?)b");
+                            Matcher bmatcher = bnumber.matcher(itemTmp);
 
-                               // System.out.println(e);
-                                if(rownumber>500 && columnnumber>500){
-                                setCell((rownumber+columnnumber)/pattern.length);
-                                System.out.println("rownumber" + rownumber);
-                                System.out.println("collumn " + columnnumber);
-                                System.out.println("r+c" + rownumber+columnnumber);
-                                System.out.println("r+c/p" + (rownumber+columnnumber)/pattern.length);
-                            }else{
-                                setCell(10);
+                            // o pattern eg. 3o -> onumber will be 3
+                            Pattern onumber = Pattern.compile("^(?<onumber>\\d*?)o");
+                            Matcher omatcher = onumber.matcher(itemTmp);
+
+                            if (bmatcher.find()) {
+                                String bNumString = bmatcher.group("cnumber");
+                                int bNumInt = 1;
+                                if (!bNumString.isEmpty()) {
+
+                                    bNumInt = Integer.parseInt(bNumString);
                                 }
+                                columnnumber = columnnumber + bNumInt;
+                                itemTmp = itemTmp.replaceFirst("^\\d*?b", "");
+                            } else if (omatcher.find()) {
+                                String oNumString = omatcher.group("onumber");
+
+                                int oNumInt = 1;
+                                if (!oNumString.isEmpty()) {
+
+                                    oNumInt = Integer.parseInt(oNumString);
+                                }
+
+
+                                for (int cnum = 1; cnum <= oNumInt; cnum++) {
+                                    try {
+                                        pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
+                                    }//columnnumber = columnnumber +1;
+                                    catch (ArrayIndexOutOfBoundsException e) {
+
+                                        // System.out.println(e);
+                                        if (rownumber > 500 && columnnumber > 500) {
+                                            setCell((rownumber + columnnumber) / pattern.length);
+                                            System.out.println("rownumber" + rownumber);
+                                            System.out.println("collumn " + columnnumber);
+                                            System.out.println("r+c" + rownumber + columnnumber);
+                                            System.out.println("r+c/p" + (rownumber + columnnumber) / pattern.length);
+                                        } else {
+                                            setCell(10);
+                                        }
+                                    }
+
+                                }
+
+                                columnnumber = columnnumber + oNumInt;
+                                itemTmp = itemTmp.replaceFirst("^\\d*?o", "");
                             }
 
-                            }
-
-                            columnnumber = columnnumber + oNumInt;
-                            itemTmp = itemTmp.replaceFirst("^\\d*?o", "");
                         }
 
-                    }
-
-                    //if $ ONLY move to next row (row = row + 1 and column =0)
-                    if (Pattern.matches(".*\\$", item)) {
-                        columnnumber = 0;
-                        rownumber = rownumber + 1;
-                    }
+                        //if $ ONLY move to next row (row = row + 1 and column =0)
+                        if (Pattern.matches(".*\\$", item)) {
+                            columnnumber = 0;
+                            rownumber = rownumber + 1;
+                        }
 
 
+                     } }
+            }
+            catch(Exception e) {
 
+                System.out.println("file not found");
 
-
-
-                }}
-
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+                }
         }
-
 
     }
 
@@ -325,6 +288,7 @@ public class ReadGameBoard {
     }
 
     public String getCreationDetails(File file) {
+        if(file == null)
         try {
             Path p = Paths.get(file.getAbsolutePath());
             BasicFileAttributes view

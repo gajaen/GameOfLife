@@ -2,17 +2,8 @@ package _Game;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ToolBar;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -26,10 +17,6 @@ import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
-
-    double xOffset = 0;
-    double yOffset = 0;
-    Controller controller;
 
 
     /**
@@ -62,17 +49,6 @@ public class Main extends Application {
 
         primaryStage.show();
     }
-
-
-
-
-
-
-         /*
-        The two following lambda expressions makes it possible to move the application without the standard StageStyle
-         */
-        //Lambda mouse event handler
-
 
 
     }

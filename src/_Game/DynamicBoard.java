@@ -24,14 +24,13 @@ public class DynamicBoard{
     public DynamicBoard(int height, int width, List<List<Byte>> dynamic)  {
 
         this.dynamicBoard = dynamic;
-
         this.canvasHeight = height;
-        this.canvasWidth = width;
-
-        this.cell = new Cell();
+        this.canvasWidth  = width;
+        this.cell         = new Cell();
         fillBoard(dynamicBoard);
 
     }
+
 
 
     public void fillBoard(List<List<Byte>> board){
@@ -157,6 +156,7 @@ public class DynamicBoard{
     }
 
     public  void drawPattern(int[][] pattern, GraphicsContext gc) {
+        System.out.println("draw");
         for (int row = 0; row < pattern.length; row++) {
             for (int col = 0; col < pattern[row].length; col++) {
                 if (pattern[row][col] == 1) {
@@ -178,7 +178,7 @@ public class DynamicBoard{
         }
     }
 
-    public void CanvasPressed(MouseEvent a) throws Exception {
+    public void CanvasPressed(MouseEvent a)  {
         try {
 
             int j = (int)(a.getX() / cell.getCellSize()) + 1;
@@ -199,8 +199,6 @@ public class DynamicBoard{
                 }
 
             }
-
-
             oldJ = j;
             oldI = i;
         }

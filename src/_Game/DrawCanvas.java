@@ -60,6 +60,7 @@ public class DrawCanvas {
      * @return Nothing.
      *
      */
+
     public void drawCells(GraphicsContext gc) {
 
 
@@ -87,6 +88,7 @@ public class DrawCanvas {
      * @return Nothing.
      * @exception Exception On input error.
      * @see Exception
+     *
      */
 
     public void CanvasPressed(MouseEvent a) throws Exception {

@@ -6,12 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import java.applet.Applet;
-import java.io.File;
 import java.util.*;
 
 
@@ -25,12 +21,12 @@ import java.util.*;
 
 public class CanvasFrame  {
 
+
     private GraphicsContext gc;
     private Color lineColor, backgroundColor;
     private StaticBoard staticBoard;
-    public DynamicBoard dynamicBoard;
+    private DynamicBoard dynamicBoard;
     private DrawCanvas drawCanvas;
-    private Cell cell;
     private Timeline timeline;
     private double lineWidth;
     private int canvasWidth, canvasHeight, TIME, FPS;
@@ -202,7 +198,7 @@ public class CanvasFrame  {
      * @exception Exception On input error.
      * @see Exception
      */
-    public void CanvasPressed(MouseEvent a) throws Exception {
+    public void CanvasPressed(MouseEvent a)  {
         clearCanvas();
         dynamicBoard.CanvasPressed(a);
         dynamicBoard.drawCells(gc);
@@ -220,6 +216,7 @@ public class CanvasFrame  {
 
     public void drawPattern(int [][] pattern){
         clearArray();
+        // drawing pattern
         dynamicBoard.drawPattern(pattern,gc);
         clearCanvas();
         dynamicBoard.drawCells(gc);

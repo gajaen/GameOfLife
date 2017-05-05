@@ -49,7 +49,7 @@ public class GUI{
      */
 
 
-    public void StartButton() {
+    /*public void StartButton() {
         canvasFrame.dynamicBoard.nextGeneration();
     }
 

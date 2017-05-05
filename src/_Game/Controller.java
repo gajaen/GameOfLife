@@ -1,7 +1,6 @@
 package _Game;
 
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -29,44 +28,36 @@ import java.util.logging.Logger;
 
 /**
  * The Game Of Life program created for HIOA final project
- * The Controller class is the fx for fxml, all the properties in fxml are assign here.
+ * The Controller class is the fx for fxml, all the properties in fxml are declared here.
  * The class is also implementing Initializable interface.
  *
  * @version 1.0
  * @since   2017-01-14
- */
+ * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
+ * Studentnr : S315325 & S315285
+ * */
 
 
 public class Controller implements Initializable {
-    public Canvas CanvasId;
-    @FXML
-    private CanvasFrame canvasFrame;
-    private Sounds sounds;
-    public ColorPicker colorPicker;
-    public ChoiceBox patternChoiceBox, musicChoiceBox;
-    private GUI gui;
-    private Timeline timeline;
 
+    @FXML private Canvas CanvasId;
+    @FXML private ColorPicker colorPicker;
+    @FXML private ChoiceBox patternChoiceBox, musicChoiceBox;
+    @FXML private Slider sliderFPS, cellSlider;
+    @FXML private Button musicStartButton, drawPattern;
+    @FXML private ToolBar Toolbar;
+    @FXML private TextField textBox;
+    @FXML private ToggleButton toggleButton;
+    @FXML private Text tekst;
 
-    public Slider sliderFPS, cellSlider;
-    public StaticBoard sBoard;
-    public DynamicBoard dynamicBoard;
-    public Button musicStartButton, drawPattern;
-    public ToolBar Toolbar;
-    String line;
-    public ToggleButton toggleButton;
-    @FXML
-    TextField textBox;
-    private Timeline tl;
+          private CanvasFrame canvasFrame;
+          private Sounds sounds;
+          private Timeline timeline;
+          private ReadGameBoard readGameBoard;
 
-
-    int user_id = 2;
-    ReadGameBoard readGameBoard;
-    public Text tekst;
-    double x, y;
 
     /**
-     * Constructs and initializes the canvas and gui.
+     * Constructs and initializes the canvasFrame.
      *
      * @param location  unused.
      * @param resources unused.
@@ -74,31 +65,29 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
-        this.gui = new GUI(canvasFrame);
         sounds = new Sounds();
-        key();
         tekst.setText("");
         patternChoiceBox();
         musicChoiceBox();
+        key();
 
     }
 
 
-    public void key() {
+    @FXML
+    private void key() {
         CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
             public void handle(javafx.scene.input.KeyEvent event) {
                 canvasFrame.key(event);
-
             }
         });
     }
-    public void aboutButtonClicked(){
-        About about = new About();
-        about.About();
-    }
 
-    public void musicChoiceBox(){
+    @FXML
+    private void musicChoiceBox(){
+
         sounds.startClick();
         musicChoiceBox.getItems().add("Take On Me");
         musicChoiceBox.getItems().add("Through The Fire and Flames");
@@ -108,9 +97,11 @@ public class Controller implements Initializable {
         musicChoiceBox.getItems().add("Shape Of You");
         musicChoiceBox.setValue("Shape Of You");
         musicStartButton.setOnAction(event -> getMusicChoice(musicChoiceBox));
+
     }
 
-    public void getMusicChoice(ChoiceBox<String>musicChoiceBox) {
+    @FXML
+    private void getMusicChoice(ChoiceBox<String>musicChoiceBox) {
         switch (musicChoiceBox.getValue()) {
             case "Take On Me":
                 sounds.TakeOnMe();
@@ -135,24 +126,22 @@ public class Controller implements Initializable {
     }
 
 
-    public void clickedMusicStartButton(){
 
-    }
-    public void clickedMusicPauseButton(){
+    @FXML
+    private void clickedMusicPauseButton(){
         sounds.click();
         sounds.Pause();
-
     }
 
-    public void clickedMusicStopButton(){
+    @FXML
+    private void clickedMusicStopButton(){
         sounds.click();
         sounds.Stop();
-
     }
 
 
     @FXML
-    public void clickedToolbar(){
+    private void clickedToolbar(){
         final double xOffset = 640;
         final double yOffset = 20;
 
@@ -164,8 +153,8 @@ public class Controller implements Initializable {
         });
     }
 
-
-    public void clickedStartButton() {
+    @FXML
+    private void clickedStartButton() {
        int TIME = 1000/canvasFrame.getFPS();
 
 
@@ -184,25 +173,24 @@ public class Controller implements Initializable {
 
     }
 
-    public void clickedClearButton() {
+    @FXML
+    private void clickedClearButton() {
+        canvasFrame.clearCanvas();
+        canvasFrame.clearArray();
         timeline.stop();
-        sounds.click();
-        gui.ClearButton();
     }
 
-    public void clickedRandomButton() {
-        sounds.click();
-        gui.RandomButton();
-    }
 
-    public void patternChoiceBox(){
+    @FXML
+    private void patternChoiceBox(){
         patternChoiceBox.getItems().add("Random");
         patternChoiceBox.getItems().add("None");
         patternChoiceBox.setValue("Random");
         drawPattern.setOnAction(event -> getPatternChoice(patternChoiceBox));
     }
 
-    public void getPatternChoice(ChoiceBox<String>patternChoiceBox) {
+    @FXML
+    private void getPatternChoice(ChoiceBox<String>patternChoiceBox) {
         switch (patternChoiceBox.getValue()) {
             case "Random":
                 System.out.println(patternChoiceBox.getValue());
@@ -210,55 +198,58 @@ public class Controller implements Initializable {
                 break;
             case "None":
                 System.out.println("None");
-                gui.ClearButton();
+                clickedClearButton();
                 break;
         }
     }
 
-    public void clickedToggleButton(ActionEvent event) {
+    @FXML
+    private void clickedToggleButton(ActionEvent event){
         if (toggleButton.isSelected()) {
-            System.out.println("Toggle Static");
-        } else {
-            System.out.println("Toggle Dunamic");
-
+            System.out.println("Toggled");
         }
-    }
-    public void clickedDrawButton(){
+        else {
+            System.out.println("UnToggled");
+        }
 
     }
 
-    public void clickedExitButton(){
+    @FXML
+    private void clickedExitButton(){
         sounds.click();
         Platform.exit();
     }
 
-    public void colorPickerClicked() {
+    @FXML
+    private void colorPickerClicked() {
         sounds.click();
         canvasFrame.colorPicker(colorPicker);
     }
 
-    public void clickedStopButton() {
+    @FXML
+    private void clickedStopButton() {
         timeline.stop();
         sounds.click();
     }
 
-    public void FPSClicked() {
+    @FXML
+    private void FPSClicked() {
         int a = (int) sliderFPS.getValue();
         canvasFrame.setFPS(a);
-        //canvasFrame.SetTimeline();
         canvasFrame.drawCanvas();
     }
 
-    public void CellSizeClicked() {
+    @FXML
+    private void CellSizeClicked() {
         double a = cellSlider.getValue();
         canvasFrame.cellSize(a);
         canvasFrame.drawCanvas();
     }
 
-    public void CanvasReleased() {
-    }
 
-    public void CanvasPressed(MouseEvent a) throws Exception {
+
+    @FXML
+    private void CanvasPressed(MouseEvent a)  {
         canvasFrame.CanvasPressed(a);
     }
 
@@ -270,38 +261,50 @@ public class Controller implements Initializable {
      * @throws IOException On input error.
      * @see IOException
      */
+
     @FXML
-    private void openFile() throws IOException {
-        readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
-        readGameBoard.readFile(line);
-        canvasFrame.drawPattern(readGameBoard.pattern);
-        tekst.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.file) + " File name: " + readGameBoard.file.getName() +
-                "  Created by: " + readGameBoard.file.getParent() +
-                "  Pattern name: " + readGameBoard.getPatterName());
-        if(readGameBoard.getCell() > 0){
-        canvasFrame.cellSize(readGameBoard.getCell());}
+    private void openFile()  {
 
-        canvasFrame.clearCanvas();
+        try {
 
-        canvasFrame.pressedCanvas();
-    }
+                readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
+                canvasFrame.drawPattern(readGameBoard.pattern);
+                tekst.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.file) + " File name: " + readGameBoard.file.getName() +
+                        "  Created by: " + readGameBoard.file.getParent() +
+                        "  Pattern name: " + readGameBoard.getPatterName());
+                if (readGameBoard.getCell() > 0) {
+                    canvasFrame.cellSize(readGameBoard.getCell());
+                }
+
+                canvasFrame.clearCanvas();
+
+                canvasFrame.pressedCanvas();
+
+        }
+        catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("File Not Choosen");
+            alert.setHeaderText(null);
+            alert.setContentText("Have you forgot to select the file?");
+
+            alert.showAndWait();
+        }
+        }
 
     /**
      * This method is closing the window.
      */
-    public void closeWindow() {
-        Platform.exit();
-    }
+    @FXML
+    private void closeWindow() {Platform.exit();}
 
-    public void saveBoard() {
+    @FXML
+    private void saveBoard() {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/_Game/SaveBoard.fxml"));
 
-            //  fxmlLoader.setController(saveBoardController.class);
             Scene scene = new Scene(fxmlLoader.load(), 800, 500);
             SaveGame controller = fxmlLoader.<SaveGame>getController();
-            controller.setUser(user_id);
             controller.setBoard(canvasFrame.getBoard());
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -314,46 +317,24 @@ public class Controller implements Initializable {
 
     }
 
-    public void patternLoad() throws IOException {
+    @FXML
+    private void patternLoad() throws IOException {
 
         URL url = new URL(textBox.getText());
         InputStream in = url.openStream();
         Scanner scan = new Scanner(in);
 
-        while (scan.hasNext())
+        while (scan.hasNextLine())
         {
             String str = scan.nextLine();
             System.out.println(str);
         }
+
         scan.close();
 
-        /*
-        String in;
-
-
-        System.out.println(textBox.getText());
-
-        URL url = new URL(textBox.getText());
-        URLConnection conn = url.openConnection();
-        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-
-        while ((in = br.readLine()) != null) {
-
-            System.out.println(in);
-            //readGameBoard.readFile(in);
-
-
-        }
-
-        br.close();
-*/
-
-        //   readGameBoard.readFile(in);
-
-
     }
-    
+
+
 
 }
 
