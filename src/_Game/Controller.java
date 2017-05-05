@@ -83,6 +83,7 @@ public class Controller implements Initializable {
             Rules controller = fxmlLoader.<Rules>getController();
             Stage stage = new Stage();
             stage.setScene(scene);
+            stage.setTitle("Rules");
             stage.show();
 
         } catch (IOException e) {
