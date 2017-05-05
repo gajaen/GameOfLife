@@ -22,7 +22,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1278.0" style="-fx-background-color: orange; -fx-border-color: BLACK; -fx-border-radius: 2; -fx-border-width: 2; -fx-background-radius: 2;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
    <children>
-      <ImageView fitHeight="748.0" fitWidth="1287.0" layoutY="30.0">
+      <ImageView fitHeight="748.0" fitWidth="1287.0" layoutX="-9.0" layoutY="32.0">
          <image>
             <Image url="@Pictures/Background.png" />
          </image>
@@ -53,31 +53,31 @@
             <Insets />
          </opaqueInsets>
       </Slider>
-      <Text fontSmoothingType="LCD" layoutX="1132.0" layoutY="696.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="MusicPlayer" textAlignment="CENTER" wrappingWidth="85.0">
+      <Text fontSmoothingType="LCD" layoutX="1113.0" layoutY="694.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="MusicPlayer" textAlignment="CENTER" wrappingWidth="109.00000008940697">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="16.0" />
          </font></Text>
       <Text fontSmoothingType="LCD" layoutX="919.0" layoutY="721.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FPS" textAlignment="RIGHT" wrappingWidth="23.955081045627594">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Text>
       <ColorPicker fx:id="colorPicker" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="945.0" layoutY="730.0" onAction="#colorPickerClicked" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" />
       <Text fontSmoothingType="LCD" layoutX="654.0" layoutY="688.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Button fx:id="patternLoad" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="747.0" layoutY="692.0" mnemonicParsing="false" onAction="#patternLoad" prefHeight="27.0" prefWidth="120.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Load Pattern" />
-      <TextField fx:id="textBox" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="634.0" layoutY="692.0" prefHeight="27.0" prefWidth="109.0" promptText="Pattern Link" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" />
-      <Button fx:id="drawPattern" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="747.0" layoutY="730.0" mnemonicParsing="false" onAction="#clickedDrawButton" prefHeight="27.0" prefWidth="56.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Draw" />
+      <Button fx:id="patternLoad" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="769.0" layoutY="692.0" mnemonicParsing="false" onAction="#patternLoad" prefHeight="27.0" prefWidth="109.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Load Pattern" />
+      <TextField fx:id="textBox" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="654.0" layoutY="692.0" prefHeight="27.0" prefWidth="109.0" promptText="Pattern Link" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" />
+      <Button fx:id="drawPattern" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="769.0" layoutY="730.0" mnemonicParsing="false" onAction="#clickedDrawButton" prefHeight="27.0" prefWidth="109.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Draw" />
       <ImageView fitHeight="83.0" fitWidth="507.0" layoutX="371.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Pictures/Game-of-Life.png" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="patternChoiceBox" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="634.0" layoutY="730.0" prefHeight="27.0" prefWidth="109.0" scaleShape="false" style="-fx-border-radius: 3; -fx-border-color: Black;" />
+      <ChoiceBox fx:id="patternChoiceBox" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="654.0" layoutY="730.0" prefHeight="27.0" prefWidth="109.0" scaleShape="false" style="-fx-border-radius: 3; -fx-border-color: Black;" />
       <ToolBar fx:id="Toolbar" onDragDetected="#clickedToolbar" onMousePressed="#clickedToolbar" prefHeight="16.0" prefWidth="1280.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-background-color: rgb(250,250,250); -fx-border-width: 2; -fx-background-radius: 2;">
          <items>
-            <MenuBar blendMode="SRC_ATOP" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="127.0" scaleShape="false" style="-fx-background-color: rgb(250,250,250);">
+            <MenuBar blendMode="SRC_ATOP" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="112.0" scaleShape="false" style="-fx-background-color: rgb(250,250,250);">
                <menus>
                   <Menu text="File">
                      <items>
@@ -86,14 +86,14 @@
                               <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
-                        <MenuItem onAction="#closeWindow" text="Exit">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
                         <MenuItem onAction="#saveBoard" text="Save">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem onAction="#closeWindow" text="Exit">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
                      </items>
@@ -115,7 +115,7 @@
                   </ContextMenu>
                </contextMenu>
             </MenuBar>
-            <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="meta" wrappingWidth="1094.9857788085938" />
+            <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="meta" wrappingWidth="1109.9857788085938" />
             <Button fx:id="exitButton" alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" contentDisplay="RIGHT" focusTraversable="false" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#clickedExitButton" prefHeight="27.0" prefWidth="22.0" scaleShape="false" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;" text="☓" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -134,20 +134,19 @@
          </image>
       </ImageView>
       <ChoiceBox fx:id="musicChoiceBox" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1093.0" layoutY="730.0" prefHeight="25.0" prefWidth="162.0" scaleShape="false" style="-fx-background-radius: 3; -fx-border-color: black; -fx-border-radius: 3;" />
-      <Button fx:id="musicStartButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1125.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicStartButton" prefHeight="27.0" prefWidth="35.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: #3fa34e;" text="▶" />
-      <Text fontSmoothingType="LCD" layoutX="891.0" layoutY="693.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="55.99998474121094">
+      <Button fx:id="musicStartButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1113.0" layoutY="697.0" mnemonicParsing="false" onAction="#clickedMusicStartButton" prefHeight="25.0" prefWidth="37.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: #3fa34e;" text="▶" />
+      <Text fontSmoothingType="LCD" layoutX="891.0" layoutY="694.0" strokeLineCap="BUTT" strokeType="OUTSIDE" strokeWidth="0.0" text="CellSize" textAlignment="RIGHT" wrappingWidth="55.99998474121094">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Button fx:id="musicStopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1192.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicStopButton" prefHeight="27.0" prefWidth="35.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: #bf3333;" text="⏹" />
-      <Button fx:id="musicPauseButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1157.0" layoutY="703.0" mnemonicParsing="false" onAction="#clickedMusicPauseButton" prefHeight="27.0" prefWidth="35.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: lightgrey;" text="⏸" />
+      <Button fx:id="musicStopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1197.0" layoutY="697.0" mnemonicParsing="false" onAction="#clickedMusicStopButton" prefHeight="27.0" prefWidth="35.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: #bf3333;" text="⏹" />
+      <Button fx:id="musicPauseButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1157.0" layoutY="697.0" mnemonicParsing="false" onAction="#clickedMusicPauseButton" prefHeight="27.0" prefWidth="35.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3; -fx-background-color: lightgrey;" text="⏸" />
       <ToggleButton fx:id="toggleBoard" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="270.0" layoutY="705.0" mnemonicParsing="false" onAction="#clickedToggleBoard" prefHeight="56.0" prefWidth="109.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3; -fx-background-radius: 3;" text="Toggle DynamicBoard" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </ToggleButton>
-      <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="807.0" layoutY="730.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="56.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Save" />
    </children>
    <opaqueInsets>
       <Insets />
