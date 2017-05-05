@@ -231,9 +231,10 @@ public class CanvasFrame  {
 
     public void drawPattern(int [][] pattern){
         clearArray();
-        drawCanvas();
         dynamicBoard.drawPattern(pattern,gc);
+        clearCanvas();
         dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(gc, lineWidth, lineColor);
 
     }
 
@@ -242,21 +243,18 @@ public class CanvasFrame  {
      */
 
     public void drawCanvas(){
-
+/*
         drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
         clearCanvas();
         drawCanvas.drawCells(gc);
         drawCanvas.drawLines(gc, lineWidth, lineColor);
+        */
 
     }
 
     public byte[][] getBoard() {
         return drawCanvas.staticBoard.getBoard();
     }
-
-
-
-
 
 
     public int getHEIGHT() {
@@ -329,7 +327,7 @@ public class CanvasFrame  {
 
                 timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
                     drawCanvas = new DrawCanvas(canvasHeight, canvasWidth, staticBoard.getBoard());
-                    clickNoise();
+
                     clearCanvas();
                     staticBoard.nextGeneration();
                     drawCanvas.drawCells(this.gc);
