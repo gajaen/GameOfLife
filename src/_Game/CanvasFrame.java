@@ -101,7 +101,6 @@ public class CanvasFrame  {
     }
 
 
-
     /**
      * Changing the cell color depending on user input from colorPicker
      * @param colorPicker is choosing color
@@ -151,19 +150,15 @@ public class CanvasFrame  {
         dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
-
-
     /**
      * Create's a new random array
      */
 
     public void RandomButtonAction() {
-
-            clearCanvas();
-            dynamicBoard.randomButton();
-            dynamicBoard.drawCells(gc);
-            dynamicBoard.drawLines(gc,lineWidth,lineColor);
-
+        clearCanvas();
+        dynamicBoard.randomButton();
+        dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(gc,lineWidth,lineColor);
     }
 
     /**
@@ -242,17 +237,35 @@ public class CanvasFrame  {
         return canvasWidth;
     }
 
+    /**
+     * Returns backgroundColor
+     * @return
+     */
+
     public Color getBackgroundColor() {
         return backgroundColor;
     }
+
+    /**
+     *  Sets GraphicsContext
+     * @param gc
+     */
 
     public void setGc(GraphicsContext gc) {
         this.gc = gc;
     }
 
+    /**
+     * Sets FPS
+     * @param FPS
+     */
+
     public void setFPS(int FPS) {
         this.FPS = FPS;
     }
+    /**
+     * Returns DynamicBoard
+     */
 
     public DynamicBoard getDynamicBoard(){
         return dynamicBoard;

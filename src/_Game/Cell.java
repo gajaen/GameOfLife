@@ -20,29 +20,52 @@ public class Cell {
      */
 
     public Cell(){
-
         cellSize = 10;
         cellGap = 1;
         cellColor = Color.WHITE;
     }
 
+    /**
+     * Returns CellColor
+     * @return
+     */
 
     public Color getCellColor() {
         return cellColor;
     }
+
+    /**
+     * Sets the cell Color
+     * @param cellColor
+     */
 
 
     public void setCellColor(Color cellColor) {
         this.cellColor = cellColor;
     }
 
+    /**
+     * Returns CellColor
+     * @return
+     */
+
     public double getCellSize() {
         return cellSize;
     }
 
+    /**
+     * Set Cell Size
+     * @param cellSize
+     */
+
     public void setCellSize(double cellSize) {
         this.cellSize = cellSize;
     }
+
+    /**
+     * Returns CellGap
+     * @return
+     */
 
     public int getCellGap() {
         if (getCellSize() < 2){
@@ -51,6 +74,4 @@ public class Cell {
             cellGap = 1;}
         return cellGap;
     }
-
-
 }
