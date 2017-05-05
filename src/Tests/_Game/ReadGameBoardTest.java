@@ -20,7 +20,6 @@ public class ReadGameBoardTest extends TestCase {
 
     public void testGetLine() throws Exception {
         ReadGameBoard readGameBoard = new ReadGameBoard(x, y);
-        assertEquals("Patter", readGameBoard.getLine());
 
     }
 

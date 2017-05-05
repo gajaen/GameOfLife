@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 public class DrawCanvas {
 
-     Cell cell;
+    Cell cell;
     StaticBoard staticBoard;
     private int canvasHeight;
     private int canvasWidth;

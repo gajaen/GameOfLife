@@ -27,11 +27,10 @@ import java.util.regex.Pattern;
 
 
 public class ReadGameBoard {
+    private File file;
     private Stage stage;
-    File file;
-    public int[][] pattern;
-    private String line;
     private String patterName;
+    public int[][] pattern;
     private int cell;
 
     /**
@@ -46,50 +45,21 @@ public class ReadGameBoard {
 
         pattern = new int[boardWidth][boardHeight];
 
-            openFile();
-            readFile(getLine());
-
-
-    }
-
- /*  public void setText(){
-
-
-        Pattern hash = Pattern.compile(".*#.*");
-
-        Matcher m = hash.matcher(line);
-        if (m.find( )) {
-            System.out.println("Found value: " + m.group(0) );
-        }else {
-            System.out.println("NO MATCH");
-
-        }
-
-
-    }*/
-
-
-    /**
-     * Constructs and initializes the stage.
-     *
-     * @param primaryStage unused.
-     */
-
-    public void init(Stage primaryStage) {
-
-        this.stage = stage;
+        openFile();
+        readFile();
 
     }
+
+
 
     /**
      * This method opens the file with FileChooser.
      *
-     * @throws IOException On input error.
-     * @see IOException
      */
 
     private void openFile() {
 
+        //Opens file
         FileChooser fileChooser = new FileChooser();
 
         fileChooser.setTitle("Open GOL Shape");
@@ -99,30 +69,9 @@ public class ReadGameBoard {
                 new FileChooser.ExtensionFilter("Text File", "*.txt"),
                 new FileChooser.ExtensionFilter("All files", "*")
 
+
         );
-
-
-        try {
-            file = fileChooser.showOpenDialog(stage);
-            if(file != null){
-                Scanner scanner1 = new Scanner(file);
-                String line2 = scanner1.nextLine();
-
-                Pattern p = Pattern.compile(".*#.*");
-                Matcher m = p.matcher(line2);
-                boolean b = m.matches();
-
-                setPatterName(m.group());
-
-            }
-        }catch (Exception e){
-            System.out.println("file not seldcted");
-        }
-
-
-
-
-
+        file = fileChooser.showOpenDialog(stage);
     }
 
 
@@ -132,47 +81,32 @@ public class ReadGameBoard {
      * This method decodes each line that has string 'b' , 'o' , '$'.
      * The it is putting it to the pattern array.
      *
-     * @throws IOException On input error.
-     * @see FileNotFoundException
      */
-    public void readFile(String line) {
 
-        System.out.println("hei");
-        this.setLine(line);
-        int rownumber = 5;
-        int columnnumber = 0;
-
-
-      /*  String url2 = "test";
-        URL url = new URL(url2);
-        InputStream in = url.openStream();
-        Scanner scan = new Scanner(in);
+    public void readFile() {
 
 
 
-        while (scan.hasNext())
-        {
-            String str = scan.nextLine();
-//            readGameBoard.readFile(str);
-            System.out.println(str);
-        }
-        scan.close();
-*/
+        int rowNumber = 5;
+        int columnNumber = 0;
+
         if(file != null){
+
             try {
                 Scanner scanner = new Scanner(file);
                 while (scanner.hasNextLine()) {
 
-                    line = scanner.nextLine();
+                    String line = scanner.nextLine();
 
-                    // checkin g line is empty or commented or with rule line
+                    // Checking if line is empty or commented or with rule line
+
                     if (line.isEmpty() || Pattern.matches(".*rule.*", line) || Pattern.matches(".*#.*", line)) {
 
                         continue;
                     }
 
 
-                    // split the line with $
+                    // Split the line with $
                     Pattern p = Pattern.compile("(?<=\\$)");
 
                     String[] items = p.split(line);
@@ -180,30 +114,32 @@ public class ReadGameBoard {
                     for (String item : items) {
 
 
-                        // itemTmp = 2b3o1b2o$
                         String itemTmp = item;
 
                         // while itemTmp is a valid form
                         while ((!itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp)) {
 
 
-                            // b pattern - eg. 34b --> cnumber will be 34
+                            // b pattern
                             Pattern bnumber = Pattern.compile("^(?<cnumber>\\d*?)b");
                             Matcher bmatcher = bnumber.matcher(itemTmp);
 
-                            // o pattern eg. 3o -> onumber will be 3
+                            // o pattern
                             Pattern onumber = Pattern.compile("^(?<onumber>\\d*?)o");
                             Matcher omatcher = onumber.matcher(itemTmp);
 
                             if (bmatcher.find()) {
+
                                 String bNumString = bmatcher.group("cnumber");
                                 int bNumInt = 1;
-                                if (!bNumString.isEmpty()) {
 
+                                if (!bNumString.isEmpty()) {
                                     bNumInt = Integer.parseInt(bNumString);
                                 }
-                                columnnumber = columnnumber + bNumInt;
+
+                                columnNumber = columnNumber + bNumInt;
                                 itemTmp = itemTmp.replaceFirst("^\\d*?b", "");
+
                             } else if (omatcher.find()) {
                                 String oNumString = omatcher.group("onumber");
 
@@ -216,44 +152,36 @@ public class ReadGameBoard {
 
                                 for (int cnum = 1; cnum <= oNumInt; cnum++) {
                                     try {
-                                        pattern[rownumber + 10][columnnumber + cnum + 10] = 1;
-                                    }//columnnumber = columnnumber +1;
-                                    catch (ArrayIndexOutOfBoundsException e) {
-
-                                        // System.out.println(e);
-                                        if (rownumber > 500 && columnnumber > 500) {
-                                            setCell((rownumber + columnnumber) / pattern.length);
-                                            System.out.println("rownumber" + rownumber);
-                                            System.out.println("collumn " + columnnumber);
-                                            System.out.println("r+c" + rownumber + columnnumber);
-                                            System.out.println("r+c/p" + (rownumber + columnnumber) / pattern.length);
-                                        } else {
-                                            setCell(10);
+                                        pattern[rowNumber + 10][columnNumber + cnum + 10] = 1;
+                                    } catch (ArrayIndexOutOfBoundsException e) {
+                                        if (rowNumber > 500 && columnNumber > 500) {
+                                            setCell((rowNumber + columnNumber) / pattern.length);
                                         }
                                     }
 
                                 }
 
-                                columnnumber = columnnumber + oNumInt;
+                                columnNumber = columnNumber + oNumInt;
                                 itemTmp = itemTmp.replaceFirst("^\\d*?o", "");
                             }
 
                         }
 
-                        //if $ ONLY move to next row (row = row + 1 and column =0)
+                        //if $ ONLY move to next row
                         if (Pattern.matches(".*\\$", item)) {
-                            columnnumber = 0;
-                            rownumber = rownumber + 1;
+                            columnNumber = 0;
+                            rowNumber = rowNumber + 1;
                         }
 
+                    }
 
-                     } }
+                }
             }
             catch(Exception e) {
 
-                System.out.println("file not found");
+                System.out.println("File not found");
 
-                }
+            }
         }
 
     }
@@ -287,20 +215,27 @@ public class ReadGameBoard {
 
     }
 
+    /**
+     * Gets MetaData from file
+     *
+     * @param file
+     *
+     */
+
     public String getCreationDetails(File file) {
         if(file == null)
-        try {
-            Path p = Paths.get(file.getAbsolutePath());
-            BasicFileAttributes view
-                    = Files.getFileAttributeView(p, BasicFileAttributeView.class)
-                    .readAttributes();
-            FileTime fileTime = view.creationTime();
+            try {
+                Path p = Paths.get(file.getAbsolutePath());
+                BasicFileAttributes view
+                        = Files.getFileAttributeView(p, BasicFileAttributeView.class)
+                        .readAttributes();
+                FileTime fileTime = view.creationTime();
 
-            return ("" + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format((fileTime.toMillis())));
+                return ("" + new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format((fileTime.toMillis())));
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         return "";
     }
 
@@ -309,23 +244,19 @@ public class ReadGameBoard {
         return patterName;
     }
 
-    public void setPatterName(String patterName) {
-        this.patterName = patterName;
-    }
-
-    public String getLine() {
-        return line;
-    }
-
-    public void setLine(String line) {
-        this.line = line;
-    }
-
     public int getCell() {
         return cell;
     }
 
     public void setCell(int cell) {
         this.cell = cell;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
     }
 }

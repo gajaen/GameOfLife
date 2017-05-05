@@ -40,7 +40,7 @@ import java.util.logging.Logger;
 
 public class Controller implements Initializable {
 
-    @FXML private Canvas CanvasId;
+    @FXML private Canvas canvasId;
     @FXML private ColorPicker colorPicker;
     @FXML private ChoiceBox patternChoiceBox, musicChoiceBox;
     @FXML private Slider sliderFPS, cellSlider;
@@ -48,7 +48,7 @@ public class Controller implements Initializable {
     @FXML private ToolBar Toolbar;
     @FXML private TextField textBox;
     @FXML private ToggleButton toggleButton;
-    @FXML private Text tekst;
+    @FXML private Text text;
 
           private CanvasFrame canvasFrame;
           private Sounds sounds;
@@ -66,14 +66,19 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        canvasFrame = new CanvasFrame((int) CanvasId.getHeight(), (int) CanvasId.getWidth(), CanvasId.getGraphicsContext2D());
+        canvasFrame = new CanvasFrame((int) canvasId.getHeight(), (int) canvasId.getWidth(), canvasId.getGraphicsContext2D());
         sounds = new Sounds();
-        tekst.setText("");
+        text.setText("");
         patternChoiceBox();
         musicChoiceBox();
         key();
 
     }
+
+    /**
+     * New scene opens and rules are shown
+     *
+     */
 
     public void clickedRulesButton(){
         try {
@@ -94,14 +99,22 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Action on canvas when key is pressed.
+     */
+
     @FXML
     private void key() {
-        CanvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
+        canvasId.setOnKeyPressed(new EventHandler<javafx.scene.input.KeyEvent>() {
             public void handle(javafx.scene.input.KeyEvent event) {
                 canvasFrame.key(event);
             }
         });
     }
+
+    /**
+     * Adding Items to music ChoiceBox.
+     */
 
     @FXML
     private void musicChoiceBox(){
@@ -113,10 +126,14 @@ public class Controller implements Initializable {
         musicChoiceBox.getItems().add("Radioactive");
         musicChoiceBox.getItems().add("Knights of Cydonia");
         musicChoiceBox.getItems().add("Shape Of You");
-        musicChoiceBox.setValue("Take On Me");
+        musicChoiceBox.setValue("Shape Of You");
         musicStartButton.setOnAction(event -> getMusicChoice(musicChoiceBox));
 
     }
+
+    /**
+     * Getting and assigning songs to the user.
+     */
 
     @FXML
     private void getMusicChoice(ChoiceBox<String>musicChoiceBox) {
@@ -144,6 +161,9 @@ public class Controller implements Initializable {
     }
 
 
+    /**
+     * Pause the music.
+     */
 
     @FXML
     private void clickedMusicPauseButton(){
@@ -151,12 +171,21 @@ public class Controller implements Initializable {
         sounds.Pause();
     }
 
+    /**
+     * Stops the music.
+     */
+
     @FXML
     private void clickedMusicStopButton(){
         sounds.click();
         sounds.Stop();
     }
 
+
+
+    /**
+     * Toolbar settings.
+     */
 
     @FXML
     private void clickedToolbar(){
@@ -171,33 +200,44 @@ public class Controller implements Initializable {
         });
     }
 
+    /**
+     * This method is used to start timeline.
+     */
+
     @FXML
     private void clickedStartButton() {
-       int TIME = 1000/canvasFrame.getFPS();
+
+        int TIME = 1000/canvasFrame.getFPS();
 
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
 
             canvasFrame.getDynamicBoard().nextGeneration();
             canvasFrame.clearCanvas();
-
-//            try{Thread.sleep(100);} catch (Exception a){}
             canvasFrame.pressedCanvas();
             timeline.playFromStart();
 
 
         }));
-    timeline.play();
+        timeline.play();
 
     }
+
+    /**
+     * This method is used to clear canvas.
+     */
 
     @FXML
     private void clickedClearButton() {
         canvasFrame.clearCanvas();
         canvasFrame.clearArray();
-        timeline.stop();
+
     }
 
+
+    /**
+     * Adding Items to music choice Box.
+     */
 
     @FXML
     private void patternChoiceBox(){
@@ -206,6 +246,10 @@ public class Controller implements Initializable {
         patternChoiceBox.setValue("Random");
         drawPattern.setOnAction(event -> getPatternChoice(patternChoiceBox));
     }
+
+    /**
+     * Choose the pattern from the choice box.
+     */
 
     @FXML
     private void getPatternChoice(ChoiceBox<String>patternChoiceBox) {
@@ -221,6 +265,11 @@ public class Controller implements Initializable {
         }
     }
 
+
+    /**
+     * Toggle button clicked.
+     */
+
     @FXML
     private void clickedToggleButton(ActionEvent event){
         if (toggleButton.isSelected()) {
@@ -232,11 +281,19 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Exit game.
+     */
+
     @FXML
     private void clickedExitButton(){
         sounds.click();
         Platform.exit();
     }
+
+    /**
+     * Choose color for cells.
+     */
 
     @FXML
     private void colorPickerClicked() {
@@ -244,26 +301,36 @@ public class Controller implements Initializable {
         canvasFrame.colorPicker(colorPicker);
     }
 
+    /**
+     * Stops the timeline.
+     */
+
     @FXML
     private void clickedStopButton() {
         timeline.stop();
         sounds.click();
+
     }
 
+
+    /**
+     * Choose FPS for timeline from slider.
+     */
     @FXML
     private void FPSClicked() {
         int a = (int) sliderFPS.getValue();
         canvasFrame.setFPS(a);
-        canvasFrame.drawCanvas();
     }
+
+    /**
+     * Choose cell size from slider.
+     */
 
     @FXML
     private void CellSizeClicked() {
         double a = cellSlider.getValue();
         canvasFrame.cellSize(a);
-        canvasFrame.drawCanvas();
     }
-
 
 
     @FXML
@@ -287,9 +354,10 @@ public class Controller implements Initializable {
 
                 readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
                 canvasFrame.drawPattern(readGameBoard.pattern);
-                tekst.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.file) + " File name: " + readGameBoard.file.getName() +
-                        "  Created by: " + readGameBoard.file.getParent() +
-                        "  Pattern name: " + readGameBoard.getPatterName());
+                text.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.getFile()) +
+                             " File name: " + readGameBoard.getFile().getName() +
+                             " Created by: " + readGameBoard.getFile().getParent() +
+                             " Pattern name:" + readGameBoard.getPatterName());
                 if (readGameBoard.getCell() > 0) {
                     canvasFrame.cellSize(readGameBoard.getCell());
                 }

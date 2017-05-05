@@ -42,7 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Canvas fx:id="CanvasId" accessibleRole="BUTTON" focusTraversable="true" height="559.0" layoutX="13.0" layoutY="114.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" pickOnBounds="true" style="-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,1), 5, 5, 0, 0);" width="1252.0" />
+      <Canvas fx:id="canvasId" accessibleRole="BUTTON" focusTraversable="true" height="559.0" layoutX="13.0" layoutY="114.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" pickOnBounds="true" style="-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,1), 5, 5, 0, 0);" width="1252.0" />
       <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="163.0" layoutY="689.0" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="33.0" prefWidth="98.0" scaleShape="false" style="-fx-border-color: BLACK; -fx-border-radius: 3;" text="STOP">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -179,7 +179,7 @@
                   </ContextMenu>
                </contextMenu>
             </MenuBar>
-            <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="meta" wrappingWidth="1109.9857788085938" />
+            <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="meta" wrappingWidth="1109.9857788085938" />
             <Button fx:id="exitButton" alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" contentDisplay="RIGHT" focusTraversable="false" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#clickedExitButton" prefHeight="27.0" prefWidth="22.0" scaleShape="false" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;" text="☓" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>
                   <Font name="System Bold" size="15.0" />
