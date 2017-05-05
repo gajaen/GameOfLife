@@ -172,6 +172,7 @@ public class Controller implements Initializable {
 
     public void patternChoiceBox(){
         patternChoiceBox.getItems().add("Random");
+        patternChoiceBox.getItems().add("None");
         patternChoiceBox.setValue("Random");
         drawPattern.setOnAction(event -> getPatternChoice(patternChoiceBox));
     }
@@ -181,6 +182,10 @@ public class Controller implements Initializable {
             case "Random":
                 System.out.println(patternChoiceBox.getValue());
                 canvasFrame.RandomButtonAction();
+                break;
+            case "None":
+                System.out.println("None");
+                gui.ClearButton();
                 break;
         }
     }

@@ -121,6 +121,9 @@ public class CanvasFrame  {
 
     public void cellSize(double size){
        dynamicBoard.setCellSize(size);
+       clearCanvas();
+        dynamicBoard.drawCells(gc);
+        dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**
