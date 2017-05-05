@@ -171,7 +171,7 @@ public class ReadGameBoard {
             return;
         }
 
-        String url2 = "test";
+       /* String url2 = "test";
         URL url = new URL(url2);
         InputStream in = url.openStream();
         Scanner scan = new Scanner(in);
@@ -185,7 +185,7 @@ public class ReadGameBoard {
             System.out.println(str);
         }
         scan.close();
-
+*/
         try (Scanner scanner = new Scanner(file )) {
             //BufferedReader reader = new BufferedReader(new FileReader(file));
 

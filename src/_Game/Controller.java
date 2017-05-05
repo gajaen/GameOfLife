@@ -155,19 +155,6 @@ public class Controller implements Initializable {
     public void clickedStartButton() {
        int TIME = 1000/canvasFrame.getFPS();
 
-       /* tl = new Timeline();
-        tl.setCycleCount(Animation.INDEFINITE);
-        KeyFrame moveBall = new KeyFrame(Duration.millis(TIME),
-                new EventHandler<ActionEvent>() {
-                    public void handle(ActionEvent event) {
-                        canvasFrame.getDynamicBoard().nextGeneration();
-                        canvasFrame.clearCanvas();
-                        canvasFrame.pressedCanvas();
-                    }
-                });
-
-        tl.getKeyFrames().add(moveBall);
-        tl.play();*/
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
 
