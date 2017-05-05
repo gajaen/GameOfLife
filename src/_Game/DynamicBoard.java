@@ -215,67 +215,46 @@ public class DynamicBoard{
     public void moveCellsRight(){
 
         List<List<Byte>> rightBoard =  new ArrayList<List<Byte>>();
-
-
         fillBoard(rightBoard);
-
-
         for (int x = 0; x < dynamicBoard.size(); x++) {
             for (int y = 0; y < dynamicBoard.get(x).size(); y++){
                 if (dynamicBoard.get(x).get(y) == 1){
-
-                    rightBoard.get(x).set(y + 1, (byte) 1);
-
+                    rightBoard.get(x).set(y + 1,(byte)1);
                 }
+            }
+        }
+        dynamicBoard = rightBoard;
+    }
 
-
+    public void moveCellsLeft() {
+        List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
+        fillBoard(leftBoard);
+        for (int x = 0; x < dynamicBoard.size(); x++) {
+            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
+                if (dynamicBoard.get(x).get(y) == 1){
+                    leftBoard.get(x).set(y - 1,(byte)1);
+                }
             }
 
         }
-        dynamicBoard = rightBoard;
-
+        dynamicBoard = leftBoard;
     }
+
 
 
     public void moveCellsUp(){
 
         List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
         fillBoard(upBoard);
-
         for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(y).size(); y++){
-
+            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
                 if (dynamicBoard.get(x).get(y) == 1){
 
-                    upBoard.get(y).set(x + 1, (byte) 1);
-
+                    upBoard.get(x).set(y -1,(byte)1);
                 }
-
-
             }
         }
         dynamicBoard = upBoard;
-    }
-
-    public void moveCellsLeft() {
-        System.out.println("funker");
-
-        List<List<Byte>> leftBoard = new ArrayList<List<Byte>>();
-        fillBoard(leftBoard);
-
-
-        for (int x = 0; x < dynamicBoard.size(); x++) {
-            for (int y = 0; y < dynamicBoard.get(x).size(); y++){
-
-                if (dynamicBoard.get(x).get(y) == 1) {
-
-                    leftBoard.get(y).set(x - 1, (byte) 1);
-
-                }
-
-            }
-            dynamicBoard = leftBoard;
-        }
     }
 
     public void moveCellsDown() {
@@ -285,8 +264,7 @@ public class DynamicBoard{
         for (int x = 1; x < dynamicBoard.size(); x++) {
             for (int y = 1; y < dynamicBoard.get(x).size(); y++){
 
-                if (dynamicBoard.get(x).get(y) == 1) {
-
+                if (dynamicBoard.get(y).get(x) == 1) {
                     downBoard.get(x).set(y - 1, (byte) 1);
 
                 }

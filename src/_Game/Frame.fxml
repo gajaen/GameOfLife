@@ -20,14 +20,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" style="-fx-background-color: orange; -fx-border-color: BLACK; -fx-border-radius: 2; -fx-border-width: 2; -fx-background-radius: 2;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1278.0" style="-fx-background-color: orange; -fx-border-color: BLACK; -fx-border-radius: 2; -fx-border-width: 2; -fx-background-radius: 2;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="_Game.Controller">
    <children>
+      <ImageView fitHeight="748.0" fitWidth="1287.0" layoutY="30.0">
+         <image>
+            <Image url="@../../../../Desktop/Background.png" />
+         </image>
+      </ImageView>
       <Button fx:id="startButton" alignment="CENTER" cacheShape="false" centerShape="false" focusTraversable="false" graphicTextGap="1.0" layoutX="12.0" layoutY="690.0" mnemonicParsing="false" onAction="#clickedStartButton" pickOnBounds="false" prefHeight="70.0" prefWidth="144.0" scaleShape="false" style="-fx-border-color: BLACK; -fx-border-radius: 3;" text="START" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Canvas fx:id="CanvasId" focusTraversable="true" height="559.0" layoutX="13.0" layoutY="114.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" style="-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,1), 5, 5, 0, 0);" width="1224.0" />
+      <Canvas fx:id="CanvasId" focusTraversable="true" height="559.0" layoutX="13.0" layoutY="114.0" onMouseDragged="#CanvasPressed" onMousePressed="#CanvasPressed" onMouseReleased="#CanvasReleased" pickOnBounds="true" style="-fx-effect: dropshadow(one-pass-box, rgba(0,0,0,1), 5, 5, 0, 0);" width="1263.0" />
       <Button fx:id="stopButton" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="163.0" layoutY="689.0" mnemonicParsing="false" onAction="#clickedStopButton" prefHeight="33.0" prefWidth="98.0" scaleShape="false" style="-fx-border-color: BLACK; -fx-border-radius: 3;" text="STOP">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -66,13 +71,13 @@
       <Button fx:id="drawPattern" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="747.0" layoutY="730.0" mnemonicParsing="false" onAction="#clickedDrawButton" prefHeight="27.0" prefWidth="56.0" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 3;" text="Draw" />
       <ImageView fitHeight="83.0" fitWidth="507.0" layoutX="371.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Game-of-Life.png" />
+            <Image url="@Pictures/Game-of-Life.png" />
          </image>
       </ImageView>
       <ChoiceBox fx:id="patternChoiceBox" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="634.0" layoutY="730.0" prefHeight="27.0" prefWidth="109.0" scaleShape="false" style="-fx-border-radius: 3; -fx-border-color: Black;" />
       <ToolBar fx:id="Toolbar" onDragDetected="#clickedToolbar" onMousePressed="#clickedToolbar" prefHeight="16.0" prefWidth="1280.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-background-color: rgb(250,250,250); -fx-border-width: 2; -fx-background-radius: 2;">
          <items>
-            <MenuBar blendMode="SRC_ATOP" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="113.0" scaleShape="false" style="-fx-background-color: rgb(250,250,250);">
+            <MenuBar blendMode="SRC_ATOP" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="105.0" scaleShape="false" style="-fx-background-color: rgb(250,250,250);">
                <menus>
                   <Menu text="File">
                      <items>
@@ -110,22 +115,22 @@
                   </ContextMenu>
                </contextMenu>
             </MenuBar>
-            <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1114.9857788085938" />
-            <Button fx:id="exitButton" alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" contentDisplay="RIGHT" focusTraversable="false" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#clickedExitButton" prefHeight="27.0" prefWidth="22.0" scaleShape="false" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;" text="X" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+            <Text fx:id="tekst" strokeType="OUTSIDE" strokeWidth="0.0" text="Metadata" wrappingWidth="1117.9857788085938" />
+            <Button fx:id="exitButton" alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" contentDisplay="RIGHT" focusTraversable="false" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#clickedExitButton" prefHeight="27.0" prefWidth="22.0" scaleShape="false" style="-fx-border-color: black; -fx-background-radius: 5; -fx-border-radius: 5;" text="☓" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
          </items>
       </ToolBar>
       <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="315.0" layoutY="50.0">
          <image>
-            <Image url="@Glider.png" />
+            <Image url="@Pictures/Glider.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="56.0" fitWidth="56.0" layoutX="878.0" layoutY="50.0" rotate="90.0">
          <image>
-            <Image url="@Glider.png" />
+            <Image url="@Pictures/Glider.png" />
          </image>
       </ImageView>
       <ChoiceBox fx:id="musicChoiceBox" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1093.0" layoutY="730.0" prefHeight="25.0" prefWidth="162.0" scaleShape="false" style="-fx-background-radius: 3; -fx-border-color: black; -fx-border-radius: 3;" />

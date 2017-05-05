@@ -15,7 +15,7 @@ public class CanvasFrameTest extends TestCase {
 
     public void testGetFPS() throws Exception {
         CanvasFrame canvasFrame = new CanvasFrame(height, width, gc);
-        //assertEquals(30, canvasFrame.getFPS());
+        assertEquals(30, canvasFrame.getFPS());
 
     }
 

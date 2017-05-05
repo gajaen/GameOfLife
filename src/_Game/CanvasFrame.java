@@ -122,8 +122,8 @@ public class CanvasFrame  {
     public void cellSize(double size){
        dynamicBoard.setCellSize(size);
        clearCanvas();
-        dynamicBoard.drawCells(gc);
-        dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
+       dynamicBoard.drawCells(gc);
+       dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
     }
 
     /**
@@ -160,15 +160,12 @@ public class CanvasFrame  {
         TIME = 1000/getFPS();
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
-
             clearCanvas();
             dynamicBoard.nextGeneration();
             try{Thread.sleep(100);} catch (Exception a){}
             dynamicBoard.drawCells(this.gc);
             dynamicBoard.drawLines(this.gc, this.lineWidth,this.lineColor);
             timeline.playFromStart();
-
-
         }));
 
 
@@ -193,15 +190,9 @@ public class CanvasFrame  {
     public void RandomButtonAction() {
 
             clearCanvas();
-
             dynamicBoard.randomButton();
-
             dynamicBoard.drawCells(gc);
             dynamicBoard.drawLines(gc,lineWidth,lineColor);
-
-
-
-
 
     }
 

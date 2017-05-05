@@ -2,6 +2,7 @@ package _Game;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
@@ -56,18 +57,11 @@ public class Main extends Application {
         Parent root = loader.load();
 
         primaryStage.setTitle("GameOfLife");
-
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root, 1280, 780));
-
-        controller = new Controller();
-
 
         primaryStage.show();
     }
-
-
-
 
 
 

@@ -5,16 +5,19 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import java.io.*;
 import java.net.URL;
@@ -59,6 +62,7 @@ public class Controller implements Initializable {
     int user_id = 2;
     ReadGameBoard readGameBoard;
     public Text tekst;
+    double x, y;
 
     /**
      * Constructs and initializes the canvas and gui.
@@ -77,6 +81,10 @@ public class Controller implements Initializable {
         patternChoiceBox();
         MusicChoiceBox();
         sounds.startClick();
+
+
+
+
     }
 
 
@@ -133,13 +141,32 @@ public class Controller implements Initializable {
         sounds.Pause();
 
     }
+
     public void clickedMusicStopButton(){
         sounds.click();
         sounds.Stop();
 
     }
+
+
+    @FXML
     public void clickedToolbar(){
+        final double xOffset = 640;
+        final double yOffset = 20;
+
+        Toolbar.setOnMouseDragged(event ->
+        {
+            Window window = ((Node)event.getTarget()).getScene().getWindow();
+            window.setX(event.getScreenX() - xOffset);
+            window.setY(event.getScreenY() - yOffset);
+        });
     }
+
+
+
+
+
+
     public void clickedStartButton() {
        int TIME = 1000/canvasFrame.getFPS();
 
