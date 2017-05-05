@@ -158,7 +158,6 @@ public class Controller implements Initializable {
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
 
-            canvasFrame.clickNoise();
             canvasFrame.getDynamicBoard().nextGeneration();
             canvasFrame.clearCanvas();
 

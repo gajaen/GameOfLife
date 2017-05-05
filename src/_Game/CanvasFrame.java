@@ -81,15 +81,6 @@ public class CanvasFrame  {
 
 
 
-
-    public void clickNoise(){
-        String musicFile = "sound.mp3";
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
-
-    }
-
     public void key(KeyEvent event){
         clearCanvas();
 
@@ -169,7 +160,6 @@ public class CanvasFrame  {
 
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
 
-            clickNoise();
             clearCanvas();
             dynamicBoard.nextGeneration();
             try{Thread.sleep(100);} catch (Exception a){}
@@ -291,23 +281,22 @@ public class CanvasFrame  {
 
 
     public void moveCellsUp(){
-        clickNoise();
         dynamicBoard.moveCellsUp();
 
     }
 
     public void moveCellsLeft(){
-        clickNoise();
+
         dynamicBoard.moveCellsLeft();
     }
 
     public void moveCellsRight(){
-        clickNoise();
+
         dynamicBoard.moveCellsRight();
     }
 
     public void moveCellsDown(){
-        clickNoise();
+
         dynamicBoard.moveCellsDown();
     }
 
