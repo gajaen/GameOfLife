@@ -4,24 +4,31 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
+/**
+ * The Game Of Life program created for HIOA final project
+ * The DrawCanvas class is primary to staticboard.
+ *
+ * @version 1.0
+ * @since   2017-01-14
+ * @author  S315325 & S315285
+ */
+
 public class DrawCanvas {
 
-    Cell cell;
-    StaticBoard staticBoard;
+    private Cell cell;
+    private StaticBoard staticBoard;
     private int canvasHeight;
     private int canvasWidth;
     private byte[][] sboard;
-    int oldJ;
-    int oldI;
+    private int oldJ;
+    private int oldI;
 
     public DrawCanvas(int height, int width, byte[][] sboard){
-        staticBoard = new StaticBoard(sboard,width,height);
-        cell = new Cell();
-
+        staticBoard       = new StaticBoard(sboard,width,height);
         this.canvasHeight = height;
-        this.canvasWidth = width;
-        this.sboard = sboard;
-        cell = new Cell();
+        this.canvasWidth  = width;
+        this.sboard       = sboard;
+        cell              = new Cell();
     }
 
 
@@ -58,14 +65,11 @@ public class DrawCanvas {
      * This method is used to draw a cell on canvas.
      *
      * @return Nothing.
-     *
      */
 
     public void drawCells(GraphicsContext gc) {
-
-
         gc.setFill(cell.getCellColor());
-        try {
+        //drawing on canvas
             for (int i = 0; i < this.canvasHeight; i++) {
                 for (int j = 0; j < this.canvasWidth; j++) {
                     if (staticBoard.getBoard()[i][j] == 1) {
@@ -74,24 +78,15 @@ public class DrawCanvas {
                 }
             }
 
-
-            //System.out.println("draw");
-        } catch (ArrayIndexOutOfBoundsException e) {
-
-            System.out.println("ArrayIndexOutOfBoundsException" + e);
-        }
     }
 
     /**
      * This method is used to draw when clicked on canvas.
      *
      * @return Nothing.
-     * @exception Exception On input error.
-     * @see Exception
-     *
      */
 
-    public void CanvasPressed(MouseEvent a) throws Exception {
+    public void CanvasPressed(MouseEvent a)  {
 
         try {
 
@@ -122,7 +117,8 @@ public class DrawCanvas {
             //System.err.println(" Exeption: " + e.getMessage());
             System.out.println("Task interrupted");
 
-        }}
+        }
+    }
 
     /**
      * This method is used to change cell color.
@@ -132,9 +128,7 @@ public class DrawCanvas {
      */
 
     public void setCellColor(Color color){
-
         this.cell.setCellColor(color);
-
     }
 
     /**
@@ -149,6 +143,35 @@ public class DrawCanvas {
     }
 
 
+    public int getOldJ() {
+        return oldJ;
+    }
 
+    public void setOldJ(int oldJ) {
+        this.oldJ = oldJ;
+    }
 
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
+    public StaticBoard getStaticBoard() {
+        return staticBoard;
+    }
+
+    public void setStaticBoard(StaticBoard staticBoard) {
+        this.staticBoard = staticBoard;
+    }
+
+    public int getOldI() {
+        return oldI;
+    }
+
+    public void setOldI(int oldI) {
+        this.oldI = oldI;
+    }
 }

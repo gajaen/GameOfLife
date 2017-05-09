@@ -4,34 +4,27 @@ import javafx.scene.paint.Color;
 
 /**
  * The Game Of Life program created for HIOA final project
- * The Board class have all the variables of the cell property.
+ * The cell class have all the variables of the cell property.
  *
  * @version 1.0
  * @since   2017-01-14
+ * @author  S315325 & S315285
  */
 
 public class Cell {
+
+    private Color cellColor;
     private double cellSize;
     private int cellGap;
-    public Color cellColor;
 
     /**
      *  Constructs and initializes cellSize, cellGap and cellColor
      */
 
     public Cell(){
-        cellSize = 10;
-        cellGap = 1;
+        cellSize  = 10;
+        cellGap   = 1;
         cellColor = Color.WHITE;
-    }
-
-    /**
-     * Returns CellColor
-     * @return
-     */
-
-    public Color getCellColor() {
-        return cellColor;
     }
 
     /**
@@ -39,14 +32,12 @@ public class Cell {
      * @param cellColor
      */
 
-
     public void setCellColor(Color cellColor) {
         this.cellColor = cellColor;
     }
 
     /**
-     * Returns CellColor
-     * @return
+     * @return cellsize
      */
 
     public double getCellSize() {
@@ -54,7 +45,15 @@ public class Cell {
     }
 
     /**
-     * Set Cell Size
+     * @return cellColor
+     */
+
+    public Color getCellColor() {
+        return cellColor;
+    }
+
+    /**
+     * Sets CellSize
      * @param cellSize
      */
 
@@ -63,8 +62,7 @@ public class Cell {
     }
 
     /**
-     * Returns CellGap
-     * @return
+     * @return cellGap
      */
 
     public int getCellGap() {

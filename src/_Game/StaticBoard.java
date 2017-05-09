@@ -1,3 +1,7 @@
+package _Game;
+
+import javafx.scene.canvas.GraphicsContext;
+
 /**
  * The Game Of Life program created for HIOA final project
  * The Board class creates arrays for the board.
@@ -5,21 +9,17 @@
  *
  * @version 1.0
  * @since   2017-01-14
+ * @author  S315325 & S315285
  */
-
-package _Game;
-
-import javafx.scene.canvas.GraphicsContext;
 
 
 public class StaticBoard {
 
-    DrawCanvas drawCanvas;
+    private DrawCanvas drawCanvas;
 
-
-    byte[][] sBoard;
-    int canvasWidth;
-    int canvasHeight;
+    private byte[][] sBoard;
+    private int canvasWidth;
+    private int canvasHeight;
 
     /**
      *
@@ -120,10 +120,6 @@ public class StaticBoard {
 
     }
 
-
-
-
-
     /**
      * This method is used to set a random board.
      *
@@ -133,22 +129,8 @@ public class StaticBoard {
      */
 
     public int setBoardRandom(int i, int j) {
-
         return  sBoard[i][j] = (byte) (Math.random() * 2);
-
     }
-
-
-
-
-
-    /**
-     * This method is used to change cell size.
-     *
-     * @param size this parameter changes the cell size
-     * @return Nothing.
-     */
-
 
     /**
      * This method is used to assign a new board.
@@ -172,6 +154,10 @@ public class StaticBoard {
         return sBoard;
     }
 
+    /**
+     * Moves the whole array list to right
+     */
+
     public void moveCellsRight(){
         byte[][] rightBoard = new byte[canvasHeight][canvasWidth];
 
@@ -183,6 +169,10 @@ public class StaticBoard {
         sBoard = rightBoard;
 
     }
+
+    /**
+     * Moves the whole array list to up
+     */
 
     public void moveCellsUp(){
 
@@ -196,6 +186,10 @@ public class StaticBoard {
         sBoard = upBoard;
     }
 
+    /**
+     * Moves the whole array list to left
+     */
+
     public void moveCellsLeft(){
         byte[][] leftBoard = new byte[canvasHeight][canvasWidth];
 
@@ -207,6 +201,11 @@ public class StaticBoard {
         }
         sBoard = leftBoard;
     }
+
+    /**
+     * Moves the whole array list to down
+     */
+
     public void moveCellsDown(){
         byte[][] downBoard = new byte[canvasHeight][canvasWidth];
 
@@ -219,4 +218,35 @@ public class StaticBoard {
     }
 
 
+    public DrawCanvas getDrawCanvas() {
+        return drawCanvas;
+    }
+
+    public void setDrawCanvas(DrawCanvas drawCanvas) {
+        this.drawCanvas = drawCanvas;
+    }
+
+    public byte[][] getsBoard() {
+        return sBoard;
+    }
+
+    public void setsBoard(byte[][] sBoard) {
+        this.sBoard = sBoard;
+    }
+
+    public int getCanvasWidth() {
+        return canvasWidth;
+    }
+
+    public void setCanvasWidth(int canvasWidth) {
+        this.canvasWidth = canvasWidth;
+    }
+
+    public int getCanvasHeight() {
+        return canvasHeight;
+    }
+
+    public void setCanvasHeight(int canvasHeight) {
+        this.canvasHeight = canvasHeight;
+    }
 }

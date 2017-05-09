@@ -10,14 +10,16 @@ import java.util.ResourceBundle;
  *
  * @version 1.0
  * @since   2017-01-14
+ * @author  S315325 & S315285
  */
 
 
 public class Rules implements Initializable {
     @Override
-/**
- * Initialize
- */
+    /**
+     * Initialize
+     */
+
     public void initialize(URL location, ResourceBundle resources) {
     }
 
@@ -25,8 +27,7 @@ public class Rules implements Initializable {
      * Rules
      * @throws IOException
      */
+
     public Rules() throws IOException {
-
-
     }
 }

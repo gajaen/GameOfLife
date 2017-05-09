@@ -3,10 +3,18 @@ package _Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Game Of Life program created for HIOA final project
+ * The dynamic class creates ArrayList for the board.
+ * Then it is defining the methods for drawing it.
+ *
+ * @version 1.0
+ * @since   2017-01-14
+ * @author  S315325 & S315285
+ */
 
 public class DynamicBoard{
 
@@ -25,11 +33,9 @@ public class DynamicBoard{
      *  @param height canvas height
      *  @param dynamic creating a array for Board
      *  @return nothing.
-     *
      */
 
     public DynamicBoard(int height, int width, List<List<Byte>> dynamic)  {
-
         this.dynamicBoard = dynamic;
         this.canvasHeight = height;
         this.canvasWidth  = width;
@@ -41,11 +47,9 @@ public class DynamicBoard{
      * Filling array list
      *
      * @param  board
-     *
      */
 
     public void fillBoard(List<List<Byte>> board){
-
         for(int x = 0; x < canvasHeight; x++){
             List<Byte> row = new ArrayList<Byte>();
             for(int y = 0; y < canvasWidth; y++){
@@ -60,22 +64,20 @@ public class DynamicBoard{
      * This method is used to draw a cell on canvas.
      *
      * @param gc for draw on canvas
-     *
      */
 
     public void drawCells(GraphicsContext gc) {
 
         gc.setFill(cell.getCellColor());
+        //drawing on canvas
         for (int i = 0; i <  dynamicBoard.size(); i++) {
-
             for (int j = 0; j < dynamicBoard.get(i).size(); j++) {
-
                 if (dynamicBoard.get(i).get(j) == 1) {
-
                     gc.fillRect(cell.getCellSize() * j - cell.getCellSize(), cell.getCellSize() * i - cell.getCellSize(), cell.getCellSize() - cell.getCellGap(), cell.getCellSize() - cell.getCellGap());
                 }
             }
         }
+
     }
 
     /**
@@ -84,11 +86,9 @@ public class DynamicBoard{
      * @param gc is the first parameter to draw on canvas
      * @param lineWidth is the second choosing the thickness of line
      * @param lineColor is the third parameter and it is choosing the color of line
-     *
      */
 
     public void drawLines(GraphicsContext gc, double lineWidth, Color lineColor) {
-
         gc.setStroke(lineColor);
         gc.setLineWidth(1);
         gc.strokeRect(0, 0, this.canvasWidth, this.canvasHeight);
@@ -137,23 +137,19 @@ public class DynamicBoard{
                 }
 
                 cellNeighbors -= dynamicBoard.get(x).get(y);
-                //Mindre en 2 rundt -> cellen dør
-                //Less than 2 Neighbours -
+                //Less than 2 Neighbours -> Cell dies
                 if ((dynamicBoard.get(x).get(y) == 1) && (cellNeighbors < 2))
                     nextBoard.get(x).set(y, (byte) 0);
 
                 else if ((dynamicBoard.get(x).get(y)  == 1) && (cellNeighbors > 3))
                     nextBoard.get(x).set(y, (byte) 0);
-                    //Fler en tre rundt -> cellen dør
-
+                    //More than 3 neighbours -> cell dies
                 else if ((dynamicBoard.get(x).get(y)  == 0) && (cellNeighbors == 3))
                     nextBoard.get(x).set(y, (byte) 1);
-                    //Cellen er lik 3 -> cellen kommer til live
-
+                        // cell is equal to 3 -> cell is living
                 else {
-                    //Cellen lever
+                    //Cell lives
                     nextBoard.get(x).set(y, dynamicBoard.get(x).get(y));
-                    //dynamicBoard.get(x).set(y, nextBoard.get(x).get(y));
                 }
             }
         }
@@ -163,7 +159,6 @@ public class DynamicBoard{
 
     /**
      * This method is used to zero the numbers in board array.
-     *
      */
 
     public void cleanArray() {
@@ -179,7 +174,6 @@ public class DynamicBoard{
      *
      * @param pattern is the first parameter and it is the array for the new pattern.
      * @param gc is the second parameter and is used to drawing on the canvas.
-     *
      */
 
     public  void drawPattern(int[][] pattern, GraphicsContext gc) {
@@ -195,7 +189,6 @@ public class DynamicBoard{
 
     /**
      * This method is used to draw the make a random board by using math random.
-     *
      */
 
     public void randomButton(){
@@ -240,7 +233,6 @@ public class DynamicBoard{
 
     /**
      * Moves the whole array list to right
-     *
      */
 
     public void moveCellsRight(){
@@ -258,7 +250,6 @@ public class DynamicBoard{
 
     /**
      * Moves the whole array list to left
-     *
      */
 
     public void moveCellsLeft() {
@@ -276,8 +267,8 @@ public class DynamicBoard{
 
     /**
      * Moves the whole array list up
-     *
      */
+
     public void moveCellsUp(){
         List<List<Byte>> upBoard =  new ArrayList<List<Byte>>();
         fillBoard(upBoard);
@@ -293,7 +284,6 @@ public class DynamicBoard{
 
     /**
      * Moves the whole array list down.
-     *
      */
 
     public void moveCellsDown(){

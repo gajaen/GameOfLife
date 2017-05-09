@@ -4,7 +4,6 @@ package _Game;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +20,6 @@ import javafx.util.Duration;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,8 +31,7 @@ import java.util.logging.Logger;
  *
  * @version 1.0
  * @since   2017-01-14
- * @author  Sivert Allergodt Borgeteien & Gajaen Chandrasegaram
- * Studentnr : S315325 & S315285
+ * @author  S315325 & S315285
  * */
 
 
@@ -46,8 +43,6 @@ public class Controller implements Initializable {
     @FXML private Slider sliderFPS, cellSlider;
     @FXML private Button musicStartButton, drawPattern;
     @FXML private ToolBar Toolbar;
-    @FXML private TextField textBox;
-    @FXML private ToggleButton toggleButton;
     @FXML private Text text;
 
           private CanvasFrame canvasFrame;
@@ -68,10 +63,10 @@ public class Controller implements Initializable {
 
         canvasFrame = new CanvasFrame((int) canvasId.getHeight(), (int) canvasId.getWidth(), canvasId.getGraphicsContext2D());
         sounds = new Sounds();
-        text.setText("");
         patternChoiceBox();
         musicChoiceBox();
         key();
+        text.setText("");
 
     }
 
@@ -96,7 +91,6 @@ public class Controller implements Initializable {
             logger.log(Level.SEVERE, "Failed to create new Window.", e);
         }
 
-
     }
 
     /**
@@ -118,7 +112,6 @@ public class Controller implements Initializable {
 
     @FXML
     private void musicChoiceBox(){
-
         sounds.startClick();
         musicChoiceBox.getItems().add("Take On Me");
         musicChoiceBox.getItems().add("Through The Fire and Flames");
@@ -128,7 +121,6 @@ public class Controller implements Initializable {
         musicChoiceBox.getItems().add("Shape Of You");
         musicChoiceBox.setValue("Shape Of You");
         musicStartButton.setOnAction(event -> getMusicChoice(musicChoiceBox));
-
     }
 
     /**
@@ -208,7 +200,6 @@ public class Controller implements Initializable {
 
         int TIME = 1000/canvasFrame.getFPS();
 
-
         timeline = new Timeline(new KeyFrame(Duration.millis(TIME), e -> {
             canvasFrame.getDynamicBoard().nextGeneration();
             canvasFrame.clearCanvas();
@@ -232,7 +223,7 @@ public class Controller implements Initializable {
 
 
     /**
-     * Adding Items to music choice Box.
+     * Items in choose box
      */
 
     @FXML
@@ -260,7 +251,6 @@ public class Controller implements Initializable {
                 break;
         }
     }
-
 
     /**
      * Exit game.
@@ -290,7 +280,6 @@ public class Controller implements Initializable {
     private void clickedStopButton() {
         timeline.stop();
         sounds.click();
-
     }
 
     /**
@@ -332,9 +321,9 @@ public class Controller implements Initializable {
     private void openFile()  {
 
         try {
-
                 readGameBoard = new ReadGameBoard(canvasFrame.getHEIGHT(), canvasFrame.getWIDTH());
                 canvasFrame.drawPattern(readGameBoard.pattern);
+                //Writing meta data in toolbar
                 text.setText(" Created on: " + readGameBoard.getCreationDetails(readGameBoard.getFile()) +
                              " File name: " + readGameBoard.getFile().getName() +
                              " Created by: " + readGameBoard.getFile().getParent() +
@@ -346,9 +335,19 @@ public class Controller implements Initializable {
                 canvasFrame.clearCanvas();
 
                 canvasFrame.pressedCanvas();
-
         }
+        catch (IndexOutOfBoundsException i){
+            //Giving Exeption to user when file not found
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("File is big");
+            alert.setHeaderText(null);
+            alert.setContentText("Remember to zoom out, because the pattern is very big ;)");
+
+            alert.showAndWait();
+        }
+
         catch (Exception e){
+            //Giving Exeption to user when file not found
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("File Not Choosen");
             alert.setHeaderText(null);
@@ -356,11 +355,12 @@ public class Controller implements Initializable {
 
             alert.showAndWait();
         }
-        }
+    }
 
     /**
      * This method is closing the window.
      */
+
     @FXML
     private void closeWindow() {Platform.exit();}
 

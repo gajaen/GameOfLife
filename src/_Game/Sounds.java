@@ -7,8 +7,14 @@ import javafx.scene.media.MediaPlayer.Status;
 import java.io.File;
 
 /**
- * Created by Sivert on 04.05.2017.
+ * The Game Of Life program created for HIOA final project
+ * The Sound class define the media player and the sound.
+ *
+ * @version 1.0
+ * @since   2017-01-14
+ * @author  S315325 & S315285
  */
+
 public class Sounds {
 
 

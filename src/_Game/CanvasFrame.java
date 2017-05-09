@@ -1,13 +1,10 @@
 package _Game;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 import java.util.*;
 
 
@@ -17,6 +14,7 @@ import java.util.*;
  *
  * @version 1.0
  * @since   2017-01-14
+ * @author  S315325 & S315285
  */
 
 public class CanvasFrame  {
@@ -27,14 +25,11 @@ public class CanvasFrame  {
     private StaticBoard staticBoard;
     private DynamicBoard dynamicBoard;
     private DrawCanvas drawCanvas;
-    private Timeline timeline;
     private double lineWidth;
-    private int canvasWidth, canvasHeight, TIME, FPS;
-    Thread thread;
-    public List<List<Byte>> dynamic;
+    private int canvasWidth, canvasHeight, FPS;
+    private List<List<Byte>> dynamic;
 
     /**
-     *
      *  Constructs and init a canvas with width, height and gc
      *
      *  @param height is the first parameter in CanvasFrame constructor
@@ -45,20 +40,19 @@ public class CanvasFrame  {
 
     public CanvasFrame(int height, int width, GraphicsContext gcContext){
 
-
         dynamic = new ArrayList<List<Byte>>();
 
         this.canvasHeight = height;
-        this.canvasWidth = width;
-        this.gc = gcContext;
-        lineWidth = 0.4;
-        lineColor = Color.BLACK;
-        backgroundColor = Color.GREY;
+        this.canvasWidth  = width;
+        this.gc           = gcContext;
+        lineWidth         = 0.4;
+        lineColor         = Color.BLACK;
+        backgroundColor   = Color.GREY;
 
-        staticBoard = new StaticBoard(new byte [this.canvasWidth] [this.canvasHeight], this.canvasWidth, this.canvasHeight);
+        staticBoard  = new StaticBoard(new byte [this.canvasWidth] [this.canvasHeight], this.canvasWidth, this.canvasHeight);
         staticBoard.setBoard(new byte[canvasHeight][canvasWidth]);
 
-        drawCanvas = new DrawCanvas(this.canvasHeight, this.canvasWidth, staticBoard.getBoard());
+        drawCanvas   = new DrawCanvas(this.canvasHeight, this.canvasWidth, staticBoard.getBoard());
         dynamicBoard = new DynamicBoard(this.canvasHeight,this.canvasWidth,dynamic);
 
         setGc(this.gc);
@@ -66,13 +60,13 @@ public class CanvasFrame  {
         gc.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
         clearArray();
+
     }
 
     /**
-     * Action when key is pressed.
+     * Action on keyboard when key is pressed.
      *
      * @param event when key is pressed
-     *
      */
 
     public void key(KeyEvent event){
@@ -94,6 +88,7 @@ public class CanvasFrame  {
                     dynamicBoard.moveCellsRight();
                     break;
             }
+
             dynamicBoard.drawCells(gc);
             dynamicBoard.drawLines(gc,lineWidth,lineColor);
 
@@ -104,7 +99,6 @@ public class CanvasFrame  {
     /**
      * Changing the cell color depending on user input from colorPicker
      * @param colorPicker is choosing color
-     *
      */
 
     public void colorPicker(ColorPicker colorPicker){
@@ -117,7 +111,6 @@ public class CanvasFrame  {
     /**
      * Changing cell size depending on user input from colorPicker
      * @param size is choosing size
-     *
      */
 
     public void cellSize(double size){
@@ -129,7 +122,6 @@ public class CanvasFrame  {
 
     /**
      * Clearing the current canvas and applying background
-     *
      */
 
     public void clearCanvas() {
@@ -140,7 +132,6 @@ public class CanvasFrame  {
 
     /**
      * Clear the current array with only 0's
-     *
      */
 
     public void clearArray(){
@@ -166,8 +157,6 @@ public class CanvasFrame  {
      *
      * @return Nothing.
      * @param a is getting mouse clicked input from the user.
-     * @exception Exception On input error.
-     * @see Exception
      */
 
     public void CanvasPressed(MouseEvent a)  {
@@ -181,7 +170,6 @@ public class CanvasFrame  {
     public void pressedCanvas(){
         dynamicBoard.drawCells(gc);
         dynamicBoard.drawLines(this.gc, this.lineWidth, this.lineColor);
-
     }
 
     /**
@@ -192,7 +180,7 @@ public class CanvasFrame  {
 
     public void drawPattern(int [][] pattern){
         clearArray();
-        // drawing pattern
+        // Drawing pattern
         dynamicBoard.drawPattern(pattern,gc);
         clearCanvas();
         dynamicBoard.drawCells(gc);
@@ -201,7 +189,7 @@ public class CanvasFrame  {
 
     /**
      * Returns FPS
-     * @return
+     * @return FPS for timeline
      */
 
     public int getFPS() {
@@ -211,18 +199,17 @@ public class CanvasFrame  {
         return FPS;
     }
 
-
     /**
      * Returns Board
-     * @return
+     * @return drawCanvas.staticBoard.getBoard() returns staticBoard
      */
     public byte[][] getBoard() {
-        return drawCanvas.staticBoard.getBoard();
+        return drawCanvas.getStaticBoard().getBoard();
     }
 
     /**
      * Returns Height
-     * @return
+     * @return canvasHeight
      */
 
     public int getHEIGHT() {
@@ -231,15 +218,16 @@ public class CanvasFrame  {
 
     /**
      * Returns Width
-     * @return
+     * @return canvasWidth
      */
+
     public int getWIDTH() {
         return canvasWidth;
     }
 
     /**
      * Returns backgroundColor
-     * @return
+     * @return backgroundColor for canvas
      */
 
     public Color getBackgroundColor() {
@@ -265,6 +253,7 @@ public class CanvasFrame  {
     }
     /**
      * Returns DynamicBoard
+     * @return dynamicBoard
      */
 
     public DynamicBoard getDynamicBoard(){

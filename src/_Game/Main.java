@@ -13,6 +13,7 @@ import javafx.stage.StageStyle;
  *
  * @version 1.0
  * @since   2017-01-14
+ * @author  S315325 & S315285
  */
 
 
@@ -30,7 +31,7 @@ public class Main extends Application {
      * This is the start method which makes use creates the stage itself.
      * @param primaryStage parameter is used to create the stage.
      * @return Nothing.
-     * @exception Exception On input error.
+     * @exception Exception
      * @see Exception
      *
      */

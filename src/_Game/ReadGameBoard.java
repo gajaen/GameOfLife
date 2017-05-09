@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
  *
  * @version 1.0
  * @since   2017-01-14
+ * @author  S315325 & S315285
  */
 
 
@@ -51,7 +52,6 @@ public class ReadGameBoard {
 
     /**
      * This method opens the file with FileChooser.
-     *
      */
 
     private void openFile() {
@@ -69,6 +69,7 @@ public class ReadGameBoard {
 
         );
         file = fileChooser.showOpenDialog(stage);
+
     }
 
 
@@ -89,16 +90,12 @@ public class ReadGameBoard {
             try {
                 Scanner scanner = new Scanner(file);
                 while (scanner.hasNextLine()) {
-
                     String line = scanner.nextLine();
 
                     // Checking if line is empty or commented or with rule line
-
                     if (line.isEmpty() || Pattern.matches(".*rule.*", line) || Pattern.matches(".*#.*", line)) {
-
                         continue;
                     }
-
 
                     // Split the line with $
                     Pattern p = Pattern.compile("(?<=\\$)");
@@ -107,10 +104,9 @@ public class ReadGameBoard {
 
                     for (String item : items) {
 
-
                         String itemTmp = item;
 
-                        // while itemTmp is a valid form
+                        // While itemTmp is a valid form
                         while ((!itemTmp.isEmpty()) && Pattern.matches(".*b.*|.*o.*", itemTmp)) {
 
 
@@ -208,6 +204,7 @@ public class ReadGameBoard {
      * Returns PatterName
      * @return
      */
+
     public String getPatterName() {
         return patterName;
     }
